@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Haes&#39; Blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;11&#x2F;index.html">
+<meta property="og:site_name" content="Haes&#39; Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Little Haes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/11/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Haes' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Haes' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/smallhaes" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/Markov-Chain-Monte-Carlo-%E5%92%8C-Gibbs-Sampling%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/21/Markov-Chain-Monte-Carlo-%E5%92%8C-Gibbs-Sampling%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Markov Chain Monte Carlo 和 Gibbs Sampling算法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-21 22:19:08" itemprop="dateCreated datePublished" datetime="2018-03-21T22:19:08+08:00">2018-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="蒙特卡洛模拟"><a href="#蒙特卡洛模拟" class="headerlink" title="蒙特卡洛模拟"></a>蒙特卡洛模拟</h2><p>蒙特卡洛模拟(Monte Carlo Simulation)是随机模拟的别名,关于随机模拟的一个重要的问题就是:给定一个概率分布p(x),如何生成它的样本?<br>一般而言,均匀分布Uniform(0,1)的样本容易生成,而常见的概率分布(连续或离散)都可以基于均匀分布的样本生成,例如正态分布可以通过Box-Muller变换得到.<br>但是像p(x,y,z)这样甚至更高维度分布的样本很难生成,而MCMC(Markov Chain Monte Carlo)和Gibbs Sampling算法就是解决这个问题的.让我们从马尔科夫链(Markov Chain)说起</p>
+<h2 id="马尔科夫链"><a href="#马尔科夫链" class="headerlink" title="马尔科夫链"></a>马尔科夫链</h2><p>马尔科夫链(Markov Chain),简称马氏链,</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义:"></a>定义:</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-d800449f0a70e49c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="1.png"><br><strong>含义:当前所处状态只和前一个状态有直接联系</strong></p>
+<h3 id="非周期马氏链的引出"><a href="#非周期马氏链的引出" class="headerlink" title="非周期马氏链的引出"></a>非周期马氏链的引出</h3><ul>
+<li>对于一个有限状态马氏链,如果状态i是经过有限步转移后迟早要返回的状态,则称状态i是常返态.(即若i→j,则j→i;换句话说,从i能到j,一定可以从j到i,i是常返态,j也是常返态;常返态’链’上的状态是常返态),不是常返态的状态称为过渡态(如果k是过渡态,则从k出发后无法再回到k)  </li>
+<li>如果马氏链中任何两个状态互通(互通的两个状态是常返态),则称马氏链为不可约的</li>
+<li>一个有限马氏链按照互通关系所分成的子集中的状态要么是常返的,称为常返类;要么是过渡的,称为过度类.</li>
+<li>一个有限马氏链至少有一个常返类和若干个过渡类(对于每一个状态都有入边和出边,所以至少有一个常返类)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ae96971de2d048ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="3.png"><br>对于非周期马氏链来说,对于它的任意状态i,从状态i出发,可以有非负条路径返回i,在每条路径走过的步数为 (path1,path2,…), 这些path之间的最大公约数是1. eg:(path1=5,path2=9,path3=10)<h3 id="马氏链的收敛定理"><a href="#马氏链的收敛定理" class="headerlink" title="马氏链的收敛定理"></a>马氏链的收敛定理</h3><img src="https://upload-images.jianshu.io/upload_images/9608551-a9c6e71ca89fa250.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="2.png"><br>对于2.和3.两条:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f34c6331e96fa56d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="2.1.png"><br>这个定理非常重要,<strong>所有的MCMC方法都是建立在这个定理基础上的</strong>(定理的证明非常麻烦,书上也没有给出)  </li>
+</ul>
+<p><strong>马氏链的任何两个状态相通的含义是:存在一个n,使得P^n的任意元素大于零</strong><br><strong>由马氏链的收敛定理,我们可以这样做,从马氏链的某个状态出发,按照转移概率矩阵转移,假设第n步后马氏链收敛,则在第n+1步,n+2步…n+j步…所处的状态就是马氏链平稳分布π的样本</strong></p>
+<h2 id="Metropolis-Hastings算法"><a href="#Metropolis-Hastings算法" class="headerlink" title="Metropolis-Hastings算法"></a>Metropolis-Hastings算法</h2><p>虽然马氏链能收敛,但是收敛后的分布不一定是我们想要的,如果让收敛后的分布就是我们希望的分布呢?<br>马尔科夫链蒙特卡洛方法(MCMC:Markov Chain Monte Carlo)方法就是解决这一问题的<br>马尔科夫链蒙特卡洛方法被评为二十世纪的十大算法之一  </p>
+<p>下面介绍原版算法的改进算法:Metropolis-Hastings算法:<br>Metropolis-Hastings算法是一种马尔科夫蒙特卡洛（MCMC）方法，用于在难以直接采样时从某一概率分布中抽取随机样本序列。得到的序列可用于估计该概率分布或计算积分（如期望值）等。<strong>Metropolis-Hastings算法一般用于从多变量（尤其是高维）分布中采样</strong><br>主要使用如下定理:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d145bdc6023a18db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="4.png"><br>细致平稳条件的直观理解:开始位于状态i,从状态i跳转到状态j的概率等于开始位于状态j,从状态j跳转到状态i的概率<br><strong>细致平稳条件只是马尔科夫链收敛的充分条件，不是必要条件</strong><br>一般而言,马氏链对应的概率转移矩阵P不满足细致平稳条件,可以构造出满足细致平稳条件的等式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bae47b5bd5c992f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="5.png"><br><strong>α(i,j)称为接受率,表示接受从状态i转移到状态j的概率</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-1aca61c85e7fd219.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="6.png"><br>但是,α(i,j)或者α(j,i)往往很小,接受转移的概率小会使采样的次数过多,遍历马氏链所有的状态需要非常长的时间,进而导致样本收敛到平稳分布需要非常长的时间<br>可以把构造出的细致平稳等式两边同时放大一下,将α(i,j),α(j,i)中较大的那个扩成1,也即:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2f4be23ebd94fcb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="7.png"><br>这个式子是说,当α(i,j)是较大的那一个则取1,当α(i,j)是较小的那一个则取另一个</p>
+<h2 id="Metropolis-Hastings算法采样流程"><a href="#Metropolis-Hastings算法采样流程" class="headerlink" title="Metropolis-Hastings算法采样流程"></a>Metropolis-Hastings算法采样流程</h2><p>(from Wikipedia)<br><strong>其中:</strong><br>A(x’|x)即上面说的接受率α(i,j)=α(x_t+1=j|x_t=i)<br>g(x’|x_t)即上面说的P_ij=P(x_t+1=j|x_t=i)  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-6412b7a12dce1d8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.png"><br><strong>每次从分布g(x’|x_t)中随机产生一个状态x’,再从Uniform(0,1)中随机产生一个数u,如果u大于接受率A(x’|x),认为t+1时刻的状态为x’,即x_(t+1)=x’</strong><br><strong>采样流程中并没有给出具体的g(x’|x_t)分布也没有给出迭代次数,这些都是自己调整的,比如可以使用高斯分布或者其他方便产生样本的分布</strong>  </p>
+<h2 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h2><p>吉布斯采样(Gibbs Sampling)<br>吉布斯采样是MCMC的一种,用于获得样本序列,这个样本序列构成了马尔科夫链,每个样本之间是相关的,不是独立的!当样本构成的马氏链收敛后,马氏链的平稳分布便能拟合含有多个多变量的分布,比如近似一个很难直接采样的联合概率分布,前提是<strong>得知道每个变量的条件概率</strong><br>吉布斯采样是一种随机算法(使用随机数),常用于贝叶斯推理(因为贝叶斯网络含有条件概率的集合),作为随机算法,它是用于统计推理的确定性算法(如EM算法:expectation-maximization algorithm)的一种替代方法<br>再回到之前Metropolis-Hastings算法,由于有接受率的存在,并不能保证每次的采样结果都被接收,所以会导致收敛前采样次数的增加,而吉布斯采样就能保证每次采样的结果可以使用.</p>
+<h2 id="吉布斯采样流程"><a href="#吉布斯采样流程" class="headerlink" title="吉布斯采样流程"></a>吉布斯采样流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-4321f2e89f9226d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="9.png">  </p>
+<p>注意事项: </p>
+<ol>
+<li>初始化的值可以随机给定,或者根据EM算法给定</li>
+<li>实际上没有必要着重处理初始值,因为一般都是直接忽略前面的样本的(叫作:burn-in period),毕竟需要跳转足够多的次数后马氏链才收敛, </li>
+<li>联合分布的参数通过将k个样本的参数平均后近似</li>
+<li>举个例子:直接忽略前1000个样本,之后每100个样本拿出一个,比如取出第1100,1200,1300,….2000个样本做平均,因为连续采出的样本不独立</li>
+<li>在采样的早期,常用模拟退火来减少随机游走行为 (i.e. the tendency to move slowly around the sample space, with a high amount of autocorrelation between samples, rather than moving around quickly, as is desired). </li>
+</ol>
+<p>参考:<br>靳志辉,LDA数学八卦<br>田宝玉,信息论基础</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/" class="post-title-link" itemprop="url">Dirichlet Multinomial 共轭</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-20 18:23:34" itemprop="dateCreated datePublished" datetime="2018-03-20T18:23:34+08:00">2018-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>作为LDA的预备知识,Dirichlet Multinomial共轭结构很重要,在介绍这个共轭结构之前,先介绍一下将会用到的相关概念</p>
+<h2 id="Gamma-函数"><a href="#Gamma-函数" class="headerlink" title="Gamma 函数"></a>Gamma 函数</h2><p>Gamma函数定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-19dd3611014b4449.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>分部积分后可得:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-022c964076a451d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>不断展开等式右边,进而有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bfd9604547712884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"><br>Bohr-Mullerup定理:<br>如果f:(0,∞)→(0,∞),且满足:f(1)=1;f(x+1)=xf(x);log(f(x))是凸函数,那么唯一满足以上条件的就是Γ(x)<br>Gamma函数图像(from Wikipedia):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d671cdb6cc29bbf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>复平面上的Gamma函数(from Wikipedia):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a4a7785ecc0badbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="5.png"><br>如下函数被称为Digamma函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-714da680527edbb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="6.png"><br>这是个很重要的函数,在求Dirichlet分布相关的参数的极大似然估计时往往用到该函数<br>Digamma函数具有如下性质<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a69cc5479512a4dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="7.png"></p>
+<h2 id="Beta-Binomial-共轭"><a href="#Beta-Binomial-共轭" class="headerlink" title="Beta Binomial 共轭"></a>Beta Binomial 共轭</h2><p><strong>在贝叶斯统计中，如果后验分布与先验分布属于同分布，则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验.</strong><br>Beta分布是Binomial分布的共轭先验   </p>
+<h3 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-af749f174ca0a672.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="9.png"><br>可以通过推导n个独立产生于同一个均匀分布的数字中第k大数字的过程推导出Beta分布,具体可参考靳志辉老师的LDA数学八卦<br>Beta分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-18a8c2834cef9508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="13.png">  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-473bc02b0326d09f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="14.png"><br>Beta分布(from Wikipedia)<br>PDF:probability density function(概率密度函数)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-09494c29a5fc9eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.png"><br>因为Beta分布可以拟合多种曲线,所以被广泛使用   </p>
+<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>n是总的试验次数,p是实验成功的概率,k是实验成功的次数<br>Probability mass function:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-df0cfb91ca0a4775.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="12.png">  </p>
+<h3 id="Beta-Binomial-共轭-1"><a href="#Beta-Binomial-共轭-1" class="headerlink" title="Beta Binomial 共轭"></a>Beta Binomial 共轭</h3><p>按照贝叶斯推理的过程引出Beta-Binomial共轭:  </p>
+<ol>
+<li>p是要猜的参数,假设p的先验分布为Beta分布,即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e6386209e22f77b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="10.png"></li>
+<li>现有m个数字,知道这m个数字与p的大小关系,其中有m1个数字比p小,m2个数字比p大(m1+m2=m).可知这m个数字与p的大小关系是二项分布(Binomial Distribution)的一个观察值  </li>
+<li>那么根据m1和m2这个经验,我们便可以得到p的后验分布(证明过程可参考靳志辉老师的LDA数学八卦,并不复杂)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b364ad17cc4ac7e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="11.png"><br>后验分布和先验分布都是Beta分布,只不过是参数变了,所以Beta分布式二项分布的共轭先验.  </li>
+</ol>
+<p><strong>实际上,第一步也可以假设p服从其它分布,只不过因为观察值服从二项分布,所以假设p为Beta分布后,p的后验概率也服从Beta分布,方面计算</strong></p>
+<h2 id="Dirichlet-Multinomial-共轭"><a href="#Dirichlet-Multinomial-共轭" class="headerlink" title="Dirichlet Multinomial 共轭"></a>Dirichlet Multinomial 共轭</h2><h3 id="Dirichlet分布"><a href="#Dirichlet分布" class="headerlink" title="Dirichlet分布"></a>Dirichlet分布</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1888464f88355ee6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="15.png"><br><strong>Beta分布就是Dirichlet分布的参数n=2时的情况</strong><br>Dirichlet分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0f92d3be43897145.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png"><br>或者<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08d06e7d4e3aea6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="17.png"><br>Dirichlet分布(from Wikipedia)<br>dirichlet-distribution:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-44eac7aedc9e0d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dirichlet-distribution.png"></p>
+<p><strong>LogDirichletDensity-alpha_0.3_to_alpha_2.0</strong><br><strong>在LDA中用的主要是α＜1的对称Dirichlet分布</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-99f2acf0a081f039.gif?imageMogr2/auto-orient/strip" alt="LogDirichletDensity-alpha_0.3_to_alpha_2.0.gif">  </p>
+<h3 id="Multinomial-分布"><a href="#Multinomial-分布" class="headerlink" title="Multinomial 分布"></a>Multinomial 分布</h3><p>多项分布是二项分布的推广,举例来说,多项分布建模的是这一问题:有一个k个面的骰子,投掷一次结果是第i的面概率是pi,现独立地投掷n次,结果是第i个面的有xi次,多项分布就是给出了投掷n次后各种结果的概率公式<br>Probability mass function:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7d8501965f170945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18.png"><br><strong>Binomial分布就是Multinomial分布的n=2时的情况</strong></p>
+<h3 id="Dirichlet-Multinomial-共轭-1"><a href="#Dirichlet-Multinomial-共轭-1" class="headerlink" title="Dirichlet Multinomial 共轭"></a>Dirichlet Multinomial 共轭</h3><p>类似Beta Binomial共轭的贝叶斯推理:</p>
+<ol>
+<li>(p1,p2,…pn)是要猜的参数,假设(p1,p2,…pn)的先验分布为Dirichlet分布</li>
+<li>现有n个数字(x1,x2,…,xn),知道这n个数字与(p1,p2,…pn)的大小关系,其中有c1个数字比p1小,c2个数字比p1大同时比p2小,cn个数字比p_(n-1)大同时比pn小.这n个数字与(p1,p2,…pn)的大小关系是多项分布的一个观察值     </li>
+<li>根据(c1,c2,…,cn)这个经验,可以得到(p1,p2,…pn)的后验分布<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2448311b96de77d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19.png"></li>
+</ol>
+<p>参考:靳志辉,LDA数学八卦</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/SupportVectorMachine%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/19/SupportVectorMachine%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" class="post-title-link" itemprop="url">SupportVectorMachine支持向量机</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-19 21:52:02" itemprop="dateCreated datePublished" datetime="2018-03-19T21:52:02+08:00">2018-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>支持向量机(support vector machine,SVM)是一种<strong>二分类</strong>模型,它的基本模型是定义在<strong>特征空间上的</strong>间隔最大的<strong>线性分类器</strong>,间隔最大使它有别于感知机.<br>有3类支持向量机模型:<br>    1. 线性可分支持向量机<br>    2. 线性支持向量机<br>    3. 非线性支持向量机<br>(这三种模型建立思路很像,求解过程不同)</p>
+<h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><h3 id="几何间隔与函数间隔的引出"><a href="#几何间隔与函数间隔的引出" class="headerlink" title="几何间隔与函数间隔的引出"></a>几何间隔与函数间隔的引出</h3><p>超平面wx+b=0外一点x0到超平面的距离公式(几何间隔):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb47940a8aefedf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w400" alt="1.png"><br>分母是w的二范式,不随x0的改变而改变,所以可以分子|wx0+b|能够相对地表示点x0距离超平面wx+b=0的远近.<br>一个点距离分离超平面的远近可以表示分类预测的确信程度.<br>wx0+b的符号与类标记y0的符号是否一致能够表示分类是否正确.<br>所以,<strong>可用y0(wx0+b)来表示分类的正确性及确信度,这就是函数间隔(functional margin)</strong>  </p>
+<h3 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h3><p>超平面(w,b)关于样本点xi的函数间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e8b5378ba5f3102a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>超平面(w,b)关于训练集T的函数间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a71ba18772effb31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"></p>
+<h3 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h3><p>超平面(w,b)关于样本点xi的几何间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-12f6cc40439d27cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>超平面(w,b)关于训练集T的几何间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d7377c98b9552ecc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="5.png"></p>
+<h3 id="硬间隔最大化"><a href="#硬间隔最大化" class="headerlink" title="硬间隔最大化"></a>硬间隔最大化</h3><p>找到了超平面(w,b)关于训练集T的几何间隔后,自然地希望最大化这个几何间隔以保证之后分类预测的确信程度<br>目标函数和约束如下:<br>约束表示超平面(w,b)关于任意样本点的几何间隔大于等于超平面(w,b)关于训练集T的几何间隔<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ff6aaae6d39a51a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="6.png"><br>在约束中约去||w||并展开γ^<br><img src="https://upload-images.jianshu.io/upload_images/9608551-79a73fb2c8d759f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="6.1.png"><br>求出w,b的话问题就解决了,先别急,让我们化简一下上面的式子<br>注意到,如果对w,b同比例的放缩,即变成kw,kb,函数间隔yi(wxi+b)也会成比例k变化,而超平面(w,b)没有变化,<br>此时原问题和约束变为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a1067828cc35c333.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="7.png"><br>约掉k后,目标函数和约束没有改变,说明对w,b进行同比例放缩丝毫不影响目标函数和约束,<strong>那么可以选取合适的k让函数间隔γ^=1</strong>,也就是<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f03595219d20d995.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.1.png"><br>这样一来,目标函数和约束就变成了:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fb455cb8c8f44856.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.png"><br>把||w||挪到分子上平方一下再乘个常数就有了:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0ba320ed7a3a25c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="9.png"><br>比最初的形式简化了不少,这是个带约束问题,通过Lagrange Multiplier拉格朗日乘子法化成无约束问题:<br>(原问题:极大极小)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9ad79d65f9fbcfa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="10.png"></p>
+<p>具体原理可参考之前的文章<a href="http://littlehaes.com/2018/03/15/Lagrange-duality拉格朗日对偶性/" target="_blank" rel="noopener">Lagrange duality拉格朗日对偶性</a><br>对偶形式:  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-37cbecb2b63b0e90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="11.png"><br>其中:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-36db3de657af14ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200" alt="12.png"><br>所以有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8bd130a5b32d40c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="13.png"><br>进而有(最终形式):<br><strong>下面的约束是求 min L(w,b,α)时得到的</strong><br><strong>这是个凸二次规划问题(目标函数是二次函数,不等式约束是仿射函数)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-ba6dc472a61377cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="14.png"><br>求解得到α<em>=(α1,α2,…,αN)^t,这是对偶问题的解,<br>可由α*得到w\</em>,b*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9f239a4deb2998e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="15.png"><br><strong>之所以能从对偶问题获得原问题的解,是因为原问题为凸二次规划问题,并且解α*,w*,b* 满足KKT条件</strong><br>有了w*,b*就能得到最大间隔分离超平面和分类决策函数:  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-a745a7f9db18b42b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="16.png"></p>
+<h3 id="支持向量"><a href="#支持向量" class="headerlink" title="支持向量"></a>支持向量</h3><p>通过由α*得到w*,b*的公式可以知道,对应α*=0的实例xi对超平面(w*,b*)的两个参数都没有贡献,只有对应α*＞0的实例xi对超平面(w*,b*)的两个参数有贡献,也就是说<strong>超平面完全由对应α*＞0的实例决定,这些实例称为支持向量,由KKT的互补条件知,若α*＞0,则有y(wx+b)-1=0,即wx+b=±1,说明支持向量都在间隔边界上</strong></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>对于线性可分SVM学习来说:</p>
+<ol>
+<li>模型为分离超平面和决策函数</li>
+<li>学习策略:硬间隔最大化(间隔的描述及约束)</li>
+<li>学习算法:凸二次规划</li>
+</ol>
+<h2 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h2><p>通常情况下,训练数据中有一些特异点(outlier),将这些特异点去掉后,剩下的大部分样本点组成的集合是线性可分的.<strong>线性不可分意味着不是所有点都满足函数间隔大于等于1的约束,为解决这个问题,引入一个松弛变量ζi≥0,使函数间隔加上松弛变量后大于等于1</strong>.即,y(wx+b)+ζ≥1  </p>
+<h3 id="软间隔最大化"><a href="#软间隔最大化" class="headerlink" title="软间隔最大化"></a>软间隔最大化</h3><p>对每个松弛变量ζi,支付一个代价ζi,目标函数变为<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb73960c94d02fd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="17.png"><br><strong>这里C&gt;0称为惩罚参数</strong>,C越大则对<strong>错误分类</strong>的惩罚越大<br><strong>最小化上述目标函数实现的是软间隔最大化,最小化上式包含两层含义:使1/2||w||^2尽量小,即间隔尽量大,同时使误分类点的个数尽量小</strong>.<br>硬间隔就是真正的间隔,软间隔是包含了代价项ζ的硬间隔<br>由上分析便得到了线性支持向量机的学习目标:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-da01a6d13df631f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="18.png"><br>化为拉格朗日形式(不带约束)的原问题:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5baedeed43709629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="19.png"><br>对偶问题:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2ffb45c01091ba8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20.png"><br>其中:  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-619deff39232027d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="21.png"><br>进而:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a9bcbe2fe16a3198.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="22.png"><br>所以对偶问题的最终形式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9ebde8500c681fd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="23.png"><br><strong>与线性可分SVM的对偶最终形式相比只是α的约束不同,约束增强了</strong><br>求解得到α<em>=(α1,α2,…,αN)^t,这是对偶问题的解,<br>可由α*得到w\</em>,b*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-75f93ccc1366c519.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="24.png"><br>有了w*,b*就能得到最大间隔分离超平面和分类决策函数:  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-a745a7f9db18b42b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="16.png"></p>
+<h3 id="支持向量-1"><a href="#支持向量-1" class="headerlink" title="支持向量"></a>支持向量</h3><p>和线性可分SVM类似,<strong>超平面完全由对应α*＞0的实例决定,这些实例称为支持向量,但是线性SVM的支持向量不一定都在间隔边界上</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-0d88d26ab51bd146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="25.png"><br><strong>KKT互补条件之一:α*(y(w*x+b)+ζ-1)=0</strong><br>当0&lt;αi&lt;C时,ζi=0,则y(w*x+b)-1=0,此时支持向量在间隔边界上<br>当αi=C时,ζi&gt;0,支持向量可能在:<br>间隔边界与超平面之间:0&lt;ζi&lt;1<br>超平面上:ζi=1<br>误分类一侧:ζi&gt;1</p>
+<h3 id="Hinge-Loss-Function合页损失函数"><a href="#Hinge-Loss-Function合页损失函数" class="headerlink" title="Hinge Loss Function合页损失函数"></a>Hinge Loss Function合页损失函数</h3><p>线性SVM的学习还有另一种等价模型,即最小化目标函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-dd7d0f6f1c592edb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="26.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-39a14e13eb96d885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="27.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-6d4b1abf51657921.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="28.png"><br>证明新目标函数与原问题等价时,主要抓住三点:<br>    1. hinge loss≥0<br>    2. 令[1-y(wx+b)]_+=ζ<br>    3. 讨论1-y(wx+b)的取值范围<br>L(y(wx+b))说明了:<br>    1. 点到超平面的函数距离≥1时,损失为0<br>    2. 点到超平面的函数距离＜1时,损失为1-y(wx+b)<br>下图蓝线代表hinge loss的图像<br><img src="https://upload-images.jianshu.io/upload_images/9608551-00605cf8a8f496b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="29.png"></p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>对于线性SVM学习来说:</p>
+<ol>
+<li>模型为分离超平面和决策函数(线性SVM的对偶形式)</li>
+<li>学习策略:软间隔最大化(间隔的描述及约束)</li>
+<li>学习算法:凸二次规划</li>
+</ol>
+<h2 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h2><p>用线性分类方法求解非线性分类任务分为两步:<br>    1. 将训练数据从输入空间(欧式空间或离散集合)映射到新的特征空间(希尔伯特空间)使数据在新特征空间中线性可分<br>    2. 在新特征空间中用线性分类学习方法从训练数据中学习分类模型,<strong>使得输入空间中的超曲面模型对应特征空间中的超平面模型</strong><br>Kernel trick(核技巧)便属于这样的方法</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p> <img src="https://upload-images.jianshu.io/upload_images/9608551-9bb863f114d19818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="30.png"><br> K(x1,x2)=φ(x1)φ(x2)是个对称函数,叫作正定核(positive definite kernel)<br> 一般只定义K(x1,x2),而不显式地定义φ(x),那么如何保证K(x1,x2)是正定核呢?<br> 正定核的充要条件:<br> <img src="https://upload-images.jianshu.io/upload_images/9608551-e996f799fb0dba36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="33.png"><br>证明过程需要预备知识:构造希尔伯特空间  </p>
+<ul>
+<li>定义映射φ并构成向量空间S(对加法和数乘运算封闭的集合)</li>
+<li>在S上定义内积构成内积空间(用到了欧式空间Gram矩阵的半正定性)</li>
+<li>将内积空间S完备化为希尔伯特空间</li>
+</ul>
+<p>由α*得到b*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-10a67cf49667196b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="31.png"><br>分类决策函数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5d6ac4ec7544f2b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="32.png"></p>
+<h3 id="常用的核函数"><a href="#常用的核函数" class="headerlink" title="常用的核函数"></a>常用的核函数</h3><p>正定核的充要条件在构造核函数时很有用.但对于一个具体函数K(x,z)来说,检验它是否为正定核并不容易,因为需要对任意有限输入集{x1,x2,…,xm}验证K对应的Gram矩阵(在希尔伯特空间)是否为半正定的.实际问题中往往应用已有的核函数</p>
+<ol>
+<li><p>多项式核函数(polynomial kernel function)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-19fdfd50cf1ea07e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="34.png"><br>对应的支持向量机是一个p次多项式分类器,分类决策函数为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-dea5107f0a5c63fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="35.png">  </p>
+</li>
+<li><p>高斯核函数(Gaussian kernel function)<br>通过泰勒展开可知高斯核是无穷维的<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9bf1ddec2773600f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="36.png"><br>对应的支持向量机是高斯径向基函数(radial basis function)分类器,分类决策函数为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-408894baa045886f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="37.png">  </p>
+</li>
+<li><p>字符串核函数(string kernel function)<br>定义在字符串集合上的核函数,字符串核函数应用在文本分类,信息检索,生物信息学等方面.<br>k_n(s,t)给出了字符串s和t中长度等于n的所有子串组成的特征向量的余弦相似度(cosine similarity).直观上,两个字符串相同的子串越多,它们就越相似,字符串核函数的值就越大.字符串核函数可以由动态规划快速计算</p>
+<h3 id="SMO算法"><a href="#SMO算法" class="headerlink" title="SMO算法"></a>SMO算法</h3><p>SMO:sequential minimal optimization<br>利用SMO算法实现SVM的学习<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9bb863f114d19818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="30.png"><br>SMO算法包括两个部分:</p>
+<ol>
+<li>求解两个变量二次规划的解析方法(线性规划;把握好对g(x)和Ei的理解)</li>
+<li>选择变量的启发式方法(KKT;|E1-E2|最大)</li>
+</ol>
+<p>参考:李航,统计学习方法</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/Lagrange-duality%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/15/Lagrange-duality%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7/" class="post-title-link" itemprop="url">Lagrange duality拉格朗日对偶性</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-15 21:33:47" itemprop="dateCreated datePublished" datetime="2018-03-15T21:33:47+08:00">2018-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在约束最优化问题(Constrained Optimization)中,常常利用拉格朗日对偶性(Lagrange duality)将原始问题转换为对偶问题,通过求解对偶问题而得到原始问题的解,该方法可用在最大熵模型(Maximum Entropy)和支持向量机(Support Vector Machine).</p>
+<h3 id="约束最优化问题"><a href="#约束最优化问题" class="headerlink" title="约束最优化问题"></a>约束最优化问题</h3><p>标准形式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-c79452321b9f5839.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>f(x),c(x),h(x)是定义在R^n上的连续可微函数,c(x)为不等式约束(inequality constraints),h(x)为等式约束(equality constraints).<br>几个重要定义:<br>可行点(feasible point):满足所有约束条件的x<br>可行域Ω(feasible set):所有可行点组成的集合<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b3ac73d39392f1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>激活集A(x): 可行域中使得不等式约束取等的点以及满足等式约束的那些点<br><strong>LICQ条件</strong>:对于激活集A(x),如果激活集中的点对应的约束的梯度向量线性无关,<br><img src="https://upload-images.jianshu.io/upload_images/9608551-058ed647d47b8bcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"><br>那么称LICQ(linear independence constraint qualification)条件成立<br>这个条件说明了各个取等的约束都是独立的,不能被消掉,比如说其中两个等式约束为:<br>2x+3y=10<br>4x+6y=20<br>这两个等式实质上是一个等式,对应梯度向量分别为(2,3)^t,(4,6)^t,可能发现这两个向量线性相关</p>
+<h3 id="拉格朗日对偶"><a href="#拉格朗日对偶" class="headerlink" title="拉格朗日对偶"></a>拉格朗日对偶</h3><h4 id="原始问题"><a href="#原始问题" class="headerlink" title="原始问题"></a>原始问题</h4><p>刚才已经讨论过了,下图就被称为约束最优化问题的原始问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-c79452321b9f5839.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>拉格朗日在哪里?下面引进广义拉格朗日函数(generalized Lagrange function)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2a7bd8f1d39eaf17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>这里,x=(x1,x2,…xn)^t∈R,αi,βj是拉格朗日乘子,<strong>αi≥0</strong>.考虑x的函数:  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-7e503200be7106db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="5.png"><br>下标P表示原始问题<br>假设给定某个x.如果x违反原始问题的约束条件,即存在某个i使得ci(w)&gt;0或者存在某个j使得hj(x)≠0,那么有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-71ed8ab84c88332d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="6.png"><br>因为若某个i使约束ci(x)&gt;0,则可令αi→+∞,若某个j使约束hj(x)≠0,则可令βj使βj*hj(x)→+∞<br>相反地,<strong>如果x满足等式与不等式约束条件,则有θp(x)=f(x)</strong>,因此有<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ce7deebb72c752b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="7.png"><br>此时考虑极小化问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7901afc5bf1932d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="8.png"><br>这是与原始问题等价的,即它们有相同的解.<br>下图称为广义拉格朗日函数的极小极大问题,<br><img src="https://upload-images.jianshu.io/upload_images/9608551-dd02f2c289b23adf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="9.png"><br><strong>这样一来就把原始问题表示为广义拉格朗日函数的极小极大问题</strong><br>定义原始问题的最优值p*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-49e93a82b8df37c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="10.png"><br>p*称为原始问题的值</p>
+<h4 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h4><p>定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e788b052fd4a2514.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="11.png"><br>再考虑极大化θ,如下图<br><img src="https://upload-images.jianshu.io/upload_images/9608551-1a5f09aed48a8bf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="12.png"><br>上面两个式子合起来写就是,下式称为拉格朗日函数的极大极小问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-849730004edaa159.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="13.png"><br>可以将拉格朗日函数的极大极小问题表示为约束最优化问题:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-042deb162d73134e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="14.png"><br>称为原始问题的对偶问题.定义对偶问题的最优值<br><img src="https://upload-images.jianshu.io/upload_images/9608551-09853c70d2314414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="15.png"><br>称为对偶问题的值</p>
+<h4 id="原始问题与对偶问题的关系"><a href="#原始问题与对偶问题的关系" class="headerlink" title="原始问题与对偶问题的关系"></a>原始问题与对偶问题的关系</h4><p>定理1:若原始问题和对偶问题都有最优值,则<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08a8dfbd9f5a13f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png"><br>证明:容易知道,对任意的α,β,x,有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2067c237b3c15995.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="17.png"><br>即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-da58c7031224ddb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="18.png"><br>由于原始问题和对偶问题均有最优值,所以<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d187b96a9e6a2e9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="19.png"><br>即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08a8dfbd9f5a13f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png">  </p>
+<p>推论1:设x*和α*,β*分别是原始问题和对偶问题的可行解,并且d<em>=p</em>,则x*和α*,β*分别是原始问题和对偶问题的最优解.  </p>
+<p><strong>在某些条件下,原始问题和对偶问题的最优值相等,d*=p*.这时可以用解对偶问题替代解原始问题.</strong><br>定理2:考虑之前的原始问题和对偶问题,假设函数f(x)和ci(x)是凸函数,hj(x)是仿射函数;并且假设不等式约束ci(x)是严格可行的,即存在x,对所有i有ci(x)＜0,<strong>则存在x*,α*,β*,使x*是原始问题的解,α*,β*是对偶问题的解,并且p*=d*=L(x*,α*,β*)</strong></p>
+<p>定理3 考虑之前的原始问题和对偶问题,假设函数f(x)和ci(x)是凸函数,hj(x)是仿射函数;并且假设不等式约束ci(x)是严格可行的,<strong>那么x*,α*,β*分别是原始问题和对偶问题的最优解的充分必要条件是x*,α*,β*满足KKT条件(Karush-Kuhn-Tucker)</strong><br><strong>KKT条件:</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-f11019ef3d4becc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="20.png"><br>特别地,<br><img src="https://upload-images.jianshu.io/upload_images/9608551-c454f76cd45e7b3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="21.png"><br>称为KKT的对偶互补条件.<strong>由此条件可知:若αi*&gt;0,则ci(x*)=0.或者说,约束优化问题的解,要么αi*=0,要么x是激活集中的点,也就是满足ci(x*)=0的点</strong><br>参考:李航,统计学习方法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/Python%E6%8A%80%E5%B7%A7-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/01/Python%E6%8A%80%E5%B7%A7-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Python技巧:字符串处理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-01 22:40:53" itemprop="dateCreated datePublished" datetime="2018-03-01T22:40:53+08:00">2018-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="拆分含有多种分隔符的字符串"><a href="#拆分含有多种分隔符的字符串" class="headerlink" title="拆分含有多种分隔符的字符串"></a>拆分含有多种分隔符的字符串</h3><ol>
+<li><p>使用.split()<br>注意list.extend()<br>append是把整个扩充列表作为一个元素追加到列表最后,而Extend则是把每个元素都作为一个独立的元素扩充到原来的列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'liio;15176|0.0\\0.0,522,65,228,72:p|ts/11+R+'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mySplit</span><span class="params">(s,ds)</span>:</span></span><br><span class="line">    res = [s]</span><br><span class="line">    <span class="keyword">for</span> i,d <span class="keyword">in</span> enumerate(ds):</span><br><span class="line">        l = []</span><br><span class="line">        <span class="comment">#!!如果分割中途有个分隔符在元素的末尾,则会分割出一个空元素</span></span><br><span class="line">        <span class="comment">#list.extend(sequence) 把一个序列seq的内容展平后添加到列表中</span></span><br><span class="line">        map(<span class="keyword">lambda</span> x:l.extend(x.split(d)),res) </span><br><span class="line">        <span class="comment"># print '第%s次分割结果(分割符为%s):'%(i+1,d),l</span></span><br><span class="line">        res = l</span><br><span class="line">    <span class="comment">#当x非空时返回</span></span><br><span class="line">    <span class="keyword">return</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> res <span class="keyword">if</span> x]</span><br><span class="line">new = mySplit(s,<span class="string">';|\\.+,,/'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'new[] = '</span>,new</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用正则表达式re.split()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方案二  使用正则表达式</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">s = <span class="string">'liio;15176|0.0\\0.0,522,65,228,72:p|ts/11+R+'</span></span><br><span class="line"><span class="comment">#def split(pattern, string, maxsplit=0, flags=0)</span></span><br><span class="line"><span class="comment">#Split the source string by the occurrences of the pattern,</span></span><br><span class="line"><span class="comment">#returning a list containing the resulting substrings</span></span><br><span class="line"><span class="comment">#[]中的每个字符都可作为分割符</span></span><br><span class="line">q = re.split(<span class="string">r'[;|\\.+,,/]+'</span>,s)</span><br><span class="line"><span class="keyword">print</span> q</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>两种方法对比: <strong>s.split()速度更快,但是不能处理多个分割符; 推荐使用正则表达式</strong></p>
+<h3 id="判断字符串a是否以字符串b开头或结尾"><a href="#判断字符串a是否以字符串b开头或结尾" class="headerlink" title="判断字符串a是否以字符串b开头或结尾"></a>判断字符串a是否以字符串b开头或结尾</h3><p>不仅可以用来处理文本文件,还可以处理磁盘中的文件,<strong>筛选出所需的文件类型</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,stat</span><br><span class="line">f = os.listdir(<span class="string">'ceshi/'</span>)</span><br><span class="line"><span class="keyword">print</span> f</span><br><span class="line">s = f[<span class="number">0</span>]</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">def endswith(self, suffix, start=None, end=None)</span></span><br><span class="line"><span class="string">Return True if S ends with the specified suffix, False otherwise.</span></span><br><span class="line"><span class="string">With optional start, test S beginning at that position.</span></span><br><span class="line"><span class="string">With optional end, stop comparing S at that position.</span></span><br><span class="line"><span class="string">suffix can also be a tuple of strings to try. 要求是元组!!不能用list</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># print s.endswith(('.sh','.py'))</span></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">'ceshi/'</span>):</span><br><span class="line">    <span class="keyword">if</span> name.endswith((<span class="string">'.sh'</span>,<span class="string">'.py'</span>)):</span><br><span class="line">        <span class="keyword">print</span> name</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改文件权限前要先查看文件权限,用stat</span></span><br><span class="line"><span class="keyword">print</span> os.stat(<span class="string">'ceshi/a.sh'</span>)</span><br><span class="line"><span class="keyword">print</span> os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode</span><br><span class="line"><span class="comment">#先把权限代码转换成八进制</span></span><br><span class="line"><span class="comment">#666分别是user,group,others的权限值</span></span><br><span class="line"><span class="keyword">print</span> oct(os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode)</span><br><span class="line">os.chmod(<span class="string">'ceshi/a.sh'</span>,os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode | stat.S_IXUSR)</span><br><span class="line"><span class="comment">#看来666是最大权限了</span></span><br><span class="line"><span class="keyword">print</span> oct(os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode)</span><br></pre></td></tr></table></figure>
+<h3 id="调整字符串中文本的格式"><a href="#调整字符串中文本的格式" class="headerlink" title="调整字符串中文本的格式"></a>调整字符串中文本的格式</h3><p>配合正则表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">f = open(<span class="string">'ceshi/date.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line"><span class="comment">#def sub(pattern, repl, string, count=0, flags=0)</span></span><br><span class="line"><span class="string">"""Return the string obtained by replacing the leftmost</span></span><br><span class="line"><span class="string">    non-overlapping occurrences of the pattern in string by the</span></span><br><span class="line"><span class="string">    replacement repl.  repl can be either a string or a callable;</span></span><br><span class="line"><span class="string">    if a string, backslash escapes in it are processed.  If it is</span></span><br><span class="line"><span class="string">    a callable, it's passed the match object and must return</span></span><br><span class="line"><span class="string">    a replacement string to be used."""</span></span><br><span class="line"><span class="comment">#首先描述日期格式</span></span><br><span class="line"><span class="comment">#repl中的/是分隔符</span></span><br><span class="line"><span class="comment">#re.sub第一个参数中的每个括号都是正则表达式的一个捕获组,根据左括号的顺序排序</span></span><br><span class="line"><span class="comment">#pattern:匹配规则   repl:要替换成什么样子   string:要替换谁</span></span><br><span class="line"><span class="comment">#rel参数调整了捕获组在原文本中的顺序,/是分隔符</span></span><br><span class="line"><span class="keyword">print</span> re.sub(<span class="string">'(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)'</span>,<span class="string">r'\2/\3/\1'</span>,f.read())</span><br><span class="line">f.close()</span><br><span class="line"><span class="comment">#使用r来输出原始字符串,消除\的转义功能</span></span><br><span class="line"><span class="comment">#字符串什么样子就打印出什么样子,所以叫做原始字符串</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">r'\\1</span></span><br><span class="line"><span class="string">print r'</span>\<span class="number">1</span><span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">f = open('</span>ceshi/date.txt<span class="string">','</span><span class="string">r')</span></span><br><span class="line"><span class="string">#re.sub()中还可以给组起个名字,用?P&lt;&gt;起名</span></span><br><span class="line"><span class="string">#月日年是美国的日期格式</span></span><br><span class="line">print re.sub('(?P&lt;year&gt;\d&#123;4&#125;)-(?P&lt;month&gt;\d&#123;2&#125;)-(?P&lt;day&gt;\d&#123;2&#125;)',r'\g&lt;month&gt;/\g&lt;day&gt;/\g&lt;year&gt;',f.read())</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="将多个小字符串拼接成一个大的字符串"><a href="#将多个小字符串拼接成一个大的字符串" class="headerlink" title="将多个小字符串拼接成一个大的字符串"></a>将多个小字符串拼接成一个大的字符串</h3><ol>
+<li>直接用+拼接字符串<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">s1 = <span class="string">'abcdefg'</span></span><br><span class="line">s2 = <span class="string">'12345'</span></span><br><span class="line"><span class="comment">#s1 + s2实际调用的是s1.__add__(s2)这个方法</span></span><br><span class="line"><span class="comment">#def __add__(self, y)</span></span><br><span class="line"><span class="comment">#x.__add__(y) &lt;==&gt; x+y</span></span><br><span class="line"><span class="keyword">print</span> s1 + s2</span><br><span class="line"><span class="keyword">print</span> str.__add__(s1,s2)</span><br><span class="line"><span class="comment">#这样也可以</span></span><br><span class="line"><span class="keyword">print</span> str.__add__(s1,s2)</span><br><span class="line"></span><br><span class="line"><span class="comment">#str.__gt__()</span></span><br><span class="line"><span class="keyword">print</span> s1&gt;s2</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line">l = [str(randint(<span class="number">0</span>,<span class="number">50</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="keyword">print</span> l</span><br><span class="line">s = <span class="string">''</span></span><br><span class="line"><span class="comment">#这种方法会不断的创建临时变量,再释放,如果字符串特别长,开销就会很巨大,用str.join()方法</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> l:</span><br><span class="line">    s+=x</span><br><span class="line">    <span class="keyword">print</span> s</span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure></li>
+<li>用str.join()<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">join</span><span class="params">(self, iterable)</span></span></span><br><span class="line"><span class="function">"""</span></span><br><span class="line"><span class="function"><span class="title">S</span>.<span class="title">join</span><span class="params">(iterable)</span> -&gt; string</span></span><br><span class="line"><span class="function">Return a string which is the concatenation of the strings in the iterable.</span></span><br><span class="line"><span class="function">注意!!支持的是可迭代对象里面的字符串类型!!!!</span></span><br><span class="line"><span class="function">The separator between elements is S.</span></span><br><span class="line"><span class="function">S是作为分隔符</span></span><br><span class="line"><span class="function">"""</span></span><br><span class="line"><span class="function">#这种方法一次性就连接起来,不存在临时变量的浪费</span></span><br><span class="line"><span class="function">print ';'.join(['abc','123','aaaaa'])</span></span><br><span class="line"><span class="function">print ''.join(['abc','123','aaaaa'])</span></span><br><span class="line"><span class="function">#切记:</span>如果列表里面既有str又有int,flaoat,就不能直接连接!!!!!!!!</span><br><span class="line"></span><br><span class="line"><span class="comment">#可以用列表生成式.不过这样做会先形成一个完整的列表,可以用生成器</span></span><br><span class="line">l = [<span class="string">'abc'</span>,<span class="string">'123'</span>,<span class="string">'aaaaa'</span>,<span class="number">11</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join([str(x) <span class="keyword">for</span> x <span class="keyword">in</span> l])</span><br><span class="line"><span class="comment">#生成器方法,将[]改成()即可,非常方便</span></span><br><span class="line"><span class="comment">#&lt;type 'generator'&gt;</span></span><br><span class="line"><span class="keyword">print</span> type(((str(x) <span class="keyword">for</span> x <span class="keyword">in</span> l )))</span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join((str(x) <span class="keyword">for</span> x <span class="keyword">in</span> l ))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="将字符串进行左-右-居中对齐"><a href="#将字符串进行左-右-居中对齐" class="headerlink" title="将字符串进行左,右,居中对齐"></a>将字符串进行左,右,居中对齐</h3><ol>
+<li><p>使用str.ljust()   str.center()   str.rjust()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'abc'</span></span><br><span class="line"><span class="comment">#def ljust(self, width, fillchar=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">左对齐</span></span><br><span class="line"><span class="string">S.ljust(width[, fillchar]) -&gt; string</span></span><br><span class="line"><span class="string">Return S left-justified in a string of length width.</span></span><br><span class="line"><span class="string">Padding is done using the specified fill character (default is a space).</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">s.ljust(<span class="number">10</span>,<span class="string">'-'</span>) <span class="comment">#左对齐,一共10个字符的位置,用空格补充空位置</span></span><br><span class="line"><span class="keyword">print</span> s.ljust(<span class="number">10</span>,<span class="string">'-'</span>)</span><br><span class="line"><span class="comment">#右对齐</span></span><br><span class="line"><span class="keyword">print</span> s.rjust(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">print</span> len(s.rjust(<span class="number">10</span>))</span><br><span class="line"><span class="comment">#居中对齐 def center(self, width, fillchar=None)</span></span><br><span class="line"><span class="keyword">print</span>  s.center(<span class="number">10</span>,<span class="string">'_'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 format()函数</p>
+</li>
+</ol>
+<p><strong>使用map函数和dict.keys()找到键最长的key,</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'abc'</span></span><br><span class="line"><span class="comment">#def format(value, format_spec=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">format(value[, format_spec]) -&gt; string</span></span><br><span class="line"><span class="string">Returns value.__format__(format_spec)</span></span><br><span class="line"><span class="string">format_spec defaults to ""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#左对齐</span></span><br><span class="line"><span class="keyword">print</span> format(s,<span class="string">'&lt;15'</span>)</span><br><span class="line"><span class="comment">#右对齐</span></span><br><span class="line"><span class="keyword">print</span> format(s,<span class="string">'&gt;15'</span>)</span><br><span class="line"><span class="comment">#居中对齐</span></span><br><span class="line"><span class="keyword">print</span> format(s,<span class="string">'^15'</span>)</span><br><span class="line"></span><br><span class="line">d = &#123;<span class="string">'Dist'</span>:<span class="number">500.0</span>,<span class="string">'SmallCull'</span>:<span class="number">0.04</span>,<span class="string">'farclip'</span>:<span class="number">447</span>,<span class="string">'lopadDist'</span>:<span class="number">100.0</span>,<span class="string">'trilinear'</span>:<span class="number">450</span>&#125;</span><br><span class="line"><span class="comment">#先找到键最长的key,借助map函数!!!!!</span></span><br><span class="line"><span class="comment">#对齐后</span></span><br><span class="line">width = max(map(len,d.keys()))</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d:</span><br><span class="line">    <span class="keyword">print</span> k.ljust(width),<span class="string">':'</span>,d[k]</span><br><span class="line"><span class="comment">#未对齐</span></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d:</span><br><span class="line">    <span class="keyword">print</span> k, <span class="string">':'</span>, d[k]</span><br></pre></td></tr></table></figure>
+
+<h3 id="去掉字符串中不需要的字符"><a href="#去掉字符串中不需要的字符" class="headerlink" title="去掉字符串中不需要的字符"></a>去掉字符串中不需要的字符</h3><ol>
+<li><p>使用.strip()   .lstrip()   .rstrip()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#s.strip()    s.lstrip()   s.rstrip()</span></span><br><span class="line">s = <span class="string">'   ABC    123    '</span></span><br><span class="line"><span class="comment">#def strip(self, chars=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.strip([chars]) -&gt; string or unicode</span></span><br><span class="line"><span class="string">leading:开头的  trailing:后面的</span></span><br><span class="line"><span class="string">Return a copy of the string S with leading and trailing whitespace removed.</span></span><br><span class="line"><span class="string">If chars is given and not None, remove characters in chars instead.</span></span><br><span class="line"><span class="string">If chars is unicode, S will be converted to unicode before stripping!!!注意编码格式!!!</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#去掉两端的空白</span></span><br><span class="line"><span class="keyword">print</span> s.strip()</span><br><span class="line"><span class="comment">#去掉左端的空白</span></span><br><span class="line"><span class="keyword">print</span> s.lstrip()</span><br><span class="line"><span class="comment">#去掉右端的空白</span></span><br><span class="line"><span class="keyword">print</span> s.rstrip()</span><br><span class="line">s = <span class="string">'---abc+++'</span></span><br><span class="line"><span class="comment">#去掉-+这两个字符</span></span><br><span class="line"><span class="keyword">print</span> s.strip(<span class="string">'-+'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用切片+字符串拼接</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#得知道字符串样子,不适合大量无规则文本</span></span><br><span class="line">s = <span class="string">'abc:123'</span></span><br><span class="line"><span class="keyword">print</span> s[:<span class="number">3</span>]+s[<span class="number">4</span>:]</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#s.replace()    re.sub</span></span><br><span class="line">s = <span class="string">'\tabc\t123\txyz'</span></span><br><span class="line"><span class="comment">#replace()只能替换一种字符</span></span><br><span class="line"><span class="comment">#def replace(self, old, new, count=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.replace(old, new[, count]) -&gt; string</span></span><br><span class="line"><span class="string">Return a copy of string S with all occurrences of substring old replaced by new.</span></span><br><span class="line"><span class="string">If the optional argument count is given, only the first count occurrences are replaced.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">print</span> s.replace(<span class="string">'\t'</span>,<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">使用正则表达式替换</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">s = <span class="string">'\tabc\t123\txyz\ropq'</span></span><br><span class="line"><span class="comment">#def sub(pattern, repl, string, count=0, flags=0)</span></span><br><span class="line"><span class="comment">#pattern:匹配规则   repl:要替换成什么样子   string:要替换谁</span></span><br><span class="line"><span class="keyword">print</span> re.sub(<span class="string">r'[\t\r]'</span>,<span class="string">''</span>,s)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用translate()方法</p>
+</li>
+</ol>
+<p><strong>string和unicode都有translate方法,二者目的相同但用法稍有不同</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### string #######</span></span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="comment"># print string.maketrans('abcxyz','xyzabc')</span></span><br><span class="line">s = <span class="string">'abc1230022xyz'</span></span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment">#def translate(self, table, deletechars=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.translate(table [,deletechars]) -&gt; string</span></span><br><span class="line"><span class="string">Return a copy of the string S, where all characters occurring in the optional argument deletechars are removed,</span></span><br><span class="line"><span class="string">and the remaining characters have been mapped through the given</span></span><br><span class="line"><span class="string">translation table, which must be a string of length 256 or None.</span></span><br><span class="line"><span class="string">If the table argument is None, no translation is applied and</span></span><br><span class="line"><span class="string">the operation simply removes the characters in deletechars.</span></span><br><span class="line"><span class="string">这是translate的原始目的</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#the remaining characters have been mapped through the given</span></span><br><span class="line"><span class="comment">#translation table</span></span><br><span class="line"><span class="comment">#通过string.maketrans()得到映射table!!!!!!!!</span></span><br><span class="line"><span class="keyword">print</span> s.translate(string.maketrans(<span class="string">'abcxyz'</span>,<span class="string">'xyzabc'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># If the table argument is None, no translation is applied</span></span><br><span class="line"><span class="comment"># and the operation simply removes the characters in deletechars</span></span><br><span class="line">s = <span class="string">'abc\reesa\nrrt23\t'</span></span><br><span class="line"><span class="keyword">print</span> s.translate(<span class="literal">None</span>,<span class="string">'\r\n\t'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### unicode #######</span></span><br><span class="line"><span class="comment">#def translate(self, table)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.translate(table) -&gt; unicode</span></span><br><span class="line"><span class="string">Return a copy of the string S, where all characters have been mapped</span></span><br><span class="line"><span class="string">through the given translation table, which must be a mapping of</span></span><br><span class="line"><span class="string">Unicode ordinals to Unicode ordinals, Unicode strings or None.</span></span><br><span class="line"><span class="string">Unmapped characters are left untouched. </span></span><br><span class="line"><span class="string">Characters mapped to None are deleted.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#Characters mapped to None are deleted.</span></span><br><span class="line">u = <span class="string">u'hahaǔǜhaha'</span></span><br><span class="line"><span class="keyword">print</span> u.translate(&#123;<span class="number">0x01d4</span>:<span class="literal">None</span>,<span class="number">0x01dc</span>:<span class="literal">None</span>&#125;) <span class="comment"># 0x01d4是ǔ  0x01dc是ǜ</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def fromkeys(S, v=None): restored from __doc__</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">dict.fromkeys(S[,v]) -&gt; New dict with keys from S and values equal to v.</span></span><br><span class="line"><span class="string">v defaults to None.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#v defaults to None.</span></span><br><span class="line"><span class="keyword">print</span> dict.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">u = <span class="string">u'12345'</span></span><br><span class="line"><span class="keyword">print</span> u.translate(dict.fromkeys([<span class="number">0x0031</span>,<span class="number">0x0032</span>,<span class="number">0x0033</span>,<span class="number">0x0034</span>]))  <span class="comment">#0x0031是1</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Little Haes"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Little Haes</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/smallhaes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:littlehaes@bupt.edu.cn" title="E-Mail → mailto:littlehaes@bupt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/smallhaes" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=75165464" title="网易云 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;75165464" rel="noopener" target="_blank"><i class="fa fa-fw fa-cloud"></i>网易云</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/littlehaes" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;littlehaes" rel="noopener" target="_blank">CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Little Haes</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

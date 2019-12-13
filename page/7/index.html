@@ -48,13 +48,13 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Haes&#39; Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;7&#x2F;index.html">
 <meta property="og:site_name" content="Haes&#39; Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Little Haes">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/page/7/">
 
 
 <script id="page-configurations">
@@ -177,7 +177,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/2019%E5%B9%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/06/ubuntu16-04%E5%AE%89%E8%A3%85Nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8-CUDA8-0-cuDNN6-TensorFlow-gpu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/10/07/2019%E5%B9%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">2019年的第一篇博客</a>
+            <a href="/2018/07/06/ubuntu16-04%E5%AE%89%E8%A3%85Nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8-CUDA8-0-cuDNN6-TensorFlow-gpu/" class="post-title-link" itemprop="url">ubuntu16.04安装Nvidia显卡驱动,CUDA8.0,cuDNN6,TensorFlow-gpu</a>
         </h1>
 
         <div class="post-meta">
@@ -201,7 +201,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-10-07 17:08:41" itemprop="dateCreated datePublished" datetime="2019-10-07T17:08:41+08:00">2019-10-07</time>
+              <time title="Created: 2018-07-06 20:47:07" itemprop="dateCreated datePublished" datetime="2018-07-06T20:47:07+08:00">2018-07-06</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -222,155 +222,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>​        很长时间没有在littlehaes.com上更新博客了, 最主要的原因是不方便在多台电脑上维护博客, 不过现在github能创建私人仓库了, 可以把文章, 配置什么的上传到私人仓库, 这样维护起来就方便多了.<br>​        今天是国庆假期的最后一天, 2019年还有三个月, 时间过得真是太快了, 明年将是不平常的一年, 要么准备秋招, 要么申请出国, 我也不清楚自己会做出什么样的选择, 先把当下的事情做好吧.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/07/2019%E5%B9%B4%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
+          <p><a href="http://littlehaes.com/" target="_blank" rel="noopener">Welcome To My Blog</a><br>实验室学姐让跑一个深度学习模型的程序,需要配置环境,查阅各种资料后安装成功,记录一下安装过程,确实挺刺激,也算是开启了自己的深度学习之旅了.  </p>
+<h2 id="安装Nvidia显卡驱动"><a href="#安装Nvidia显卡驱动" class="headerlink" title="安装Nvidia显卡驱动"></a>安装Nvidia显卡驱动</h2><h3 id="1-下载驱动"><a href="#1-下载驱动" class="headerlink" title="1. 下载驱动"></a>1. 下载驱动</h3><p>根据自己的系统和显卡型号直接在<a href="https://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">NVIDIA官网</a>,我是64位ubuntu16.04,显卡是1070Ti,安装的驱动型号是390.67</p>
+<h3 id="2-禁用nouveau第三方驱动"><a href="#2-禁用nouveau第三方驱动" class="headerlink" title="2. 禁用nouveau第三方驱动"></a>2. 禁用nouveau第三方驱动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在终端输入: sudo gedit &#x2F;etc&#x2F;modprobe.d&#x2F;blacklist.conf  </span><br><span class="line">在最后一行添加：blacklist nouveau</span><br><span class="line">改好后执行：sudo update-initramfs -u</span><br><span class="line">重启后,在终端输入:lsmod | grep nouveau,没有输出则说明禁用成功</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<h3 id="3-命令行模式下安装驱动"><a href="#3-命令行模式下安装驱动" class="headerlink" title="3. 命令行模式下安装驱动"></a>3. 命令行模式下安装驱动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">注销或重启进入登录界面,Ctrl+Alt+F1进入命令行模式  </span><br><span class="line">禁用X服务：sudo &#x2F;etc&#x2F;init.d&#x2F;lightdm stop</span><br><span class="line">cd到下载目录,给下载的驱动.run文件赋予可执行权限：sudo chmod a+x NVIDIA-Linux-x86_64-390.67.run</span><br><span class="line">安装：sudo .&#x2F;NVIDIA-Linux-x86_64-390.67.run -no-opengl-files(只安装驱动文件，不安装OpenGL文件)</span><br><span class="line">如果安装过程中出现 the distribution-provided pre-install script failed 继续安装即可</span><br><span class="line">开启X服务：sudo &#x2F;etc&#x2F;init.d&#x2F;lightdm start</span><br><span class="line">重启，重新进入图形界面,在终端输入：nvidia-smi,显示显卡信息则安装成功</span><br></pre></td></tr></table></figure>
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/ubuntu16-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvsftpd%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
+<h2 id="安装CUDA8-0"><a href="#安装CUDA8-0" class="headerlink" title="安装CUDA8.0"></a>安装CUDA8.0</h2><h3 id="下载安装CUDA8-0"><a href="#下载安装CUDA8-0" class="headerlink" title="下载安装CUDA8.0"></a>下载安装CUDA8.0</h3><p>从<a href="https://developer.nvidia.com/cuda-80-ga2-download-archive" target="_blank" rel="noopener">官网</a>下载CUDA8.0,install type选择deb(local)<br>下载完成后进入安装包所在文件夹,依次执行下面三句命令进行安装(安装过程中不用安装NVIDIA Graphics Driversl了,已经安装过了,其余的均安装):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install cuda</span><br></pre></td></tr></table></figure>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>sudo gedit /etc/profile<br>在末尾加上两句  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda&#x2F;bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda&#x2F;lib64$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<h3 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h3><p>安装时默认安装了测试用例,以deviceQuery为例  </p>
+<ul>
+<li>cd /usr/local/cuda-8.0/samples/1_Utilities/deviceQuery</li>
+<li>sudo make</li>
+<li>./deviceQuery  </li>
+<li>显示GPU信息则安装成功</li>
+</ul>
+<h2 id="安装cuDNN6-0"><a href="#安装cuDNN6-0" class="headerlink" title="安装cuDNN6.0"></a>安装cuDNN6.0</h2><h3 id="下载cuDNN"><a href="#下载cuDNN" class="headerlink" title="下载cuDNN"></a>下载cuDNN</h3><p>从<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">官网</a>下载下面红框中的三个文件(需要用NVIDIA账号登录,用QQ登录即可):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9e3eed2541bcc3fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<h3 id="安装cuDNN"><a href="#安装cuDNN" class="headerlink" title="安装cuDNN"></a>安装cuDNN</h3><p>进入安装包所在目录依次执行下面三句命令进行安装<br>sudo dpkg -i libcudnn6-doc_6.0.21-1+cuda8.0_amd64.deb<br>sudo dpkg -i libcudnn6-dev_6.0.21-1+cuda8.0_amd64.deb<br>sudo dpkg -i libcudnn6_6.0.21-1+cuda8.0_amd64.deb</p>
+<h3 id="验证是否安装成功-1"><a href="#验证是否安装成功-1" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h3><p>安装时默认安装了测试用例,以/usr/src/cudnn_samples_v6为例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">将这个例子复制到HOME中,执行: sudo cp -r &#x2F;usr&#x2F;src&#x2F;cudnn_samples_v6&#x2F; $HOME</span><br><span class="line">进入到HOME下: cd $HOME&#x2F;cudnn_samples_v6&#x2F;mnistCUDNN</span><br><span class="line">进行编译: make clean &amp;&amp; make</span><br><span class="line">执行脚本: .&#x2F;mnistCUDNN</span><br><span class="line">看到命令行输出 Test passed! 则安装成功</span><br></pre></td></tr></table></figure>
+<h3 id="如果出现libcudnn-6-cannot…的问题"><a href="#如果出现libcudnn-6-cannot…的问题" class="headerlink" title="如果出现libcudnn.6: cannot…的问题"></a>如果出现libcudnn.6: cannot…的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">之前安装过cuDNN7,使用时出现问题:ImportError: libcudnn.6: cannot open shared object file: No such file or directory的问题,我的问题是出在cuda的lib64文件夹中没有这个文件</span><br><span class="line">解决方法:在computer中搜索libcudnn,最后在&#x2F;usr&#x2F;lib&#x2F;x86_64-linux-gnu中发现了libcudnn.so.7,将这个文件复制到&#x2F;usr&#x2F;local&#x2F;cuda&#x2F;lib64&#x2F;中,并更新软连接:ln -s libcudnn.so.7 libcudnn.so.6</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/09/ubuntu16-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvsftpd%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">ubuntu16.04安装配置vsftpd踩坑记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-11-09 09:44:44" itemprop="dateCreated datePublished" datetime="2018-11-09T09:44:44+08:00">2018-11-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近学习linux, 在安装配置vsftpd时遇到问题,记录一下<br>一. 安装配置可以参考<a href="https://www.linuxidc.com/Linux/2017-06/144807.htm" target="_blank" rel="noopener">Ubuntu 16.04下vsftpd 安装配置实例</a><br>二. 没看上面的教程之前,我以为是vsfpd.conf配置错了,所以想重装vsftpd, 但是无法sudo apt remove vsftpd, 总提示Do you want to continue? [Y/n] Abort, 自动帮我选择了n, 可能是vsftpd的服务还开着,于是用了sudo service vsftpd stop,但还是不能删除,最后就重启了,可以删掉了. 但是发现vsftpd.conf还存在,所以手动删掉了它</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/09/ubuntu16-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvsftpd%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Xshell%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BALinux%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/08/Xshell%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BALinux%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Xshell连接虚拟机Linux踩坑记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-11-08 09:43:39" itemprop="dateCreated datePublished" datetime="2018-11-08T09:43:39+08:00">2018-11-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-5b6323ed8d237d11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="xshell.png"><br>我使用的是桥接模式,没有做其他修改网卡配置的设置,在windows下可以ping通虚拟机上的Linux,但是Xshell依旧连不上Linux<br>在终端输入:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e | grep ssh</span><br></pre></td></tr></table></figure>
-<p>发现没有sshd,也就是说没有ssh 服务器</p>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br><span class="line">此时再输入ps -e | grep ssh便发现sshd启动了</span><br><span class="line">7087 ?        00:00:00 sshd</span><br></pre></td></tr></table></figure>
-<p>现在可以用Xshell连接虚拟机上的linux了.</p>
+<h2 id="安装gpu版的TensorFlow"><a href="#安装gpu版的TensorFlow" class="headerlink" title="安装gpu版的TensorFlow"></a>安装gpu版的TensorFlow</h2><p>我用的是ubuntu16.04自带的python2.7,安装的是TensorFlow-gpu-1.4版本,在终端执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export TF_BINARY_URL&#x3D;https:&#x2F;&#x2F;storage.googleapis.com&#x2F;tensorflow&#x2F;linux&#x2F;gpu&#x2F;tensorflow_gpu-1.4.0-cp27-none-linux_x86_64.whl</span><br><span class="line">sudo pip install --upgrade $TF_BINARY_URL</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -390,7 +267,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/python%E8%A3%85%E9%A5%B0%E5%99%A8%E5%B0%8F%E8%AE%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%E4%B9%8BLDA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -404,7 +281,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/11/06/python%E8%A3%85%E9%A5%B0%E5%99%A8%E5%B0%8F%E8%AE%A1/" class="post-title-link" itemprop="url">python装饰器小计</a>
+            <a href="/2018/06/19/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%E4%B9%8BLDA/" class="post-title-link" itemprop="url">主题模型之LDA</a>
         </h1>
 
         <div class="post-meta">
@@ -414,7 +291,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-11-06 09:41:06" itemprop="dateCreated datePublished" datetime="2018-11-06T09:41:06+08:00">2018-11-06</time>
+              <time title="Created: 2018-06-19 17:08:03" itemprop="dateCreated datePublished" datetime="2018-06-19T17:08:03+08:00">2018-06-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -435,11 +312,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>研读代码时遇到了python装饰器,所以要搞懂它,这一过程加深了自己对于函数定义与函数调用的体会<br>一. 装饰器本质就是个函数,用来增加被装饰函数的功能.<br>二. 使用装饰器的巨大优势:不改变被装饰函数的调用方式; 不修改被装饰函数的源代码<br>三. 无参数装饰器使用两层嵌套; 带参数装饰器使用三层嵌套<br>下面举两个简单的例子,为了笔记的方便,定义装饰器函数时我用了三种命名:decorator_para; decorator; wrapper,这样有助于记忆</p>
-<h4 id="无参数装饰器"><a href="#无参数装饰器" class="headerlink" title="无参数装饰器"></a>无参数装饰器</h4><p>为函数加上计时功能<br><strong>写两层嵌套装饰器函数时牢记两点:向decorator传入被装饰函数名; decorator返回wrapper</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span> <span class="comment"># 向decorator传入函数名</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">		start = time.time()</span><br><span class="line">		func(*args, **kwargs)</span><br><span class="line">		total = time.time() - start</span><br><span class="line">		print(<span class="string">'函数%s的执行时间为:%s秒'</span> % (func.__name__,total))</span><br><span class="line">	<span class="keyword">return</span> wrapper <span class="comment"># decorator返回wrapper</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator	#相当于 tesla = decorator(tesla)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tesla</span><span class="params">(price=<span class="string">'95W'</span>)</span>:</span></span><br><span class="line">	time.sleep(<span class="number">2</span>)</span><br><span class="line">	print(<span class="string">'鸥翼门真帅气,不过价格挺刺激:%s'</span> % price)</span><br><span class="line"></span><br><span class="line">tesla()</span><br></pre></td></tr></table></figure>
-<h4 id="带参数装饰器"><a href="#带参数装饰器" class="headerlink" title="带参数装饰器"></a>带参数装饰器</h4><p>为函数加上计时功能, 可以选择显示方式:default方式是不保留小数;normal方式保留两位小数<br><strong>写三层嵌套装饰器函数时牢记三点:向decorator_para中传入装饰器要用的参数;向decorator传入被装饰函数名; decorator返回wrapper; decorator_para返回decorator</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator_para</span><span class="params">(count_type)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">			start = time.time()</span><br><span class="line">			func(*args, **kwargs)</span><br><span class="line">			total = time.time() - start</span><br><span class="line">			<span class="keyword">if</span> count_type == <span class="string">'default'</span>:</span><br><span class="line">				print(<span class="string">'函数%s的执行时间为:%s秒'</span> % (func.__name__,total))</span><br><span class="line">			<span class="keyword">elif</span> count_type == <span class="string">'normal'</span>:</span><br><span class="line">				print(<span class="string">'函数%s的执行时间为:%.2f秒'</span> % (func.__name__,total))</span><br><span class="line">		<span class="keyword">return</span> wrapper</span><br><span class="line">	<span class="keyword">return</span> decorator</span><br><span class="line">					</span><br><span class="line"><span class="meta">@decorator_para('normal')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tesla</span><span class="params">(price=<span class="string">'95W'</span>)</span>:</span></span><br><span class="line">	time.sleep(<span class="number">2</span>)</span><br><span class="line">	print(<span class="string">'鸥翼门真帅气,不过价格挺刺激:%s'</span> % price)</span><br><span class="line"></span><br><span class="line">tesla()</span><br></pre></td></tr></table></figure>
+          <p><a href="http://littlehaes.com/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/" target="_blank" rel="noopener">文本建模之Unigram Model</a>考虑了先验分布，但是没有考虑主题<br><a href="http://littlehaes.com/2018/06/19/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%E4%B9%8BPLSA/" target="_blank" rel="noopener">主题模型之PLSA</a>考虑了主题，但是没有考虑先验分布<br>本篇介绍的LDA(Latent Dirichlet Allocation,潜在的狄利克雷分配)主题模型既考虑了先验分布也考虑了主题。<br>预备知识：<br><a href="http://littlehaes.com/2018/03/20/Dirichlet-Multinomial-共轭/" target="_blank" rel="noopener">Dirichlet Multinomial 共轭</a><br><a href="http://littlehaes.com/2018/03/21/Markov-Chain-Monte-Carlo-和-Gibbs-Sampling算法/" target="_blank" rel="noopener">吉布斯采样</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-8737b7c1e79a5042.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg">  </p>
+<p>参考：<br>靳志辉，《LDA数学八卦》</p>
 
       
     </div>
@@ -459,7 +333,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/%E7%AE%B1%E7%BA%BF%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%E4%B9%8BPLSA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -473,7 +347,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/11/01/%E7%AE%B1%E7%BA%BF%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/" class="post-title-link" itemprop="url">箱线图怎么看</a>
+            <a href="/2018/06/19/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%E4%B9%8BPLSA/" class="post-title-link" itemprop="url">主题模型之PLSA</a>
         </h1>
 
         <div class="post-meta">
@@ -483,7 +357,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-11-01 09:39:58" itemprop="dateCreated datePublished" datetime="2018-11-01T09:39:58+08:00">2018-11-01</time>
+              <time title="Created: 2018-06-19 17:07:40" itemprop="dateCreated datePublished" datetime="2018-06-19T17:07:40+08:00">2018-06-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -504,16 +378,141 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-e622d7dcda429aa0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="boxplot.jpg"></p>
-<p>看图说话，注意以下几个点：</p>
-<p>一.箱子的中间一条线，是数据的中位数，代表了样本数据的平均水平。</p>
-<p>二.箱子的上下限，分别是数据的上四分位数和下四分位数。这意味着箱子包含了50%的数据。因此，箱子的宽度在一定程度上反映了数据的波动程度。</p>
-<p>三.在箱子的上方和下方，又各有一条线。有时候代表着最大最小值，有时候会有一些点“冒出去”。请千万不要纠结，不要纠结，不要纠结（重要的事情说三遍），如果有点冒出去，理解成“异常值”就好。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>一.箱线图是针对连续型变量的，解读时候重点关注平均水平、波动程度和异常值。</p>
-<p>二.当箱子被压得很扁，或者有很多异常的时候，试着做对数变换。</p>
-<p>三.当只有一个连续型变量时，并不适合画箱线图，直方图是更常见的选择。</p>
-<p>四.箱线图最有效的使用途径是作比较，配合一个或者多个定性数据，画分组箱线图。</p>
-<p>转载于<a href="https://www.sohu.com/a/134414348_455817" target="_blank" rel="noopener">箱线图应该怎么用</a>,里面是更详细的介绍</p>
+          <p>上一篇文章介绍了<a href="http://littlehaes.com/2018/06/19/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B%E4%B9%8BPLSA/" target="_blank" rel="noopener">文本建模之Unigram Model</a>，但这个模型太过于简略，本篇文章介绍PLSA(Probabilistic Latent Semantic Analysis,概率化的潜在语义分析)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6fd99e8411b22b56.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"><br>参考：<br>靳志辉，《LDA数学八卦》</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/" class="post-title-link" itemprop="url">文本建模之Unigram Model</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-19 16:13:53" itemprop="dateCreated datePublished" datetime="2018-06-19T16:13:53+08:00">2018-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>通过生成文章及语料的例子介绍unigram model<br><img src="https://upload-images.jianshu.io/upload_images/9608551-94ca3d5016a89eed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"><br>参考：<br>靳志辉，《LDA数学八卦》</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/word2vec%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/13/word2vec%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">word2vec数学推导过程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-13 15:41:58" itemprop="dateCreated datePublished" datetime="2018-06-13T15:41:58+08:00">2018-06-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="http://littlehaes.com/" target="_blank" rel="noopener">Welcome To My Blog</a><br>word2vec包含两种框架，一种是CBOW(Continuous Bag-of-Words Model)，另一种是Skip-gram(Continuous Skip-gram Model)，如下图所示。这两种模型的任务是：进行词的预测，CBOW是预测P(w|context(w))，Skip-gram是预测P(context(w)|w)。当整个词典中所有词的预测任务整体达到最优时，此时的词向量便是我们想要的结果。<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9b2c3a2881181197.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="1.png"><br>word2vec有两种计算方式专门提升训练速度，分别是：Hierarchical Softmax 和 Negative Sampling。<br>本篇文章只写出有关模型的数学推导过程，其它细节可参考peghoty的<a href="https://blog.csdn.net/itplus/article/details/37969519" target="_blank" rel="noopener">word2vec 中的数学</a>,我也是根据这篇文章学习的</p>
+<h2 id="Hierarchical-Softmax-with-Continuous-Bag-of-Words-Model"><a href="#Hierarchical-Softmax-with-Continuous-Bag-of-Words-Model" class="headerlink" title="Hierarchical Softmax with Continuous Bag-of-Words Model"></a>Hierarchical Softmax with Continuous Bag-of-Words Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-9422833f31693a44.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
+<h2 id="Hierarchical-Softmax-with-Continuous-Skip-gram-Model"><a href="#Hierarchical-Softmax-with-Continuous-Skip-gram-Model" class="headerlink" title="Hierarchical Softmax with Continuous Skip-gram Model"></a>Hierarchical Softmax with Continuous Skip-gram Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a849676592ecc953.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
+<h2 id="Negative-Sampling-with-Continuous-Bag-of-Words-Model"><a href="#Negative-Sampling-with-Continuous-Bag-of-Words-Model" class="headerlink" title="Negative Sampling with Continuous Bag-of-Words Model"></a>Negative Sampling with Continuous Bag-of-Words Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1a0d7fd737b39752.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
+<h2 id="Negative-Sampling-with-Continuous-Skip-gram-Model"><a href="#Negative-Sampling-with-Continuous-Skip-gram-Model" class="headerlink" title="Negative Sampling with Continuous Skip-gram Model"></a>Negative Sampling with Continuous Skip-gram Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-ee82de712a870565.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.jpg"><br>参考<br>Tomas Mikolov, Efficient Estimation of Word Representations in Vector Space<br>peghoty, <a href="https://blog.csdn.net/itplus/article/details/37969519" target="_blank" rel="noopener">word2vec 中的数学</a>  </p>
 
       
     </div>
@@ -533,7 +532,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

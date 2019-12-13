@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Haes&#39; Blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;14&#x2F;index.html">
+<meta property="og:site_name" content="Haes&#39; Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Little Haes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/14/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Haes' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Haes' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/smallhaes" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/17/Unbiased-Estimation-%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/17/Unbiased-Estimation-%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/" class="post-title-link" itemprop="url">Unbiased Estimation 无偏估计</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-17 07:50:17" itemprop="dateCreated datePublished" datetime="2018-02-17T07:50:17+08:00">2018-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="何谓无偏估计"><a href="#何谓无偏估计" class="headerlink" title="何谓无偏估计"></a>何谓无偏估计</h2><p>就是用某个公式对采样后的样本进行统计,比如求样本的方差,这个方差会随着样本的不同而有浮动,或者说<strong>通过样本得到的方差是个随机变量</strong>,多次采样后可以对样本的方差求期望,如果方差的期望中没有变量则说明计算样本方差的公式是合理的,换句话说：用这种公式进行估计没有系统上的偏差，产生误差是随机因素造成的（跟你每次采样的运气有关）</p>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>下面的证明过程以离散型随机变量为例，用连续型也OK，没有影响<br><img src="https://upload-images.jianshu.io/upload_images/9608551-aa0fd10291c790b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<h2 id="样本均值"><a href="#样本均值" class="headerlink" title="样本均值"></a>样本均值</h2><h3 id="样本均值计算公式"><a href="#样本均值计算公式" class="headerlink" title="样本均值计算公式"></a>样本均值计算公式</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-4dcdabac83049ba3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>这样估计样本均值是合理的吗?通过计算样本均值的期望进行检验</p>
+<h3 id="样本均值无偏检验"><a href="#样本均值无偏检验" class="headerlink" title="样本均值无偏检验"></a>样本均值无偏检验</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-94a32a28a08df23e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br><strong>因为x_j是随机的，所以导致样本均值是个随机变量</strong><br>采用这个公式计算样本均值,样本均值的期望就是真实期望μ,所以无偏!</p>
+<h2 id="样本方差"><a href="#样本方差" class="headerlink" title="样本方差"></a>样本方差</h2><h3 id="样本方差计算公式"><a href="#样本方差计算公式" class="headerlink" title="样本方差计算公式"></a>样本方差计算公式</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-f196a7446bd9d6bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<h3 id="样本方差无偏检验"><a href="#样本方差无偏检验" class="headerlink" title="样本方差无偏检验"></a>样本方差无偏检验</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-f99517ed6ec85f3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>由此可以看出,通过上面的公式S² = 1/n(Σ(Xi-X拔)²)计算方差, 样本方差的期望和样本数量n有关,这样就是有偏估计了,需要调整公式,调整为：<br><img src="https://upload-images.jianshu.io/upload_images/9608551-67f45a5a306c9f75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>此时，样本方差的期望为：<br><img src="https://upload-images.jianshu.io/upload_images/9608551-06ba1dbd7690ceb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>采用公式S² = 1/n(Σ(Xi-X拔)²)计算样本方差,样本方差的期望就是真实方差σ² ,所以无偏!</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><strong>样本x_j是随机的，进而导致样本均值和样本方差是随机变量，所以要对样本均值和样本方差求期望进行无偏检验</strong> </li>
+<li>样本均值计算公式: X拔 = 1/n(ΣXi)   </li>
+<li>样本方差计算公式: S² = 1/(n-1)(Σ(Xi-X拔)²) </li>
+<li>真实均值：E[X] = μ ；真实方差Var[X]=E[(X-μ)²] = σ²</li>
+<li><strong>样本均值的期望是μ，所以E[(X拔-μ)²] = Var(X拔)</strong>  </li>
+<li>貌似在最大似然估计中,样本方差可以按照有偏的方法计算,因为<strong>样本非常多时,(n-1)σ²/n ≈ σ²</strong></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/15/Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/15/Git%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Git使用总结</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-15 16:51:15" itemprop="dateCreated datePublished" datetime="2018-02-15T16:51:15+08:00">2018-02-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="记录一下自己的Git使用总结"><a href="#记录一下自己的Git使用总结" class="headerlink" title="记录一下自己的Git使用总结"></a>记录一下自己的Git使用总结</h3><ol>
+<li><p>查看分支</p>
+<ul>
+<li>git branch:查看本地分支</li>
+<li>git branch -r:查看远程分支</li>
+<li>git branch –all:查看本地和远程分支</li>
+</ul>
+</li>
+<li><p>删除远程分支</p>
+<ul>
+<li><strong>待删除的远程分支不能是默认分支!!</strong> (一开始没注意到)</li>
+<li>git branch -r -d origin/branch_name</li>
+<li>git push origin :branch-name(注意冒号前面的空格)</li>
+</ul>
+</li>
+<li><p>删除本地分支</p>
+<ul>
+<li>git branch -d  branch_name</li>
+</ul>
+</li>
+<li><p>clone下来的库,本地master会自动和远程库的默认分支关联 </p>
+</li>
+<li><p>使用git branch -r -d origin/branch_name删除远程分支后再add远程分支出现错误:fatal: remote origin already exists.<strong>解决方案</strong>:</p>
+<ul>
+<li>先删除远程 Git 仓库 git remote rm origin</li>
+<li>再添加远程 Git 仓库 git remote add blablabla</li>
+</ul>
+</li>
+</ol>
+<p>$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:FBing/java-code-generator</p>
+<h3 id="git-与-hexo"><a href="#git-与-hexo" class="headerlink" title="git 与 hexo"></a>git 与 hexo</h3><ol>
+<li>在hexo的配置文件中,远程地址采用ssh协议而不是http协议,会更快<br>deploy:<br>type: git<br>repo: git@blablabla~<br>branch: master</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/12/Hexo%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/12/Hexo%E4%B8%AD%E4%BD%BF%E7%94%A8Markdown%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">Hexo中使用Markdown注意事项</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-12 18:09:51" itemprop="dateCreated datePublished" datetime="2018-02-12T18:09:51+08:00">2018-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h3><pre><code>在Hexo中,markdown对语法非常敏感,一个空格都会造成文章的布局混乱,故开一篇文章专门记录自己使用过程中的心得</code></pre><ol>
+<li>起初使用notepad++编辑文章,后来发现预览效果和真实显示效果不一样,所以换成了Visual Studio Code(vscode),非常容易扩展! <strong>F1→扩展:安装扩展→输入markdown</strong> 而且能够在不关闭vscode的情况下加载插件,虽然预览效果还是和真是效果不同,不过vscode的体验很棒,就用它了!  </li>
+<li>代码块由两个```构成,注意第一个 ```后面要写上编程语言,保险起见,代码块的收尾两行都不要加空格</li>
+<li>编辑时注意缩进,否则可能造成序号显示不正确 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 查看分支</span><br><span class="line">    + git branch:查看本地分支</span><br><span class="line">2. 删除远程分支</span><br><span class="line">    + **待删除的远程分支不能使默认分支!!** (一开始没住到)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/Python2-7%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/11/Python2-7%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Python2.7编解码问题总结</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-11 23:45:18" itemprop="dateCreated datePublished" datetime="2018-02-11T23:45:18+08:00">2018-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近颇受编码问题困扰,所以稍作总结,附以代码说明  </p>
+<ol>
+<li>为什么需要编解码?  </li>
+</ol>
+<p><strong>字符串以unicode的形式存在于内存中 ,但是unicode只是规定如何编码，并没有规定如何保存、传输这个编码,也就是说unicode不能直接写入文件或者在网络上传输</strong>,所以得通过某种编码使unicode变成连续的字节(bytes),同样地,对读入的数据解码,以unicode形式存在于内存中.<br>举例来说,在写python时,python语言处理的字符串就是内存中的unicode,写入到文件时得把unicode用utf-8,GBK等方式编码成连续的字节;用python从文件读入数据时,得用utf-8,GBK等方式把连续的字节解码成unicode.使用的解码方式务必要和编码方式一致<br><img src="http://upload-images.jianshu.io/upload_images/9608551-9557b56458a5dfa2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w700" alt="">  </p>
+<ol start="2">
+<li><p>python默认的编解码方式<br>可以通过下面两行代码 <strong>(示例1)</strong> 获得,一般默认是ascii,本示例中就是对unicode用ascii编码为字符串,ascii不能表示汉字,所以输入汉字时就会报错 <strong>(示例2)</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例1</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">print</span> sys.getdefaultencoding()  </span><br><span class="line"><span class="comment">#ascii</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span></span><br><span class="line"><span class="comment">#SyntaxError: Non-ASCII character</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何print汉字?<br> <strong>情况一:</strong> 在python中直接输入中文 <strong>(示例3)</strong><br> 得让python文件支持中文,将python文件的编码格式改为utf-8,就是我们通常看到的 # -*- coding:utf-8 -*-  </p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例3</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>情况二:</strong>  print指定编码的中文 <strong>(示例4)</strong><br> 示例4报错,因为在对”搁浅”encode之前,先需要把”搁浅”解码成unicode,之后再用utf-8编码,那么问题来了,怎么解码”搁浅” ? 获取python的默认编解码方式 <strong>(示例5)</strong>,一般是ascii,所以会报错,将默认编解码方式设置成utf-8后就可以了 <strong>(示例6)</strong>  </p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例4</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">a = <span class="string">"搁浅"</span>.encode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#示例5</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">print</span> sys.getdefaultencoding()	</span><br><span class="line">	</span><br><span class="line"><span class="comment">#示例6</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">"utf-8"</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span>.encode(<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>python以十六进制显示非打印字符,”搁浅”这两个字的16进制编码分别是:<strong>69081,6B585</strong><br>在python内部为:\xe<strong>6</strong>\x<strong>90</strong>\x<strong>81</strong>\xe<strong>6</strong>\x<strong>b5</strong>\x<strong>85 (示例7)</strong>,其中,\x表示十六进制 ,e表示某个字符编码的开始  </p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例7</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment">#打印s在python内部的存在形式</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>]</span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>乱码<br>print出乱码极可能是因为编码与解码方式不统一 <strong>(示例8)</strong>.utf-8编码,每个汉字用utf-8编码需要3个字节,用gbk编码需要2个字节. <strong>用utf-8编码后解码,再用gbk编码,造成这样的问题:本该用3个字节表示的字符,强行用2个字节表示(示例9)</strong>  </p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例8</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span>.decode(<span class="string">"utf-8"</span>).encode(<span class="string">"gbk"</span>)</span><br><span class="line"><span class="comment">#打印乱码:��ǳ</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例9</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>]</span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment">#输出:["\xe6\x90\x81\xe6\xb5\x85"]	每个汉字3个字节</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>.decode(<span class="string">"utf-8"</span>).encode(<span class="string">"gbk"</span>)]</span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment">#输出:["\xb8\xe9\xc7\xb3"]	每个汉字2个字节</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有待确认<br>python默认解码方式是ascii;<br>python源代码加上# -*- coding:utf-8 -*-后,不仅仅是源代码支持中文,而且print的默认编码方式也变成utf-8  </p>
+</li>
+</ol>
+<p>推荐一个<a href="http://www.mytju.com/classcode/tools/encode_utf8.asp" target="_blank" rel="noopener">查看字符编码的网页</a>,很好用,可以查看编码10进制, <strong>编码16进制</strong>,Unicode编码10进制,Unicode编码16进制,python用的是 <strong>编码16进制</strong></p>
+<p>编码问题时不时出来阻挠一下,需要继续补充总结</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/OralEnglishPractice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/11/OralEnglishPractice/" class="post-title-link" itemprop="url">OralEnglishPractice</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-11 11:38:11" itemprop="dateCreated datePublished" datetime="2018-02-11T11:38:11+08:00">2018-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>现跟随知乎”怎么练好英语口语？”的高票回答练习口语,定期更新进展<br>问题链接:<a href="https://www.zhihu.com/question/20097263" target="_blank" rel="noopener">https://www.zhihu.com/question/20097263</a><br><a href="https://github.com/smallhaes/OralEnglish" target="_blank" rel="noopener">笔记(随时更新)</a></p>
+<h3 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h3><h4 id="stage1"><a href="#stage1" class="headerlink" title="stage1"></a>stage1</h4><p>to 01/02/2018</p>
+<ol>
+<li>背诵完赵曙明，曹罗红两位老师编著的《新托福口语词汇》 的口语高频必背词汇：list1-list10</li>
+<li>按照艾宾浩斯遗忘曲线进行复习</li>
+<li>《新托福口语词汇》pdf链接：<a href="https://pan.baidu.com/s/1kWTuSbt" target="_blank" rel="noopener">https://pan.baidu.com/s/1kWTuSbt</a> 密码：difi<br> 口语词汇录音：链接：<a href="https://pan.baidu.com/s/1ggMH1dx" target="_blank" rel="noopener">https://pan.baidu.com/s/1ggMH1dx</a> 密码：wwow<br> 自动生成艾宾浩斯遗忘曲线计划：链接：<a href="https://pan.baidu.com/s/1kXcOtBx" target="_blank" rel="noopener">https://pan.baidu.com/s/1kXcOtBx</a> 密码：vjm6  </li>
+</ol>
+<h3 id="stage2"><a href="#stage2" class="headerlink" title="stage2"></a>stage2</h3><p>from 02/07/2018 to now</p>
+<ol>
+<li>对每个单词造句，使用的有道例句</li>
+<li>按照艾宾浩斯遗忘曲线进行复习</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Little Haes"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Little Haes</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/smallhaes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:littlehaes@bupt.edu.cn" title="E-Mail → mailto:littlehaes@bupt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/smallhaes" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=75165464" title="网易云 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;75165464" rel="noopener" target="_blank"><i class="fa fa-fw fa-cloud"></i>网易云</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/littlehaes" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;littlehaes" rel="noopener" target="_blank">CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Little Haes</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

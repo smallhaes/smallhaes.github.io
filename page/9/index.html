@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Haes&#39; Blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;9&#x2F;index.html">
+<meta property="og:site_name" content="Haes&#39; Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Little Haes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Haes' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Haes' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/smallhaes" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/Maximum-Entropy-Model%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/06/Maximum-Entropy-Model%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">Maximum Entropy Model最大熵模型</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-06 17:08:53" itemprop="dateCreated datePublished" datetime="2018-04-06T17:08:53+08:00">2018-04-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最大熵模型(Maximum Entropy Model)属于对数线性模型,由最大熵原理推导实现.</p>
+<h2 id="最大熵原理"><a href="#最大熵原理" class="headerlink" title="最大熵原理"></a>最大熵原理</h2><p>最大熵原理是概率模型学习的一个准则.<br>最大熵原理认为,学习概率模型时,在所有可能的概率模型(分布)中,熵最大的模型是最好的模型.<br>通常用约束条件来确定概率模型的集合,所以,最大熵原理也可以表述为在满足约束条件的模型集合中选取熵最大的模型<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6f99a7d689d257b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>直观地,</p>
+<ul>
+<li>最大熵原理认为要选择的概率模型首先必须满足已有的事实,即约束条件,<strong>在没有更多信息的情况下,那些不确定的部分都是”等可能的”</strong>  </li>
+<li><strong>等概率表示了对事实的无知.因为没有更多信息,所以取等概率是合理的</strong></li>
+<li><strong>最大熵原理通过熵的最大化来表示等可能性</strong>  </li>
+<li><strong>“等可能性”不容易操作,而熵则是一个可优化的数值指标</strong>  </li>
+</ul>
+<h2 id="最大熵模型的定义"><a href="#最大熵模型的定义" class="headerlink" title="最大熵模型的定义"></a>最大熵模型的定义</h2><p>将最大熵原理应用到分类得到最大熵模型<br><strong>假设分类模型是一个条件概率分布P(Y|X)</strong>,<img src="https://upload-images.jianshu.io/upload_images/9608551-5d7f22e8cb24aa76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br><strong>这个模型表示的是,对于给定的输入X,以条件概率P(Y|X)输出Y</strong><br>给定一个训练集T={(x1,y1),…,(xn,yn)},学习的目标是用最大熵原理选择最好的分类模型<br>首先考虑模型应该满足的条件.给定训练数据集,可以确定联合分布P(X,Y)的经验分布和边缘分布P(X)的经验分布,表示为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-4b4e598aaf46ba6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>引入约束<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6f85518da66f7e81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br>联合分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5d2c829f50f33a3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>期望作为约束:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a4ed64caff7984b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>最大熵模型的定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-667e62478f5affbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png">  </p>
+<h2 id="最大熵模型的学习"><a href="#最大熵模型的学习" class="headerlink" title="最大熵模型的学习"></a>最大熵模型的学习</h2><h3 id="拉格朗日对偶性"><a href="#拉格朗日对偶性" class="headerlink" title="拉格朗日对偶性"></a>拉格朗日对偶性</h3><p>最大熵模型的学习可形式化为约束最优化问题.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bf679ca7f9512848.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="8.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-b2117bb8e7b93cac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="9.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-ab76ad3a872796aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-cedd4864a95aede0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="11.png"><br>由于<strong>拉格朗日函数L(P,w)是P的凸函数,等式约束是仿射的</strong>,所以原始问题的解与对偶问题的解是等价的.这样就可以通过求解对偶问题来求解原始问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-16eba520dd3550d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="12.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-124db14966754ff0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="13.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-c9d17644327c357f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="14.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-955f038fa630ccb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="15.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a152ac65f5d4b32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="16.png">  </p>
+<h3 id="最大化Ψ-x-等价于MLE"><a href="#最大化Ψ-x-等价于MLE" class="headerlink" title="最大化Ψ(x)等价于MLE"></a>最大化Ψ(x)等价于MLE</h3><p>下面证明对偶函数的极大化等价于最大熵模型的极大似然估计<br><img src="https://upload-images.jianshu.io/upload_images/9608551-4717d507d942683e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="17.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-3942386f25f598f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="18.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-6056c449baa407e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-5b38b59ced4171c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="20.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a26f59930c721e85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="21.png"><br>这样,最大熵模型的学习问题就转换为具体求解对数似然函数极大化或对偶函数极大化的问题<br>可以将最大熵模型写成更一般的形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d72e543dabd160d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="22.png"></p>
+<p>最大熵模型与logistic回归模型有类似的形式,它们又称为对数线性模型(log linear model).模型学习就是在给定的训练集下对模型进行极大似然估计或正则化的极大似然估计  </p>
+<h2 id="模型学习的最优化算法"><a href="#模型学习的最优化算法" class="headerlink" title="模型学习的最优化算法"></a>模型学习的最优化算法</h2><h3 id="改进的迭代尺度法"><a href="#改进的迭代尺度法" class="headerlink" title="改进的迭代尺度法"></a>改进的迭代尺度法</h3><p>改进的迭代尺度法(improved iterative scaling,IIS)的想法是:假设最大熵模型当前的参数向量是w=(w1,w2,…,wn)^T,我们<strong>希望找到一个新的参数向量w+δ=(w1+δ1,w2+δ2,…,wn+δn)^T,使得模型的对数似然函数值增大.如果能有这样一种参数向量更新的方法τ:w→w+δ,那么就可以重复使用这一方法,直至找到对数似然函数的最大值.</strong>  </p>
+<h4 id="Jensen-不等式"><a href="#Jensen-不等式" class="headerlink" title="Jensen 不等式"></a>Jensen 不等式</h4><p>先引出Jensen不等式,它是凸函数必满足的不等式,下面的推导过程会用到<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b7d34d6f9a79f1ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="24.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-80213cdcbea66f7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="25.png"></p>
+<h4 id="IIS推导过程"><a href="#IIS推导过程" class="headerlink" title="IIS推导过程"></a>IIS推导过程</h4><p>对数似然为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb7089369d313ee5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="23.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-d43c088857fb0eca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="26.png"><br><strong>注意:Z_(w+δ)与Z_(w)之间有这样的关系:</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-83b8cb4b9fc18d35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="27.png"><br>推导似然函数改变量的下界:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-01c5b1cef0311aa9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="28.png"><br><strong>如果能找到适当的δ使下界A(δ|w)提高,那么对数似然函数也会提高</strong>.然而,函数A(δ|w)中的δ是一个向量,含有多个变量,<strong>不易同时优化</strong>.<br><strong>IIS试图一次只优化其中一个变量δi,而固定其它变量δj,j≠i.</strong><br>为达到这一目的,IIS进一步降低下界A(δ|w),<strong>下降后方便提升</strong>.具体地,IIS引进一个量f^#(x,y)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bf28ea03386e3179.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="29.1.png"><br><strong>因为fi(x,y)是二值函数,故f^#(x,y)表示所有特征函数中fi(x,y)值为1的个数</strong><br>将A(δ|w)改写为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fe55b98e095168d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="29.png"><br>降低下界后:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-33c85c7ed7c404d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="30.png"><br>这里,B(δ|w)是对数似然函数改变量的一个新的(相对不紧的)下界.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5455a0a1fe0da379.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="31.png"> </p>
+<h4 id="IIS算法流程"><a href="#IIS算法流程" class="headerlink" title="IIS算法流程"></a>IIS算法流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/9608551-6696d3e016b39847.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="32.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-6a3c4b5e3f647c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="33.png"><br>关于牛顿法,可参考之前的文章,<a href="http://littlehaes.com/2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" target="_blank" rel="noopener">牛顿法</a>  </p>
+<h3 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h3><p>最大熵模型学习还可以应用拟牛顿法.关于拟牛顿法,可参考之前的文章,<a href="http://littlehaes.com/2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" target="_blank" rel="noopener">拟牛顿法</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-c1514f551233b5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="34.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-34f8603800be11e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="35.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-747be278214efc5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="36.png"></p>
+<h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/9608551-d18ca5d620e826e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="37.png">  </p>
+<p>参考:<br>李航,统计学习方法  </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/Matrix-Derivative%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/02/Matrix-Derivative%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/" class="post-title-link" itemprop="url">Matrix Derivative矩阵求导</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-02 10:30:18" itemprop="dateCreated datePublished" datetime="2018-04-02T10:30:18+08:00">2018-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>学习机器学习算法时总碰见矩阵求导,现学习一波,主要总结下<br>注意:这里只涉及实数的求导,研究通信的人可能接触的往往是负数求导<br>矩阵可以写成列向量(column vectors)或行向量(row vectors)的形式,这两种不同的形式把矩阵求导分成了两种不同的情况  </p>
+<h2 id="求导类型"><a href="#求导类型" class="headerlink" title="求导类型"></a>求导类型</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-5383ae601da3e1ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="1.jpg"><br>表格列举了六种不同的矩阵求导类型,粗体代表向量或者矩阵(其实标量和向量也可以看作矩阵).<br>表格中还有三个空格没写出,实际上也是存在,但暂时先不讨论,因为这三种情况的求导结果大部分都是高于二阶的张量(tensor)形式,与常见的二维矩阵形式不同.</p>
+<h2 id="布局约定Layout-conventions"><a href="#布局约定Layout-conventions" class="headerlink" title="布局约定Layout conventions"></a>布局约定Layout conventions</h2><p>机器学习中,以线性回归为例,每个输入都有多个属性,在表示属性时可以采用列向量或者行向量的形式,这两种形式会造成求导结果形式的不同.<br>注意是形式上的不同,因为本质上形式的不同不会影响求导结果,只不过将结果按照不同的方式组织起来,方便进一步运算<br>布局决定(Layout conventions)就是为了将不同形式的求导分类.分为两种布局:分子布局(numerator layout)和分母布局(denominator layout)<br>通俗解释,现规定<strong>向量或者矩阵</strong>分为原始形式和转置形式两种,比如在线性回归中我们把列向量作为属性值的原始形式,其转置形式就是行向量  </p>
+<ul>
+<li>对于分子布局(numerator layout),求导结果中分子保持原始形式,分母为转置形式</li>
+<li>对于分母布局(denominator layout),求导结果中分子为转置形式,分母保持原始形式<br>下图展示各种类型求导与两种布局之间的关系<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ad2bcd0dd32a86b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png">  <h3 id="numerator-layout"><a href="#numerator-layout" class="headerlink" title="numerator layout"></a>numerator layout</h3>将上述表格中的分子布局单独拿出来,求导结果如下<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2d737adcce52523a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="3.png"><br>下面的两种定义只在分子布局中有意义<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a52c7ad2bd465123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="4.png"><h3 id="denominator-layout"><a href="#denominator-layout" class="headerlink" title="denominator layout"></a>denominator layout</h3>将上述表格中的分母布局单独拿出来,求导结果如下<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f7bde8dad0702aa0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="5.png"></li>
+</ul>
+<h2 id="常见求导结果"><a href="#常见求导结果" class="headerlink" title="常见求导结果"></a>常见求导结果</h2><p>现给出常见的求导结果,推导相关公式时可以查表<br>求导有链式法则(Chain Rule),但是矩阵乘积不满足交换律,所以链式法则对于matrix-by-scalar derivatives和scalar-by-matrix derivatives这两种情况不适用<br>下面贴出三种求导结果</p>
+<h3 id="Vector-by-vector"><a href="#Vector-by-vector" class="headerlink" title="Vector-by-vector"></a>Vector-by-vector</h3><p>之所以先展示vector-by-vector的表格,是因为所有适用于vector-by-vector求导的操作也直接适用于vector-by-scalar or scalar-by-vector这两种情况<br><img src="https://upload-images.jianshu.io/upload_images/9608551-adac6ef571a02d01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"></p>
+<h3 id="Scalar-by-vector"><a href="#Scalar-by-vector" class="headerlink" title="Scalar-by-vector"></a>Scalar-by-vector</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-6ecb61e770a06fa6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-aa592b312f54684c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"></p>
+<h3 id="Vector-by-scalar"><a href="#Vector-by-scalar" class="headerlink" title="Vector-by-scalar"></a>Vector-by-scalar</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-2042615480b176cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png">  </p>
+<p>参考:<br><a href="https://en.wikipedia.org/wiki/Matrix_calculus" target="_blank" rel="noopener">Matrix calculus</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">Logistic Regression逻辑斯蒂回归</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-01 15:30:04" itemprop="dateCreated datePublished" datetime="2018-04-01T15:30:04+08:00">2018-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h1><p>logistic回归是统计学习中的经典分类方法,他属于对数线性模型,logistic回归来源于logistic分布,先从logistic分布说起</p>
+<h2 id="Logistic-distribution"><a href="#Logistic-distribution" class="headerlink" title="Logistic distribution"></a>Logistic distribution</h2><p>设X是连续随机变量,X服从logistic分布,其分布函数和概率密度函数如下:</p>
+<h3 id="分布函数"><a href="#分布函数" class="headerlink" title="分布函数"></a>分布函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-95edc9f8477dd868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a3ff0b4a2c46e68b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>分布函数即为通常所说的logistic函数,其图像关于(μ,0.5)对称,满足:<br>F(-x+μ)+F(x-μ)=1<br>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)<br>形状参数s的值越小,曲线在中心附近增长得越快  </p>
+<h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb5e4d5dc985ae80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a1f50bb8a1e33a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png">   </p>
+<h2 id="二项logistic回归"><a href="#二项logistic回归" class="headerlink" title="二项logistic回归"></a>二项logistic回归</h2><p>二项logistic回归(binomial logistic regression)是一种分类模型,<strong>由条件概率分布P(Y|X)表示</strong>,形式为参数化的logistic分布.这里,<strong>随机变量X取值为实数,随机变量Y取值为1或0.通过监督学习的方法来估计模型参数</strong></p>
+<h3 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h3><p>柯尔莫哥洛夫给出了概率的公理化定义:</p>
+<ul>
+<li>0≤P(A)≤1</li>
+<li>P(Ω)=1,P(∅)=0,必然事件概率为1,不可能事件概率为0</li>
+<li>加法定理:<strong>若干个互斥事件之和的概率等于各事件的概率之和</strong>,即P(A1+A2+…)=P(A)+P(B)+…事件的个数可以是有限的或无限的<h3 id="条件概率分布"><a href="#条件概率分布" class="headerlink" title="条件概率分布"></a>条件概率分布</h3>二项logistic回归模型是如下的条件概率分布(<strong>该条件概率分布满足上述公理化定义,所以可以作为概率,通过训练使得这个概率值更准确</strong>):  </li>
+</ul>
+<p><strong>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-29bc7f40bf18fb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>或表示成如下形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-32ca35e02ba1973d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>logistic回归采用的是logistic分布函数,对于任意x,F(x)最小值为0,最大值为1,相当于把实数域R映射到(0,1)上.<br>对于给定的输入实例x,按照上式求出P(Y=1|x)和P(Y=0|x),比较两个条件概率的大小,将实例x分到概率值较大的那一类.  </p>
+<h3 id="logistic回归模型的特点"><a href="#logistic回归模型的特点" class="headerlink" title="logistic回归模型的特点"></a>logistic回归模型的特点</h3><p>事件发生的概率与不发生的概率之比称作事件的几率(odds),考察logistic回归的对数几率(log odds)或logit函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8a0a95e665434b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>这就是说,在logistic回归模型中,输出Y=1的对数几率是输入x的线性函数.或者说,输出Y=1的对数几率是由输入x的线性函数表示的模型.(同样地,输出Y=0的对数几率是-wx,x越大则Y=0的对数几率越小,x越小则Y=0的对数几率越大.这样说不满足几率的定义,但是这样解释没有问题,嗯)<br><strong>换一个角度看,考虑对输入x进行分类的线性函数wx</strong>,其值域为实数域.注意这里x∈R_(n+1),w∈R_(n+1).通过logistic回归模型可以将wx转换为概率.这时,线性函数wx的值越接近正无穷,概率值越接近1;线性函数wx的值越接近负无穷,概率值越接近0<br>这样的模型就是logistic回归模型</p>
+<h3 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1aec11875f7ca8a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>关于极大似然法(Maximum Likelihood Estimation),可以参考之前的文章<a href="http://littlehaes.com/2018/03/30/Maximum-Likelihood-Estimation极大似然估计/" target="_blank" rel="noopener">极大似然估计</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-f1876db755479d31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br><strong>求得使L(w)取得最大值的w也就得到logistic回归模型了</strong><br>logistic回归学习中通常采用的方法是梯度下降法(Gradient descent)和拟牛顿法(Quasi Newton method),见之前的文章<a href="http://littlehaes.com/2018/03/25/Gradient-descent梯度下降-Steepest-descent/" target="_blank" rel="noopener">梯度下降</a>和<a href="http://littlehaes.com/2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" target="_blank" rel="noopener">拟牛顿法</a>  </p>
+<h3 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h3><p>之前介绍的是二项logistic回归,<strong>用于二分类</strong>.可以将其推广为multi-nomial logistic regression model.用于多类分类.<br>假设离散型随机变量Y的取值集合是{1,2,…,K},那么多项logistic回归模型是:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fa3fb6c60d131815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>二项logistic回归的参数估计方法也可以推广到多项logistic回归中  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)  </p>
+<ol>
+<li>形式为<strong>参数化</strong>的logistic分布,即μ和s变成了w和b  </li>
+<li>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</li>
+<li>logistic回归的对数几率是线性的:wx+b,所以logistic回归属于对数线性模型</li>
+<li>对数似然中对于<strong>单个样本</strong>的表达形式要有清晰的认识:P(yi|xi)=π(xi)^yi · [1-π(xi)]^(1-yi),决定这个式子形式的是yi</li>
+</ol>
+<p>参考:<br>李航,统计学习方法  </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/31/Linear%20Regression%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/31/Linear%20Regression%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">Linear Regression线性回归</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-31 11:28:53" itemprop="dateCreated datePublished" datetime="2018-03-31T11:28:53+08:00">2018-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><p>线性回归(Linear Regression)是一种线性模型(linear model),<strong>它将各个特征进行线性组合,实现对新输入的预测</strong><br><strong>线性回归可解释性很强,因为特征对应的权值大小直接衡量了这个特征的重要性</strong>  </p>
+<h2 id="表示形式"><a href="#表示形式" class="headerlink" title="表示形式"></a>表示形式</h2><p><strong>设每个输入x_i都有m个特征,每个特征x_ij对应一个权值w_j</strong><br>对于一个输入<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d2f7b7832202bb5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>现有训练集T={(x1,y1),(x2,y2),…,(xN,yN)},(<strong>xi和yi的取值范围视具体情况决定</strong>),则线性回归的形式为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f9b0acfa7cdee7fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png">  </p>
+<h2 id="属性值离散"><a href="#属性值离散" class="headerlink" title="属性值离散"></a>属性值离散</h2><p>像高度,质量,速度这种属性值连续的变量,直接把其数值赋给对应的x即可<br>对于属性值是离散的情况</p>
+<ul>
+<li>如果属性的各个取值有某种顺序,也就是存在序(order)关系,那么可以通过连续化将其转化为连续值,例如高度不取连续值而是用低,中,高这三个离散值表示时,可以按低=1,中=2,高=3处理</li>
+<li>如果属性的各个取值见不存在序关系,则将其转化为向量形式,比如one-hot形式,以花的颜色为例,取值为红,黄,蓝,可以将取值编码为红=(1,0,0),黄=(0,1,0),蓝=(0,0,1)<h2 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h2>均方误差有很好的几何含义,它表示的是欧式距离(Euclidean distance),基于均方误差最小化来进行模型求解的方差称为”最小二乘法”(least square method).<strong>在线性回归中,最小二乘法就是试图找到一条直线,使所有样本到直线上的欧氏距离之和最小</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-e2cc6d6119f0c7bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="3.png"><br>L(w,b)分别对w,b求偏导,并令偏导为0可得到w,b的解析解,关于求导细节,可以看<a href="http://littlehaes.com/2018/04/02/Matrix-Derivative矩阵求导/" target="_blank" rel="noopener">矩阵求导</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-254e18db46d0e39b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br>参考:<br>周志华,机器学习</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/Maximum-Likelihood-Estimation%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/30/Maximum-Likelihood-Estimation%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/" class="post-title-link" itemprop="url">Maximum Likelihood Estimation极大似然估计</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-30 08:42:20" itemprop="dateCreated datePublished" datetime="2018-03-30T08:42:20+08:00">2018-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h3><p>现通过<strong>分类问题</strong>解释贝叶斯公式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fde2d89caa672242.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>P(c)是类别c的先验(prior)概率<br>P(x|c)是似然概率(likelihood probability),或者说是样本x相对于类别c的类条件概率(class-conditional probability)<br>P(x)是用于归一化的证据(evidence)因子,通过全概率公式将P(x)展开,即上式第二个等号右边分母,<br>固定x观察c,可以看出,对于任意一个P(c|x),分母都是一样的,<strong>所以通过似然概率和先验概率便能估计P(c|x)</strong></p>
+<h3 id="伯努利大数定理"><a href="#伯努利大数定理" class="headerlink" title="伯努利大数定理"></a>伯努利大数定理</h3><p>下面的说明会用到这个定理<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5407453bf6b1063b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<h3 id="先验与似然的进一步说明"><a href="#先验与似然的进一步说明" class="headerlink" title="先验与似然的进一步说明"></a>先验与似然的进一步说明</h3><ol>
+<li>类别c的先验概率P(c)表达了<strong>样本空间中各类样本所占的比例</strong>,根据伯努利大数定理,当训练集包含充足的独立同分布样本时,P(c)可通过各类样本出现的频率来近似  </li>
+<li>对于类条件概率P(x|c),x可以是个n维列向量,也就是说样本x中有很多特征(或说属性),所以P(x|c)=P(x1,x2,…,xn|c)涉及关于x的所有特征(属性)的联合概率,假设第i个特征xi有wi种取值,那么对于任意一个类别c而言,共有∏wi种可能,在现实应用中∏wi往往远远大于样本总数,这就是说,很多可能的情况并没有被采样到,其出现频率为0,会被估计成0,显然是不合理的,因为”被采样(观测)”到和”出现概率为0”通常是不同的.  </li>
+<li>在朴素贝叶斯法(NaiveBayes)那篇文章中也提过类似的问题,联合概率导致参数数量太过庞大,这就是为什么朴素贝叶斯法要假设条件独立,假设条件独立后条件联合概率就可写成各个条件概率的乘积.<br>针对某个样本条件,对其属于各个类别的概率值进行估计,这样就大大简化了估计过程.当然也难免会有某个值频率为零的情况,这种情况下可使用拉普拉斯平滑(Laplace smoothing)解决.具体见之前文章<a href="http://littlehaes.com/2018/03/28/Naive-Bayes朴素贝叶斯法/" target="_blank" rel="noopener">Naive Bayes朴素贝叶斯法</a>中的”为什么需要假设条件独立”及”贝叶斯估计”两小节  </li>
+<li><strong>朴素贝叶斯法</strong>通过<strong>假设条件独立</strong>减少条件联合概率参数(取值个数)过多的问题,<strong>极大似然估计</strong>采取其他办法,常用的一种策略是<strong>先假定样本x服从某种确定的概率分布形式,再基于训练样本对概率分布的参数进行估计</strong>,这种方法就不再是用频率估计概率了,而是直接优化之前假设的概率分布的参数<h3 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h3>极大似然估计(Maximum Likelihood Estimation)是频率派提出的.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cafb4f6904bfef7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-7d569fdb4801c6b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><h4 id="下溢-underflow"><a href="#下溢-underflow" class="headerlink" title="下溢(underflow)"></a>下溢(underflow)</h4>似然概率容易出现下溢的情况,什么是下溢?<br>连续数学在数字计算机上的根本困难是，我们需要通过有限数量的位模式来表示无限多的实数.这意味着我们在计算机中表示实数时，几乎总会引入一些近似误差.在许多情况下，这仅仅是舍入误差.舍入误差会导致一些问题，特别是当许多<br>操作复合时，即使是理论上可行的算法，如果在设计时没有考虑最小化舍入误差的累积，在实践时也可能会导致算法失效.  </li>
+</ol>
+<p><strong>一种极具毁灭性的舍入误差是下溢（underflow）.当接近零的数被四舍五入为零时发生下溢.许多函数在其参数为零而不是一个很小的正数时才会表现出质的不同.例如，我们通常要避免被零除（一些软件环境将在这种情况下抛出异常，有些会返回一个非数字(not-a-number, NaN)的占位符）或避免取零的对数（这通常被视为-∞，进一步的算术运算会使其变成非数字)</strong><br>另一个极具破坏力的数值错误形式是上溢（overflow）.当大量级的数被近似为+∞或-∞时发生上溢.进一步的运算通常会导致这些无限值变为非数字.<br>必须对上溢和下溢进行数值稳定的一个例子是softmax函数  </p>
+<h4 id="对数似然解决下溢"><a href="#对数似然解决下溢" class="headerlink" title="对数似然解决下溢"></a>对数似然解决下溢</h4><p>因为似然概率中有连乘的形式,每个因式都小于1,过多的连乘会导致数值大小,进而被当成0发生下溢.<br>解决办法是利用对数似然,由连乘变为相加<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b24784895b4514de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-81e7fa2cfbd0e1a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"></p>
+<h3 id="以高斯分布为例"><a href="#以高斯分布为例" class="headerlink" title="以高斯分布为例"></a>以高斯分布为例</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-4c569a02b1f621ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>可以发现,<strong>通过极大似然法得到的正态分布的均值就是无偏估计的样本均值,方差是有偏估计的样本方差</strong><br>关于无偏估计,可参考之前的文章:<a href="http://littlehaes.com/2018/02/17/Unbiased-Estimation-无偏估计/" target="_blank" rel="noopener">Unbiased Estimation 无偏估计</a></p>
+<h3 id="假设分布带来的问题"><a href="#假设分布带来的问题" class="headerlink" title="假设分布带来的问题"></a>假设分布带来的问题</h3><p>需要注意的是,估计类条件概率时,虽然假设某种确定的概率分布形式能使类条件概率的估计变得简单,<strong>但是估计结果的准确性严重依赖于所假设的概率分布形式是否符合潜在的真实数据分布.</strong><br>在现实应用中,欲做出能较好地接近潜在真实分布的假设,往往需在一定程度上利用关于应用任务本身的经验知识,否则仅凭猜测来假设概率分布形式,很可能产生误导性的结果  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>联合概率导致参数指数级增长,假设独立后参数空间减小很多</li>
+<li>朴素贝叶斯假设条件独立;极大似然法假设x的分布,模型的好坏很大程度上取决于假设的分布的好坏<br>参考:<br>周志华,机器学习<br>Ian Goodfellow,深度学习</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Little Haes"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Little Haes</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/smallhaes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:littlehaes@bupt.edu.cn" title="E-Mail → mailto:littlehaes@bupt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/smallhaes" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=75165464" title="网易云 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;75165464" rel="noopener" target="_blank"><i class="fa fa-fw fa-cloud"></i>网易云</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/littlehaes" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;littlehaes" rel="noopener" target="_blank">CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Little Haes</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

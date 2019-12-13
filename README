@@ -1,0 +1,125 @@
+上面的是博客根目录source文件夹中的内容, 在新电脑上使用时克隆这个项目到source文件夹中即可; 接着修改根目录的.ignore, 配置文件, next主题的配置文件
+
+## 维护流程
+
+1. 在0blog文件夹中初始化博客, ```hexo init```, 并删除source文件夹
+2. 在0blog中克隆本仓库的内容```git clone git@github.com:smallhaes/source.git```
+3. 安装next主题, 在根目录下执行```git clone git@github.com:theme-next/hexo-theme-next.git next``` 
+4. 替换图片,将source/images中的图片,全部替换粘贴到themes\next\source\images中
+5. 根目录下的.gitignore加上```source/README```
+6. 根据下面的说明, 修改根目录下的配置文件和next主题的配置文件
+7. 将文章部署到github上的模块 ```npm install hexo-deployer-git --save```
+8. 安装hexo本地测试用的服务器```npm install hexo-server ```
+9. 去掉README的后缀.md, 避免hexo对该文件进行处理导致报错
+
+小tip: 使用```npm get registry```查看npm下载是使用的源, 我的是淘宝源https://registry.npm.taobao.org/,用国内源下载速度快
+
+##  配置文件维护
+### 根目录配置文件
+
+```
+# Site
+title: Haes' Blog
+author: Little Haes
+
+# Pagination
+per_page: 50
+归档中每页显示50个标题
+
+theme: next
+
+deploy:
+  type: git
+  repo: git@github.com:smallhaes/smallhaes.github.io.git
+  branch: master  
+ 
+# Writing
+post_asset_folder: false
+这个选项的作用是, hexo new 'article'创建文章时同时会创建一个文件夹, 可以放图片什么的, 感觉不用开, 并不是每篇文章都有图片的
+```
+
+### next主题配置文件
+
+```
+布局方案用这个
+scheme: Gemini
+
+菜单有四个
+menu:
+  home: / || home
+  archives: /archives/ || archive
+  tags: /tags/ || tags
+  about: /about/ || user
+
+设置首页显示的头像; 我把图片放在source/images里了
+(在4.替换图片步骤中已经完成了; 不过url后面有个注释符号#, 需要手动删掉)
+avatar:
+  url: /images/avatar.gif
+  # 喜欢圆形的头像可以把rounded置为true
+  rounded: true
+
+设置一些外部链接及对应的图标
+social:
+  GitHub: https://github.com/smallhaes || github
+  E-Mail: mailto:littlehaes@bupt.edu.cn || envelope
+  Twitter: https://twitter.com/smallhaes || twitter
+  网易云: https://music.163.com/#/user/home?id=75165464 || cloud
+
+设置其他站点的链接
+links:
+  CSDN: https://blog.csdn.net/littlehaes
+
+#follow 我的github
+github_banner:
+  enable: true
+  permalink: https://github.com/smallhaes
+  title: Follow me on GitHub
+
+Disqus评论
+disqus:
+  enable: true
+  shortname: https-littlehaes-com #可以在这里查看https://https-littlehaes-com.disqus.com/admin/settings/general/在这里看shortname
+
+busuanzi计数
+busuanzi_count:
+  enable: true
+  total_visitors: true
+  total_visitors_icon: user
+  total_views: true
+  total_views_icon: eye
+  post_views: false
+  post_views_icon: eye
+
+网站图标
+favicon:
+  把雏田的图片放在相应的位置 (在4.替换图片步骤中已经完成了) 
+
+可以启用对数学公式的支持
+math:
+  enable: false
+  
+首页最下方的图标改成小飞机
+icon:
+  name: paper-plane
+```
+
+## 生成文章时的元数据
+
+```
+---
+title: next主题在首页摘要里显示文章图片
+tags:
+  - hexo
+  - next
+categories:
+  - blablabla
+photos:
+    - "https://hinata.jpg"
+comments: false
+date: 2019-10-07 17:08:41
+---
+```
+
+## 摘要截断符号
+
+Use ```<!-- more -->``` in the post to control excerpt accurately

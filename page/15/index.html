@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Haes&#39; Blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;15&#x2F;index.html">
+<meta property="og:site_name" content="Haes&#39; Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Little Haes">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/15/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Haes' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Haes' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/smallhaes" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/09/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%EF%BC%88%E8%A7%A3%E5%86%B3userwarningfamily%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/09/matplotlib%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%EF%BC%88%E8%A7%A3%E5%86%B3userwarningfamily%EF%BC%89/" class="post-title-link" itemprop="url">Matplotlib显示中文（解决userwarningfamily）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-09 22:00:47" itemprop="dateCreated datePublished" datetime="2018-02-09T22:00:47+08:00">2018-02-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装了Anaconda3，学着用matplotlib，发现不能显示中文，查阅了网上的方法，对matplotlibrc中的font.family各种改，但Jupyter Noterbook依旧显示UserWarning: findfont: Font family.<br>最终找到解决方法，操作很简单<br>在<strong>.matplotlib(图一)</strong> 这个目录里，注意文件夹名字最前面是个点，有个叫<strong>fontList.json（图二）</strong>的文件，这个目录与我的Anaconda3在同一个目录中，<br>打开后在<strong>ttffiles（图三)</strong>对应的列表中显示的就是matplotlib可以加载的字体，涵盖的字体路径有Anaconda自带的，也有系统自带的，我选择了系统自带的<strong>黑体（图四）</strong>，最后打开Anaconda3\Lib\site-packages\matplotlib\mpl-data的matplotlibrc，把font.family改成<strong>simhei（图五）</strong>（注意去掉前面的#号），重新启动Jupyter Noterbook即可显示中文</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/9608551-a4e1b6ff1a4d1db5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图一 .matplotlib"></p>
+  <center>图一</center>
+
+
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9608551-f1e7f827cf3ad189.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图二 fontList.json"></p>
+<center>图二</center>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9608551-e67f79b9e35b45e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图三 ttffiles"></p>
+<center>图三</center>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9608551-1009513d4b49ce3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图四 黑体"></p>
+<center>图四</center>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9608551-f476287b216a4841.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图五 matplotlibrc"></p>
+<center>图五</center>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week3-CollinearPoints%E5%85%B1%E7%BA%BF%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB-99%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/03/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week3-CollinearPoints%E5%85%B1%E7%BA%BF%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB-99%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">普林斯顿大学算法Week3:CollinearPoints共线模式识别(99分)--总结及代码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-03 20:47:33" itemprop="dateCreated datePublished" datetime="2018-02-03T20:47:33+08:00">2018-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>(代码有详细注释)</p>
+<ol>
+<li>本课讲了归并排序,作业应用是排序进行共线的模式识别,java1.8中的排序用的是tim排序,结合了归并排序与插入排序,属于<strong>稳定排序:排序之后相同元素的相对位置会不会改变</strong></li>
+<li>Point.java中有个非常重要的方法,<strong>compareTo()</strong>,它定义:纵坐标越小则点越小,如果纵坐标相同,那么横坐标越小则点越小.(如果作业中要求横坐标也是按顺序排列,那么排序后的点集映射到二维坐标系中是非递减的折线, 这样找共线只用一层循环即可,可惜作业没加上对x的限制)</li>
+<li>比较大小,一开始我用的是points[i-1] == point[i],尽管坐标相同但是points[i-1]不等于points[i]<br>因为points[i-1]和points[i]表示引用,在堆中指向两个不同的地址,比较大小得用points[i-1].compareTo(points[i])</li>
+<li>在FastCollinearPoints.java中,一定要注意什么时候对共线点数变量count进行判断,有两种情况,一个是,相邻元素与参考点的斜率不同;另一个是循环到最后一个元素.这两种情况在代码注释中有解释</li>
+<li>唯一一处FAILED,扣了1分,没系统学过java,先跳过了  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Test 7: check for dependence on either compareTo() or compare()</span><br><span class="line">        returning &#123; -1, +1, 0 &#125; instead of &#123; negative integer,</span><br><span class="line">        positive integer, zero &#125;</span><br><span class="line">  * filename &#x3D; equidistant.txt</span><br><span class="line">    - number of entries in student   solution: 0</span><br><span class="line">    - number of entries in reference solution: 4</span><br><span class="line">    - 4 missing entries in student solution, including: &#39;(30000, 0) -&gt; (20000, 10000) -&gt; (10000, 20000) -&gt; (0, 30000)&#39;</span><br><span class="line">&#x3D;&#x3D;&gt; FAILED</span><br></pre></td></tr></table></figure></li>
+<li>week3课件中,递归调用的图示:<br>这是包含两个递归调用的递归 (图示只画了一半)<br><img src="http://upload-images.jianshu.io/upload_images/9608551-c31de2c890e27f18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Merge.jpg"></li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>(如需提交,请删除中文注释)</p>
+<h3 id="一-Point-java"><a href="#一-Point-java" class="headerlink" title="一:Point.java"></a>一:Point.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdDraw;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Point</span>&gt; </span>&#123;</span><br><span class="line">	<span class="comment">// x-coordinate of this point</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> x;</span><br><span class="line">	<span class="comment">// y-coordinate of this point</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> y;</span><br><span class="line">	<span class="comment">// constructs the point (x, y)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Point</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.x = x;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">// draws this point</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>   <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		StdDraw.point(x,y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// draws the line segment from this point to that point</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>   <span class="keyword">void</span> <span class="title">drawTo</span><span class="params">(Point that)</span> </span>&#123;</span><br><span class="line">		StdDraw.line(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y, that.x, that.y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// string representation</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"("</span> + x + <span class="string">", "</span> + y + <span class="string">")"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// compare two points by y-coordinates, breaking ties by x-coordinates	</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Point that)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(y&lt;that.y || (y==that.y &amp;&amp; x&lt;that.x)) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(y==that.y &amp;&amp; x==that.x) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> +<span class="number">1</span>;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="comment">// the slope between this point and that point</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">double</span> <span class="title">slopeTo</span><span class="params">(Point that)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(x==that.x &amp;&amp; y==that.y) <span class="keyword">return</span> Double.NEGATIVE_INFINITY;</span><br><span class="line">		<span class="keyword">if</span>(x==that.x &amp;&amp; y!=that.y) <span class="keyword">return</span> Double.POSITIVE_INFINITY;		</span><br><span class="line">		<span class="keyword">if</span>(y==that.y) <span class="keyword">return</span> +<span class="number">0.0</span>;</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">double</span>)(y-that.y)/(x-that.x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// compare two points by slopes they make with this point</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Comparator&lt;Point&gt; <span class="title">slopeOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> SlopeOrder();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//nested class</span></span><br><span class="line">	<span class="comment">//sort rule</span></span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SlopeOrder</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Point</span>&gt;</span>&#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Point p,Point q)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//p点斜率大</span></span><br><span class="line">			<span class="keyword">if</span>(slopeTo(p)&lt;slopeTo(q)) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">			<span class="comment">//p点斜率小</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(slopeTo(p)&gt;slopeTo(q)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">			<span class="comment">//p,q斜率相等</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Point p1 = <span class="keyword">new</span> Point(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">		Point p2 = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">		Point p3 = <span class="keyword">new</span> Point(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">		Point p4 = <span class="keyword">new</span> Point(<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line">		Point p5 = <span class="keyword">new</span> Point(<span class="number">4</span>,<span class="number">1</span>);</span><br><span class="line">		System.out.println(<span class="string">"p1.compareTo(p1) is "</span>+p1.compareTo(p2));</span><br><span class="line">		System.out.println(<span class="string">"p2.compareTo(p1) is "</span>+p2.compareTo(p1));</span><br><span class="line">		System.out.println(<span class="string">"p1.compareTo(p1) is "</span>+p1.compareTo(p1)+<span class="string">"\n"</span>);</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"p1.slopeTo(p2) is "</span> +p1.slopeTo(p2));</span><br><span class="line">		System.out.println(<span class="string">"p1.slopeTo(p4) is "</span>+p1.slopeTo(p4));</span><br><span class="line">		System.out.println(<span class="string">"p1.slopeTo(p1) is "</span>+p1.slopeTo(p1));</span><br><span class="line">		System.out.println(<span class="string">"p3.slopeTo(p4) is "</span>+p3.slopeTo(p4));</span><br><span class="line">		System.out.println(<span class="string">"p2.slopeTo(p5) is "</span>+p2.slopeTo(p5));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二-BruteCollinearPoints-java"><a href="#二-BruteCollinearPoints-java" class="headerlink" title="二:BruteCollinearPoints.java"></a>二:BruteCollinearPoints.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.In;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.Insertion;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdDraw;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BruteCollinearPoints</span> </span>&#123;</span><br><span class="line">	 <span class="comment">//to store line segments</span></span><br><span class="line">	 <span class="keyword">private</span> ArrayList&lt;LineSegment&gt; LineSegmentList;</span><br><span class="line">	 <span class="comment">//to store the given points</span></span><br><span class="line">	 <span class="keyword">private</span> Point[] points;</span><br><span class="line">	</span><br><span class="line">	 <span class="comment">//在构造函数中找出由4点构成的线段(作业说了:没有5点及更多点共线的情况)</span></span><br><span class="line">	 <span class="comment">// finds all line segments containing 4 point</span></span><br><span class="line">	 <span class="function"><span class="keyword">public</span> <span class="title">BruteCollinearPoints</span><span class="params">(Point[] pointsIn)</span> </span>&#123; </span><br><span class="line">		 <span class="comment">//三种异常</span></span><br><span class="line">		 <span class="comment">//一:if the argument to the constructor is null</span></span><br><span class="line">		 System.out.println(<span class="string">" a "</span>);</span><br><span class="line">		 <span class="keyword">if</span>(pointsIn == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"there is no point"</span>);</span><br><span class="line">		 <span class="comment">//二:if any point in the array is null</span></span><br><span class="line">		 <span class="keyword">int</span> N = pointsIn.length;</span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) <span class="keyword">if</span>(pointsIn[i]==<span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"exist null point"</span>);</span><br><span class="line">		 <span class="comment">//三:if the argument to the constructor contains a repeated point</span></span><br><span class="line">		 <span class="comment">//检查是否有重复的点,先排序,再查重会方便,作业允许这样: For example, you may use Arrays.sort()</span></span><br><span class="line">		 points = <span class="keyword">new</span> Point[N];</span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) points[i] = pointsIn[i];</span><br><span class="line">		 Arrays.sort(points);</span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++) <span class="keyword">if</span>(points[i-<span class="number">1</span>].compareTo(points[i])==<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"exist repeated point"</span>); </span><br><span class="line">		 </span><br><span class="line">		 <span class="comment">//to save every required line segment</span></span><br><span class="line">		 LineSegmentList = <span class="keyword">new</span> ArrayList&lt;LineSegment&gt;();</span><br><span class="line">		 	 </span><br><span class="line">		 <span class="comment">//find line segment</span></span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> dot1=<span class="number">0</span>;dot1&lt;=N-<span class="number">4</span>;dot1++) &#123;</span><br><span class="line">			 <span class="keyword">for</span>(<span class="keyword">int</span> dot2=dot1+<span class="number">1</span>;dot2&lt;=N-<span class="number">3</span>;dot2++) &#123;</span><br><span class="line">				 <span class="comment">//k12:the slope between point[dot2] and point[dot1]</span></span><br><span class="line">				 <span class="keyword">double</span> k12 = points[dot2].slopeTo(points[dot1]);</span><br><span class="line">				 <span class="keyword">for</span>(<span class="keyword">int</span> dot3=dot2+<span class="number">1</span>;dot3&lt;=N-<span class="number">2</span>;dot3++) &#123;</span><br><span class="line">					 <span class="comment">//k13:the slope between point[dot3] and point[dot1]</span></span><br><span class="line">					 <span class="keyword">double</span> k13 = points[dot3].slopeTo(points[dot1]);</span><br><span class="line">					 <span class="keyword">if</span>(k13 != k12) <span class="keyword">continue</span>;</span><br><span class="line">					 <span class="keyword">for</span>(<span class="keyword">int</span> dot4=dot3+<span class="number">1</span>;dot4&lt;=N-<span class="number">1</span>;dot4++) &#123;</span><br><span class="line">						<span class="comment">//k14:the slope between point[dot4] and point[dot1]</span></span><br><span class="line">						 <span class="keyword">double</span> k14 = points[dot4].slopeTo(points[dot1]);</span><br><span class="line">						 <span class="keyword">if</span>(k14 != k12) <span class="keyword">continue</span>;</span><br><span class="line">						 <span class="comment">//find a line segment</span></span><br><span class="line">						 LineSegment linesegment = <span class="keyword">new</span> LineSegment(points[dot1],points[dot4]);</span><br><span class="line">						 LineSegmentList.add(linesegment);</span><br><span class="line">					 &#125;</span><br><span class="line">				 &#125;</span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="comment">// the number of line segments</span></span><br><span class="line">	 <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfSegments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		 <span class="keyword">return</span> LineSegmentList.size();</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="comment">// the line segments</span></span><br><span class="line">	 <span class="keyword">public</span> LineSegment[] segments() &#123;</span><br><span class="line">		 LineSegment[] segments = <span class="keyword">new</span> LineSegment[LineSegmentList.size()];</span><br><span class="line">		 <span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">		 <span class="keyword">for</span>(LineSegment Line : LineSegmentList) &#123;</span><br><span class="line">			 segments[index++] = Line;</span><br><span class="line">		 &#125;</span><br><span class="line">		 <span class="keyword">return</span> segments;</span><br><span class="line">	 &#125;    </span><br><span class="line">	 <span class="comment">//main</span></span><br><span class="line">	 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	        In in = <span class="keyword">new</span> In(<span class="string">"src/week3/input8.txt"</span>); </span><br><span class="line">	        <span class="keyword">int</span> n = in.readInt();</span><br><span class="line">	        StdOut.println(<span class="string">"total "</span>+n+<span class="string">" points"</span>);</span><br><span class="line">	        Point[] points = <span class="keyword">new</span> Point[n];</span><br><span class="line">	        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">	        	<span class="keyword">int</span> x = in.readInt();</span><br><span class="line">	            <span class="keyword">int</span> y = in.readInt();</span><br><span class="line">	            StdOut.println(<span class="string">"("</span>+x+<span class="string">","</span>+y+<span class="string">")"</span>); </span><br><span class="line">	            points[i] = <span class="keyword">new</span> Point(x,y);</span><br><span class="line">	        &#125;       </span><br><span class="line">	        <span class="comment">//draw the points</span></span><br><span class="line">	        StdDraw.enableDoubleBuffering();</span><br><span class="line">	        StdDraw.setXscale(<span class="number">0</span>, <span class="number">32768</span>);</span><br><span class="line">	        StdDraw.setYscale(<span class="number">0</span>, <span class="number">32768</span>);</span><br><span class="line">	        StdDraw.setPenColor(StdDraw.RED);</span><br><span class="line">	        StdDraw.setPenRadius(<span class="number">0.01</span>);</span><br><span class="line">	        <span class="keyword">for</span> (Point p : points) &#123;</span><br><span class="line">	            p.draw();</span><br><span class="line">	        &#125;</span><br><span class="line">	        StdDraw.show();              </span><br><span class="line">	        <span class="comment">// print and draw the line segments</span></span><br><span class="line">	        BruteCollinearPoints collinear = <span class="keyword">new</span> BruteCollinearPoints(points);</span><br><span class="line">	        StdOut.println(collinear.numberOfSegments());</span><br><span class="line">	        <span class="keyword">for</span> (LineSegment segment : collinear.segments()) &#123;</span><br><span class="line">	            StdOut.println(segment);</span><br><span class="line">	            segment.draw();</span><br><span class="line">	        &#125;</span><br><span class="line">	        StdDraw.show();          </span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-FastCollinearPoints-java"><a href="#三-FastCollinearPoints-java" class="headerlink" title="三:FastCollinearPoints.java"></a>三:FastCollinearPoints.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.In;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdDraw;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"></span><br><span class="line"><span class="comment">//much faster than the brute-force solution</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FastCollinearPoints</span> </span>&#123;</span><br><span class="line">	<span class="comment">//to store line segments</span></span><br><span class="line">	<span class="keyword">private</span> ArrayList&lt;LineSegment&gt; LineSegmentList;</span><br><span class="line">	<span class="comment">//to store the given points</span></span><br><span class="line">	<span class="keyword">private</span> Point[] points;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// finds all line segments containing 4 or more points</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FastCollinearPoints</span><span class="params">(Point[] pointsIn)</span> </span>&#123;</span><br><span class="line">		 <span class="comment">//三种异常</span></span><br><span class="line">		 <span class="comment">//一:if the argument to the constructor is null</span></span><br><span class="line">		 <span class="keyword">if</span>(pointsIn == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"there is no point"</span>);</span><br><span class="line">		<span class="comment">//number of points</span></span><br><span class="line">		 <span class="keyword">int</span> N=pointsIn.length;</span><br><span class="line">		 <span class="comment">//二:if any point in the array is null</span></span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) <span class="keyword">if</span>(pointsIn[i]==<span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"exist null point"</span>);</span><br><span class="line">		 <span class="comment">//三:if the argument to the constructor contains a repeated point</span></span><br><span class="line">		 <span class="comment">//检查是否有重复的点,先排序,再查重会方便,作业允许这样: For example, you may use        Arrays.sort()</span></span><br><span class="line">		 <span class="comment">//同时有利于后面排除重复线段</span></span><br><span class="line">		 points = <span class="keyword">new</span> Point[N];</span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) points[i] = pointsIn[i];</span><br><span class="line">		 <span class="comment">//用的是结合了归并和插入的tim排序,稳定排序</span></span><br><span class="line">		 Arrays.sort(points);</span><br><span class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++) <span class="keyword">if</span>(points[i-<span class="number">1</span>].compareTo(points[i])==<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"exist repeated point"</span>);</span><br><span class="line">		</span><br><span class="line">		 <span class="comment">//to save every required line segment</span></span><br><span class="line">		 LineSegmentList = <span class="keyword">new</span> ArrayList&lt;LineSegment&gt;();</span><br><span class="line">		 	 </span><br><span class="line">		 </span><br><span class="line">		 <span class="comment">//当前的参考点</span></span><br><span class="line">		 Point currentCheck;</span><br><span class="line">		 <span class="comment">//对照点重新存储,不包括参考点,共N-1个</span></span><br><span class="line">		 Point[] otherPoints = <span class="keyword">new</span> Point[N-<span class="number">1</span>];</span><br><span class="line">		 <span class="comment">//开始比较斜率,一个一个来</span></span><br><span class="line">		 <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</span><br><span class="line">			 currentCheck = points[i];</span><br><span class="line">			 <span class="comment">// copy points without Point currentCheck to otherPoints</span></span><br><span class="line">			 <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++) &#123;</span><br><span class="line">				 <span class="keyword">if</span>(j&lt;i) otherPoints[j] = points[j];</span><br><span class="line">				 <span class="keyword">if</span>(j&gt;i) otherPoints[j-<span class="number">1</span>] = points[j];</span><br><span class="line">			 &#125;</span><br><span class="line">			 </span><br><span class="line">			 <span class="comment">//根据斜率对点排序</span></span><br><span class="line">			 <span class="comment">//用的是结合了归并和插入的tim排序,稳定排序</span></span><br><span class="line">			 Arrays.sort(otherPoints,currentCheck.slopeOrder());</span><br><span class="line">			 <span class="comment">//遍历已经排序的otherPoints找线段</span></span><br><span class="line">			 <span class="comment">//注意,归并和插入排序都是稳定的,所以tim排序是稳定的,这非常重要</span></span><br><span class="line">			 <span class="comment">//配合Point的compareTo方法,可以直接过滤掉重复线段</span></span><br><span class="line">			 <span class="comment">//一开始没太注意compareTo方法,后来发现这个方法能固定住点之间的相对位置,所以可以过滤重复线段</span></span><br><span class="line">			 <span class="comment">//两点共线</span></span><br><span class="line">			 <span class="keyword">int</span> count=<span class="number">2</span>;</span><br><span class="line">			 <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;N-<span class="number">1</span>;k++) &#123;</span><br><span class="line">				 <span class="keyword">double</span> k1 = otherPoints[k-<span class="number">1</span>].slopeTo(currentCheck);</span><br><span class="line">				 <span class="keyword">double</span> k2 = otherPoints[k].slopeTo(currentCheck);</span><br><span class="line">				 <span class="keyword">if</span>(k1==k2) &#123;</span><br><span class="line">					 count++;</span><br><span class="line">					 <span class="comment">//当循环到最后一个点,同时这个点和前面的点共线</span></span><br><span class="line">					 <span class="keyword">if</span>(k==N-<span class="number">2</span>) &#123;</span><br><span class="line">						 <span class="comment">//如果4点及以上共线,并且otherPoints中与参考点共线且排在最左边的点比参考点大的话,注意此处是遍历到头,所以索引是k-count+2</span></span><br><span class="line">						 <span class="keyword">if</span>(count&gt;=<span class="number">4</span> &amp;&amp; currentCheck.compareTo(otherPoints[k-count+<span class="number">2</span>])==-<span class="number">1</span>) &#123; </span><br><span class="line">							 <span class="comment">//线段起点</span></span><br><span class="line">							 Point start = currentCheck;</span><br><span class="line">							 <span class="comment">//线段终点</span></span><br><span class="line">							 Point end = otherPoints[k];</span><br><span class="line">							 LineSegment linesegment = <span class="keyword">new</span> LineSegment(start,end);</span><br><span class="line">							 LineSegmentList.add(linesegment);</span><br><span class="line">						 &#125;</span><br><span class="line">					 &#125;</span><br><span class="line">				 &#125;</span><br><span class="line">				 <span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="comment">//如果4点及以上共线,并且otherPoints中与参考点共线且排在最左边的点比参考点大的话,索引是k-count+1</span></span><br><span class="line">					 <span class="keyword">if</span>(count&gt;=<span class="number">4</span> &amp;&amp; currentCheck.compareTo(otherPoints[k-count+<span class="number">1</span>])==-<span class="number">1</span>) &#123;</span><br><span class="line">						 	 Point start = currentCheck;</span><br><span class="line">						 	 Point end = otherPoints[k-<span class="number">1</span>];</span><br><span class="line">							 LineSegment linesegment = <span class="keyword">new</span> LineSegment(start,end);</span><br><span class="line">							 LineSegmentList.add(linesegment);</span><br><span class="line">					 &#125;</span><br><span class="line">					 count=<span class="number">2</span>;</span><br><span class="line">				 &#125;</span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// the number of line segments</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">int</span> <span class="title">numberOfSegments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> LineSegmentList.size();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// the line segments</span></span><br><span class="line">	<span class="keyword">public</span> LineSegment[] segments() &#123;</span><br><span class="line">		LineSegment[] segments = <span class="keyword">new</span> LineSegment[LineSegmentList.size()];</span><br><span class="line">		 <span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">		 <span class="keyword">for</span>(LineSegment Line : LineSegmentList) &#123;</span><br><span class="line">			 segments[index++] = Line;</span><br><span class="line">		 &#125;</span><br><span class="line">		 <span class="keyword">return</span> segments;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	     <span class="comment">//main</span></span><br><span class="line">		 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		        In in = <span class="keyword">new</span> In(<span class="string">"src/week3/input9.txt"</span>); </span><br><span class="line">		        <span class="keyword">int</span> n = in.readInt();</span><br><span class="line">		        StdOut.println(<span class="string">"total "</span>+n+<span class="string">" points"</span>);</span><br><span class="line">		        Point[] points = <span class="keyword">new</span> Point[n];</span><br><span class="line">		        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		        	<span class="keyword">int</span> x = in.readInt();</span><br><span class="line">		            <span class="keyword">int</span> y = in.readInt();</span><br><span class="line">		            StdOut.println(<span class="string">"("</span>+x+<span class="string">","</span>+y+<span class="string">")"</span>); </span><br><span class="line">		            points[i] = <span class="keyword">new</span> Point(x,y);</span><br><span class="line">		        &#125;</span><br><span class="line">		        </span><br><span class="line">		        <span class="comment">//draw the points</span></span><br><span class="line">		        StdDraw.enableDoubleBuffering();</span><br><span class="line">		        StdDraw.setXscale(<span class="number">0</span>, <span class="number">32768</span>);</span><br><span class="line">		        StdDraw.setYscale(<span class="number">0</span>, <span class="number">32768</span>);</span><br><span class="line">		        StdDraw.setPenColor(StdDraw.RED);</span><br><span class="line">		        StdDraw.setPenRadius(<span class="number">0.01</span>);</span><br><span class="line">		        <span class="keyword">for</span> (Point p : points) &#123;</span><br><span class="line">		            p.draw();</span><br><span class="line">		        &#125;</span><br><span class="line">		        StdDraw.show();</span><br><span class="line">		              </span><br><span class="line">		        <span class="comment">//print and draw the line segments</span></span><br><span class="line">		        FastCollinearPoints collinear = <span class="keyword">new</span> FastCollinearPoints(points);</span><br><span class="line">		        StdOut.println(collinear.numberOfSegments());</span><br><span class="line">		        <span class="keyword">for</span> (LineSegment segment : collinear.segments()) &#123;</span><br><span class="line">		            StdOut.println(segment);</span><br><span class="line">		            segment.draw();</span><br><span class="line">		        &#125;</span><br><span class="line">		        StdDraw.show();          </span><br><span class="line">		 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/28/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week2-Deques-and-Randomized-Queues-95%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/28/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week2-Deques-and-Randomized-Queues-95%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">普林斯顿大学算法Week2:Deques and Randomized Queues(95分)--总结及代码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-28 20:42:45" itemprop="dateCreated datePublished" datetime="2018-01-28T20:42:45+08:00">2018-01-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="一-Deque"><a href="#一-Deque" class="headerlink" title="一.Deque"></a>一.Deque</h3><p>目标:<br>A double-ended queue or deque is a generalization of a stack and a queue that supports adding and removing items from either the front or the back of the data structure. Create a generic data type Deque that implements the following API<br>要求:<br>Your deque implementation must support each deque operation (including construction) in constant worst-case time. A deque containing n items must use <strong>at most 48n + 192 bytes of memory</strong> and use space proportional to the number of items currently in the deque. Additionally, your iterator implementation must support each operation (including construction) in constant worst-case time.<br>分析:<br>deque可以分别在头尾做添加删除操作,并且在最坏的情况下消耗常数时间,所以数组不行,因为使用数组在头部添加或删除元素时<strong>必须修改后面所有元素的索引</strong>,这个操作耗费时间随数组长度的增加而增加.所以采用链表结构,在头尾维护两个指针即可实现constant time  </p>
+<h3 id="二-Randomized-queue"><a href="#二-Randomized-queue" class="headerlink" title="二.Randomized queue"></a>二.Randomized queue</h3><p>目标:<br>A randomized queue is similar to a stack or queue, except that the item removed is chosen uniformly at random from items in the data structure. Create a generic data type RandomizedQueue that implements the following API<br>要求:<br>Your randomized queue implementation must support <strong>each randomized queue operation (besides creating an iterator) in constant amortized time</strong>. That is, any sequence of m randomized queue operations (starting from an empty queue) must take at most cm steps in the worst case, for some constant c. A randomized queue containing n items must use at most 48n + 192 bytes of memory. Additionally, your iterator implementation must support operations next() and hasNext() in constant worst-case time; and construction in linear time; you may (and will need to) use a linear amount of extra memory per iterator.<br>分析:<br>为实现randomized queue的(除iterator操作)操作平摊时间最差是常数需要采用数组实现,虽然数组长度的扩展或者缩短所需时间正比于数组当前存储元素的个数,但是实现其余API(除iterator操作)的操作只需常数时间,把耗费的时间平摊后就是常数时间了.<br>为什么不能采用链表结构呢?链表结构实现literator非常方便,只需创建一个指针,不断移动指针的位置就可以实现iterator的各个功能,耗费常数时间,但是题目并不要求iterator耗费常数时间,注意到public Item dequeue()这个API,要求remove and return a random item,难点在于随机返回一个元素,首先创建一个随机数作为索引,对于链表来说,需要移动相应次数的指针找到那个元素,这个操作耗费时间正比于随机数的大小,不是常数时间.  </p>
+<h3 id="三-Permutation"><a href="#三-Permutation" class="headerlink" title="三. Permutation"></a>三. Permutation</h3><p>目标:<br>Write a client program Permutation.java that takes an integer k as a command-line argument; reads in a sequence of strings from standard input using StdIn.readString(); and prints exactly k of them, uniformly at random. Print each item from the sequence at most once.<br>要求:<br>The running time of Permutation must be linear in the size of the input. You may use only a constant amount of memory plus either one Deque or RandomizedQueue object of maximum size at most n. (<strong>For an extra challenge, use only one Deque or RandomizedQueue object of maximum size at most k</strong>)<br>分析:<br>没能完成extra challenge,所以扣了5分<br>这个直接看代码即可</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="一-Deque-1"><a href="#一-Deque-1" class="headerlink" title="一.Deque"></a>一.Deque</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Deque</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">implements</span> <span class="title">Iterable</span>&lt;<span class="title">Item</span>&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Node first,last; <span class="comment">//64位系统,每个引用8bytes,此处共16bytes</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> n; <span class="comment">//4bytes</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;  <span class="comment">//64位系统,对象头16bytes , 内部类开销8bytes</span></span><br><span class="line">		<span class="keyword">private</span> Item item;  <span class="comment">//64位系统,8bytes</span></span><br><span class="line">		<span class="keyword">private</span> Node next;  <span class="comment">//64位系统,8bytes</span></span><br><span class="line">		<span class="keyword">private</span> Node pre;  <span class="comment">//64位系统,8bytes     所以,1个Node占用48bytes,n个Node就是48n bytes</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// construct an empty deque</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Deque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		first = <span class="keyword">null</span>;</span><br><span class="line">		last = <span class="keyword">null</span>;</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//is Deque empty?</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n == <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// return the number of items on the deque</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// add the item to the front</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(Item item)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(item==<span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.lang.IllegalArgumentException(<span class="string">"there is nothing"</span>);</span><br><span class="line">		Node oldfirst = first;</span><br><span class="line">		first = <span class="keyword">new</span> Node();</span><br><span class="line">		first.item = item;</span><br><span class="line">		first.next = oldfirst;</span><br><span class="line">		<span class="comment">//if(isEmpty())   just use n rather to call isEmpty()</span></span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) last = first;</span><br><span class="line">		<span class="keyword">else</span> oldfirst.pre = first;</span><br><span class="line">		n++;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// add the item to the end</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(Item item)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(item==<span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.lang.IllegalArgumentException(<span class="string">"there is nothing"</span>);</span><br><span class="line">		Node oldlast = last;</span><br><span class="line">		last = <span class="keyword">new</span> Node();</span><br><span class="line">		last.item = item;</span><br><span class="line">		last.pre = oldlast;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) first = last;</span><br><span class="line">		<span class="keyword">else</span> oldlast.next = last;</span><br><span class="line">		n++;</span><br><span class="line">	&#125;</span><br><span class="line">	   </span><br><span class="line">	<span class="comment">// remove and return the item from the front</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Item <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//if 'if' runs,the program would stop</span></span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.util.NoSuchElementException(<span class="string">"Deque is empty!!"</span>);</span><br><span class="line">		Item temp = first.item;</span><br><span class="line">		first = first.next;</span><br><span class="line">		n--;</span><br><span class="line">		<span class="comment">//check if the Deque is empty after remove</span></span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) last = <span class="keyword">null</span>;<span class="comment">//first is null now </span></span><br><span class="line">		<span class="keyword">else</span> first.pre = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">return</span> temp;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// remove and return the item from the end</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Item <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.util.NoSuchElementException(<span class="string">"Deque is empty!!"</span>);</span><br><span class="line">		Item temp = last.item;</span><br><span class="line">		last = last.pre;</span><br><span class="line">		n--;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>)first = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">else</span> last.next=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">return</span> temp;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// return an iterator over items in order from front to end</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Iterator&lt;Item&gt; <span class="title">iterator</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ListIterator();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">Item</span>&gt;</span>&#123; <span class="comment">//对象头:16bytes </span></span><br><span class="line">		<span class="keyword">private</span> Node current = first; <span class="comment">//内部类额外开销8bytes,引用8bytes</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> current != <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> java.lang.UnsupportedOperationException(<span class="string">"you mustn't do this!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> Item <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(current == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.util.NoSuchElementException(<span class="string">"no such element"</span>);</span><br><span class="line">			Item temp = current.item;</span><br><span class="line">			current = current.next;</span><br><span class="line">			<span class="keyword">return</span> temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//main</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Deque&lt;String&gt; deque = <span class="keyword">new</span> Deque&lt;String&gt;();</span><br><span class="line">		System.out.println(deque.size());</span><br><span class="line">		deque.addFirst(<span class="string">"haha"</span>);</span><br><span class="line">		deque.addFirst(<span class="string">"hehe"</span>);</span><br><span class="line">		deque.addFirst(<span class="string">"heihei"</span>);</span><br><span class="line">		deque.addFirst(<span class="string">"hiahia"</span>);</span><br><span class="line">		deque.addFirst(<span class="string">"houhou"</span>);</span><br><span class="line">		System.out.println(deque.size());</span><br><span class="line">		deque.removeFirst();</span><br><span class="line">		System.out.println(deque.size());</span><br><span class="line">		deque.removeLast();</span><br><span class="line">		System.out.println(deque.size());</span><br><span class="line">		Iterator&lt;String&gt; i = deque.iterator();</span><br><span class="line">		<span class="keyword">while</span>(i.hasNext()) System.out.println(i.next());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二-Randomized-queue-1"><a href="#二-Randomized-queue-1" class="headerlink" title="二.Randomized queue"></a>二.Randomized queue</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdRandom;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Additionally, your iterator implementation must support operations next() and hasNext() </span></span><br><span class="line"><span class="comment">//in constant worst-case time;</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomizedQueue</span>&lt;<span class="title">Item</span>&gt; <span class="keyword">implements</span> <span class="title">Iterable</span>&lt;<span class="title">Item</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Item[] randomq;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> n;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// construct an empty randomized queue</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">RandomizedQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		randomq = (Item[]) <span class="keyword">new</span> Object[<span class="number">1</span>];</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// is the randomized queue empty?</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n == <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// return the number of items on the randomized queue</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//resize the array</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//temp is a "yinyong"</span></span><br><span class="line">		Item[] temp = (Item[]) <span class="keyword">new</span> Object[size]; </span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) temp[i] = randomq[i];</span><br><span class="line">		randomq = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// add the item</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(Item item)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (item==<span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.lang.IllegalArgumentException(<span class="string">"there is nothing"</span>);</span><br><span class="line">		<span class="keyword">if</span>(n==randomq.length) resize(<span class="number">2</span>*n);</span><br><span class="line">		randomq[n++] = item;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// remove and return a random item</span></span><br><span class="line">	<span class="comment">//exchange the chosen element with the last element</span></span><br><span class="line">	<span class="comment">//then,delete the last one</span></span><br><span class="line">	<span class="comment">//so that realize deleting the random element in the end of queue</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Item <span class="title">dequeue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//faster than call isEmpty()</span></span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.util.NoSuchElementException(<span class="string">"array is empty"</span>);</span><br><span class="line">		<span class="keyword">int</span> i = StdRandom.uniform(<span class="number">0</span>,n);</span><br><span class="line">		Item temp = randomq[i];</span><br><span class="line">		<span class="comment">// pay attention to the change of n</span></span><br><span class="line">		<span class="keyword">if</span>(i != --n) randomq[i] = randomq[n];</span><br><span class="line">		randomq[n] = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//here without n&gt;0.wrong,try:add one,delete one</span></span><br><span class="line">		<span class="keyword">if</span>(n&gt;<span class="number">0</span> &amp;&amp; n==randomq.length/<span class="number">4</span>) resize(randomq.length/<span class="number">2</span>);</span><br><span class="line">		<span class="keyword">return</span> temp;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// return a random item (but do not remove it)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Item <span class="title">sample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> java.util.NoSuchElementException(<span class="string">"array is empty"</span>);</span><br><span class="line">		<span class="keyword">return</span> randomq[StdRandom.uniform(<span class="number">0</span>,n)];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// return an independent iterator over items in random order</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Iterator&lt;Item&gt; <span class="title">iterator</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> RandomIterator();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// inner class</span></span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">Item</span>&gt;</span>&#123;</span><br><span class="line">		<span class="comment">// m is as index,just like the pointer in Deque</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> m;</span><br><span class="line">		<span class="keyword">private</span> Item[] iterq;</span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="title">RandomIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			iterq = (Item[])<span class="keyword">new</span> Object[n];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) iterq[i] = randomq[i];</span><br><span class="line">			<span class="comment">//random order</span></span><br><span class="line">			StdRandom.shuffle(iterq);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> m &lt; n;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> java.lang.UnsupportedOperationException(<span class="string">"you mustn't do this!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> Item <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(m&gt;=n) <span class="keyword">throw</span> <span class="keyword">new</span> java.util.NoSuchElementException(<span class="string">"no next element!"</span>);</span><br><span class="line">			Item temp = iterq[m++];</span><br><span class="line">			<span class="keyword">return</span> temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// unit testing (optional)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		RandomizedQueue&lt;String&gt; rq = <span class="keyword">new</span> RandomizedQueue&lt;String&gt;();</span><br><span class="line">		System.out.println(rq.isEmpty());</span><br><span class="line">		System.out.println(rq.size());</span><br><span class="line">		rq.enqueue(<span class="string">"haha"</span>);</span><br><span class="line">		rq.enqueue(<span class="string">"heihei"</span>);</span><br><span class="line">		rq.enqueue(<span class="string">"hiahia"</span>);</span><br><span class="line">		rq.enqueue(<span class="string">"hehe"</span>);</span><br><span class="line">		rq.enqueue(<span class="string">"houhou"</span>);</span><br><span class="line">		System.out.println(rq.size());</span><br><span class="line">		rq.dequeue();</span><br><span class="line">		rq.dequeue();</span><br><span class="line">		</span><br><span class="line">		Iterator&lt;String&gt; iter = rq.iterator();</span><br><span class="line">		<span class="keyword">while</span>(iter.hasNext()) System.out.println(iter.next());</span><br><span class="line">		System.out.println();</span><br><span class="line">		Iterator&lt;String&gt; iter2 = rq.iterator();</span><br><span class="line">		<span class="keyword">while</span>(iter2.hasNext()) System.out.println(iter2.next());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-Permutation-1"><a href="#三-Permutation-1" class="headerlink" title="三. Permutation"></a>三. Permutation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdIn;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Permutation</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//jvm在调用主函数时,传入的是new args[0]</span></span><br><span class="line">		<span class="keyword">int</span> k = Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">		RandomizedQueue rq = <span class="keyword">new</span> RandomizedQueue();</span><br><span class="line">		<span class="keyword">while</span>(!StdIn.isEmpty()) &#123;</span><br><span class="line">			rq.enqueue(StdIn.readString());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(rq.size()-k&gt;<span class="number">0</span>) rq.dequeue();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++) &#123;</span><br><span class="line">			StdOut.println(rq.dequeue());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week1-Percolation-%E6%B8%97%E9%80%8F-98%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/25/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week1-Percolation-%E6%B8%97%E9%80%8F-98%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">普林斯顿大学算法Week1: Percolation 渗透(98分)--总结及代码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-25 20:34:11" itemprop="dateCreated datePublished" datetime="2018-01-25T20:34:11+08:00">2018-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>视频讲述了并查集算法的细节,作业是该算法的实际应用  </p>
+<ol>
+<li><p>下载algs4.jar,并添加到CLASSPATH中</p>
+</li>
+<li><p>使用algs4.jar中的工具:求均值,求标准差,输入输出</p>
+</li>
+<li><p>需要传入外部参数的方法都得进行参数检测,否则扣分</p>
+</li>
+<li><p>UnionFind算法的输入是一维的,Percolation系统是n*n的格子,每个site由坐标对(x,y)表示,<br>所以要想描述点与点之间的关系,<strong>得先将二维坐标转换成一维的数值</strong>,我采用的转换规则是:(x,y)→x*(n+1)+y<br>(1,1)到(n,n) 对应n+2到n*(n+2),注意:一维数值并不是连续的<br>可以采用其它转换规则,比如易于理解的(x,y)→x*(n+2)+y,第5条有进一步的说明</p>
+</li>
+<li><p>之所以采用如上的转换规则:<br>其一,方便判断某个点的上下左右邻居时不会有数组越界异常,对于四周的site来说,并不都有四个邻点 <strong>(如下图3*3.png,左上角的点1没有上邻居和左邻居,扩充为5*5.png后,点1就有上下左右四个邻居了)</strong><br>其二,节省空间,最容易理解的是使用(n+2)*(n+2)长的一维数组(如下图3*3.png和5*5.png),使用(n+2)*(n+1)+1长的也行,因为在转换规则的约束下,所有site的一维表示都是唯一的,并且最大值等于(n+2)*(n+1)</p>
+</li>
+<li><p>要区分好block,open,full这三个状态,block对应false,open对应true,full表示某个site和上虚拟点相连</p>
+</li>
+<li><p>为方便判断系统为渗透状态,在n*n格子的上下分别加两个虚拟的点,<br>代码中:索引为0的代表上虚拟点,索引为(n+1)*(n+1)代表下虚拟点(找两个没用的索引值即可)<br>这样做会导致backwash问题(即回流问题),<strong>因为在open方法中第n行的所有site都和下虚拟点union过了</strong></p>
+</li>
+<li><p>解决backwash问题,需要再创建一个并查集对象,即代码中的uf2,该对象不将最后一行和下虚拟点相连,<strong>在isFull方法中使用uf2的connected方法</strong>就不会导致backwash问题了  </p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/9608551-6126573d8942fc3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="3*3.png">  </p>
+ <center>3\*3.png</center>
+
+<p> <img src="http://upload-images.jianshu.io/upload_images/9608551-2806ebc04fe56cb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="5*5.png">  </p>
+ <center>5\*5.png</center>
+
+
+
+
+</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="Percalation-java"><a href="#Percalation-java" class="headerlink" title="Percalation.java"></a>Percalation.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sasuke</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 25/1/2018</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.WeightedQuickUnionUF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Percolation</span> </span>&#123;</span><br><span class="line">   <span class="comment">// n*n grid</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> n ; </span><br><span class="line">   <span class="comment">//status of each site</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">boolean</span>[] eachStatus ; </span><br><span class="line">   <span class="comment">//number of open site</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> openNum;</span><br><span class="line">   <span class="comment">//UF alg with virtual site</span></span><br><span class="line">   <span class="keyword">private</span> WeightedQuickUnionUF uf1;</span><br><span class="line">   <span class="comment">//UF alg with only top site due to backwash</span></span><br><span class="line">   <span class="keyword">private</span> WeightedQuickUnionUF uf2;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// create n-by-n grid, with all sites blocked</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Percolation</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; 	</span><br><span class="line">   	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal value of n!"</span>);</span><br><span class="line">   	<span class="keyword">this</span>.n = n;</span><br><span class="line">   	<span class="comment">//plus two virtual site</span></span><br><span class="line">   	eachStatus = <span class="keyword">new</span> <span class="keyword">boolean</span>[(n+<span class="number">1</span>)*(n+<span class="number">2</span>)]; </span><br><span class="line">   	</span><br><span class="line">   	<span class="comment">//all sites are blocked</span></span><br><span class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; eachStatus.length;i++) eachStatus[i]=<span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// grid with top site and bottom site</span></span><br><span class="line">   	uf1 = <span class="keyword">new</span> WeightedQuickUnionUF((n+<span class="number">1</span>)*(n+<span class="number">2</span>));</span><br><span class="line">    <span class="comment">// grid with only bottom site</span></span><br><span class="line">    uf2 = <span class="keyword">new</span> WeightedQuickUnionUF((n+<span class="number">1</span>)*(n+<span class="number">2</span>));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//translate 2 dimentional coordinate to 1 dimentional pattern</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">oneDimention</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">return</span> row*(n+<span class="number">1</span>)+col;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// open site (row, col) if it is not open already</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">if</span>(row&lt;<span class="number">1</span> || row&gt;n || col&lt;<span class="number">1</span> || col&gt;n) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal row or col!"</span>);</span><br><span class="line">   	<span class="keyword">if</span>(!isOpen(row,col)) &#123;</span><br><span class="line">   		eachStatus[oneDimention(row,col)]=<span class="keyword">true</span>;</span><br><span class="line">	   	openNum++;</span><br><span class="line">   		<span class="keyword">int</span> temp1 = oneDimention(row,col);</span><br><span class="line">	   	<span class="comment">//if neighbor could be connected?</span></span><br><span class="line">	   	<span class="keyword">if</span>(row==<span class="number">1</span>)&#123;</span><br><span class="line">	   		uf1.union(<span class="number">0</span>,temp1);</span><br><span class="line">	   		uf2.union(<span class="number">0</span>,temp1);</span><br><span class="line">	   	&#125;</span><br><span class="line">	   	<span class="keyword">if</span>(row==n) &#123; </span><br><span class="line">	   		uf1.union((n+<span class="number">1</span>)*(n+<span class="number">1</span>),temp1);</span><br><span class="line">	   	&#125;</span><br><span class="line">		<span class="keyword">int</span>[] dx = &#123;<span class="number">1</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		<span class="keyword">int</span>[] dy = &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> tempX = row+dx[i];</span><br><span class="line">			<span class="keyword">int</span> tempY = col+dy[i];</span><br><span class="line">			<span class="keyword">int</span> temp2 = oneDimention(tempX,tempY);</span><br><span class="line">			<span class="keyword">if</span> (eachStatus[temp2])&#123;</span><br><span class="line">				uf1.union(temp1,temp2);</span><br><span class="line">				uf2.union(temp1,temp2);</span><br><span class="line">			 &#125;</span><br><span class="line">	   		&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   &#125;    </span><br><span class="line"></span><br><span class="line">   <span class="comment">//is site (row, col) open?</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOpen</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	   <span class="keyword">if</span>(row&lt;<span class="number">1</span> || row&gt;n || col&lt;<span class="number">1</span> || col&gt;n) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal row or col!"</span>);</span><br><span class="line">	   <span class="keyword">return</span> eachStatus[oneDimention(row,col)];</span><br><span class="line">   &#125;  </span><br><span class="line"></span><br><span class="line">   <span class="comment">//is site (row, col) full?</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">if</span>(row&lt;<span class="number">1</span> || row&gt;n || col&lt;<span class="number">1</span> || col&gt;n) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal row or col!"</span>);</span><br><span class="line">   	<span class="keyword">return</span> uf2.connected(<span class="number">0</span>,oneDimention(row,col));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// number of open sites</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfOpenSites</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> openNum;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// does the system percolate?</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">percolates</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> uf1.connected(<span class="number">0</span>,(n+<span class="number">1</span>)*(n+<span class="number">1</span>));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// test client (optional)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	 Percolation p = <span class="keyword">new</span> Percolation(<span class="number">3</span>);</span><br><span class="line">     p.open(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">     p.open(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">     p.open(<span class="number">3</span>, <span class="number">2</span>);</span><br><span class="line">     StdOut.println(p.isOpen(<span class="number">1</span>,<span class="number">1</span>));</span><br><span class="line">     StdOut.println(p.percolates());</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PercolationStats-java"><a href="#PercolationStats-java" class="headerlink" title="PercolationStats.java"></a>PercolationStats.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sasuke</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 25/1/2018</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdRandom;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdStats;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PercolationStats</span> </span>&#123;</span><br><span class="line">	<span class="comment">//trial times</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> trialNum;</span><br><span class="line">	<span class="comment">//threshold P</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span>[] preP;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">PercolationStats</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> trialNum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n&lt;<span class="number">1</span> || trialNum&lt;<span class="number">1</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal n or trialNum,please check"</span>);</span><br><span class="line">		<span class="keyword">this</span>.trialNum = trialNum;</span><br><span class="line">		preP = <span class="keyword">new</span> <span class="keyword">double</span>[trialNum];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;trialNum;i++) &#123;</span><br><span class="line">			Percolation p = <span class="keyword">new</span> Percolation(n);</span><br><span class="line">			<span class="keyword">while</span>(!p.percolates()) &#123;</span><br><span class="line">				<span class="keyword">int</span> row = StdRandom.uniform(n)+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">int</span> col = StdRandom.uniform(n)+<span class="number">1</span>;</span><br><span class="line">				p.open(row,col);</span><br><span class="line">				<span class="keyword">if</span> (p.percolates()) <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			preP[i] = (<span class="keyword">double</span>)p.numberOfOpenSites()/(n*n);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// mean of p</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> StdStats.mean(preP);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// standard deviation</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">stddev</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> StdStats.stddev(preP);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//confidence interval:low</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">confidenceLo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> mean()-<span class="number">1.96</span>*stddev()/Math.sqrt(trialNum);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//confidence interval:high</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">confidenceHi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> mean()+<span class="number">1.96</span>*stddev()/Math.sqrt(trialNum);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n =<span class="number">10</span>,trialNum=<span class="number">1000</span>;</span><br><span class="line">		PercolationStats ps = <span class="keyword">new</span> PercolationStats(n,trialNum);</span><br><span class="line">		StdOut.println(<span class="string">"grid size :"</span> + n+<span class="string">"*"</span>+n);</span><br><span class="line">		StdOut.println(<span class="string">"trial times :"</span> + trialNum);</span><br><span class="line">		StdOut.println(<span class="string">"mean of p :"</span>+ ps.mean());</span><br><span class="line">		StdOut.println(<span class="string">"standard deviation :"</span>+ps.stddev());</span><br><span class="line">		StdOut.println(<span class="string">"confidence interval low :"</span>+ps.confidenceLo());</span><br><span class="line">		StdOut.println(<span class="string">"confidence interval high :"</span>+ps.confidenceHi());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/24/Google%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/24/Google%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">Google使用心得</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-24 12:30:33" itemprop="dateCreated datePublished" datetime="2018-01-24T12:30:33+08:00">2018-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>Unsplash Instant: Chrome浏览器的一款插件,使用后每次打开chrome都会随机显示一张摄影师的作品,质量很高,喜欢的话还可以下载下来</li>
+<li>Chrome浏览器可以搜索网页内的文本内容,对于不知道关键词在哪同时页面文字非常多时很有效,按Ctrl+F后输入关键词</li>
+<li>谷歌云端硬盘: 可以上传本地文件夹至云端,并可实现实时同步,免费15G.有客户端并可以设置代理,使用方便</li>
+<li>谷歌翻译: 非常厉害的翻译,可能跟谷歌拥有的庞大数据量有关系</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Little Haes"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Little Haes</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/smallhaes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:littlehaes@bupt.edu.cn" title="E-Mail → mailto:littlehaes@bupt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/smallhaes" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=75165464" title="网易云 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;75165464" rel="noopener" target="_blank"><i class="fa fa-fw fa-cloud"></i>网易云</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/littlehaes" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;littlehaes" rel="noopener" target="_blank">CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Little Haes</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

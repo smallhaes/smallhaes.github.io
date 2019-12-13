@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="梯度下降(gradient descent)也叫最速下降(steepest descent),用来求解无约束最优化问题的一种常用方法,结果是局部最优解,对于目标函数为凸的情况,可以得到全局最优解.梯度下降是迭代算法,每一步需要求解目标函数的梯度向量.   采用线搜索的框架搜索方向取负梯度方向,步长可以通过精确线搜索或非精确线搜索获得关于步长,之前的文章有提过:Line search and Ste">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradient descent梯度下降(Steepest descent)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;03&#x2F;25&#x2F;Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent&#x2F;index.html">
+<meta property="og:site_name" content="Haes&#39; Blog">
+<meta property="og:description" content="梯度下降(gradient descent)也叫最速下降(steepest descent),用来求解无约束最优化问题的一种常用方法,结果是局部最优解,对于目标函数为凸的情况,可以得到全局最优解.梯度下降是迭代算法,每一步需要求解目标函数的梯度向量.   采用线搜索的框架搜索方向取负梯度方向,步长可以通过精确线搜索或非精确线搜索获得关于步长,之前的文章有提过:Line search and Ste">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-a781bb3cbc7338a5.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-6a8d6ce238132a35.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-eae7b5e4cba6c71f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-935bdaced03e4364.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-cce1a345241054d5.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-670bc6a5de3e00a9.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-49563f08eb67baee.gif?imageMogr2&#x2F;auto-orient&#x2F;strip">
+<meta property="article:published_time" content="2018-03-25T09:23:33.000Z">
+<meta property="article:modified_time" content="2019-12-13T15:16:44.490Z">
+<meta property="article:author" content="Little Haes">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-a781bb3cbc7338a5.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="http://yoursite.com/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Gradient descent梯度下降(Steepest descent) | Haes' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Haes' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/smallhaes" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Gradient descent梯度下降(Steepest descent)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-25 17:23:33" itemprop="dateCreated datePublished" datetime="2018-03-25T17:23:33+08:00">2018-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>梯度下降(gradient descent)也叫最速下降(steepest descent),用来求解无约束最优化问题的一种常用方法,结果是局部最优解,对于目标函数为凸的情况,可以得到全局最优解.梯度下降是迭代算法,每一步需要求解目标函数的梯度向量.  </p>
+<h2 id="采用线搜索的框架"><a href="#采用线搜索的框架" class="headerlink" title="采用线搜索的框架"></a>采用线搜索的框架</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a781bb3cbc7338a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><strong>搜索方向取负梯度方向,步长可以通过精确线搜索或非精确线搜索获得</strong><br>关于步长,之前的文章有提过:<a href="http://littlehaes.com/2018/03/23/Line-search-and-Step-length线搜索与步长/" target="_blank" rel="noopener">Line search and Step length线搜索与步长</a>  </p>
+<h2 id="泰勒展开简化形式"><a href="#泰勒展开简化形式" class="headerlink" title="泰勒展开简化形式"></a>泰勒展开简化形式</h2><ol>
+<li>假设f(x)是R^n上具有一阶连续偏导数的函数.要求解的无约束最优化问题是min f(x),x*标识目标函数f(x)的极小点.  </li>
+<li>选取适当的初值x^(0),不断迭代,更新x的值,进行目标函数的极小化,直到收敛.由于负梯度方向是使函数值下降最快的方向,在迭代的每一步,以负梯度方向更新x的值,从而达到减小函数值的目的.  </li>
+<li>因为f(x)具有一阶连续偏导数, 若第k次迭代值为x^(k),则可将f(x)在x^(k)附近进行一阶泰勒展开(Taylor expansion):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6a8d6ce238132a35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></li>
+</ol>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-eae7b5e4cba6c71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>简化版:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-935bdaced03e4364.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><h3 id="收敛慢"><a href="#收敛慢" class="headerlink" title="收敛慢"></a>收敛慢</h3><h4 id="碗形函数-bowl-shape"><a href="#碗形函数-bowl-shape" class="headerlink" title="碗形函数(bowl shape)"></a>碗形函数(bowl shape)</h4><p>蓝色的线是函数的等高线(线上的函数值相等)<br>从x_0点开始,沿x_0的负梯度方向(与该点切线垂直)的前进适当的步长,函数值会减小<br>对于该图来说,一次一次迭代可以收敛全局最优点<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cce1a345241054d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png">  </p>
+<h4 id="之字形Zig-Zagging"><a href="#之字形Zig-Zagging" class="headerlink" title="之字形Zig-Zagging"></a>之字形Zig-Zagging</h4><p>实际中的等高线可能并没有这么好<br>下图这样的等高线会导致每次迭代走的是之字形(Zig-Zagging),这样会使得收敛速度很慢<br><img src="https://upload-images.jianshu.io/upload_images/9608551-670bc6a5de3e00a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png">  </p>
+<h4 id="Rosenbrock-函数"><a href="#Rosenbrock-函数" class="headerlink" title="Rosenbrock 函数"></a>Rosenbrock 函数</h4><p>对于像Rosenbrock这样的病态函数(pathological functions)来说,等高线如下图<br>不仅有走之字形(Zig-Zagging)的情况,而且函数图像的底部很平坦,这样每次前进的步长很小,导致收敛速度太慢<br>The bottom of the valley is very flat. Because of the curved flat valley the optimization is zig-zagging slowly with small stepsizes towards the minimum.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-49563f08eb67baee.gif?imageMogr2/auto-orient/strip" alt="7.gif"><br>梯度下降的收敛速度比起很多其他方法都慢,如果函数不凸,梯度下降过程中会走更多的之字形,因为总有当前点的梯度方向与当前点到最小点的方向是垂直的情况,也就是说要走很多冤枉路</p>
+<h3 id="不可微的函数"><a href="#不可微的函数" class="headerlink" title="不可微的函数"></a>不可微的函数</h3><p>对于不可微的函数,就不能直接用梯度下降了,需要进行额外的平滑处理  </p>
+<p>参考:<br>李航,统计学习方法</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/03/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E6%98%AF%E5%87%BD%E6%95%B0%E5%80%BC%E5%A2%9E%E5%A4%A7%E6%9C%80%E5%BF%AB%E7%9A%84%E6%96%B9%E5%90%91/" rel="prev" title="为什么梯度方向是函数值增大最快的方向">
+      <i class="fa fa-chevron-left"></i> 为什么梯度方向是函数值增大最快的方向
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/" rel="next" title="Newton's method and Quasi Newton method牛顿法与拟牛顿法">
+      Newton's method and Quasi Newton method牛顿法与拟牛顿法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#采用线搜索的框架"><span class="nav-number">1.</span> <span class="nav-text">采用线搜索的框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泰勒展开简化形式"><span class="nav-number">2.</span> <span class="nav-text">泰勒展开简化形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">3.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">4.</span> <span class="nav-text">缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#收敛慢"><span class="nav-number">4.1.</span> <span class="nav-text">收敛慢</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#碗形函数-bowl-shape"><span class="nav-number">4.1.1.</span> <span class="nav-text">碗形函数(bowl shape)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#之字形Zig-Zagging"><span class="nav-number">4.1.2.</span> <span class="nav-text">之字形Zig-Zagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Rosenbrock-函数"><span class="nav-number">4.1.3.</span> <span class="nav-text">Rosenbrock 函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可微的函数"><span class="nav-number">4.2.</span> <span class="nav-text">不可微的函数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Little Haes"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Little Haes</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/smallhaes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:littlehaes@bupt.edu.cn" title="E-Mail → mailto:littlehaes@bupt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/smallhaes" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=75165464" title="网易云 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;75165464" rel="noopener" target="_blank"><i class="fa fa-fw fa-cloud"></i>网易云</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/littlehaes" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;littlehaes" rel="noopener" target="_blank">CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Little Haes</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

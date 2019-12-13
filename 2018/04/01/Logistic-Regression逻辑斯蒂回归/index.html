@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Logistic Regressionlogistic回归是统计学习中的经典分类方法,他属于对数线性模型,logistic回归来源于logistic分布,先从logistic分布说起 Logistic distribution设X是连续随机变量,X服从logistic分布,其分布函数和概率密度函数如下: 分布函数其中,μ为位置参数,s为形状参数分布函数即为通常所说的logistic函数,其图像关于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logistic Regression逻辑斯蒂回归">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;04&#x2F;01&#x2F;Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92&#x2F;index.html">
+<meta property="og:site_name" content="Haes&#39; Blog">
+<meta property="og:description" content="Logistic Regressionlogistic回归是统计学习中的经典分类方法,他属于对数线性模型,logistic回归来源于logistic分布,先从logistic分布说起 Logistic distribution设X是连续随机变量,X服从logistic分布,其分布函数和概率密度函数如下: 分布函数其中,μ为位置参数,s为形状参数分布函数即为通常所说的logistic函数,其图像关于">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-95edc9f8477dd868.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-a3ff0b4a2c46e68b.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-cb5e4d5dc985ae80.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-a1f50bb8a1e33a11.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-29bc7f40bf18fb41.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-32ca35e02ba1973d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-8a0a95e665434b3e.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-1aec11875f7ca8a2.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-f1876db755479d31.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-fa3fb6c60d131815.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="article:published_time" content="2018-04-01T07:30:04.000Z">
+<meta property="article:modified_time" content="2019-12-13T15:16:44.513Z">
+<meta property="article:author" content="Little Haes">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-95edc9f8477dd868.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="http://yoursite.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Logistic Regression逻辑斯蒂回归 | Haes' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Haes' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/smallhaes" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Logistic Regression逻辑斯蒂回归
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-01 15:30:04" itemprop="dateCreated datePublished" datetime="2018-04-01T15:30:04+08:00">2018-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h1><p>logistic回归是统计学习中的经典分类方法,他属于对数线性模型,logistic回归来源于logistic分布,先从logistic分布说起</p>
+<h2 id="Logistic-distribution"><a href="#Logistic-distribution" class="headerlink" title="Logistic distribution"></a>Logistic distribution</h2><p>设X是连续随机变量,X服从logistic分布,其分布函数和概率密度函数如下:</p>
+<h3 id="分布函数"><a href="#分布函数" class="headerlink" title="分布函数"></a>分布函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-95edc9f8477dd868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a3ff0b4a2c46e68b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>分布函数即为通常所说的logistic函数,其图像关于(μ,0.5)对称,满足:<br>F(-x+μ)+F(x-μ)=1<br>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)<br>形状参数s的值越小,曲线在中心附近增长得越快  </p>
+<h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb5e4d5dc985ae80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a1f50bb8a1e33a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png">   </p>
+<h2 id="二项logistic回归"><a href="#二项logistic回归" class="headerlink" title="二项logistic回归"></a>二项logistic回归</h2><p>二项logistic回归(binomial logistic regression)是一种分类模型,<strong>由条件概率分布P(Y|X)表示</strong>,形式为参数化的logistic分布.这里,<strong>随机变量X取值为实数,随机变量Y取值为1或0.通过监督学习的方法来估计模型参数</strong></p>
+<h3 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h3><p>柯尔莫哥洛夫给出了概率的公理化定义:</p>
+<ul>
+<li>0≤P(A)≤1</li>
+<li>P(Ω)=1,P(∅)=0,必然事件概率为1,不可能事件概率为0</li>
+<li>加法定理:<strong>若干个互斥事件之和的概率等于各事件的概率之和</strong>,即P(A1+A2+…)=P(A)+P(B)+…事件的个数可以是有限的或无限的<h3 id="条件概率分布"><a href="#条件概率分布" class="headerlink" title="条件概率分布"></a>条件概率分布</h3>二项logistic回归模型是如下的条件概率分布(<strong>该条件概率分布满足上述公理化定义,所以可以作为概率,通过训练使得这个概率值更准确</strong>):  </li>
+</ul>
+<p><strong>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-29bc7f40bf18fb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>或表示成如下形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-32ca35e02ba1973d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>logistic回归采用的是logistic分布函数,对于任意x,F(x)最小值为0,最大值为1,相当于把实数域R映射到(0,1)上.<br>对于给定的输入实例x,按照上式求出P(Y=1|x)和P(Y=0|x),比较两个条件概率的大小,将实例x分到概率值较大的那一类.  </p>
+<h3 id="logistic回归模型的特点"><a href="#logistic回归模型的特点" class="headerlink" title="logistic回归模型的特点"></a>logistic回归模型的特点</h3><p>事件发生的概率与不发生的概率之比称作事件的几率(odds),考察logistic回归的对数几率(log odds)或logit函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8a0a95e665434b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>这就是说,在logistic回归模型中,输出Y=1的对数几率是输入x的线性函数.或者说,输出Y=1的对数几率是由输入x的线性函数表示的模型.(同样地,输出Y=0的对数几率是-wx,x越大则Y=0的对数几率越小,x越小则Y=0的对数几率越大.这样说不满足几率的定义,但是这样解释没有问题,嗯)<br><strong>换一个角度看,考虑对输入x进行分类的线性函数wx</strong>,其值域为实数域.注意这里x∈R_(n+1),w∈R_(n+1).通过logistic回归模型可以将wx转换为概率.这时,线性函数wx的值越接近正无穷,概率值越接近1;线性函数wx的值越接近负无穷,概率值越接近0<br>这样的模型就是logistic回归模型</p>
+<h3 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1aec11875f7ca8a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>关于极大似然法(Maximum Likelihood Estimation),可以参考之前的文章<a href="http://littlehaes.com/2018/03/30/Maximum-Likelihood-Estimation极大似然估计/" target="_blank" rel="noopener">极大似然估计</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-f1876db755479d31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br><strong>求得使L(w)取得最大值的w也就得到logistic回归模型了</strong><br>logistic回归学习中通常采用的方法是梯度下降法(Gradient descent)和拟牛顿法(Quasi Newton method),见之前的文章<a href="http://littlehaes.com/2018/03/25/Gradient-descent梯度下降-Steepest-descent/" target="_blank" rel="noopener">梯度下降</a>和<a href="http://littlehaes.com/2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" target="_blank" rel="noopener">拟牛顿法</a>  </p>
+<h3 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h3><p>之前介绍的是二项logistic回归,<strong>用于二分类</strong>.可以将其推广为multi-nomial logistic regression model.用于多类分类.<br>假设离散型随机变量Y的取值集合是{1,2,…,K},那么多项logistic回归模型是:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fa3fb6c60d131815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>二项logistic回归的参数估计方法也可以推广到多项logistic回归中  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)  </p>
+<ol>
+<li>形式为<strong>参数化</strong>的logistic分布,即μ和s变成了w和b  </li>
+<li>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</li>
+<li>logistic回归的对数几率是线性的:wx+b,所以logistic回归属于对数线性模型</li>
+<li>对数似然中对于<strong>单个样本</strong>的表达形式要有清晰的认识:P(yi|xi)=π(xi)^yi · [1-π(xi)]^(1-yi),决定这个式子形式的是yi</li>
+</ol>
+<p>参考:<br>李航,统计学习方法  </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/03/31/Linear%20Regression%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="prev" title="Linear Regression线性回归">
+      <i class="fa fa-chevron-left"></i> Linear Regression线性回归
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/04/02/Matrix-Derivative%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/" rel="next" title="Matrix Derivative矩阵求导">
+      Matrix Derivative矩阵求导 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Logistic distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布函数"><span class="nav-number">1.1.1.</span> <span class="nav-text">分布函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率密度函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">概率密度函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项logistic回归"><span class="nav-number">1.2.</span> <span class="nav-text">二项logistic回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率的公理化定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">概率的公理化定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件概率分布"><span class="nav-number">1.2.2.</span> <span class="nav-text">条件概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic回归模型的特点"><span class="nav-number">1.2.3.</span> <span class="nav-text">logistic回归模型的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型参数估计"><span class="nav-number">1.2.4.</span> <span class="nav-text">模型参数估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项logistic回归"><span class="nav-number">1.2.5.</span> <span class="nav-text">多项logistic回归</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Little Haes"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Little Haes</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/smallhaes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:littlehaes@bupt.edu.cn" title="E-Mail → mailto:littlehaes@bupt.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/smallhaes" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;smallhaes" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=75165464" title="网易云 → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;75165464" rel="noopener" target="_blank"><i class="fa fa-fw fa-cloud"></i>网易云</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/littlehaes" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;littlehaes" rel="noopener" target="_blank">CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Little Haes</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.1.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.6.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

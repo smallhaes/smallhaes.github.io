@@ -177,6 +177,149 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/python%E8%A3%85%E9%A5%B0%E5%99%A8%E5%B0%8F%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/06/python%E8%A3%85%E9%A5%B0%E5%99%A8%E5%B0%8F%E8%AE%A1/" class="post-title-link" itemprop="url">python装饰器小计</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-11-06 09:41:06" itemprop="dateCreated datePublished" datetime="2018-11-06T09:41:06+08:00">2018-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>研读代码时遇到了python装饰器,所以要搞懂它,这一过程加深了自己对于函数定义与函数调用的体会<br>一. 装饰器本质就是个函数,用来增加被装饰函数的功能.<br>二. 使用装饰器的巨大优势:不改变被装饰函数的调用方式; 不修改被装饰函数的源代码<br>三. 无参数装饰器使用两层嵌套; 带参数装饰器使用三层嵌套<br>下面举两个简单的例子,为了笔记的方便,定义装饰器函数时我用了三种命名:decorator_para; decorator; wrapper,这样有助于记忆</p>
+<h4 id="无参数装饰器"><a href="#无参数装饰器" class="headerlink" title="无参数装饰器"></a>无参数装饰器</h4><p>为函数加上计时功能<br><strong>写两层嵌套装饰器函数时牢记两点:向decorator传入被装饰函数名; decorator返回wrapper</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span> <span class="comment"># 向decorator传入函数名</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">		start = time.time()</span><br><span class="line">		func(*args, **kwargs)</span><br><span class="line">		total = time.time() - start</span><br><span class="line">		print(<span class="string">'函数%s的执行时间为:%s秒'</span> % (func.__name__,total))</span><br><span class="line">	<span class="keyword">return</span> wrapper <span class="comment"># decorator返回wrapper</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator	#相当于 tesla = decorator(tesla)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tesla</span><span class="params">(price=<span class="string">'95W'</span>)</span>:</span></span><br><span class="line">	time.sleep(<span class="number">2</span>)</span><br><span class="line">	print(<span class="string">'鸥翼门真帅气,不过价格挺刺激:%s'</span> % price)</span><br><span class="line"></span><br><span class="line">tesla()</span><br></pre></td></tr></table></figure>
+<h4 id="带参数装饰器"><a href="#带参数装饰器" class="headerlink" title="带参数装饰器"></a>带参数装饰器</h4><p>为函数加上计时功能, 可以选择显示方式:default方式是不保留小数;normal方式保留两位小数<br><strong>写三层嵌套装饰器函数时牢记三点:向decorator_para中传入装饰器要用的参数;向decorator传入被装饰函数名; decorator返回wrapper; decorator_para返回decorator</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator_para</span><span class="params">(count_type)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">		<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">			start = time.time()</span><br><span class="line">			func(*args, **kwargs)</span><br><span class="line">			total = time.time() - start</span><br><span class="line">			<span class="keyword">if</span> count_type == <span class="string">'default'</span>:</span><br><span class="line">				print(<span class="string">'函数%s的执行时间为:%s秒'</span> % (func.__name__,total))</span><br><span class="line">			<span class="keyword">elif</span> count_type == <span class="string">'normal'</span>:</span><br><span class="line">				print(<span class="string">'函数%s的执行时间为:%.2f秒'</span> % (func.__name__,total))</span><br><span class="line">		<span class="keyword">return</span> wrapper</span><br><span class="line">	<span class="keyword">return</span> decorator</span><br><span class="line">					</span><br><span class="line"><span class="meta">@decorator_para('normal')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tesla</span><span class="params">(price=<span class="string">'95W'</span>)</span>:</span></span><br><span class="line">	time.sleep(<span class="number">2</span>)</span><br><span class="line">	print(<span class="string">'鸥翼门真帅气,不过价格挺刺激:%s'</span> % price)</span><br><span class="line"></span><br><span class="line">tesla()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/%E7%AE%B1%E7%BA%BF%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/01/%E7%AE%B1%E7%BA%BF%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/" class="post-title-link" itemprop="url">箱线图怎么看</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-11-01 09:39:58" itemprop="dateCreated datePublished" datetime="2018-11-01T09:39:58+08:00">2018-11-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-e622d7dcda429aa0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="boxplot.jpg"></p>
+<p>看图说话，注意以下几个点：</p>
+<p>一.箱子的中间一条线，是数据的中位数，代表了样本数据的平均水平。</p>
+<p>二.箱子的上下限，分别是数据的上四分位数和下四分位数。这意味着箱子包含了50%的数据。因此，箱子的宽度在一定程度上反映了数据的波动程度。</p>
+<p>三.在箱子的上方和下方，又各有一条线。有时候代表着最大最小值，有时候会有一些点“冒出去”。请千万不要纠结，不要纠结，不要纠结（重要的事情说三遍），如果有点冒出去，理解成“异常值”就好。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>一.箱线图是针对连续型变量的，解读时候重点关注平均水平、波动程度和异常值。</p>
+<p>二.当箱子被压得很扁，或者有很多异常的时候，试着做对数变换。</p>
+<p>三.当只有一个连续型变量时，并不适合画箱线图，直方图是更常见的选择。</p>
+<p>四.箱线图最有效的使用途径是作比较，配合一个或者多个定性数据，画分组箱线图。</p>
+<p>转载于<a href="https://www.sohu.com/a/134414348_455817" target="_blank" rel="noopener">箱线图应该怎么用</a>,里面是更详细的介绍</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/3%E5%88%86%E9%92%9F%E7%90%86%E8%A7%A3np-meshgrid/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -379,152 +522,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/numpy%E7%9A%84%E5%B9%BF%E6%92%AD%E5%8E%9F%E7%90%86%E5%8F%8A%E7%A4%BA%E4%BE%8B%E6%BC%94%E7%A4%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/28/numpy%E7%9A%84%E5%B9%BF%E6%92%AD%E5%8E%9F%E7%90%86%E5%8F%8A%E7%A4%BA%E4%BE%8B%E6%BC%94%E7%A4%BA/" class="post-title-link" itemprop="url">numpy的广播原理及示例演示</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-28 09:35:46" itemprop="dateCreated datePublished" datetime="2018-10-28T09:35:46+08:00">2018-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>研读faster rcnn的源码时发现numpy的广播非常重要,故总结一波<br>以数组A和数组B的相加为例,先牢记两点原则:<br><strong>核心:广播时先使A.shape=B.shape,然后对应位置进行相加</strong><br><strong>返回结果的shape是:A.shape和B.shape对应位置的最大值</strong>,比如:A.shape=(1,9,4),B.shape=(15,1,4),那么A+B的shape是(14,9,4)<br>有两种情况能够进行广播</p>
-<ol>
-<li>A.ndim 大于 B.ndim, 并且A.shape最后几个元素包含B.shape, 比如:A.shape=(2,3,4,5),B.shape=(3,4,5)或者B.shape=(4,5)或者B.shape=(5).   </li>
-<li>A.ndim 等于 B.ndim, 并且<strong>A.shape和B.shape对应位置的元素要么相同要么其中一个是1</strong>,比如:A.shape=(1,9,4),B.shape=(15,1,4), 再比如A.shape=(1,9,4),B.shape=(15,1,1)</li>
-</ol>
-<p>下面分别进行举例</p>
-<h4 id="A-ndim-大于-B-ndim"><a href="#A-ndim-大于-B-ndim" class="headerlink" title="A.ndim 大于 B.ndim"></a>A.ndim 大于 B.ndim</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a.shape=(2,2,3,4)</span></span><br><span class="line">a = np.arange(<span class="number">1</span>,<span class="number">49</span>).reshape((<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># b.shape=(3,4)</span></span><br><span class="line">b = np.arange(<span class="number">1</span>,<span class="number">13</span>).reshape((<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># numpy会将b.shape调整至(2,2,3,4), 这一步相当于numpy自动实现np.tile(b,[2,2,1,1])</span></span><br><span class="line">res = a + b</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(a)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(b)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(res)</span><br><span class="line">print(res.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(a+b == a + np.tile(b,[<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>]) )</span><br></pre></td></tr></table></figure>
-
-<h4 id="A-ndim-等于-B-ndim"><a href="#A-ndim-等于-B-ndim" class="headerlink" title="A.ndim 等于 B.ndim"></a>A.ndim 等于 B.ndim</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例1</span></span><br><span class="line"><span class="comment"># a.shape=(4,3)</span></span><br><span class="line">a = np.arange(<span class="number">12</span>).reshape(<span class="number">4</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment"># b.shape=(4,1)</span></span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># numpy会将b.shape调整至(4,3), 这一步相当于numpy自动实现np.tile(b,[1,3])</span></span><br><span class="line">res = a + b</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(a)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(b)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(res)</span><br><span class="line">print(res.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print((a+b == a + np.tile(b,[<span class="number">1</span>,<span class="number">3</span>])) )  <span class="comment"># 打印结果都是True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例2</span></span><br><span class="line"><span class="comment"># a.shape=(1,9,4)</span></span><br><span class="line">a = np.arange(<span class="number">1</span>,<span class="number">37</span>).reshape((<span class="number">1</span>,<span class="number">9</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># b.shape=(15,1,4)</span></span><br><span class="line">b = np.arange(<span class="number">1</span>,<span class="number">61</span>).reshape((<span class="number">15</span>,<span class="number">1</span>,<span class="number">4</span>))</span><br><span class="line">res = a + b</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line"><span class="comment"># print(a)</span></span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line"><span class="comment"># print(b)</span></span><br><span class="line">print(b.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line"><span class="comment"># print(res)</span></span><br><span class="line">print(res.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">q = np.tile(a,[<span class="number">15</span>,<span class="number">1</span>,<span class="number">1</span>]) + np.tile(b,[<span class="number">1</span>,<span class="number">9</span>,<span class="number">1</span>])</span><br><span class="line">print(q == res)	<span class="comment"># 打印结果都是True</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/np-tile-%E5%92%8Cnp-repeat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/28/np-tile-%E5%92%8Cnp-repeat/" class="post-title-link" itemprop="url">np.tile()和np.repeat()</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-28 09:34:20" itemprop="dateCreated datePublished" datetime="2018-10-28T09:34:20+08:00">2018-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>np.tile()和np.repeat()都可以对array进行重复操作,但np.tile()是以axis为最小单位(axis-wise)进行重复的,而np.repeat()是以element为最小单位(element-wise)进行重复的</p>
-<h4 id="np-tile-A-reps"><a href="#np-tile-A-reps" class="headerlink" title="np.tile(A,reps)"></a>np.tile(A,reps)</h4><p>输入: A是数组,reps是个list,<strong>reps的元素表示对A的各个axis进行重复的次数</strong><br>返回: 一个数组,维度的数量等于max(A.ndim,len(reps)),<strong>注意不要混淆A.ndim和A.shape</strong><br>有两种特殊情况:</p>
-<ol>
-<li>A.ndim &lt; len(reps), 此时需要调整A的维度使得A.ndim = len(reps),即添加长度为1的维度,注意:新的维度在原维度的前面,比如原来的A.shape是(3,5),调整后是(1,3,5)</li>
-<li>A.ndim &gt; len(reps), 此时需要增加list的长度,使得A.ndim = len(reps),即在reps的最前面增加元素1,比如原来的list是[2,2],增加长度后是[1,2,2]</li>
-</ol>
-<p>官方示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例1,正常情况</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment"># 将axis=0重复2次</span></span><br><span class="line">np.tile(A=a, reps=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># array([0, 1, 2, 0, 1, 2])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例2,特殊情况1:A.ndim &lt; len(reps)</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment"># 将a.shape调整至(1,3),然后将axis=0重复2次,将axis=1重复2次</span></span><br><span class="line">np.tile(A=a, reps=(<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line"><span class="comment">#array([[0, 1, 2, 0, 1, 2], [0, 1, 2, 0, 1, 2]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例3,特殊情况1:A.ndim &lt; len(reps)</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment"># 将a.shape调整至(1,1,3),然后将axis=0重复2次,将axis=1重复1次,将axis=2重复2次</span></span><br><span class="line">np.tile(A=a, reps=(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"><span class="comment">#array([[[0, 1, 2, 0, 1, 2]], [[0, 1, 2, 0, 1, 2]]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例4,特殊情况2:A.ndim &gt; len(reps)</span></span><br><span class="line">b = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 将reps=[2]调整至[1,2],然后将axis=0重复1次,将axis=1重复2次</span></span><br><span class="line">np.tile(A=b, reps=<span class="number">2</span>)</span><br><span class="line"><span class="comment">#array([[1, 2, 1, 2], [3, 4, 3, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例5,正常情况</span></span><br><span class="line">b = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 将axis=0重复两次,将axis=1重复1次</span></span><br><span class="line">np.tile(A=b, reps=(<span class="number">2</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment">#array([[1, 2], [3, 4], [1, 2], [3, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例6,特殊情况1:A.ndim &lt; len(reps)</span></span><br><span class="line">c = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="comment"># 将c.shape调整至(4,1),然后将axis=0重复4次,将axis=1重复1次</span></span><br><span class="line">np.tile(A=c, reps=(<span class="number">4</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment"># array([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]])</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="np-repeat-a-repeats-axis-None"><a href="#np-repeat-a-repeats-axis-None" class="headerlink" title="np.repeat(a, repeats, axis=None)"></a>np.repeat(a, repeats, axis=None)</h4><p>输入: a是数组,repeats是各个元素重复的次数(<strong>repeats一般是个标量,稍复杂点是个list</strong>),在axis的方向上进行重复<br>返回: 如果不指定axis,则将重复后的结果展平(维度为1)后返回;如果指定axis,则不展平<br>官方示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例1,展平</span></span><br><span class="line"><span class="comment"># 将3重复4次</span></span><br><span class="line">np.repeat(a=<span class="number">3</span>, repeats=<span class="number">4</span>)</span><br><span class="line"><span class="comment"># array([3, 3, 3, 3])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例2,展平</span></span><br><span class="line"><span class="comment"># 每个元素都重复2次,并展平后输出</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">np.repeat(a=x, repeats=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># array([1, 1, 2, 2, 3, 3, 4, 4])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例3,不展平</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 沿着axis=1方向重复,将axis=1方向上的每个元素重复3次</span></span><br><span class="line">np.repeat(a=x, repeats=<span class="number">3</span>, axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment">#array([[1, 1, 1, 2, 2, 2], [3, 3, 3, 4, 4, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例3,不展平</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 沿着axis=0方向重复,将axis=0方向上的第0个元素重复1次,第1个元素重复2次</span></span><br><span class="line">np.repeat(a=x, repeats=[<span class="number">1</span>, <span class="number">2</span>], axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># array([[1, 2], [3, 4], [3, 4]])</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -597,7 +594,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

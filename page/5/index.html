@@ -177,6 +177,160 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/15/FP-FN-TP-TN%E4%B8%8E%E7%B2%BE%E7%A1%AE%E7%8E%87-Precision-%E5%8F%AC%E5%9B%9E%E7%8E%87-Recall-%E5%87%86%E7%A1%AE%E7%8E%87-Accuracy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/15/FP-FN-TP-TN%E4%B8%8E%E7%B2%BE%E7%A1%AE%E7%8E%87-Precision-%E5%8F%AC%E5%9B%9E%E7%8E%87-Recall-%E5%87%86%E7%A1%AE%E7%8E%87-Accuracy/" class="post-title-link" itemprop="url">FP,FN,TP,TN与精确率(Precision),召回率(Recall),准确率(Accuracy)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-09-15 09:28:00" itemprop="dateCreated datePublished" datetime="2018-09-15T09:28:00+08:00">2018-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一-FP-FN-TP-TN"><a href="#一-FP-FN-TP-TN" class="headerlink" title="一: FP,FN,TP,TN"></a>一: FP,FN,TP,TN</h3><p>刚接触这些评价指标时,感觉很难记忆FP,FN,TP,TN,主要还是要理解,理解后就容易记住了<br>P(Positive)和N(Negative) 代表<strong>模型的判断结果</strong><br>T(True)和F(False) 评价<strong>模型的判断结果是否正确</strong><br>比如FP:模型的判断是正例(P),实际上这是错误的(F),连起来就是假正例<br>以此类推:<br>FP:假正例<br>FN:假负例<br>TP:真正例<br>TN:真负例</p>
+<h3 id="二-精确率-Precision-召回率-Recall-准确率-Accuracy"><a href="#二-精确率-Precision-召回率-Recall-准确率-Accuracy" class="headerlink" title="二:精确率(Precision),召回率(Recall),准确率(Accuracy)"></a>二:精确率(Precision),召回率(Recall),准确率(Accuracy)</h3><p><strong>准确率(Accuracy)</strong>:这三个指标里最直观的就是准确率: 模型判断正确的数据(TP+TN)占总数据的比例</p>
+<p>$Acc = \frac {TP+TN}{TP+TN+FP+FN}$ </p>
+<p><strong>召回率(Recall)</strong>: <strong>针对数据集中的所有正例(TP+FN)而言</strong>,模型正确判断出的正例(TP)占数据集中所有正例的比例.FN表示被模型误认为是负例但实际是正例的数据.召回率也叫查全率,以物体检测为例,我们往往把图片中的物体作为正例,此时召回率高代表着模型可以找出图片中更多的物体!</p>
+<p>$Recall = \frac {TP}{TP+FN}$</p>
+<p><strong>精确率(Precision)</strong>:<strong>针对模型判断出的所有正例(TP+FP)而言</strong>,其中真正例(TP)占的比例.精确率也叫查准率,还是以物体检测为例,精确率高表示模型检测出的物体中大部分确实是物体,只有少量不是物体的对象被当成物体</p>
+<p>$Precision = \frac {TP}{TP+FP}$</p>
+<p>区分好召回率和精确率的关键在于:针对的数据不同,召回率针对的是数据集中的所有正例,精确率针对的是模型判断出的所有正例</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8mathjax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/10/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8mathjax/" class="post-title-link" itemprop="url">在hexo中使用mathjax</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-09-10 09:25:09" itemprop="dateCreated datePublished" datetime="2018-09-10T09:25:09+08:00">2018-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>之前总是使用mathtype写公式然后再上传图片, 速度太慢了, 而且公式出错后不容易修改, 所以开始用mathjax, 但是原生hexo并不能直接渲染mathjax, 查阅资料总结了一波<br>只需五步:<br>可以先换成淘宝的下载源,增加npm下载速度: npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<h3 id="一-使用Kramed-代替-Marked"><a href="#一-使用Kramed-代替-Marked" class="headerlink" title="一:使用Kramed 代替 Marked"></a>一:使用Kramed 代替 Marked</h3><p>渲染引擎kramed支持mathjax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<p>打开:博客根目录/node_modules/hexo-renderer-kramed/lib/renderer.js<br>将下面这几句进行更改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  &#x2F;&#x2F; Fit kramed&#39;s rule: $$ + \1 + $$</span><br><span class="line">  return text.replace(&#x2F;&#96;\$(.*?)\$&#96;&#x2F;g, &#39;$$$$$1$$$$&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  &#x2F;&#x2F; Fit kramed&#39;s rule: $$ + \1 + $$</span><br><span class="line">    return text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二-使用hexo-renderer-mathjax-代替-hexo-math"><a href="#二-使用hexo-renderer-mathjax-代替-hexo-math" class="headerlink" title="二:使用hexo-renderer-mathjax 代替 hexo-math"></a>二:使用hexo-renderer-mathjax 代替 hexo-math</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-math --save</span><br><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure>
+<h3 id="三-更新-Mathjax-的-CDN-链接"><a href="#三-更新-Mathjax-的-CDN-链接" class="headerlink" title="三:更新 Mathjax 的 CDN 链接"></a>三:更新 Mathjax 的 CDN 链接</h3><p>打开:博客根目录/node_modules/hexo-renderer-mathjax/mathjax.html<br>将最下面&lt;script src=后的url改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;mathjax&#x2F;2.7.1&#x2F;MathJax.js?config&#x3D;TeX-MML-AM_CHTML</span><br></pre></td></tr></table></figure>
+<h3 id="四-更改默认转义规则"><a href="#四-更改默认转义规则" class="headerlink" title="四:更改默认转义规则"></a>四:更改默认转义规则</h3><p>打开:博客根目录/node_modules/kramed/lib/rules/inline.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;escape: &#x2F;^\\([\\&#96;*&#123;&#125;\[\]()#$+\-.!_&gt;])&#x2F;,      第11行，将其修改为</span><br><span class="line">escape: &#x2F;^\\([&#96;*\[\]()#$+\-.!_&gt;])&#x2F;,</span><br><span class="line">&#x2F;&#x2F;em: &#x2F;^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)&#x2F;,    第20行，将其修改为</span><br><span class="line">em: &#x2F;^\*((?:\*\*|[\s\S])+?)\*(?!\*)&#x2F;,</span><br></pre></td></tr></table></figure>
+<h3 id="五-开启mathjax"><a href="#五-开启mathjax" class="headerlink" title="五:开启mathjax"></a>五:开启mathjax</h3><p>在主题的配置文件中,我用的是next主题,那么在其_config.yml中找到mathjax并设置为true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># MathJax Support</span><br><span class="line">mathjax:</span><br><span class="line">  enable: true</span><br><span class="line">  per_page: true</span><br><span class="line">  cdn: &#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure>
+<p>之后再写文章时,加上mathjax: true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2017&#x2F;8&#x2F;3 18:20:00</span><br><span class="line">tags: hexo</span><br><span class="line">mathjax: true</span><br><span class="line">title: hexo博客MathJax公式渲染</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>参考:<br><a href="https://blog.csdn.net/u014630987/article/details/78670258" target="_blank" rel="noopener">如何在 hexo 中支持 Mathjax？</a><br><a href="https://www.cnblogs.com/Ai-heng/p/7282110.html" target="_blank" rel="noopener">hexo博客MathJax公式渲染问题</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%8E%E5%B0%BA%E5%BA%A6%E6%97%A0%E5%85%B3%E7%9A%84%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -402,150 +556,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/02/tensorflow%E8%8E%B7%E5%8F%96%E5%8F%AF%E7%94%A8%E8%BF%90%E7%AE%97%E8%AE%BE%E5%A4%87-CPU-GPU/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/02/tensorflow%E8%8E%B7%E5%8F%96%E5%8F%AF%E7%94%A8%E8%BF%90%E7%AE%97%E8%AE%BE%E5%A4%87-CPU-GPU/" class="post-title-link" itemprop="url">tensorflow获取可用运算设备(CPU,GPU)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-09-02 17:24:04" itemprop="dateCreated datePublished" datetime="2018-09-02T17:24:04+08:00">2018-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>正常来说,运行下面两句会打印tensorflow能用的CPU和GPU</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
-<p>结果发现只有CPU可用,查阅资料后发现可能跟tensorflow版本有关,在终端运行pip3 list查看安装的包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 list</span><br></pre></td></tr></table></figure>
-<p>发现有两个tensorflow,一个是tensorflow,还有一个是tensorflow-gpu.卸载无gpu版本的tensorflow</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 uninstall tensorflow</span><br></pre></td></tr></table></figure>
-<p>重新运行最开始两句代码,结果报错:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: No module named &#39;tensorflow.python&#39;</span><br></pre></td></tr></table></figure>
-<p>卸载tensorflow-gpu后重新安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 uninstall tensorflow-gpu</span><br><span class="line">pip3 install tensorflow-gpu&#x3D;&#x3D;1.4.0</span><br></pre></td></tr></table></figure>
-<p>重新运行最开始两句代码,成功:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[name: &quot;&#x2F;device:CPU:0&quot;</span><br><span class="line">device_type: &quot;CPU&quot;</span><br><span class="line">memory_limit: 268435456</span><br><span class="line">locality &#123;</span><br><span class="line">&#125;</span><br><span class="line">incarnation: 13177083330855175469</span><br><span class="line">, name: &quot;&#x2F;device:GPU:0&quot;</span><br><span class="line">device_type: &quot;GPU&quot;</span><br><span class="line">memory_limit: 10968950375</span><br><span class="line">locality &#123;</span><br><span class="line">  bus_id: 1</span><br><span class="line">&#125;</span><br><span class="line">incarnation: 6161624703599064583</span><br><span class="line">physical_device_desc: &quot;device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:00:08.0, compute capability: 6.1&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最开始存在两个tensorflow包:无gpu版本的tensorflow和gpu版本的tensorflow-gpu,可能是默认使用了无gpu版的tensorflow,所以可用设备中没有GPU</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/TensorFlow%E8%8E%B7%E5%8F%96Tensor%E7%BB%B4%E5%BA%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/08/TensorFlow%E8%8E%B7%E5%8F%96Tensor%E7%BB%B4%E5%BA%A6/" class="post-title-link" itemprop="url">TensorFlow获取Tensor维度</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-08 10:25:45" itemprop="dateCreated datePublished" datetime="2018-08-08T10:25:45+08:00">2018-08-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="获取Tensor维度"><a href="#获取Tensor维度" class="headerlink" title="获取Tensor维度"></a>获取Tensor维度</h3><p>比如一个Tensor为<code>a = tf.constant([[1,2,],[3,4]],name=&#39;a&#39;)</code>,有三种方式可以获取a的维度<br>    1. a.shape<br>    2. a.get_shape()<br>    3. tf.shape(a)<br>前两种返回类型是TensorShape,代表静态shape,a.shape.as_list()返回list类型的shape<br>第三种返回类型是Tensor,代表动态shape</p>
-<h3 id="动态shape与静态shape"><a href="#动态shape与静态shape" class="headerlink" title="动态shape与静态shape"></a>动态shape与静态shape</h3><p>当需要reshape Tensor时,就能体现出差异了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">b = tf.placeholder(tf.float32,[<span class="literal">None</span>,<span class="number">10</span>,<span class="number">32</span>])</span><br><span class="line">b_static = b.shape.as_list()</span><br><span class="line">b_dynamic = tf.unstack(tf.shape(b))</span><br><span class="line">dim = [s[<span class="number">1</span>] <span class="keyword">if</span> s[<span class="number">0</span>] <span class="keyword">if</span> <span class="literal">None</span> <span class="keyword">else</span> s[<span class="number">0</span>] <span class="keyword">for</span> s <span class="keyword">in</span> zip(b_static,b_dynamic)]</span><br><span class="line">tf.reshape(b,[dim[<span class="number">0</span>],dim[<span class="number">1</span>]*dim[<span class="number">2</span>]])</span><br><span class="line"><span class="comment">#此时b的维度变成[None,320]</span></span><br><span class="line"><span class="comment">#如果直接用静态shape对b进行reshape会报错</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -618,7 +628,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

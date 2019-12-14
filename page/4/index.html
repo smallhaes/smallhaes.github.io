@@ -177,6 +177,153 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/FasterRCNN%E4%B9%8B%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/24/FasterRCNN%E4%B9%8B%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">FasterRCNN之整体框架详解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-10-24 09:41:41" itemprop="dateCreated datePublished" datetime="2018-10-24T09:41:41+08:00">2018-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>刚接触物体检测领域,学习了Faster RCNN的论文及Tensorflow版本的源码,不得不说,读源码真的过瘾..不过确实能够帮助理解框架,下面按照Faster RCNN的预测过程介绍其整体流程</p>
+<h2 id="整体框架"><a href="#整体框架" class="headerlink" title="整体框架"></a>整体框架</h2><p>Faster RCNN整体框架包括4部分:<br>一. 使用VGG16或者其他成熟的图片分类模型提取<strong>图片特征(feature map)</strong><br>二. 将<strong>图片特征</strong>喂入RPN(Region Proposal Network)网络得到<strong>proposals</strong> (包含第一次回归)<br>三. 将上两步的结果:<strong>图片特征</strong>和 <strong>proposals</strong> 喂入RoI Pooling层得到综合的<strong>proposals特征</strong><br>四. 根据<strong>poposals特征</strong>预测<strong>物体的bounding box</strong>和<strong>物体的类别</strong> (包含第二次回归)</p>
+<p>对应下图: <strong>图中conv(3,3,512,1,1)对应conv(filter_height,filter_width,output_channels,stride_height,stride_width)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-32b0af61b605c33e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Faster RCNN预测.jpg"></p>
+<p>接下来分别介绍这四部分对应的网络结构,以预测过程为例(训练过程涉及ground truth的构建,会在之后的博客中具体介绍)</p>
+<h2 id="一-获取图片特征"><a href="#一-获取图片特征" class="headerlink" title="一.获取图片特征"></a>一.获取图片特征</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-4cf624aa8f12a005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vgg.png"><br>使用预训练好的VGG16提取图片特征,如下图所示,喂入的图片(也就是’data’)并没有经过VGG16所有的流程,而是在得到’conv5_3’这个结果后就停下了,’conv5_3’就是Faster RCNN需要的图片特征(feature map)<br>注意:’conv5_3’的h,w是输入图片’data’的1/16<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9f4cb555209f38f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<h2 id="二-RPN网络输出proposals"><a href="#二-RPN网络输出proposals" class="headerlink" title="二.RPN网络输出proposals"></a>二.RPN网络输出proposals</h2><p>这是Faster RCNN中最复杂的一部分. 将通过VGG16得到的<strong>图片特征</strong>喂入RPN(Region Proposal Network)网络得到<strong>proposals</strong><br>RPN网络结构如下图所示<br><img src="https://upload-images.jianshu.io/upload_images/9608551-17f54c255c42525f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rpn.png"><br>(1) 首先将图片特征’conv5_3’喂给卷积层conv(3,3,512,1,1),输出的图片特征 <strong>‘rpn_conv/3x3’</strong> 尺寸和通道数均保持不变.<br>根据卷积的运算公式,猜测这一层的作用为:该层 <strong>每个filter</strong> 分别将’conv5_3’的所有通道联系起来,也就是说经过卷积后, <strong>‘rpn_conv/3x3’的每个通道</strong> 都整合了’conv5_3’所有通道的信息.(这地方说起来比较绕,如果明白卷积的计算过程就容易理解了)<br>(2.1) 将 <strong>‘rpn_conv/3x3’</strong> 喂给conv(1,1,36,1,1)得到 <strong>‘rpn_box_pred’</strong> ,36个通道表示:每个点有9组proposals的回归值,每组proposals的回归值对应论文中的tx,ty,tw,th.(这里是第一次回归)<br><strong>这里要重点注意一下,’rpn_conv/3x3’的尺寸是h,w,也就是’rpn_conv/3x3’有h*w个像素(不要考虑通道数,举个例子:平时我们看到的彩色图是3通道的,假设分辨率是1920*1080,这表示有1920*1080个像素点,而不是3*1920*1080个).针对这h*w个像素,以每个像素为中心为每个像素生成9组proposals的回归值,每组回归值包含4个信息.所以每个像素点需要36个维度去存储9*4个信息,这就是输出通道36的来源!</strong><br> (2.2.1) 将 <strong>‘rpn_conv/3x3’</strong> 喂给conv(1,1,18,1,1)得到 <strong>‘rpn_cls_score’</strong> ,刚才说了,要为 <strong>‘rpn_conv/3x3’</strong> 的每个像素生成9个proposals,而每个proposal是有类别的,要么是foreground proposal(框出物体)，要么是backgroud proposal(框出背景).所以每个proposal需要2个维度来存储类别得分,因此 <strong>‘rpn_conv/3x3’</strong> 的每个像素需要9*2=18个维度,这就是输出通道18的来源.<br>(2.2.2)接着将 <strong>‘rpn_cls_score’</strong> 依次喂入reshape_layer,softmax,reshape_layer,最终得到 <strong>‘rpn_cls_prob_reshape’</strong> ,这一过程将每个类别得分转换为概率.<br>为什么要经过两个reshape_layer呢? 这里引用<a href="https://zhuanlan.zhihu.com/p/31426458" target="_blank" rel="noopener">白裳大神的解释:</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">那么为何要在softmax前后都接一个reshape layer？其实只是为了便于softmax分类，至于具体原因这就要从caffe的实现形式说起了。</span><br><span class="line">在caffe基本数据结构blob中以如下形式保存数据：blob=[batch_size, channel，height，width]</span><br><span class="line">对应至上面的保存bg/fg anchors的矩阵，其在caffe blob中的存储形式为[<span class="number">1</span>, <span class="number">2</span>x9, H, W]。</span><br><span class="line">而在softmax分类时需要进行fg/bg二分类，所以reshape layer会将其变为[<span class="number">1</span>, <span class="number">2</span>, <span class="number">9</span>xH, W]大小，</span><br><span class="line">即单独“腾空”出来一个维度以便softmax分类，之后再reshape回复原状。</span><br><span class="line">贴一段caffe softmax_loss_layer.cpp的reshape函数的解释，非常精辟：</span><br><span class="line"><span class="string">"Number of labels must match number of predictions; "</span></span><br><span class="line"><span class="string">"e.g., if softmax axis == 1 and prediction shape is (N, C, H, W), "</span></span><br><span class="line"><span class="string">"label count (number of labels) must be N*H*W, "</span></span><br><span class="line"><span class="string">"with integer values in &#123;0, 1, ..., C-1&#125;."</span>;</span><br><span class="line">综上所述，RPN网络中利用anchors和softmax初步提取出foreground anchors作为候选区域。</span><br></pre></td></tr></table></figure>
+<p>(3) 将 <strong>‘rpn_box_pred’</strong> 和 <strong>‘rpn_cls_prob_reshape’</strong> 以及 <strong>im_info</strong> 喂给proposal_layer 得到 <strong>‘rois’</strong> ,也就是RPN网络最终输出的proposals. 这些proposals都是从foreground anchors里面挑选的,  用到了nms. 接下来还需要对RPN输出的proposals进行第二次回归</p>
+<h2 id="三-通过RoI-Pooling层得到综合的proposals特征"><a href="#三-通过RoI-Pooling层得到综合的proposals特征" class="headerlink" title="三. 通过RoI Pooling层得到综合的proposals特征"></a>三. 通过RoI Pooling层得到综合的proposals特征</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a838d33a0c8c5e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="roi.png"><br>(1) 将 <strong>‘rois’</strong> 和 <strong>‘conv5_3’</strong> 喂给roi_pool 得到 <strong>‘pool_5’</strong> , 关于roi_pool的输入,尺寸是任意大小的,但输出的特征都是长度固定的. 具体可参考<a href="https://blog.csdn.net/littlehaes/article/details/83473863" target="_blank" rel="noopener">3分钟理解ROI Pooling层</a></p>
+<h2 id="四-根据poposals特征进行框回归和物体分类"><a href="#四-根据poposals特征进行框回归和物体分类" class="headerlink" title="四.根据poposals特征进行框回归和物体分类"></a>四.根据poposals特征进行框回归和物体分类</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-6faac99ad1a14cdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="final.png"><br>(1) 将 <strong>‘pool_5’</strong> 连续经过两个全连接层得到 <strong>‘fc_7’</strong><br>(2.1)将 <strong>‘fc_7’</strong> 经过全连接层得到 <strong>‘bbox_pred’</strong> ,这里是二次回归,表示tx,ty,tw,th.用来和 <strong>‘rois’</strong> 相加,从而得到Faster RCNN最终的proposals!<br>(2.2.1) 将 <strong>‘fc’</strong> 经过全连接层得到 <strong>‘cls_score’</strong><br>(2.2.2) 将 <strong>‘cls_score’</strong> 经过softmax层得到 <strong>‘cls_prob’</strong> ,也就是proposal属于各个物体的概率</p>
+<p>以上便是Faster RCNN的4部分,关于模块的实现细节,我过几天再写</p>
+<p>训练时迭代了50000次,pascal2007测试结果MAP=0.65,其中,chair的ap最低0.46,horse的ap最高0.81<br>运行环境:CUDA8,cuDNN7,1070Ti,TensorFlow1.4.0,python2.7<br>训练集:voc_2007_trainval    训练时间148分钟<br>测试集:voc_2007_testt    测试时间10分钟(5000图)</p>
+<p>参考:<br><a href="https://zhuanlan.zhihu.com/p/31426458" target="_blank" rel="noopener">白裳</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/22/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E4%B8%8E%E7%AD%89%E9%AB%98%E7%BA%BF%E5%9E%82%E7%9B%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/22/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E4%B8%8E%E7%AD%89%E9%AB%98%E7%BA%BF%E5%9E%82%E7%9B%B4/" class="post-title-link" itemprop="url">为什么梯度方向与等高线垂直</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-10-22 08:42:33" itemprop="dateCreated datePublished" datetime="2018-10-22T08:42:33+08:00">2018-10-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-23c4863ce96bf109.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="1.jpg"></p>
+<p>有些结论用起来习以为常,却不知道背后的原理,比如为什么梯度方向与等高线垂直,弄明白后心里才舒畅<br>要解决这个问题首先得有等高线的数学表达式</p>
+<h3 id="等高线的法线"><a href="#等高线的法线" class="headerlink" title="等高线的法线"></a>等高线的法线</h3><p>以三维空间为例, 设某曲面的表达式为$z=f(x,y)$,对于任意高度且平行于xoy的平面$z=c$来说,等高线为$\begin{cases}z=f(x,y)\z=c\end{cases}$,也即$f(x,y)=c$,等高线上任意一点处的斜率是:$\frac {dy}{dx}$,通过$z=f(x,y)$来表示等高线上的斜率有$\frac {dy}{dx}={\frac {\partial f}{\partial x} / {\frac {\partial f}{\partial y} }}$,该点对应的法线方向为斜率的负倒数,即$- \frac {1}{\frac {dy}{dx}}=\frac {dx}{dy}=\frac {\partial f}{\partial y}/\frac{\partial f}{\partial x}=tan\theta$,其中$\theta$是法线和x轴的夹角.如果梯度的方向和等高线的法线方向一致,就证明了垂直关系</p>
+<h3 id="梯度向量"><a href="#梯度向量" class="headerlink" title="梯度向量"></a>梯度向量</h3><p>$z=f(x,y)$的梯度向量为$(\frac {\partial f}{\partial x}, \frac {\partial f}{\partial y})$,设该向量和x轴的夹角大小为$\gamma$,则夹角的正切为$tan\gamma=\frac {\partial f}{\partial y}/\frac {\partial f}{\partial x}=tan\theta$</p>
+<p><strong>所以梯度向量的方向和等高线的法线方向是一样的!也就是说,梯度方向和等高线垂直</strong></p>
+<p>参考:<br><a href="https://zhuanlan.zhihu.com/p/27731819" target="_blank" rel="noopener">知乎忆臻大神</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%80%E5%A4%A7%E5%8C%96%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,160 +521,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/15/FP-FN-TP-TN%E4%B8%8E%E7%B2%BE%E7%A1%AE%E7%8E%87-Precision-%E5%8F%AC%E5%9B%9E%E7%8E%87-Recall-%E5%87%86%E7%A1%AE%E7%8E%87-Accuracy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/15/FP-FN-TP-TN%E4%B8%8E%E7%B2%BE%E7%A1%AE%E7%8E%87-Precision-%E5%8F%AC%E5%9B%9E%E7%8E%87-Recall-%E5%87%86%E7%A1%AE%E7%8E%87-Accuracy/" class="post-title-link" itemprop="url">FP,FN,TP,TN与精确率(Precision),召回率(Recall),准确率(Accuracy)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-09-15 09:28:00" itemprop="dateCreated datePublished" datetime="2018-09-15T09:28:00+08:00">2018-09-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一-FP-FN-TP-TN"><a href="#一-FP-FN-TP-TN" class="headerlink" title="一: FP,FN,TP,TN"></a>一: FP,FN,TP,TN</h3><p>刚接触这些评价指标时,感觉很难记忆FP,FN,TP,TN,主要还是要理解,理解后就容易记住了<br>P(Positive)和N(Negative) 代表<strong>模型的判断结果</strong><br>T(True)和F(False) 评价<strong>模型的判断结果是否正确</strong><br>比如FP:模型的判断是正例(P),实际上这是错误的(F),连起来就是假正例<br>以此类推:<br>FP:假正例<br>FN:假负例<br>TP:真正例<br>TN:真负例</p>
-<h3 id="二-精确率-Precision-召回率-Recall-准确率-Accuracy"><a href="#二-精确率-Precision-召回率-Recall-准确率-Accuracy" class="headerlink" title="二:精确率(Precision),召回率(Recall),准确率(Accuracy)"></a>二:精确率(Precision),召回率(Recall),准确率(Accuracy)</h3><p><strong>准确率(Accuracy)</strong>:这三个指标里最直观的就是准确率: 模型判断正确的数据(TP+TN)占总数据的比例</p>
-<p>$Acc = \frac {TP+TN}{TP+TN+FP+FN}$ </p>
-<p><strong>召回率(Recall)</strong>: <strong>针对数据集中的所有正例(TP+FN)而言</strong>,模型正确判断出的正例(TP)占数据集中所有正例的比例.FN表示被模型误认为是负例但实际是正例的数据.召回率也叫查全率,以物体检测为例,我们往往把图片中的物体作为正例,此时召回率高代表着模型可以找出图片中更多的物体!</p>
-<p>$Recall = \frac {TP}{TP+FN}$</p>
-<p><strong>精确率(Precision)</strong>:<strong>针对模型判断出的所有正例(TP+FP)而言</strong>,其中真正例(TP)占的比例.精确率也叫查准率,还是以物体检测为例,精确率高表示模型检测出的物体中大部分确实是物体,只有少量不是物体的对象被当成物体</p>
-<p>$Precision = \frac {TP}{TP+FP}$</p>
-<p>区分好召回率和精确率的关键在于:针对的数据不同,召回率针对的是数据集中的所有正例,精确率针对的是模型判断出的所有正例</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/10/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8mathjax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/10/%E5%9C%A8hexo%E4%B8%AD%E4%BD%BF%E7%94%A8mathjax/" class="post-title-link" itemprop="url">在hexo中使用mathjax</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-09-10 09:25:09" itemprop="dateCreated datePublished" datetime="2018-09-10T09:25:09+08:00">2018-09-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>之前总是使用mathtype写公式然后再上传图片, 速度太慢了, 而且公式出错后不容易修改, 所以开始用mathjax, 但是原生hexo并不能直接渲染mathjax, 查阅资料总结了一波<br>只需五步:<br>可以先换成淘宝的下载源,增加npm下载速度: npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
-<h3 id="一-使用Kramed-代替-Marked"><a href="#一-使用Kramed-代替-Marked" class="headerlink" title="一:使用Kramed 代替 Marked"></a>一:使用Kramed 代替 Marked</h3><p>渲染引擎kramed支持mathjax</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
-<p>打开:博客根目录/node_modules/hexo-renderer-kramed/lib/renderer.js<br>将下面这几句进行更改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  &#x2F;&#x2F; Fit kramed&#39;s rule: $$ + \1 + $$</span><br><span class="line">  return text.replace(&#x2F;&#96;\$(.*?)\$&#96;&#x2F;g, &#39;$$$$$1$$$$&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>更改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  &#x2F;&#x2F; Fit kramed&#39;s rule: $$ + \1 + $$</span><br><span class="line">    return text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二-使用hexo-renderer-mathjax-代替-hexo-math"><a href="#二-使用hexo-renderer-mathjax-代替-hexo-math" class="headerlink" title="二:使用hexo-renderer-mathjax 代替 hexo-math"></a>二:使用hexo-renderer-mathjax 代替 hexo-math</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-math --save</span><br><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure>
-<h3 id="三-更新-Mathjax-的-CDN-链接"><a href="#三-更新-Mathjax-的-CDN-链接" class="headerlink" title="三:更新 Mathjax 的 CDN 链接"></a>三:更新 Mathjax 的 CDN 链接</h3><p>打开:博客根目录/node_modules/hexo-renderer-mathjax/mathjax.html<br>将最下面&lt;script src=后的url改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;mathjax&#x2F;2.7.1&#x2F;MathJax.js?config&#x3D;TeX-MML-AM_CHTML</span><br></pre></td></tr></table></figure>
-<h3 id="四-更改默认转义规则"><a href="#四-更改默认转义规则" class="headerlink" title="四:更改默认转义规则"></a>四:更改默认转义规则</h3><p>打开:博客根目录/node_modules/kramed/lib/rules/inline.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;escape: &#x2F;^\\([\\&#96;*&#123;&#125;\[\]()#$+\-.!_&gt;])&#x2F;,      第11行，将其修改为</span><br><span class="line">escape: &#x2F;^\\([&#96;*\[\]()#$+\-.!_&gt;])&#x2F;,</span><br><span class="line">&#x2F;&#x2F;em: &#x2F;^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)&#x2F;,    第20行，将其修改为</span><br><span class="line">em: &#x2F;^\*((?:\*\*|[\s\S])+?)\*(?!\*)&#x2F;,</span><br></pre></td></tr></table></figure>
-<h3 id="五-开启mathjax"><a href="#五-开启mathjax" class="headerlink" title="五:开启mathjax"></a>五:开启mathjax</h3><p>在主题的配置文件中,我用的是next主题,那么在其_config.yml中找到mathjax并设置为true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># MathJax Support</span><br><span class="line">mathjax:</span><br><span class="line">  enable: true</span><br><span class="line">  per_page: true</span><br><span class="line">  cdn: &#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure>
-<p>之后再写文章时,加上mathjax: true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2017&#x2F;8&#x2F;3 18:20:00</span><br><span class="line">tags: hexo</span><br><span class="line">mathjax: true</span><br><span class="line">title: hexo博客MathJax公式渲染</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>参考:<br><a href="https://blog.csdn.net/u014630987/article/details/78670258" target="_blank" rel="noopener">如何在 hexo 中支持 Mathjax？</a><br><a href="https://www.cnblogs.com/Ai-heng/p/7282110.html" target="_blank" rel="noopener">hexo博客MathJax公式渲染问题</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -600,7 +593,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

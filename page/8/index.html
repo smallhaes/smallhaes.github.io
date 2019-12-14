@@ -177,6 +177,140 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/" class="post-title-link" itemprop="url">文本建模之Unigram Model</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-19 16:13:53" itemprop="dateCreated datePublished" datetime="2018-06-19T16:13:53+08:00">2018-06-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>通过生成文章及语料的例子介绍unigram model<br><img src="https://upload-images.jianshu.io/upload_images/9608551-94ca3d5016a89eed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"><br>参考：<br>靳志辉，《LDA数学八卦》</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/word2vec%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/13/word2vec%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">word2vec数学推导过程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-13 15:41:58" itemprop="dateCreated datePublished" datetime="2018-06-13T15:41:58+08:00">2018-06-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="http://littlehaes.com/" target="_blank" rel="noopener">Welcome To My Blog</a><br>word2vec包含两种框架，一种是CBOW(Continuous Bag-of-Words Model)，另一种是Skip-gram(Continuous Skip-gram Model)，如下图所示。这两种模型的任务是：进行词的预测，CBOW是预测P(w|context(w))，Skip-gram是预测P(context(w)|w)。当整个词典中所有词的预测任务整体达到最优时，此时的词向量便是我们想要的结果。<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9b2c3a2881181197.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="1.png"><br>word2vec有两种计算方式专门提升训练速度，分别是：Hierarchical Softmax 和 Negative Sampling。<br>本篇文章只写出有关模型的数学推导过程，其它细节可参考peghoty的<a href="https://blog.csdn.net/itplus/article/details/37969519" target="_blank" rel="noopener">word2vec 中的数学</a>,我也是根据这篇文章学习的</p>
+<h2 id="Hierarchical-Softmax-with-Continuous-Bag-of-Words-Model"><a href="#Hierarchical-Softmax-with-Continuous-Bag-of-Words-Model" class="headerlink" title="Hierarchical Softmax with Continuous Bag-of-Words Model"></a>Hierarchical Softmax with Continuous Bag-of-Words Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-9422833f31693a44.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
+<h2 id="Hierarchical-Softmax-with-Continuous-Skip-gram-Model"><a href="#Hierarchical-Softmax-with-Continuous-Skip-gram-Model" class="headerlink" title="Hierarchical Softmax with Continuous Skip-gram Model"></a>Hierarchical Softmax with Continuous Skip-gram Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a849676592ecc953.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
+<h2 id="Negative-Sampling-with-Continuous-Bag-of-Words-Model"><a href="#Negative-Sampling-with-Continuous-Bag-of-Words-Model" class="headerlink" title="Negative Sampling with Continuous Bag-of-Words Model"></a>Negative Sampling with Continuous Bag-of-Words Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1a0d7fd737b39752.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
+<h2 id="Negative-Sampling-with-Continuous-Skip-gram-Model"><a href="#Negative-Sampling-with-Continuous-Skip-gram-Model" class="headerlink" title="Negative Sampling with Continuous Skip-gram Model"></a>Negative Sampling with Continuous Skip-gram Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-ee82de712a870565.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.jpg"><br>参考<br>Tomas Mikolov, Efficient Estimation of Word Representations in Vector Space<br>peghoty, <a href="https://blog.csdn.net/itplus/article/details/37969519" target="_blank" rel="noopener">word2vec 中的数学</a>  </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/word2vec%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91-%E9%83%A8%E5%88%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,147 +572,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E6%97%A0%E6%B3%95%E5%AD%A6%E4%B9%A0XOR-%E5%BC%82%E6%88%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/16/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E6%97%A0%E6%B3%95%E5%AD%A6%E4%B9%A0XOR-%E5%BC%82%E6%88%96/" class="post-title-link" itemprop="url">线性模型无法学习XOR(异或)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-04-16 23:02:16" itemprop="dateCreated datePublished" datetime="2018-04-16T23:02:16+08:00">2018-04-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>如果试图通过线性模型去学习异或,是做不到的,计算过程及原因如下图<br>随便一记主要是想提醒自己,计算时要细心,尤其是关于向量的计算,别把常数和向量弄混<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7f1f862b88e73a01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="计算过程.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-e5651b6406c6e37a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="why.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/LeetCode/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/09/LeetCode/" class="post-title-link" itemprop="url">LeetCode</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-04-09 23:00:35" itemprop="dateCreated datePublished" datetime="2018-04-09T23:00:35+08:00">2018-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>开始刷LeetCode,希望能保持每天一道的速度,使用Java,顺便起到学习Java的作用<br>为了避免篇幅较多的问题,我把解题思路及代码放到了<a href="https://github.com/smallhaes/LeetCode" target="_blank" rel="noopener">github</a>上.  </p>
-<h2 id="Done"><a href="#Done" class="headerlink" title="Done"></a>Done</h2><ol>
-<li>Two Sum (easy) 2018.4.12</li>
-<li>Add Two Numbers (medium) 2018.4.13</li>
-<li>Longest Substring Without Repeating Characters (medium) 2018.4.13</li>
-<li><strong>Median of Two Sorted Arrays (hard)</strong> 2018.4.14</li>
-<li>Longest Palindromic Substring (medium) 2018.4.15</li>
-<li>ZigZag Conversion (medium) 2018.4.16</li>
-<li>Reverse Integer (easy) 2018.4.17</li>
-<li>String to Integer (atoi) (medium) 2018.4.17</li>
-<li>Palindrome Number (easy) 2018.4.18<br>明天毕设中期答辩,正好碰上hard,明天补上 2018.4.19<br>突然接到的任务,还在弄统计显著性检验,明天补 2018.4.20</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -651,7 +644,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

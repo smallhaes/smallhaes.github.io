@@ -177,6 +177,172 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/25/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week1-Percolation-%E6%B8%97%E9%80%8F-98%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/25/%E6%99%AE%E6%9E%97%E6%96%AF%E9%A1%BF%E5%A4%A7%E5%AD%A6%E7%AE%97%E6%B3%95Week1-Percolation-%E6%B8%97%E9%80%8F-98%E5%88%86-%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">普林斯顿大学算法Week1: Percolation 渗透(98分)--总结及代码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-25 20:34:11" itemprop="dateCreated datePublished" datetime="2018-01-25T20:34:11+08:00">2018-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>视频讲述了并查集算法的细节,作业是该算法的实际应用  </p>
+<ol>
+<li><p>下载algs4.jar,并添加到CLASSPATH中</p>
+</li>
+<li><p>使用algs4.jar中的工具:求均值,求标准差,输入输出</p>
+</li>
+<li><p>需要传入外部参数的方法都得进行参数检测,否则扣分</p>
+</li>
+<li><p>UnionFind算法的输入是一维的,Percolation系统是n*n的格子,每个site由坐标对(x,y)表示,<br>所以要想描述点与点之间的关系,<strong>得先将二维坐标转换成一维的数值</strong>,我采用的转换规则是:(x,y)→x*(n+1)+y<br>(1,1)到(n,n) 对应n+2到n*(n+2),注意:一维数值并不是连续的<br>可以采用其它转换规则,比如易于理解的(x,y)→x*(n+2)+y,第5条有进一步的说明</p>
+</li>
+<li><p>之所以采用如上的转换规则:<br>其一,方便判断某个点的上下左右邻居时不会有数组越界异常,对于四周的site来说,并不都有四个邻点 <strong>(如下图3*3.png,左上角的点1没有上邻居和左邻居,扩充为5*5.png后,点1就有上下左右四个邻居了)</strong><br>其二,节省空间,最容易理解的是使用(n+2)*(n+2)长的一维数组(如下图3*3.png和5*5.png),使用(n+2)*(n+1)+1长的也行,因为在转换规则的约束下,所有site的一维表示都是唯一的,并且最大值等于(n+2)*(n+1)</p>
+</li>
+<li><p>要区分好block,open,full这三个状态,block对应false,open对应true,full表示某个site和上虚拟点相连</p>
+</li>
+<li><p>为方便判断系统为渗透状态,在n*n格子的上下分别加两个虚拟的点,<br>代码中:索引为0的代表上虚拟点,索引为(n+1)*(n+1)代表下虚拟点(找两个没用的索引值即可)<br>这样做会导致backwash问题(即回流问题),<strong>因为在open方法中第n行的所有site都和下虚拟点union过了</strong></p>
+</li>
+<li><p>解决backwash问题,需要再创建一个并查集对象,即代码中的uf2,该对象不将最后一行和下虚拟点相连,<strong>在isFull方法中使用uf2的connected方法</strong>就不会导致backwash问题了  </p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/9608551-6126573d8942fc3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="3*3.png">  </p>
+ <center>3\*3.png</center>
+
+<p> <img src="http://upload-images.jianshu.io/upload_images/9608551-2806ebc04fe56cb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="5*5.png">  </p>
+ <center>5\*5.png</center>
+
+
+
+
+</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="Percalation-java"><a href="#Percalation-java" class="headerlink" title="Percalation.java"></a>Percalation.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sasuke</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 25/1/2018</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.WeightedQuickUnionUF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Percolation</span> </span>&#123;</span><br><span class="line">   <span class="comment">// n*n grid</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> n ; </span><br><span class="line">   <span class="comment">//status of each site</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">boolean</span>[] eachStatus ; </span><br><span class="line">   <span class="comment">//number of open site</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> openNum;</span><br><span class="line">   <span class="comment">//UF alg with virtual site</span></span><br><span class="line">   <span class="keyword">private</span> WeightedQuickUnionUF uf1;</span><br><span class="line">   <span class="comment">//UF alg with only top site due to backwash</span></span><br><span class="line">   <span class="keyword">private</span> WeightedQuickUnionUF uf2;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// create n-by-n grid, with all sites blocked</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Percolation</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; 	</span><br><span class="line">   	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal value of n!"</span>);</span><br><span class="line">   	<span class="keyword">this</span>.n = n;</span><br><span class="line">   	<span class="comment">//plus two virtual site</span></span><br><span class="line">   	eachStatus = <span class="keyword">new</span> <span class="keyword">boolean</span>[(n+<span class="number">1</span>)*(n+<span class="number">2</span>)]; </span><br><span class="line">   	</span><br><span class="line">   	<span class="comment">//all sites are blocked</span></span><br><span class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; eachStatus.length;i++) eachStatus[i]=<span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// grid with top site and bottom site</span></span><br><span class="line">   	uf1 = <span class="keyword">new</span> WeightedQuickUnionUF((n+<span class="number">1</span>)*(n+<span class="number">2</span>));</span><br><span class="line">    <span class="comment">// grid with only bottom site</span></span><br><span class="line">    uf2 = <span class="keyword">new</span> WeightedQuickUnionUF((n+<span class="number">1</span>)*(n+<span class="number">2</span>));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//translate 2 dimentional coordinate to 1 dimentional pattern</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">oneDimention</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">return</span> row*(n+<span class="number">1</span>)+col;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// open site (row, col) if it is not open already</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">if</span>(row&lt;<span class="number">1</span> || row&gt;n || col&lt;<span class="number">1</span> || col&gt;n) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal row or col!"</span>);</span><br><span class="line">   	<span class="keyword">if</span>(!isOpen(row,col)) &#123;</span><br><span class="line">   		eachStatus[oneDimention(row,col)]=<span class="keyword">true</span>;</span><br><span class="line">	   	openNum++;</span><br><span class="line">   		<span class="keyword">int</span> temp1 = oneDimention(row,col);</span><br><span class="line">	   	<span class="comment">//if neighbor could be connected?</span></span><br><span class="line">	   	<span class="keyword">if</span>(row==<span class="number">1</span>)&#123;</span><br><span class="line">	   		uf1.union(<span class="number">0</span>,temp1);</span><br><span class="line">	   		uf2.union(<span class="number">0</span>,temp1);</span><br><span class="line">	   	&#125;</span><br><span class="line">	   	<span class="keyword">if</span>(row==n) &#123; </span><br><span class="line">	   		uf1.union((n+<span class="number">1</span>)*(n+<span class="number">1</span>),temp1);</span><br><span class="line">	   	&#125;</span><br><span class="line">		<span class="keyword">int</span>[] dx = &#123;<span class="number">1</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		<span class="keyword">int</span>[] dy = &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> tempX = row+dx[i];</span><br><span class="line">			<span class="keyword">int</span> tempY = col+dy[i];</span><br><span class="line">			<span class="keyword">int</span> temp2 = oneDimention(tempX,tempY);</span><br><span class="line">			<span class="keyword">if</span> (eachStatus[temp2])&#123;</span><br><span class="line">				uf1.union(temp1,temp2);</span><br><span class="line">				uf2.union(temp1,temp2);</span><br><span class="line">			 &#125;</span><br><span class="line">	   		&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   &#125;    </span><br><span class="line"></span><br><span class="line">   <span class="comment">//is site (row, col) open?</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOpen</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	   <span class="keyword">if</span>(row&lt;<span class="number">1</span> || row&gt;n || col&lt;<span class="number">1</span> || col&gt;n) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal row or col!"</span>);</span><br><span class="line">	   <span class="keyword">return</span> eachStatus[oneDimention(row,col)];</span><br><span class="line">   &#125;  </span><br><span class="line"></span><br><span class="line">   <span class="comment">//is site (row, col) full?</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</span><br><span class="line">   	<span class="keyword">if</span>(row&lt;<span class="number">1</span> || row&gt;n || col&lt;<span class="number">1</span> || col&gt;n) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"illegal row or col!"</span>);</span><br><span class="line">   	<span class="keyword">return</span> uf2.connected(<span class="number">0</span>,oneDimention(row,col));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// number of open sites</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfOpenSites</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> openNum;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// does the system percolate?</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">percolates</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> uf1.connected(<span class="number">0</span>,(n+<span class="number">1</span>)*(n+<span class="number">1</span>));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// test client (optional)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	 Percolation p = <span class="keyword">new</span> Percolation(<span class="number">3</span>);</span><br><span class="line">     p.open(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">     p.open(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">     p.open(<span class="number">3</span>, <span class="number">2</span>);</span><br><span class="line">     StdOut.println(p.isOpen(<span class="number">1</span>,<span class="number">1</span>));</span><br><span class="line">     StdOut.println(p.percolates());</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PercolationStats-java"><a href="#PercolationStats-java" class="headerlink" title="PercolationStats.java"></a>PercolationStats.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sasuke</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 25/1/2018</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdRandom;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdStats;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PercolationStats</span> </span>&#123;</span><br><span class="line">	<span class="comment">//trial times</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> trialNum;</span><br><span class="line">	<span class="comment">//threshold P</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span>[] preP;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">PercolationStats</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> trialNum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n&lt;<span class="number">1</span> || trialNum&lt;<span class="number">1</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal n or trialNum,please check"</span>);</span><br><span class="line">		<span class="keyword">this</span>.trialNum = trialNum;</span><br><span class="line">		preP = <span class="keyword">new</span> <span class="keyword">double</span>[trialNum];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;trialNum;i++) &#123;</span><br><span class="line">			Percolation p = <span class="keyword">new</span> Percolation(n);</span><br><span class="line">			<span class="keyword">while</span>(!p.percolates()) &#123;</span><br><span class="line">				<span class="keyword">int</span> row = StdRandom.uniform(n)+<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">int</span> col = StdRandom.uniform(n)+<span class="number">1</span>;</span><br><span class="line">				p.open(row,col);</span><br><span class="line">				<span class="keyword">if</span> (p.percolates()) <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			preP[i] = (<span class="keyword">double</span>)p.numberOfOpenSites()/(n*n);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// mean of p</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> StdStats.mean(preP);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// standard deviation</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">stddev</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> StdStats.stddev(preP);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//confidence interval:low</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">confidenceLo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> mean()-<span class="number">1.96</span>*stddev()/Math.sqrt(trialNum);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//confidence interval:high</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">confidenceHi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> mean()+<span class="number">1.96</span>*stddev()/Math.sqrt(trialNum);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n =<span class="number">10</span>,trialNum=<span class="number">1000</span>;</span><br><span class="line">		PercolationStats ps = <span class="keyword">new</span> PercolationStats(n,trialNum);</span><br><span class="line">		StdOut.println(<span class="string">"grid size :"</span> + n+<span class="string">"*"</span>+n);</span><br><span class="line">		StdOut.println(<span class="string">"trial times :"</span> + trialNum);</span><br><span class="line">		StdOut.println(<span class="string">"mean of p :"</span>+ ps.mean());</span><br><span class="line">		StdOut.println(<span class="string">"standard deviation :"</span>+ps.stddev());</span><br><span class="line">		StdOut.println(<span class="string">"confidence interval low :"</span>+ps.confidenceLo());</span><br><span class="line">		StdOut.println(<span class="string">"confidence interval high :"</span>+ps.confidenceHi());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/24/Google%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/24/Google%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">Google使用心得</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-24 12:30:33" itemprop="dateCreated datePublished" datetime="2018-01-24T12:30:33+08:00">2018-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>Unsplash Instant: Chrome浏览器的一款插件,使用后每次打开chrome都会随机显示一张摄影师的作品,质量很高,喜欢的话还可以下载下来</li>
+<li>Chrome浏览器可以搜索网页内的文本内容,对于不知道关键词在哪同时页面文字非常多时很有效,按Ctrl+F后输入关键词</li>
+<li>谷歌云端硬盘: 可以上传本地文件夹至云端,并可实现实时同步,免费15G.有客户端并可以设置代理,使用方便</li>
+<li>谷歌翻译: 非常厉害的翻译,可能跟谷歌拥有的庞大数据量有关系</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/23/%E8%81%94%E6%83%B3Y430P%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -312,7 +478,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

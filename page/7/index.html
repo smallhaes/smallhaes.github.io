@@ -177,6 +177,184 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/Ubuntu16-04%E5%AE%89%E8%A3%85Matlab2018a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/31/Ubuntu16-04%E5%AE%89%E8%A3%85Matlab2018a/" class="post-title-link" itemprop="url">Ubuntu16.04安装Matlab2018a</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-31 22:00:50" itemprop="dateCreated datePublished" datetime="2018-07-31T22:00:50+08:00">2018-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-文件准备"><a href="#1-文件准备" class="headerlink" title="1.文件准备"></a>1.文件准备</h2><p>我把Matlab2018a安装镜像及破解文件放在了/home/haes/Downloads/matlab下<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6cfb7c077c46201f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<h2 id="2-挂载dvd1"><a href="#2-挂载dvd1" class="headerlink" title="2.挂载dvd1"></a>2.挂载dvd1</h2><p>在/home/haes/Downloads/matlab/下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir dvd</span><br><span class="line">sudo mount -t auto -o loop &#x2F;home&#x2F;haes&#x2F;Downloads&#x2F;matlab&#x2F;R2018a_glnxa64_dvd1.iso dvd&#x2F;</span><br><span class="line">sudo &#x2F;home&#x2F;haes&#x2F;Downloads&#x2F;matlab&#x2F;dvd&#x2F;install</span><br></pre></td></tr></table></figure>
+<h2 id="3-挂载dvd2"><a href="#3-挂载dvd2" class="headerlink" title="3.挂载dvd2"></a>3.挂载dvd2</h2><p>再打开一个终端:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t auto -o loop &#x2F;home&#x2F;haes&#x2F;Downloads&#x2F;matlab&#x2F;R2018a_glnxa64_dvd2.iso dvd&#x2F;</span><br></pre></td></tr></table></figure>
+<p>点击继续安装</p>
+<h2 id="4-输入秘钥"><a href="#4-输入秘钥" class="headerlink" title="4.输入秘钥"></a>4.输入秘钥</h2><p>安装过程中选择Use a File Installation Key<br>Key在Matlab 2018a Linux64 Crack文件夹下的readme.txt中<br>选择红框中的key<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cc12a6b70446f5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<h2 id="5-激活Matlab"><a href="#5-激活Matlab" class="headerlink" title="5.激活Matlab"></a>5.激活Matlab</h2><p>断网<br>Matlab默认安装在/usr/local/MATLAB下<br>打开Matlab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo &#x2F;usr&#x2F;local&#x2F;MATLAB&#x2F;R2018a&#x2F;bin&#x2F;matlab</span><br></pre></td></tr></table></figure>
+<p>第一次启动比较慢,等一等<br>出现激活框后,选择:Activate manually without the Internet<br>然后选择破解文件,具体路径是/home/haes/Downloads/matlab/Matlab 2018a Linux64 Crack/license_server.lic<br>还需要再弄一个破解软件,将/home/haes/Downloads/matlab/Matlab 2018a Linux64 Crack/R2018a/bin/glnxa64/matlab_startup_plugins下的libmwlmgrimpl.so复制到/usr/local/MATLAB/R2018a/bin/glnxa64/matlab_startup_plugins/lmgrimpl下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -f &#x2F;home&#x2F;haes&#x2F;Downloads&#x2F;matlab&#x2F;Matlab 2018a Linux64 Crack&#x2F;R2018a&#x2F;bin&#x2F;glnxa64&#x2F;matlab_startup_plugins&#x2F;libmwlmgrimpl.so &#x2F;usr&#x2F;local&#x2F;MATLAB&#x2F;R2018a&#x2F;bin&#x2F;glnxa64&#x2F;matlab_startup_plugins&#x2F;lmgrimpl</span><br></pre></td></tr></table></figure>
+<p>顺便取消挂载(相当于弹出光盘)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount &#x2F;home&#x2F;haes&#x2F;Downloads&#x2F;matlab&#x2F;dvd&#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="6-创建桌面快捷方式"><a href="#6-创建桌面快捷方式" class="headerlink" title="6.创建桌面快捷方式"></a>6.创建桌面快捷方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit &#x2F;usr&#x2F;share&#x2F;applications&#x2F;Matlab2018a.desktop</span><br></pre></td></tr></table></figure>
+<p>在弹出的文本框中输入,保存退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry] </span><br><span class="line">Encoding&#x3D;UTF-8 </span><br><span class="line">Name&#x3D;Matlab 2018a</span><br><span class="line">Comment&#x3D;MATLAB</span><br><span class="line">Exec&#x3D;&#x2F;usr&#x2F;local&#x2F;MATLAB&#x2F;R2018a&#x2F;bin&#x2F;matlab</span><br><span class="line">Icon&#x3D;&#x2F;usr&#x2F;local&#x2F;MATLAB&#x2F;R2018a&#x2F;toolbox&#x2F;shared&#x2F;dastudio&#x2F;resources&#x2F;MatlabIcon.png</span><br><span class="line">Terminal&#x3D;true  </span><br><span class="line">Type&#x3D;Application  </span><br><span class="line">Categories&#x3D;Application;</span><br></pre></td></tr></table></figure>
+<p>重启使用matlab<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a4f7e84c1e98713f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/27/%E5%8E%9F%E5%A7%8BGAN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%E5%8F%8ATensorFlow%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/27/%E5%8E%9F%E5%A7%8BGAN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%E5%8F%8ATensorFlow%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">原始GAN论文笔记及TensorFlow实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-27 22:12:35" itemprop="dateCreated datePublished" datetime="2018-07-27T22:12:35+08:00">2018-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><ul>
+<li>在GAN诞生之前,比起生成模型而言,判别模型更受关注,比如Alex Net,VGG,Google Net,因为典型的生成模型往往具有原理复杂,推导复杂,实现复杂的特点</li>
+<li>对于生成模型而言,通常有两种建模方式<ul>
+<li>最常见的是对目标对象的概率分布建模,将其表达成具体的某种参数形式,再通过最大似然一类的方法训练模型,如深度玻尔兹曼机DBM,这样做的缺点:通常得到的似然函数无法直接求解,需要借助近似算法或者采样算法</li>
+<li>采用非参数的方式建模,如GSN,方法核心:假设一条马尔科夫链的稳态分布是数据的真实分布,然后将马尔科夫链的求解操作替换为可以用梯度反向传播来执行的操作</li>
+</ul>
+</li>
+<li>GAN作为一种训练框架,由两个网络Generator和Discriminator构成,D采用判别式准则辅助训练生成模型G,结构如下,X是真实数据,Z是随机噪声,Z经过Generator后成为X’;X’和X作为Discriminator的输入,Discriminator根据X判断X’是不是真实的数据,并将结果反馈给Generator.GAN目的就是希望X’尽可能地接近X,也就是P_g = P_data<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bc8b683b31cb5c8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></li>
+</ul>
+<h2 id="GAN的两个网络"><a href="#GAN的两个网络" class="headerlink" title="GAN的两个网络"></a>GAN的两个网络</h2><h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><p>G本来就是做生成的,比如Auto Encoder就是一种生成模型,GAN为什么要增加D呢?因为只用G有缺陷,以AE为例,AE侧重于生成与原图片尽可能相似的图片,但这样会牺牲掉图片中各个component之间的联系,如下图所示<br><img src="https://upload-images.jianshu.io/upload_images/9608551-186e6fe65e05c733.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>对于AE来说,output1更像原图,但是我们写数字时,笔画的中间往往不会有空缺,也就是说,虽然output2最后的笔画拉长了,但比起output1来说更自然,因为output2更care各个component之间的联系.<br>当然了,AE可以通过增加神经网络的层数使得网络可以考虑这种联系,但是生成相同质量图片的情况下,GAN的结构更加简单.</p>
+<h3 id="Discriminator"><a href="#Discriminator" class="headerlink" title="Discriminator"></a>Discriminator</h3><p>D虽然是判别模型,但也可以做生成,需要解下面这个式子<br><img src="https://upload-images.jianshu.io/upload_images/9608551-203c29ddba9771eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="3.png"><br>也就是对于给定的输入x,遍历所有可能的数据,挑出分数最高的图片作为生成结果.但是首先需要假设D(x)的形式,如果假设D(x)是线性的,那么模型的能力太弱;如果假设是非线性的,又不好解argmax.<br>在GAN中,D的输入是G的输出,G的输出是一张完整的图片,D对一张完整的图片进行判别可以很好地catch到各个component之间的联系,然后将这个信息反馈给G,从而使G生成具有大局观的图片</p>
+<h2 id="GAN的数学推导"><a href="#GAN的数学推导" class="headerlink" title="GAN的数学推导"></a>GAN的数学推导</h2><p>IanGoodfellow的论文Generative Adversarial Nets是这样引出GAN的目标函数的<br>对于Discriminator来说,它用来判断输入的数据是真还是假,具体做法是:对真实的数据赋予高分,对虚假的数据赋予低分;也就是希望赋予D(X)高分,赋予D(X’)低分,可以写成如下的形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-3b3c256460eea30d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<ul>
+<li>取1-D(X’)是为了满足对数的定义域要求</li>
+<li>取对数,个人认为是为了凑alog(x)+blog(1-x)的形式,之后会提到</li>
+<li>取期望是把分布P_data和P_g考虑进来<br>对于Generator来说,希望自己生成的数据X’更接近真实数据X,也就是希望D(X’)越大越好,这便体现了G与D的博弈思想,结合G与D的初衷可得目标函数为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b1590a5a5c2601e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><h3 id="目标函数的有效性"><a href="#目标函数的有效性" class="headerlink" title="目标函数的有效性"></a>目标函数的有效性</h3></li>
+</ul>
+<p><strong>优化V(D,G)后,等价于实现了P_g = P_data</strong>,下面说明原因:</p>
+<h4 id="固定G-优化D"><a href="#固定G-优化D" class="headerlink" title="固定G,优化D"></a>固定G,优化D</h4><p>首先直接使用一个概率论中的定理:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d336a1928f8e33b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>将V(D,G)展开<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2f2b4a408beee262.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>最后一步合并了两个积分,从而扩大了积分限,两个被积函数在无定义处取0即可<br>刚才提到为什么目标函数采用对数形式,原因如下<br><img src="https://upload-images.jianshu.io/upload_images/9608551-842f7f8be9167459.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>目标函数正好符合上述定理形式,所以固定G,优化D时D的最优值为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0ae0910c17f3f527.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<h4 id="固定D-优化G"><a href="#固定D-优化G" class="headerlink" title="固定D,优化G"></a>固定D,优化G</h4><p><img src="https://upload-images.jianshu.io/upload_images/9608551-c55c9e76d3849372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>当P_g = P_data时,上面的不等式取等号,C(G)取得最小值,<strong>说明按照上面的方式优化目标函数,效果相当于P_g = P_data,说明了GAN的可行性</strong></p>
+<h3 id="优化流程"><a href="#优化流程" class="headerlink" title="优化流程"></a>优化流程</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a9de1900a7675e53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.png"><br>优化D的时候优化了k次,不过论文中实验的时候取k=1<br><strong>在优化G的初期,由于G生成的数据X’很假,所以log(1-D(G(z)))的梯度接近1,有点小,不利于迭代,所以会使用max_G log(D(G(z)))优化G</strong></p>
+<h2 id="TensorFlow实现"><a href="#TensorFlow实现" class="headerlink" title="TensorFlow实现"></a>TensorFlow实现</h2><p>完整代码可以参考<a href="http://study.163.com/course/courseMain.htm?courseId=1005703030" target="_blank" rel="noopener">深度学习-GAN专题代码复现</a>中的”GAN的诞生”.<br>如果对logistic regression和交叉熵有一定的认识会对理解代码实现有很大帮助</p>
+<ol>
+<li>关于交叉熵,可以参考<a href="http://littlehaes.com/2018/08/08/%E4%BA%A4%E5%8F%89%E7%86%B5%E4%B8%8EKL%E6%95%A3%E5%BA%A6/" target="_blank" rel="noopener">交叉熵与KL散度</a>  </li>
+<li>关于logistic regression,可以参考<a href="http://littlehaes.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/" target="_blank" rel="noopener">Logistic Regression逻辑斯蒂回归</a></li>
+<li>TF文档中关于logistic loss的解释<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6a80a35ea3e09636.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入噪声从正态分布中采样得到</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xavier_init</span><span class="params">(size)</span>:</span></span><br><span class="line">    in_dim = size[<span class="number">0</span>]</span><br><span class="line">    xavier_stddev = <span class="number">1.</span> / tf.sqrt(in_dim / <span class="number">2.</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.random_normal(shape=size, stddev=xavier_stddev)</span><br><span class="line"><span class="comment"># Generator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">(z)</span>:</span></span><br><span class="line">    G_h1 = tf.nn.relu(tf.matmul(z, G_W1) + G_b1)</span><br><span class="line">    G_log_prob = tf.matmul(G_h1, G_W2) + G_b2</span><br><span class="line">    G_prob = tf.nn.sigmoid(G_log_prob)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> G_prob</span><br><span class="line"><span class="comment"># Discriminator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">discriminator</span><span class="params">(x)</span>:</span></span><br><span class="line">    D_h1 = tf.nn.relu(tf.matmul(x, D_W1) + D_b1)</span><br><span class="line">    D_logit = tf.matmul(D_h1, D_W2) + D_b2</span><br><span class="line">    D_prob = tf.nn.sigmoid(D_logit)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> D_prob, D_logit</span><br></pre></td></tr></table></figure>
+<h3 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h3></li>
+<li>GAN是一种<strong>框架</strong>,核心思想是<strong>对抗训练</strong>:针对D,希望赋予D(X)高分,赋予D(X’)低分;针对G,希望赋予D(G(z))高分.  </li>
+<li>这种对抗训练思想的<strong>有效性</strong>是通过求解下面的目标函数实现的,求解结果是P_G=P_data<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b1590a5a5c2601e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></li>
+<li><strong>代码实现时,只要能够体现GAN的核心思想即可</strong>,使用TensorFlow实现原始GAN模型时,由于TF有simoid_cross_entropy_with_logits这个函数,所以可以使用logistic regression对X和X’进行二分类.此时<strong>最大化样本构成的似然函数,相当于最小化样本标签和D输出之间的交叉熵</strong>.</li>
+</ol>
+<p>最后推荐一下杨双老师的课程,<a href="http://study.163.com/course/courseMain.htm?courseId=1005673004&share=1&shareId=5176782" target="_blank" rel="noopener">深度学习-GAN专题论文研读</a>,老师讲得非常棒</p>
+<p>参考:<br><a href="http://study.163.com/course/introduction/1005673004.htm" target="_blank" rel="noopener">杨双:深度学习-GAN专题论文研读</a><br><a href="https://www.bilibili.com/video/av24011528?from=search&seid=8264303730334566834" target="_blank" rel="noopener">李宏毅对抗生成网络</a><br>统计学习方法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/06/ubuntu16-04%E5%AE%89%E8%A3%85Nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8-CUDA8-0-cuDNN6-TensorFlow-gpu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,140 +572,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/06/19/%E6%96%87%E6%9C%AC%E5%BB%BA%E6%A8%A1%E4%B9%8BUnigram-Model/" class="post-title-link" itemprop="url">文本建模之Unigram Model</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-06-19 16:13:53" itemprop="dateCreated datePublished" datetime="2018-06-19T16:13:53+08:00">2018-06-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>通过生成文章及语料的例子介绍unigram model<br><img src="https://upload-images.jianshu.io/upload_images/9608551-94ca3d5016a89eed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"><br>参考：<br>靳志辉，《LDA数学八卦》</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/word2vec%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/06/13/word2vec%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">word2vec数学推导过程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-06-13 15:41:58" itemprop="dateCreated datePublished" datetime="2018-06-13T15:41:58+08:00">2018-06-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="http://littlehaes.com/" target="_blank" rel="noopener">Welcome To My Blog</a><br>word2vec包含两种框架，一种是CBOW(Continuous Bag-of-Words Model)，另一种是Skip-gram(Continuous Skip-gram Model)，如下图所示。这两种模型的任务是：进行词的预测，CBOW是预测P(w|context(w))，Skip-gram是预测P(context(w)|w)。当整个词典中所有词的预测任务整体达到最优时，此时的词向量便是我们想要的结果。<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9b2c3a2881181197.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="1.png"><br>word2vec有两种计算方式专门提升训练速度，分别是：Hierarchical Softmax 和 Negative Sampling。<br>本篇文章只写出有关模型的数学推导过程，其它细节可参考peghoty的<a href="https://blog.csdn.net/itplus/article/details/37969519" target="_blank" rel="noopener">word2vec 中的数学</a>,我也是根据这篇文章学习的</p>
-<h2 id="Hierarchical-Softmax-with-Continuous-Bag-of-Words-Model"><a href="#Hierarchical-Softmax-with-Continuous-Bag-of-Words-Model" class="headerlink" title="Hierarchical Softmax with Continuous Bag-of-Words Model"></a>Hierarchical Softmax with Continuous Bag-of-Words Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-9422833f31693a44.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
-<h2 id="Hierarchical-Softmax-with-Continuous-Skip-gram-Model"><a href="#Hierarchical-Softmax-with-Continuous-Skip-gram-Model" class="headerlink" title="Hierarchical Softmax with Continuous Skip-gram Model"></a>Hierarchical Softmax with Continuous Skip-gram Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a849676592ecc953.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
-<h2 id="Negative-Sampling-with-Continuous-Bag-of-Words-Model"><a href="#Negative-Sampling-with-Continuous-Bag-of-Words-Model" class="headerlink" title="Negative Sampling with Continuous Bag-of-Words Model"></a>Negative Sampling with Continuous Bag-of-Words Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1a0d7fd737b39752.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
-<h2 id="Negative-Sampling-with-Continuous-Skip-gram-Model"><a href="#Negative-Sampling-with-Continuous-Skip-gram-Model" class="headerlink" title="Negative Sampling with Continuous Skip-gram Model"></a>Negative Sampling with Continuous Skip-gram Model</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-ee82de712a870565.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.jpg"><br>参考<br>Tomas Mikolov, Efficient Estimation of Word Representations in Vector Space<br>peghoty, <a href="https://blog.csdn.net/itplus/article/details/37969519" target="_blank" rel="noopener">word2vec 中的数学</a>  </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -600,7 +644,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

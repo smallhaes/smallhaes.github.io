@@ -177,6 +177,156 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E6%98%AF%E5%87%BD%E6%95%B0%E5%80%BC%E5%A2%9E%E5%A4%A7%E6%9C%80%E5%BF%AB%E7%9A%84%E6%96%B9%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E6%98%AF%E5%87%BD%E6%95%B0%E5%80%BC%E5%A2%9E%E5%A4%A7%E6%9C%80%E5%BF%AB%E7%9A%84%E6%96%B9%E5%90%91/" class="post-title-link" itemprop="url">为什么梯度方向是函数值增大最快的方向</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-24 20:12:09" itemprop="dateCreated datePublished" datetime="2018-03-24T20:12:09+08:00">2018-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>梯度下降中,梯度反方向是函数值下降最快的方向,说明梯度方向是函数值上升最快的方向.<br>下面给出说明,基础好的可以直接看最后一部分:沿梯度方向函数值增大最快<br>##无穷小量<br><img src="https://upload-images.jianshu.io/upload_images/9608551-549cb101113847ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
+<h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-cb06d0610ff4a760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"></p>
+<h2 id="高阶无穷小"><a href="#高阶无穷小" class="headerlink" title="高阶无穷小"></a>高阶无穷小</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-6b52793e808c7fab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
+<h2 id="引出微分"><a href="#引出微分" class="headerlink" title="引出微分"></a>引出微分</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-c6fd3b2133d55914.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"></p>
+<h2 id="微分"><a href="#微分" class="headerlink" title="微分"></a>微分</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-b47cb419f1527bdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<h2 id="全微分"><a href="#全微分" class="headerlink" title="全微分"></a>全微分</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-e1a3720dc2aeb8a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"></p>
+<h2 id="方向导数"><a href="#方向导数" class="headerlink" title="方向导数"></a>方向导数</h2><p>定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0a977e0c11c4c467.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br><strong>方向导数实际上是函数f在x_0处沿l方向关于距离t的变化率</strong><br>方向导数的几何意义,f(x,y)在x_0处有唯一的切线,该点关于l方向的斜率就是方向导数.<br>在方向导数中,一种特别重要的情形是<strong>沿着坐标轴正向的方向导数,这就是偏导数</strong>  </p>
+<h2 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h2><p>定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-3a18d9f39adc7c59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png">  </p>
+<h2 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h2><p>定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e31043010ddcba47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br><strong>梯度就是个向量</strong></p>
+<h2 id="可微的必要条件"><a href="#可微的必要条件" class="headerlink" title="可微的必要条件"></a>可微的必要条件</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1404e9c0c7df547b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.png"></p>
+<h2 id="沿梯度方向函数值增大最快"><a href="#沿梯度方向函数值增大最快" class="headerlink" title="沿梯度方向函数值增大最快"></a>沿梯度方向函数值增大最快</h2><p><strong>在x0处沿某一方向的方向导数反映了:在x0的邻域内沿着这个方向,函数值能增大多少或者能减小多少</strong><br>将上述f在(x0,y0)处沿任意方向l的方向导数结果写成向量的内积形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-93891c451708819c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"><br><strong>所以在x0处沿着梯度方向能使f在该点处的方向导数最大,也就是在x0的邻域内沿着这个方向,函数值增长最快;同理沿着负梯度方向,函数值减小最快</strong></p>
+<p>参考:<br>王绵森,工科数学分析基础上下册</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/23/Line-search-and-Step-length%E7%BA%BF%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%AD%A5%E9%95%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/23/Line-search-and-Step-length%E7%BA%BF%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%AD%A5%E9%95%BF/" class="post-title-link" itemprop="url">Line search and Step length线搜索与步长</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-23 20:58:05" itemprop="dateCreated datePublished" datetime="2018-03-23T20:58:05+08:00">2018-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在最优化(optimization)问题中,<strong>线搜索(line search)</strong>和置信域(trust region)方法是寻找局部最小值(local minimum)基本迭代方法(iterative approach),主要说说线搜索方法(置信域方法过于专业)</p>
+<h2 id="线搜索-Line-search"><a href="#线搜索-Line-search" class="headerlink" title="线搜索(Line search)"></a>线搜索(Line search)</h2><p>以f(x)为例,线搜索会先找一个使f(x)<strong>下降的方向</strong>,接着计算一个<strong>步长</strong>,步长决定了x改变的大小.<br><strong>下降方向</strong>:可以通过梯度下降,牛顿法,拟牛顿法等计算<br><strong>步长</strong>:有精确(exact)和非精确(inexact)两种,精确方法就是找出导数为零的极值点,例如共轭梯度法conjugate gradient method;非精确方法没有找出导数为零的点,而是使f(x)有一个充分的下降(sufficient descent),例如backtracking,wolfe conditions,goldstein conditions<br>线搜索流程:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cea67e752863350d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<h2 id="非精确线搜索步长"><a href="#非精确线搜索步长" class="headerlink" title="非精确线搜索步长"></a>非精确线搜索步长</h2><p>精确线搜索的步长计算往往非常耗时,所以一般采用非精确线搜索 </p>
+<h3 id="Wolfe-conditions"><a href="#Wolfe-conditions" class="headerlink" title="Wolfe conditions"></a>Wolfe conditions</h3><p>Wolfe conditions 由 Armijo conditions和Curvature conditions构成,先分别介绍Armijo conditions和Curvature conditions  </p>
+<h4 id="Armijo-conditions"><a href="#Armijo-conditions" class="headerlink" title="Armijo conditions"></a>Armijo conditions</h4><p>Armijo条件:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a863991ce0edfb1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>不等式两侧都可看成α的线性函数,所以不等式要求相当于,左侧的直线在右侧直线下方.实际应用中将c1取得很小,以使得不等式右侧的直线不是太倾斜(太倾斜会使得下降太多,可能取不到最优点)  </p>
+<h4 id="Curvature-condition"><a href="#Curvature-condition" class="headerlink" title="Curvature condition"></a>Curvature condition</h4><p>在满足Armijo条件的情况下我们希望步长尽量大一些,这样收敛快,所以引入curvature条件:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-72c2aa7bf89cf920.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br>将等式两侧都写成α的函数形式,则有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cc1d57a1bd1076af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>这要求:θ(α)’大于等于θ(0)’的c2倍<br>经验取值:<br>在拟牛顿法中,c2=0.9<br>在非线性共轭梯度方法中,c2=0.1  </p>
+<h3 id="Wolfe-conditions-1"><a href="#Wolfe-conditions-1" class="headerlink" title="Wolfe conditions"></a>Wolfe conditions</h3><p>Wolfe conditions:将Armijo conditions和Curvature conditions结合在一起<br><img src="https://upload-images.jianshu.io/upload_images/9608551-3723571406fbb5e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
+<p>直观点,如下图:(忽略丑陋的字…)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b07930a140c03363.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="6.png"><br>由Armijo:函数值位于橘黄色的直线下面<br>由Curvature:斜率要大于等于θ(0)’的c2倍<br>所以最后满足条件的区域为(α1,α2)和(α3,α4)<br>可以看到,最小值在(α3,α4)中  </p>
+<h3 id="Goldstein-conditions"><a href="#Goldstein-conditions" class="headerlink" title="Goldstein conditions"></a>Goldstein conditions</h3><p>一般用于牛顿法,但不适合拟牛顿法,因为拟合的Hessian矩阵不能保持正定<br>第二个不等号和sufficient descent的形式完全一样<br><img src="https://upload-images.jianshu.io/upload_images/9608551-93991e76f4f70ce6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>类似Wolfe conditions,写成θ(α)的形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-db9073baddf8b231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br>Goldstein conditions就是要求θ(α)要在两条直线之间,但可能避开最优解<br>像下面这样:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-1b6dfabd24ab405f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="10.png"><br>满足条件的区域为(α1,α2)和(α3,α4)<br>最小值并不在这里面  </p>
+<h3 id="Backtracking-method"><a href="#Backtracking-method" class="headerlink" title="Backtracking method"></a>Backtracking method</h3><p>在实际应用中,为提高效率,放弃Wolfe conditions中的Curvature conditions,只使用sufficient descent条件,这就是Backtracking method  </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/Markov-Chain-Monte-Carlo-%E5%92%8C-Gibbs-Sampling%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -463,190 +613,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/Lagrange-duality%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/15/Lagrange-duality%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7/" class="post-title-link" itemprop="url">Lagrange duality拉格朗日对偶性</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-15 21:33:47" itemprop="dateCreated datePublished" datetime="2018-03-15T21:33:47+08:00">2018-03-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在约束最优化问题(Constrained Optimization)中,常常利用拉格朗日对偶性(Lagrange duality)将原始问题转换为对偶问题,通过求解对偶问题而得到原始问题的解,该方法可用在最大熵模型(Maximum Entropy)和支持向量机(Support Vector Machine).</p>
-<h3 id="约束最优化问题"><a href="#约束最优化问题" class="headerlink" title="约束最优化问题"></a>约束最优化问题</h3><p>标准形式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-c79452321b9f5839.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>f(x),c(x),h(x)是定义在R^n上的连续可微函数,c(x)为不等式约束(inequality constraints),h(x)为等式约束(equality constraints).<br>几个重要定义:<br>可行点(feasible point):满足所有约束条件的x<br>可行域Ω(feasible set):所有可行点组成的集合<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b3ac73d39392f1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>激活集A(x): 可行域中使得不等式约束取等的点以及满足等式约束的那些点<br><strong>LICQ条件</strong>:对于激活集A(x),如果激活集中的点对应的约束的梯度向量线性无关,<br><img src="https://upload-images.jianshu.io/upload_images/9608551-058ed647d47b8bcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"><br>那么称LICQ(linear independence constraint qualification)条件成立<br>这个条件说明了各个取等的约束都是独立的,不能被消掉,比如说其中两个等式约束为:<br>2x+3y=10<br>4x+6y=20<br>这两个等式实质上是一个等式,对应梯度向量分别为(2,3)^t,(4,6)^t,可能发现这两个向量线性相关</p>
-<h3 id="拉格朗日对偶"><a href="#拉格朗日对偶" class="headerlink" title="拉格朗日对偶"></a>拉格朗日对偶</h3><h4 id="原始问题"><a href="#原始问题" class="headerlink" title="原始问题"></a>原始问题</h4><p>刚才已经讨论过了,下图就被称为约束最优化问题的原始问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-c79452321b9f5839.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>拉格朗日在哪里?下面引进广义拉格朗日函数(generalized Lagrange function)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2a7bd8f1d39eaf17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>这里,x=(x1,x2,…xn)^t∈R,αi,βj是拉格朗日乘子,<strong>αi≥0</strong>.考虑x的函数:  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-7e503200be7106db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="5.png"><br>下标P表示原始问题<br>假设给定某个x.如果x违反原始问题的约束条件,即存在某个i使得ci(w)&gt;0或者存在某个j使得hj(x)≠0,那么有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-71ed8ab84c88332d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="6.png"><br>因为若某个i使约束ci(x)&gt;0,则可令αi→+∞,若某个j使约束hj(x)≠0,则可令βj使βj*hj(x)→+∞<br>相反地,<strong>如果x满足等式与不等式约束条件,则有θp(x)=f(x)</strong>,因此有<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ce7deebb72c752b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="7.png"><br>此时考虑极小化问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7901afc5bf1932d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="8.png"><br>这是与原始问题等价的,即它们有相同的解.<br>下图称为广义拉格朗日函数的极小极大问题,<br><img src="https://upload-images.jianshu.io/upload_images/9608551-dd02f2c289b23adf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="9.png"><br><strong>这样一来就把原始问题表示为广义拉格朗日函数的极小极大问题</strong><br>定义原始问题的最优值p*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-49e93a82b8df37c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="10.png"><br>p*称为原始问题的值</p>
-<h4 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h4><p>定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e788b052fd4a2514.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="11.png"><br>再考虑极大化θ,如下图<br><img src="https://upload-images.jianshu.io/upload_images/9608551-1a5f09aed48a8bf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="12.png"><br>上面两个式子合起来写就是,下式称为拉格朗日函数的极大极小问题<br><img src="https://upload-images.jianshu.io/upload_images/9608551-849730004edaa159.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="13.png"><br>可以将拉格朗日函数的极大极小问题表示为约束最优化问题:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-042deb162d73134e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="14.png"><br>称为原始问题的对偶问题.定义对偶问题的最优值<br><img src="https://upload-images.jianshu.io/upload_images/9608551-09853c70d2314414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="15.png"><br>称为对偶问题的值</p>
-<h4 id="原始问题与对偶问题的关系"><a href="#原始问题与对偶问题的关系" class="headerlink" title="原始问题与对偶问题的关系"></a>原始问题与对偶问题的关系</h4><p>定理1:若原始问题和对偶问题都有最优值,则<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08a8dfbd9f5a13f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png"><br>证明:容易知道,对任意的α,β,x,有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2067c237b3c15995.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="17.png"><br>即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-da58c7031224ddb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="18.png"><br>由于原始问题和对偶问题均有最优值,所以<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d187b96a9e6a2e9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="19.png"><br>即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08a8dfbd9f5a13f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png">  </p>
-<p>推论1:设x*和α*,β*分别是原始问题和对偶问题的可行解,并且d<em>=p</em>,则x*和α*,β*分别是原始问题和对偶问题的最优解.  </p>
-<p><strong>在某些条件下,原始问题和对偶问题的最优值相等,d*=p*.这时可以用解对偶问题替代解原始问题.</strong><br>定理2:考虑之前的原始问题和对偶问题,假设函数f(x)和ci(x)是凸函数,hj(x)是仿射函数;并且假设不等式约束ci(x)是严格可行的,即存在x,对所有i有ci(x)＜0,<strong>则存在x*,α*,β*,使x*是原始问题的解,α*,β*是对偶问题的解,并且p*=d*=L(x*,α*,β*)</strong></p>
-<p>定理3 考虑之前的原始问题和对偶问题,假设函数f(x)和ci(x)是凸函数,hj(x)是仿射函数;并且假设不等式约束ci(x)是严格可行的,<strong>那么x*,α*,β*分别是原始问题和对偶问题的最优解的充分必要条件是x*,α*,β*满足KKT条件(Karush-Kuhn-Tucker)</strong><br><strong>KKT条件:</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-f11019ef3d4becc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="20.png"><br>特别地,<br><img src="https://upload-images.jianshu.io/upload_images/9608551-c454f76cd45e7b3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="21.png"><br>称为KKT的对偶互补条件.<strong>由此条件可知:若αi*&gt;0,则ci(x*)=0.或者说,约束优化问题的解,要么αi*=0,要么x是激活集中的点,也就是满足ci(x*)=0的点</strong><br>参考:李航,统计学习方法</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/Python%E6%8A%80%E5%B7%A7-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/01/Python%E6%8A%80%E5%B7%A7-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Python技巧:字符串处理</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-01 22:40:53" itemprop="dateCreated datePublished" datetime="2018-03-01T22:40:53+08:00">2018-03-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="拆分含有多种分隔符的字符串"><a href="#拆分含有多种分隔符的字符串" class="headerlink" title="拆分含有多种分隔符的字符串"></a>拆分含有多种分隔符的字符串</h3><ol>
-<li><p>使用.split()<br>注意list.extend()<br>append是把整个扩充列表作为一个元素追加到列表最后,而Extend则是把每个元素都作为一个独立的元素扩充到原来的列表</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'liio;15176|0.0\\0.0,522,65,228,72:p|ts/11+R+'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mySplit</span><span class="params">(s,ds)</span>:</span></span><br><span class="line">    res = [s]</span><br><span class="line">    <span class="keyword">for</span> i,d <span class="keyword">in</span> enumerate(ds):</span><br><span class="line">        l = []</span><br><span class="line">        <span class="comment">#!!如果分割中途有个分隔符在元素的末尾,则会分割出一个空元素</span></span><br><span class="line">        <span class="comment">#list.extend(sequence) 把一个序列seq的内容展平后添加到列表中</span></span><br><span class="line">        map(<span class="keyword">lambda</span> x:l.extend(x.split(d)),res) </span><br><span class="line">        <span class="comment"># print '第%s次分割结果(分割符为%s):'%(i+1,d),l</span></span><br><span class="line">        res = l</span><br><span class="line">    <span class="comment">#当x非空时返回</span></span><br><span class="line">    <span class="keyword">return</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> res <span class="keyword">if</span> x]</span><br><span class="line">new = mySplit(s,<span class="string">';|\\.+,,/'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'new[] = '</span>,new</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用正则表达式re.split()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方案二  使用正则表达式</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">s = <span class="string">'liio;15176|0.0\\0.0,522,65,228,72:p|ts/11+R+'</span></span><br><span class="line"><span class="comment">#def split(pattern, string, maxsplit=0, flags=0)</span></span><br><span class="line"><span class="comment">#Split the source string by the occurrences of the pattern,</span></span><br><span class="line"><span class="comment">#returning a list containing the resulting substrings</span></span><br><span class="line"><span class="comment">#[]中的每个字符都可作为分割符</span></span><br><span class="line">q = re.split(<span class="string">r'[;|\\.+,,/]+'</span>,s)</span><br><span class="line"><span class="keyword">print</span> q</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>两种方法对比: <strong>s.split()速度更快,但是不能处理多个分割符; 推荐使用正则表达式</strong></p>
-<h3 id="判断字符串a是否以字符串b开头或结尾"><a href="#判断字符串a是否以字符串b开头或结尾" class="headerlink" title="判断字符串a是否以字符串b开头或结尾"></a>判断字符串a是否以字符串b开头或结尾</h3><p>不仅可以用来处理文本文件,还可以处理磁盘中的文件,<strong>筛选出所需的文件类型</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,stat</span><br><span class="line">f = os.listdir(<span class="string">'ceshi/'</span>)</span><br><span class="line"><span class="keyword">print</span> f</span><br><span class="line">s = f[<span class="number">0</span>]</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">def endswith(self, suffix, start=None, end=None)</span></span><br><span class="line"><span class="string">Return True if S ends with the specified suffix, False otherwise.</span></span><br><span class="line"><span class="string">With optional start, test S beginning at that position.</span></span><br><span class="line"><span class="string">With optional end, stop comparing S at that position.</span></span><br><span class="line"><span class="string">suffix can also be a tuple of strings to try. 要求是元组!!不能用list</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># print s.endswith(('.sh','.py'))</span></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">'ceshi/'</span>):</span><br><span class="line">    <span class="keyword">if</span> name.endswith((<span class="string">'.sh'</span>,<span class="string">'.py'</span>)):</span><br><span class="line">        <span class="keyword">print</span> name</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改文件权限前要先查看文件权限,用stat</span></span><br><span class="line"><span class="keyword">print</span> os.stat(<span class="string">'ceshi/a.sh'</span>)</span><br><span class="line"><span class="keyword">print</span> os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode</span><br><span class="line"><span class="comment">#先把权限代码转换成八进制</span></span><br><span class="line"><span class="comment">#666分别是user,group,others的权限值</span></span><br><span class="line"><span class="keyword">print</span> oct(os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode)</span><br><span class="line">os.chmod(<span class="string">'ceshi/a.sh'</span>,os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode | stat.S_IXUSR)</span><br><span class="line"><span class="comment">#看来666是最大权限了</span></span><br><span class="line"><span class="keyword">print</span> oct(os.stat(<span class="string">'ceshi/a.sh'</span>).st_mode)</span><br></pre></td></tr></table></figure>
-<h3 id="调整字符串中文本的格式"><a href="#调整字符串中文本的格式" class="headerlink" title="调整字符串中文本的格式"></a>调整字符串中文本的格式</h3><p>配合正则表达式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">f = open(<span class="string">'ceshi/date.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line"><span class="comment">#def sub(pattern, repl, string, count=0, flags=0)</span></span><br><span class="line"><span class="string">"""Return the string obtained by replacing the leftmost</span></span><br><span class="line"><span class="string">    non-overlapping occurrences of the pattern in string by the</span></span><br><span class="line"><span class="string">    replacement repl.  repl can be either a string or a callable;</span></span><br><span class="line"><span class="string">    if a string, backslash escapes in it are processed.  If it is</span></span><br><span class="line"><span class="string">    a callable, it's passed the match object and must return</span></span><br><span class="line"><span class="string">    a replacement string to be used."""</span></span><br><span class="line"><span class="comment">#首先描述日期格式</span></span><br><span class="line"><span class="comment">#repl中的/是分隔符</span></span><br><span class="line"><span class="comment">#re.sub第一个参数中的每个括号都是正则表达式的一个捕获组,根据左括号的顺序排序</span></span><br><span class="line"><span class="comment">#pattern:匹配规则   repl:要替换成什么样子   string:要替换谁</span></span><br><span class="line"><span class="comment">#rel参数调整了捕获组在原文本中的顺序,/是分隔符</span></span><br><span class="line"><span class="keyword">print</span> re.sub(<span class="string">'(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)'</span>,<span class="string">r'\2/\3/\1'</span>,f.read())</span><br><span class="line">f.close()</span><br><span class="line"><span class="comment">#使用r来输出原始字符串,消除\的转义功能</span></span><br><span class="line"><span class="comment">#字符串什么样子就打印出什么样子,所以叫做原始字符串</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">r'\\1</span></span><br><span class="line"><span class="string">print r'</span>\<span class="number">1</span><span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">f = open('</span>ceshi/date.txt<span class="string">','</span><span class="string">r')</span></span><br><span class="line"><span class="string">#re.sub()中还可以给组起个名字,用?P&lt;&gt;起名</span></span><br><span class="line"><span class="string">#月日年是美国的日期格式</span></span><br><span class="line">print re.sub('(?P&lt;year&gt;\d&#123;4&#125;)-(?P&lt;month&gt;\d&#123;2&#125;)-(?P&lt;day&gt;\d&#123;2&#125;)',r'\g&lt;month&gt;/\g&lt;day&gt;/\g&lt;year&gt;',f.read())</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-
-<h3 id="将多个小字符串拼接成一个大的字符串"><a href="#将多个小字符串拼接成一个大的字符串" class="headerlink" title="将多个小字符串拼接成一个大的字符串"></a>将多个小字符串拼接成一个大的字符串</h3><ol>
-<li>直接用+拼接字符串<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">s1 = <span class="string">'abcdefg'</span></span><br><span class="line">s2 = <span class="string">'12345'</span></span><br><span class="line"><span class="comment">#s1 + s2实际调用的是s1.__add__(s2)这个方法</span></span><br><span class="line"><span class="comment">#def __add__(self, y)</span></span><br><span class="line"><span class="comment">#x.__add__(y) &lt;==&gt; x+y</span></span><br><span class="line"><span class="keyword">print</span> s1 + s2</span><br><span class="line"><span class="keyword">print</span> str.__add__(s1,s2)</span><br><span class="line"><span class="comment">#这样也可以</span></span><br><span class="line"><span class="keyword">print</span> str.__add__(s1,s2)</span><br><span class="line"></span><br><span class="line"><span class="comment">#str.__gt__()</span></span><br><span class="line"><span class="keyword">print</span> s1&gt;s2</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line">l = [str(randint(<span class="number">0</span>,<span class="number">50</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="keyword">print</span> l</span><br><span class="line">s = <span class="string">''</span></span><br><span class="line"><span class="comment">#这种方法会不断的创建临时变量,再释放,如果字符串特别长,开销就会很巨大,用str.join()方法</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> l:</span><br><span class="line">    s+=x</span><br><span class="line">    <span class="keyword">print</span> s</span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure></li>
-<li>用str.join()<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">join</span><span class="params">(self, iterable)</span></span></span><br><span class="line"><span class="function">"""</span></span><br><span class="line"><span class="function"><span class="title">S</span>.<span class="title">join</span><span class="params">(iterable)</span> -&gt; string</span></span><br><span class="line"><span class="function">Return a string which is the concatenation of the strings in the iterable.</span></span><br><span class="line"><span class="function">注意!!支持的是可迭代对象里面的字符串类型!!!!</span></span><br><span class="line"><span class="function">The separator between elements is S.</span></span><br><span class="line"><span class="function">S是作为分隔符</span></span><br><span class="line"><span class="function">"""</span></span><br><span class="line"><span class="function">#这种方法一次性就连接起来,不存在临时变量的浪费</span></span><br><span class="line"><span class="function">print ';'.join(['abc','123','aaaaa'])</span></span><br><span class="line"><span class="function">print ''.join(['abc','123','aaaaa'])</span></span><br><span class="line"><span class="function">#切记:</span>如果列表里面既有str又有int,flaoat,就不能直接连接!!!!!!!!</span><br><span class="line"></span><br><span class="line"><span class="comment">#可以用列表生成式.不过这样做会先形成一个完整的列表,可以用生成器</span></span><br><span class="line">l = [<span class="string">'abc'</span>,<span class="string">'123'</span>,<span class="string">'aaaaa'</span>,<span class="number">11</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join([str(x) <span class="keyword">for</span> x <span class="keyword">in</span> l])</span><br><span class="line"><span class="comment">#生成器方法,将[]改成()即可,非常方便</span></span><br><span class="line"><span class="comment">#&lt;type 'generator'&gt;</span></span><br><span class="line"><span class="keyword">print</span> type(((str(x) <span class="keyword">for</span> x <span class="keyword">in</span> l )))</span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join((str(x) <span class="keyword">for</span> x <span class="keyword">in</span> l ))</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="将字符串进行左-右-居中对齐"><a href="#将字符串进行左-右-居中对齐" class="headerlink" title="将字符串进行左,右,居中对齐"></a>将字符串进行左,右,居中对齐</h3><ol>
-<li><p>使用str.ljust()   str.center()   str.rjust()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'abc'</span></span><br><span class="line"><span class="comment">#def ljust(self, width, fillchar=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">左对齐</span></span><br><span class="line"><span class="string">S.ljust(width[, fillchar]) -&gt; string</span></span><br><span class="line"><span class="string">Return S left-justified in a string of length width.</span></span><br><span class="line"><span class="string">Padding is done using the specified fill character (default is a space).</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">s.ljust(<span class="number">10</span>,<span class="string">'-'</span>) <span class="comment">#左对齐,一共10个字符的位置,用空格补充空位置</span></span><br><span class="line"><span class="keyword">print</span> s.ljust(<span class="number">10</span>,<span class="string">'-'</span>)</span><br><span class="line"><span class="comment">#右对齐</span></span><br><span class="line"><span class="keyword">print</span> s.rjust(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">print</span> len(s.rjust(<span class="number">10</span>))</span><br><span class="line"><span class="comment">#居中对齐 def center(self, width, fillchar=None)</span></span><br><span class="line"><span class="keyword">print</span>  s.center(<span class="number">10</span>,<span class="string">'_'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 format()函数</p>
-</li>
-</ol>
-<p><strong>使用map函数和dict.keys()找到键最长的key,</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'abc'</span></span><br><span class="line"><span class="comment">#def format(value, format_spec=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">format(value[, format_spec]) -&gt; string</span></span><br><span class="line"><span class="string">Returns value.__format__(format_spec)</span></span><br><span class="line"><span class="string">format_spec defaults to ""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#左对齐</span></span><br><span class="line"><span class="keyword">print</span> format(s,<span class="string">'&lt;15'</span>)</span><br><span class="line"><span class="comment">#右对齐</span></span><br><span class="line"><span class="keyword">print</span> format(s,<span class="string">'&gt;15'</span>)</span><br><span class="line"><span class="comment">#居中对齐</span></span><br><span class="line"><span class="keyword">print</span> format(s,<span class="string">'^15'</span>)</span><br><span class="line"></span><br><span class="line">d = &#123;<span class="string">'Dist'</span>:<span class="number">500.0</span>,<span class="string">'SmallCull'</span>:<span class="number">0.04</span>,<span class="string">'farclip'</span>:<span class="number">447</span>,<span class="string">'lopadDist'</span>:<span class="number">100.0</span>,<span class="string">'trilinear'</span>:<span class="number">450</span>&#125;</span><br><span class="line"><span class="comment">#先找到键最长的key,借助map函数!!!!!</span></span><br><span class="line"><span class="comment">#对齐后</span></span><br><span class="line">width = max(map(len,d.keys()))</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d:</span><br><span class="line">    <span class="keyword">print</span> k.ljust(width),<span class="string">':'</span>,d[k]</span><br><span class="line"><span class="comment">#未对齐</span></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d:</span><br><span class="line">    <span class="keyword">print</span> k, <span class="string">':'</span>, d[k]</span><br></pre></td></tr></table></figure>
-
-<h3 id="去掉字符串中不需要的字符"><a href="#去掉字符串中不需要的字符" class="headerlink" title="去掉字符串中不需要的字符"></a>去掉字符串中不需要的字符</h3><ol>
-<li><p>使用.strip()   .lstrip()   .rstrip()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#s.strip()    s.lstrip()   s.rstrip()</span></span><br><span class="line">s = <span class="string">'   ABC    123    '</span></span><br><span class="line"><span class="comment">#def strip(self, chars=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.strip([chars]) -&gt; string or unicode</span></span><br><span class="line"><span class="string">leading:开头的  trailing:后面的</span></span><br><span class="line"><span class="string">Return a copy of the string S with leading and trailing whitespace removed.</span></span><br><span class="line"><span class="string">If chars is given and not None, remove characters in chars instead.</span></span><br><span class="line"><span class="string">If chars is unicode, S will be converted to unicode before stripping!!!注意编码格式!!!</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#去掉两端的空白</span></span><br><span class="line"><span class="keyword">print</span> s.strip()</span><br><span class="line"><span class="comment">#去掉左端的空白</span></span><br><span class="line"><span class="keyword">print</span> s.lstrip()</span><br><span class="line"><span class="comment">#去掉右端的空白</span></span><br><span class="line"><span class="keyword">print</span> s.rstrip()</span><br><span class="line">s = <span class="string">'---abc+++'</span></span><br><span class="line"><span class="comment">#去掉-+这两个字符</span></span><br><span class="line"><span class="keyword">print</span> s.strip(<span class="string">'-+'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用切片+字符串拼接</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#得知道字符串样子,不适合大量无规则文本</span></span><br><span class="line">s = <span class="string">'abc:123'</span></span><br><span class="line"><span class="keyword">print</span> s[:<span class="number">3</span>]+s[<span class="number">4</span>:]</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#s.replace()    re.sub</span></span><br><span class="line">s = <span class="string">'\tabc\t123\txyz'</span></span><br><span class="line"><span class="comment">#replace()只能替换一种字符</span></span><br><span class="line"><span class="comment">#def replace(self, old, new, count=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.replace(old, new[, count]) -&gt; string</span></span><br><span class="line"><span class="string">Return a copy of string S with all occurrences of substring old replaced by new.</span></span><br><span class="line"><span class="string">If the optional argument count is given, only the first count occurrences are replaced.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">print</span> s.replace(<span class="string">'\t'</span>,<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">使用正则表达式替换</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">s = <span class="string">'\tabc\t123\txyz\ropq'</span></span><br><span class="line"><span class="comment">#def sub(pattern, repl, string, count=0, flags=0)</span></span><br><span class="line"><span class="comment">#pattern:匹配规则   repl:要替换成什么样子   string:要替换谁</span></span><br><span class="line"><span class="keyword">print</span> re.sub(<span class="string">r'[\t\r]'</span>,<span class="string">''</span>,s)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用translate()方法</p>
-</li>
-</ol>
-<p><strong>string和unicode都有translate方法,二者目的相同但用法稍有不同</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### string #######</span></span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="comment"># print string.maketrans('abcxyz','xyzabc')</span></span><br><span class="line">s = <span class="string">'abc1230022xyz'</span></span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment">#def translate(self, table, deletechars=None)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.translate(table [,deletechars]) -&gt; string</span></span><br><span class="line"><span class="string">Return a copy of the string S, where all characters occurring in the optional argument deletechars are removed,</span></span><br><span class="line"><span class="string">and the remaining characters have been mapped through the given</span></span><br><span class="line"><span class="string">translation table, which must be a string of length 256 or None.</span></span><br><span class="line"><span class="string">If the table argument is None, no translation is applied and</span></span><br><span class="line"><span class="string">the operation simply removes the characters in deletechars.</span></span><br><span class="line"><span class="string">这是translate的原始目的</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#the remaining characters have been mapped through the given</span></span><br><span class="line"><span class="comment">#translation table</span></span><br><span class="line"><span class="comment">#通过string.maketrans()得到映射table!!!!!!!!</span></span><br><span class="line"><span class="keyword">print</span> s.translate(string.maketrans(<span class="string">'abcxyz'</span>,<span class="string">'xyzabc'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># If the table argument is None, no translation is applied</span></span><br><span class="line"><span class="comment"># and the operation simply removes the characters in deletechars</span></span><br><span class="line">s = <span class="string">'abc\reesa\nrrt23\t'</span></span><br><span class="line"><span class="keyword">print</span> s.translate(<span class="literal">None</span>,<span class="string">'\r\n\t'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### unicode #######</span></span><br><span class="line"><span class="comment">#def translate(self, table)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">S.translate(table) -&gt; unicode</span></span><br><span class="line"><span class="string">Return a copy of the string S, where all characters have been mapped</span></span><br><span class="line"><span class="string">through the given translation table, which must be a mapping of</span></span><br><span class="line"><span class="string">Unicode ordinals to Unicode ordinals, Unicode strings or None.</span></span><br><span class="line"><span class="string">Unmapped characters are left untouched. </span></span><br><span class="line"><span class="string">Characters mapped to None are deleted.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#Characters mapped to None are deleted.</span></span><br><span class="line">u = <span class="string">u'hahaǔǜhaha'</span></span><br><span class="line"><span class="keyword">print</span> u.translate(&#123;<span class="number">0x01d4</span>:<span class="literal">None</span>,<span class="number">0x01dc</span>:<span class="literal">None</span>&#125;) <span class="comment"># 0x01d4是ǔ  0x01dc是ǜ</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def fromkeys(S, v=None): restored from __doc__</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">dict.fromkeys(S[,v]) -&gt; New dict with keys from S and values equal to v.</span></span><br><span class="line"><span class="string">v defaults to None.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment">#v defaults to None.</span></span><br><span class="line"><span class="keyword">print</span> dict.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">u = <span class="string">u'12345'</span></span><br><span class="line"><span class="keyword">print</span> u.translate(dict.fromkeys([<span class="number">0x0031</span>,<span class="number">0x0032</span>,<span class="number">0x0033</span>,<span class="number">0x0034</span>]))  <span class="comment">#0x0031是1</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -719,7 +685,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

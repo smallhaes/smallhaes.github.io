@@ -177,6 +177,152 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/numpy%E7%9A%84%E5%B9%BF%E6%92%AD%E5%8E%9F%E7%90%86%E5%8F%8A%E7%A4%BA%E4%BE%8B%E6%BC%94%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/28/numpy%E7%9A%84%E5%B9%BF%E6%92%AD%E5%8E%9F%E7%90%86%E5%8F%8A%E7%A4%BA%E4%BE%8B%E6%BC%94%E7%A4%BA/" class="post-title-link" itemprop="url">numpy的广播原理及示例演示</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-10-28 09:35:46" itemprop="dateCreated datePublished" datetime="2018-10-28T09:35:46+08:00">2018-10-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>研读faster rcnn的源码时发现numpy的广播非常重要,故总结一波<br>以数组A和数组B的相加为例,先牢记两点原则:<br><strong>核心:广播时先使A.shape=B.shape,然后对应位置进行相加</strong><br><strong>返回结果的shape是:A.shape和B.shape对应位置的最大值</strong>,比如:A.shape=(1,9,4),B.shape=(15,1,4),那么A+B的shape是(14,9,4)<br>有两种情况能够进行广播</p>
+<ol>
+<li>A.ndim 大于 B.ndim, 并且A.shape最后几个元素包含B.shape, 比如:A.shape=(2,3,4,5),B.shape=(3,4,5)或者B.shape=(4,5)或者B.shape=(5).   </li>
+<li>A.ndim 等于 B.ndim, 并且<strong>A.shape和B.shape对应位置的元素要么相同要么其中一个是1</strong>,比如:A.shape=(1,9,4),B.shape=(15,1,4), 再比如A.shape=(1,9,4),B.shape=(15,1,1)</li>
+</ol>
+<p>下面分别进行举例</p>
+<h4 id="A-ndim-大于-B-ndim"><a href="#A-ndim-大于-B-ndim" class="headerlink" title="A.ndim 大于 B.ndim"></a>A.ndim 大于 B.ndim</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a.shape=(2,2,3,4)</span></span><br><span class="line">a = np.arange(<span class="number">1</span>,<span class="number">49</span>).reshape((<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># b.shape=(3,4)</span></span><br><span class="line">b = np.arange(<span class="number">1</span>,<span class="number">13</span>).reshape((<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># numpy会将b.shape调整至(2,2,3,4), 这一步相当于numpy自动实现np.tile(b,[2,2,1,1])</span></span><br><span class="line">res = a + b</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(a)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(b)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(res)</span><br><span class="line">print(res.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(a+b == a + np.tile(b,[<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>]) )</span><br></pre></td></tr></table></figure>
+
+<h4 id="A-ndim-等于-B-ndim"><a href="#A-ndim-等于-B-ndim" class="headerlink" title="A.ndim 等于 B.ndim"></a>A.ndim 等于 B.ndim</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例1</span></span><br><span class="line"><span class="comment"># a.shape=(4,3)</span></span><br><span class="line">a = np.arange(<span class="number">12</span>).reshape(<span class="number">4</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment"># b.shape=(4,1)</span></span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># numpy会将b.shape调整至(4,3), 这一步相当于numpy自动实现np.tile(b,[1,3])</span></span><br><span class="line">res = a + b</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(a)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(b)</span><br><span class="line">print(b.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print(res)</span><br><span class="line">print(res.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">print((a+b == a + np.tile(b,[<span class="number">1</span>,<span class="number">3</span>])) )  <span class="comment"># 打印结果都是True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例2</span></span><br><span class="line"><span class="comment"># a.shape=(1,9,4)</span></span><br><span class="line">a = np.arange(<span class="number">1</span>,<span class="number">37</span>).reshape((<span class="number">1</span>,<span class="number">9</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># b.shape=(15,1,4)</span></span><br><span class="line">b = np.arange(<span class="number">1</span>,<span class="number">61</span>).reshape((<span class="number">15</span>,<span class="number">1</span>,<span class="number">4</span>))</span><br><span class="line">res = a + b</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line"><span class="comment"># print(a)</span></span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line"><span class="comment"># print(b)</span></span><br><span class="line">print(b.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line"><span class="comment"># print(res)</span></span><br><span class="line">print(res.shape)</span><br><span class="line">print(<span class="string">'==================================='</span>)</span><br><span class="line">q = np.tile(a,[<span class="number">15</span>,<span class="number">1</span>,<span class="number">1</span>]) + np.tile(b,[<span class="number">1</span>,<span class="number">9</span>,<span class="number">1</span>])</span><br><span class="line">print(q == res)	<span class="comment"># 打印结果都是True</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/np-tile-%E5%92%8Cnp-repeat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/28/np-tile-%E5%92%8Cnp-repeat/" class="post-title-link" itemprop="url">np.tile()和np.repeat()</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-10-28 09:34:20" itemprop="dateCreated datePublished" datetime="2018-10-28T09:34:20+08:00">2018-10-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>np.tile()和np.repeat()都可以对array进行重复操作,但np.tile()是以axis为最小单位(axis-wise)进行重复的,而np.repeat()是以element为最小单位(element-wise)进行重复的</p>
+<h4 id="np-tile-A-reps"><a href="#np-tile-A-reps" class="headerlink" title="np.tile(A,reps)"></a>np.tile(A,reps)</h4><p>输入: A是数组,reps是个list,<strong>reps的元素表示对A的各个axis进行重复的次数</strong><br>返回: 一个数组,维度的数量等于max(A.ndim,len(reps)),<strong>注意不要混淆A.ndim和A.shape</strong><br>有两种特殊情况:</p>
+<ol>
+<li>A.ndim &lt; len(reps), 此时需要调整A的维度使得A.ndim = len(reps),即添加长度为1的维度,注意:新的维度在原维度的前面,比如原来的A.shape是(3,5),调整后是(1,3,5)</li>
+<li>A.ndim &gt; len(reps), 此时需要增加list的长度,使得A.ndim = len(reps),即在reps的最前面增加元素1,比如原来的list是[2,2],增加长度后是[1,2,2]</li>
+</ol>
+<p>官方示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例1,正常情况</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment"># 将axis=0重复2次</span></span><br><span class="line">np.tile(A=a, reps=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># array([0, 1, 2, 0, 1, 2])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例2,特殊情况1:A.ndim &lt; len(reps)</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment"># 将a.shape调整至(1,3),然后将axis=0重复2次,将axis=1重复2次</span></span><br><span class="line">np.tile(A=a, reps=(<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line"><span class="comment">#array([[0, 1, 2, 0, 1, 2], [0, 1, 2, 0, 1, 2]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例3,特殊情况1:A.ndim &lt; len(reps)</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment"># 将a.shape调整至(1,1,3),然后将axis=0重复2次,将axis=1重复1次,将axis=2重复2次</span></span><br><span class="line">np.tile(A=a, reps=(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"><span class="comment">#array([[[0, 1, 2, 0, 1, 2]], [[0, 1, 2, 0, 1, 2]]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例4,特殊情况2:A.ndim &gt; len(reps)</span></span><br><span class="line">b = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 将reps=[2]调整至[1,2],然后将axis=0重复1次,将axis=1重复2次</span></span><br><span class="line">np.tile(A=b, reps=<span class="number">2</span>)</span><br><span class="line"><span class="comment">#array([[1, 2, 1, 2], [3, 4, 3, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例5,正常情况</span></span><br><span class="line">b = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 将axis=0重复两次,将axis=1重复1次</span></span><br><span class="line">np.tile(A=b, reps=(<span class="number">2</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment">#array([[1, 2], [3, 4], [1, 2], [3, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例6,特殊情况1:A.ndim &lt; len(reps)</span></span><br><span class="line">c = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="comment"># 将c.shape调整至(4,1),然后将axis=0重复4次,将axis=1重复1次</span></span><br><span class="line">np.tile(A=c, reps=(<span class="number">4</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment"># array([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]])</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="np-repeat-a-repeats-axis-None"><a href="#np-repeat-a-repeats-axis-None" class="headerlink" title="np.repeat(a, repeats, axis=None)"></a>np.repeat(a, repeats, axis=None)</h4><p>输入: a是数组,repeats是各个元素重复的次数(<strong>repeats一般是个标量,稍复杂点是个list</strong>),在axis的方向上进行重复<br>返回: 如果不指定axis,则将重复后的结果展平(维度为1)后返回;如果指定axis,则不展平<br>官方示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例1,展平</span></span><br><span class="line"><span class="comment"># 将3重复4次</span></span><br><span class="line">np.repeat(a=<span class="number">3</span>, repeats=<span class="number">4</span>)</span><br><span class="line"><span class="comment"># array([3, 3, 3, 3])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例2,展平</span></span><br><span class="line"><span class="comment"># 每个元素都重复2次,并展平后输出</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line">np.repeat(a=x, repeats=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># array([1, 1, 2, 2, 3, 3, 4, 4])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例3,不展平</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 沿着axis=1方向重复,将axis=1方向上的每个元素重复3次</span></span><br><span class="line">np.repeat(a=x, repeats=<span class="number">3</span>, axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment">#array([[1, 1, 1, 2, 2, 2], [3, 3, 3, 4, 4, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例3,不展平</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</span><br><span class="line"><span class="comment"># 沿着axis=0方向重复,将axis=0方向上的第0个元素重复1次,第1个元素重复2次</span></span><br><span class="line">np.repeat(a=x, repeats=[<span class="number">1</span>, <span class="number">2</span>], axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># array([[1, 2], [3, 4], [3, 4]])</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/tf-softmax-cross-entropy-with-logits-%E7%9A%84%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -377,153 +523,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/FasterRCNN%E4%B9%8B%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/24/FasterRCNN%E4%B9%8B%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">FasterRCNN之整体框架详解</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-24 09:41:41" itemprop="dateCreated datePublished" datetime="2018-10-24T09:41:41+08:00">2018-10-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>刚接触物体检测领域,学习了Faster RCNN的论文及Tensorflow版本的源码,不得不说,读源码真的过瘾..不过确实能够帮助理解框架,下面按照Faster RCNN的预测过程介绍其整体流程</p>
-<h2 id="整体框架"><a href="#整体框架" class="headerlink" title="整体框架"></a>整体框架</h2><p>Faster RCNN整体框架包括4部分:<br>一. 使用VGG16或者其他成熟的图片分类模型提取<strong>图片特征(feature map)</strong><br>二. 将<strong>图片特征</strong>喂入RPN(Region Proposal Network)网络得到<strong>proposals</strong> (包含第一次回归)<br>三. 将上两步的结果:<strong>图片特征</strong>和 <strong>proposals</strong> 喂入RoI Pooling层得到综合的<strong>proposals特征</strong><br>四. 根据<strong>poposals特征</strong>预测<strong>物体的bounding box</strong>和<strong>物体的类别</strong> (包含第二次回归)</p>
-<p>对应下图: <strong>图中conv(3,3,512,1,1)对应conv(filter_height,filter_width,output_channels,stride_height,stride_width)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-32b0af61b605c33e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Faster RCNN预测.jpg"></p>
-<p>接下来分别介绍这四部分对应的网络结构,以预测过程为例(训练过程涉及ground truth的构建,会在之后的博客中具体介绍)</p>
-<h2 id="一-获取图片特征"><a href="#一-获取图片特征" class="headerlink" title="一.获取图片特征"></a>一.获取图片特征</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-4cf624aa8f12a005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vgg.png"><br>使用预训练好的VGG16提取图片特征,如下图所示,喂入的图片(也就是’data’)并没有经过VGG16所有的流程,而是在得到’conv5_3’这个结果后就停下了,’conv5_3’就是Faster RCNN需要的图片特征(feature map)<br>注意:’conv5_3’的h,w是输入图片’data’的1/16<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9f4cb555209f38f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
-<h2 id="二-RPN网络输出proposals"><a href="#二-RPN网络输出proposals" class="headerlink" title="二.RPN网络输出proposals"></a>二.RPN网络输出proposals</h2><p>这是Faster RCNN中最复杂的一部分. 将通过VGG16得到的<strong>图片特征</strong>喂入RPN(Region Proposal Network)网络得到<strong>proposals</strong><br>RPN网络结构如下图所示<br><img src="https://upload-images.jianshu.io/upload_images/9608551-17f54c255c42525f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rpn.png"><br>(1) 首先将图片特征’conv5_3’喂给卷积层conv(3,3,512,1,1),输出的图片特征 <strong>‘rpn_conv/3x3’</strong> 尺寸和通道数均保持不变.<br>根据卷积的运算公式,猜测这一层的作用为:该层 <strong>每个filter</strong> 分别将’conv5_3’的所有通道联系起来,也就是说经过卷积后, <strong>‘rpn_conv/3x3’的每个通道</strong> 都整合了’conv5_3’所有通道的信息.(这地方说起来比较绕,如果明白卷积的计算过程就容易理解了)<br>(2.1) 将 <strong>‘rpn_conv/3x3’</strong> 喂给conv(1,1,36,1,1)得到 <strong>‘rpn_box_pred’</strong> ,36个通道表示:每个点有9组proposals的回归值,每组proposals的回归值对应论文中的tx,ty,tw,th.(这里是第一次回归)<br><strong>这里要重点注意一下,’rpn_conv/3x3’的尺寸是h,w,也就是’rpn_conv/3x3’有h*w个像素(不要考虑通道数,举个例子:平时我们看到的彩色图是3通道的,假设分辨率是1920*1080,这表示有1920*1080个像素点,而不是3*1920*1080个).针对这h*w个像素,以每个像素为中心为每个像素生成9组proposals的回归值,每组回归值包含4个信息.所以每个像素点需要36个维度去存储9*4个信息,这就是输出通道36的来源!</strong><br> (2.2.1) 将 <strong>‘rpn_conv/3x3’</strong> 喂给conv(1,1,18,1,1)得到 <strong>‘rpn_cls_score’</strong> ,刚才说了,要为 <strong>‘rpn_conv/3x3’</strong> 的每个像素生成9个proposals,而每个proposal是有类别的,要么是foreground proposal(框出物体)，要么是backgroud proposal(框出背景).所以每个proposal需要2个维度来存储类别得分,因此 <strong>‘rpn_conv/3x3’</strong> 的每个像素需要9*2=18个维度,这就是输出通道18的来源.<br>(2.2.2)接着将 <strong>‘rpn_cls_score’</strong> 依次喂入reshape_layer,softmax,reshape_layer,最终得到 <strong>‘rpn_cls_prob_reshape’</strong> ,这一过程将每个类别得分转换为概率.<br>为什么要经过两个reshape_layer呢? 这里引用<a href="https://zhuanlan.zhihu.com/p/31426458" target="_blank" rel="noopener">白裳大神的解释:</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">那么为何要在softmax前后都接一个reshape layer？其实只是为了便于softmax分类，至于具体原因这就要从caffe的实现形式说起了。</span><br><span class="line">在caffe基本数据结构blob中以如下形式保存数据：blob=[batch_size, channel，height，width]</span><br><span class="line">对应至上面的保存bg/fg anchors的矩阵，其在caffe blob中的存储形式为[<span class="number">1</span>, <span class="number">2</span>x9, H, W]。</span><br><span class="line">而在softmax分类时需要进行fg/bg二分类，所以reshape layer会将其变为[<span class="number">1</span>, <span class="number">2</span>, <span class="number">9</span>xH, W]大小，</span><br><span class="line">即单独“腾空”出来一个维度以便softmax分类，之后再reshape回复原状。</span><br><span class="line">贴一段caffe softmax_loss_layer.cpp的reshape函数的解释，非常精辟：</span><br><span class="line"><span class="string">"Number of labels must match number of predictions; "</span></span><br><span class="line"><span class="string">"e.g., if softmax axis == 1 and prediction shape is (N, C, H, W), "</span></span><br><span class="line"><span class="string">"label count (number of labels) must be N*H*W, "</span></span><br><span class="line"><span class="string">"with integer values in &#123;0, 1, ..., C-1&#125;."</span>;</span><br><span class="line">综上所述，RPN网络中利用anchors和softmax初步提取出foreground anchors作为候选区域。</span><br></pre></td></tr></table></figure>
-<p>(3) 将 <strong>‘rpn_box_pred’</strong> 和 <strong>‘rpn_cls_prob_reshape’</strong> 以及 <strong>im_info</strong> 喂给proposal_layer 得到 <strong>‘rois’</strong> ,也就是RPN网络最终输出的proposals. 这些proposals都是从foreground anchors里面挑选的,  用到了nms. 接下来还需要对RPN输出的proposals进行第二次回归</p>
-<h2 id="三-通过RoI-Pooling层得到综合的proposals特征"><a href="#三-通过RoI-Pooling层得到综合的proposals特征" class="headerlink" title="三. 通过RoI Pooling层得到综合的proposals特征"></a>三. 通过RoI Pooling层得到综合的proposals特征</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a838d33a0c8c5e20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="roi.png"><br>(1) 将 <strong>‘rois’</strong> 和 <strong>‘conv5_3’</strong> 喂给roi_pool 得到 <strong>‘pool_5’</strong> , 关于roi_pool的输入,尺寸是任意大小的,但输出的特征都是长度固定的. 具体可参考<a href="https://blog.csdn.net/littlehaes/article/details/83473863" target="_blank" rel="noopener">3分钟理解ROI Pooling层</a></p>
-<h2 id="四-根据poposals特征进行框回归和物体分类"><a href="#四-根据poposals特征进行框回归和物体分类" class="headerlink" title="四.根据poposals特征进行框回归和物体分类"></a>四.根据poposals特征进行框回归和物体分类</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-6faac99ad1a14cdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="final.png"><br>(1) 将 <strong>‘pool_5’</strong> 连续经过两个全连接层得到 <strong>‘fc_7’</strong><br>(2.1)将 <strong>‘fc_7’</strong> 经过全连接层得到 <strong>‘bbox_pred’</strong> ,这里是二次回归,表示tx,ty,tw,th.用来和 <strong>‘rois’</strong> 相加,从而得到Faster RCNN最终的proposals!<br>(2.2.1) 将 <strong>‘fc’</strong> 经过全连接层得到 <strong>‘cls_score’</strong><br>(2.2.2) 将 <strong>‘cls_score’</strong> 经过softmax层得到 <strong>‘cls_prob’</strong> ,也就是proposal属于各个物体的概率</p>
-<p>以上便是Faster RCNN的4部分,关于模块的实现细节,我过几天再写</p>
-<p>训练时迭代了50000次,pascal2007测试结果MAP=0.65,其中,chair的ap最低0.46,horse的ap最高0.81<br>运行环境:CUDA8,cuDNN7,1070Ti,TensorFlow1.4.0,python2.7<br>训练集:voc_2007_trainval    训练时间148分钟<br>测试集:voc_2007_testt    测试时间10分钟(5000图)</p>
-<p>参考:<br><a href="https://zhuanlan.zhihu.com/p/31426458" target="_blank" rel="noopener">白裳</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/22/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E4%B8%8E%E7%AD%89%E9%AB%98%E7%BA%BF%E5%9E%82%E7%9B%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/22/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E4%B8%8E%E7%AD%89%E9%AB%98%E7%BA%BF%E5%9E%82%E7%9B%B4/" class="post-title-link" itemprop="url">为什么梯度方向与等高线垂直</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-22 08:42:33" itemprop="dateCreated datePublished" datetime="2018-10-22T08:42:33+08:00">2018-10-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-23c4863ce96bf109.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="1.jpg"></p>
-<p>有些结论用起来习以为常,却不知道背后的原理,比如为什么梯度方向与等高线垂直,弄明白后心里才舒畅<br>要解决这个问题首先得有等高线的数学表达式</p>
-<h3 id="等高线的法线"><a href="#等高线的法线" class="headerlink" title="等高线的法线"></a>等高线的法线</h3><p>以三维空间为例, 设某曲面的表达式为$z=f(x,y)$,对于任意高度且平行于xoy的平面$z=c$来说,等高线为$\begin{cases}z=f(x,y)\z=c\end{cases}$,也即$f(x,y)=c$,等高线上任意一点处的斜率是:$\frac {dy}{dx}$,通过$z=f(x,y)$来表示等高线上的斜率有$\frac {dy}{dx}={\frac {\partial f}{\partial x} / {\frac {\partial f}{\partial y} }}$,该点对应的法线方向为斜率的负倒数,即$- \frac {1}{\frac {dy}{dx}}=\frac {dx}{dy}=\frac {\partial f}{\partial y}/\frac{\partial f}{\partial x}=tan\theta$,其中$\theta$是法线和x轴的夹角.如果梯度的方向和等高线的法线方向一致,就证明了垂直关系</p>
-<h3 id="梯度向量"><a href="#梯度向量" class="headerlink" title="梯度向量"></a>梯度向量</h3><p>$z=f(x,y)$的梯度向量为$(\frac {\partial f}{\partial x}, \frac {\partial f}{\partial y})$,设该向量和x轴的夹角大小为$\gamma$,则夹角的正切为$tan\gamma=\frac {\partial f}{\partial y}/\frac {\partial f}{\partial x}=tan\theta$</p>
-<p><strong>所以梯度向量的方向和等高线的法线方向是一样的!也就是说,梯度方向和等高线垂直</strong></p>
-<p>参考:<br><a href="https://zhuanlan.zhihu.com/p/27731819" target="_blank" rel="noopener">知乎忆臻大神</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -596,7 +595,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -177,6 +177,286 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/19/PCA%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/19/PCA%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">PCA主成分分析数学原理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-19 11:32:18" itemprop="dateCreated datePublished" datetime="2018-02-19T11:32:18+08:00">2018-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>复习完线性代数再来推导下PCA  </p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>主成分分析(principal component analysis)是一种数据分析方法,<br>出发点:从一组特征中计算出一组按<strong>重要性</strong>从大到小排列的新特征,它们是原有特征的线性组合,并且相互之间是<strong>不相关(即不线性相关)的</strong>.  <ul>
+<li>重要性:通过方差衡量,方差大说明数据分布很散,含有的信息量大</li>
+<li>不相关:推导时用</li>
+</ul>
+</li>
+</ul>
+<h3 id="具体推导"><a href="#具体推导" class="headerlink" title="具体推导"></a>具体推导</h3><h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><p>记x1,x2…xp是P个原始特征(<strong>也就是某个样本的维度</strong>), <strong>x=(x1,x2…xp)^t</strong>,记ξ1,ξ2…ξp是p个新特征, <strong>ξ=(ξ1,ξ2…ξp)^t</strong><br>新特征是原始特征的线性组合,ξi =Σαij*xj =αi^t*x  或者 ξ =A^t*x<br><strong>A=(α1,α2…αp).   αi=(αi1,αi2…αip)^t.</strong><br>αi是新特征ξi线性组合的系数,不妨使||α||=1,即αi^t*αi=1(由后面推导过程可知,这是结果的共有部分,所以可以设为1),<br><strong>ξi=αi^t*x的结果是一个数,所以对αi^t*x进行转置不影响结果</strong>)  </p>
+<h4 id="计算第一个新特征ξ1的方差"><a href="#计算第一个新特征ξ1的方差" class="headerlink" title="计算第一个新特征ξ1的方差:"></a>计算第一个新特征ξ1的方差:</h4><p>Var(ξ1)<br>= E{[ξ1-E[ξ1]]*[ξ1^t-E[ξ1^t]]}<br>= E[ξ1*ξ1^t]-E[ξ1]E[ξ1^t]<br>= E[α1^t*x*x^t*α1]-E[α1^t*x]E[x^t*α1]<br>= α1^t*{E[x^t*x]-E[x]E[x^t]}α1<br>= α1^t*Σ*α1<br>Σ是x的协方差矩阵,接下来在αi^t*αi=1的约束条件下求Var的极值,使用拉格朗日乘子法:<br>f(α1,ν)= α1^t*Σ*α1-ν(α1^t*α1-1)<br>关于α1求偏导并使结果等于零,可得:Σ*α1 = ν*α1 (<strong>显而易见,ν是Σ的特征值,α1是Σ对应ν的特征向量</strong>)<br>代回得,Var(ξ1) = ν*α1^t*α1 = ν,说明方差的最大值就是x的协方差矩阵的特征值,取最大的特征值ν,使新特征ξ1最重要  </p>
+<h4 id="计算第二个新特征ξ2的方差"><a href="#计算第二个新特征ξ2的方差" class="headerlink" title="计算第二个新特征ξ2的方差:"></a>计算第二个新特征ξ2的方差:</h4><p>Var(ξ2) = α2^t*Σ*α2<br>保持ξ1与ξ2不相关,即加入约束Cov(ξ1,ξ2)= 0<br>Cov(ξ1,ξ2)<br>= E[ξ1*ξ2^t] - E[ξ1]E[ξ2^t]<br>= α1^t*{E[x^t*x]-E[x]E[x^t]}*α2^t<br>= α1^t*Σ*α2<br>为利用第一个新特征的条件,求Cov(ξ2,ξ1)<br>Cov(ξ2,ξ1) = Cov(ξ1,ξ2)<br>= α2^t*Σ*α1<br>= ν*α2^t*α1    (因为Σ*α1 = ν*α1)<br>= 0<br>得 α2^t*α1 = 0,说明α1与α2正交,也就是说,此处不相关等价于α1与α2正交<br>在α2^t*α2=1和α2^t*α1 =0的约束下用拉格朗日乘子法求Var(ξ2)的最大值<br>f(α2,α1,m,n) = α2^t*Σ*α2 - m(α2^t*α2-1) - n*α2^t*α1<br>分别对α2,α1,m,n求偏导并使结果为0,得n=0, Σ*α2 = m*α2 (<strong>显而易见,m是Σ的特征值,α2是Σ对应m的特征向量</strong>)<br>代回得,Var(ξ2) = m</p>
+<h4 id="计算其余新特征ξ的方差"><a href="#计算其余新特征ξ的方差" class="headerlink" title="计算其余新特征ξ的方差"></a>计算其余新特征ξ的方差</h4><p>同理,求出ξ3,ξ4…ξp</p>
+<h3 id="进一步总结"><a href="#进一步总结" class="headerlink" title="进一步总结"></a>进一步总结</h3><ul>
+<li>可以发现,每个新特征ξi的方差都是x协方差矩阵Σ的特征值,所以有了这个理论基础后可以直接求Σ的特征值,并从大到小排序,依次作为ξi的方差</li>
+<li><strong>Σ是实对称矩阵</strong>,所以Σ一定正交相似于对角矩阵,且对角矩阵的对角元素就是Σ的特征值,只需找出正交矩阵O,使O^(-1)ΣO=diag(λ1,λ2…λp)即可</li>
+<li><strong>Σ是实对称矩阵</strong>,所以Σ对应不同特征值的特征向量都是正交的,求出特征向量再对特征向量进行单位化,各个特征向量即可组成一个符合条件的正交矩阵  </li>
+<li>不仅如此,我们发现,计算过程中各个<strong>组合系数αi是正交的,且长度为1</strong>,所以直接用通过Σ得到的正交矩阵的各个列向量作为αi即可!所以组合系数来的很方便,但要注意对照特征值进行排序</li>
+<li>这样一来,新旧特征之间的具体关系ξ=A^t*x就明确了,<strong>直接从原特征x协方差矩阵的特征值特征向量下手,就能得到新特征!</strong>实际中通常把主成分进行零均值化,即 ξ = A^t*(x-μ),这样协方差矩阵更容易计算,且不影响主成分的方向</li>
+<li>每个ξi都是一个主成分,全部主成分的方差之和等于x协方差矩阵特征值的和,即 ΣVar(ξi) = Σλi,也就是x协方差矩阵的迹(trace)</li>
+</ul>
+<h3 id="如何降维"><a href="#如何降维" class="headerlink" title="如何降维?"></a>如何降维?</h3><ul>
+<li>通常希望用较少的主成分ξi来表示数据,前k个主成分的方差和Σλi比上所有主成分的方差和可以得到这k个主成分所占的比例,根据实际需求,比如80%,算出k的个数  </li>
+<li>降维:<ul>
+<li>把p维的数据减少成k维的数据(k&lt;p),也就是用ξ的前k个维度(ξ1,ξ2…ξk)^t 描述每个样本  </li>
+<li>换句话说,原来的坐标轴是(x1,x2…xp)^t,降维后的坐标轴是(ξ1,ξ2…ξk)^t.</li>
+<li>给个具体的例子,p*m维矩阵C,由m个样本构成,每个样本是p维,使用A的前k个主成分进行降维,A^t*C,即可得到降维后的数据</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/18/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%B8%A9%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/18/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%B8%A9%E4%B9%A0/" class="post-title-link" itemprop="url">线性代数温习</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-18 15:55:43" itemprop="dateCreated datePublished" datetime="2018-02-18T15:55:43+08:00">2018-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>大一学的线性代数,遗忘的很严重,现在复习一下,从线性方程组说起</p>
+<h3 id="一-线性方程组"><a href="#一-线性方程组" class="headerlink" title="一.线性方程组"></a>一.线性方程组</h3><ol>
+<li>齐次线性方程组;非齐次线性方程组</li>
+<li>要对A和x的矩阵形式熟悉, <strong>看到Ax=0能在脑中快速过一遍计算流程</strong><br><img src="http://upload-images.jianshu.io/upload_images/9608551-c6f834a53592fae4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png">  </li>
+<li>对于齐次线性方程组,设解空间为S:<ul>
+<li>S对向量的加法和数乘两种运算是封闭的</li>
+<li>任意一个解都可表示为其解空间向量的线性组合</li>
+<li>n阶系数矩阵的秩为r,S的维数(基的个数)为n-r</li>
+</ul>
+</li>
+<li>关于齐次线性方程组的解<ul>
+<li>设A是m*n矩阵,则<ul>
+<li>Ax=0只有零解&lt;==&gt;r(A) = n,此时,Ax=0没有基础解系(n-r = 0)</li>
+<li>Ax=0有非零解&lt;==&gt;r(A) &lt; n,此时,Ax=0有无穷多个基础解系(n-r &gt; 0)</li>
+<li>当m&lt; n时,这样理解:m是方程的个数,n是未知数的个数,m&lt; n说明方程个数少余未知数个数,所以方程组有非零解.  </li>
+</ul>
+</li>
+<li>当A时n阶方阵时,Ax=0只有零解&lt;==&gt;|A|≠0,(说明r = n)</li>
+<li>当A时n阶方阵时,Ax=0有非零解&lt;==&gt;|A|=0,(说明r &lt; n)<br><img src="http://upload-images.jianshu.io/upload_images/9608551-4cfa623f2150de12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"></li>
+</ul>
+</li>
+</ol>
+<h3 id="二-特征值与特征向量"><a href="#二-特征值与特征向量" class="headerlink" title="二.特征值与特征向量"></a>二.特征值与特征向量</h3><ol>
+<li>x=Ay,原坐标为x,新坐标为y,新基为正交矩阵A的列向量</li>
+<li>Aα=λα, λ是特征值, α是A的对应λ的特征向量<ul>
+<li>|λE-A|是关于λ的多项式,叫特征多项式</li>
+<li>|λE-A|=0是特征方程</li>
+<li><strong>λ1*λ2…*λn = |A|</strong></li>
+<li>λ1+λ2…+λn = a11+a22…+ann,这是A的迹,tr(A)</li>
+</ul>
+</li>
+<li>A与A^t有相同的特征多项式,因而有相同的特征值,但未必有相同的特征向量</li>
+<li>方阵的相似化简<ul>
+<li>A~B即 A=P^(-1)AP,相似关系是等价关系,满足:自反性,对称性,传递性</li>
+<li>相似矩阵有相同的特征多项式,因而有相同的特征值</li>
+<li>n阶方阵A可对角化的充要条件:<ul>
+<li>A有n个线性无关的特征向量</li>
+<li>A的特征值互不相同(A的特征向量线性无关)</li>
+<li>A的任意特征值λi的重数是k,且对应λi有k个线性无关的特征向量</li>
+<li>对于上/下三角矩阵来说,对角元素就是矩阵的特征值</li>
+</ul>
+</li>
+<li><strong>对角方阵Λ=diag(λ1,λ2…λn), Λ=P^(-1)AP, P的列向量就是A的特征向量,Λ的元素就是A的特征值</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="三-二次型"><a href="#三-二次型" class="headerlink" title="三.二次型"></a>三.二次型</h3><ol>
+<li>向量的内积定义:<ul>
+<li>两个一维列向量 α=(a1,a2…an)^t, β=(b1,b2…bn)^t,  </li>
+<li><strong>(α,β) =α^t*β =∑aibi</strong></li>
+<li>内积运算满足对称性,线性性,正定型</li>
+</ul>
+</li>
+<li>Cauchy-Schwarz不等式: (α,β)²≤(α,α)*(β,β)</li>
+<li>向量长度||a||满足非负性,齐次性,三角不等式  </li>
+<li>正交矩阵与正交变换<ul>
+<li>满足A^T*A=E的实方阵A叫做正交矩阵<ul>
+<li>|A|=1或者|A|=-1</li>
+<li>A^t=A^(-1)</li>
+<li>A^t也是正交矩阵</li>
+<li>A,B都是n阶正交矩阵,则AB也是正交矩阵</li>
+<li><strong>A是n阶正交矩阵&lt;==&gt;A的列向量组是一组标准正交基(每个列向量长都为1)</strong> </li>
+</ul>
+</li>
+<li>A为正交矩阵矩阵,则线性变换y=Ax成为正交变换<ul>
+<li><strong>(y,y)=(Ax,Ax)=(Ax)^t*(Ax)=x^t*A^t*A*x=x^t*x=(x,x)</strong></li>
+<li><strong>(Aα,Aβ)=(Aα)^t*(Aα)^t*(Aβ)=α^t*A^t*A*β=α^t*β=(α,β)</strong>,说明对α和β做正交变换后,两向量之间的夹角不变</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实对称矩阵的性质,设A为实对称矩阵<ul>
+<li>A的特征值都是实数</li>
+<li><strong>A的对应不同特征值的特征向量都是正交的(内积为0)</strong></li>
+<li>存在n阶正交矩阵O,使得O^(-1)*A*O=O^t*A*O=diag(λ1,λ2…λn),λ1,λ2…λn是A的n个特征值,O的列向量A的特征向量,<strong>即实对称矩阵A一定正交相似与对角矩阵</strong></li>
+</ul>
+</li>
+<li>实二次型<br><img src="http://upload-images.jianshu.io/upload_images/9608551-17795005c69dc0cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"><br><img src="http://upload-images.jianshu.io/upload_images/9608551-39f11befb3df37e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><ul>
+<li>只含平方项的二次型为二次型的标准型</li>
+<li>合同矩阵  <ul>
+<li>n阶矩阵A和B,存在n阶可逆矩阵P,使得B=P^t<em>A</em>P,则称A与B合同(正交变换也是用转置矩阵,但限制更严格,还要求O是正交矩阵,合同只要求P可逆)</li>
+<li>合同是等价关系</li>
+</ul>
+</li>
+<li>将二次型化为标准型<ul>
+<li>用正交变换(<strong>时刻牢记系数矩阵A是实对称矩阵</strong>)<ul>
+<li><strong>对于任意一个n元实二次型f=x^t*A*x,一定存在正交变换x=Oy,使得f(x1,x2…xn)=x^t*A*x=y^t*Λ*y=λ₁y₁²+λ₂y₂²…+λnyn²,其中,λ₁,λ₂,λ₃…是A的特征值,O的列向量是A的单位特征向量(可以通过求A的单位特征向量得到正交矩阵O)</strong></li>
+</ul>
+</li>
+<li>配方法<ul>
+<li>标准型中的系数不一定是A的特征值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实二次型的规范形<ul>
+<li>系数只有1,-1,0,唯一(惯性定理),非零系数的个数为r(A)</li>
+<li>对称矩阵A与B合同的充要条件:有相同的秩和相同的正惯性系数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正定二次型与正定矩阵<ul>
+<li>正定矩阵:实二次型f(x1,x2…xn)=x^t*A*x,如果对任意x≠0,都有x^t*A*x&gt;0,则称f为正定二次型,称A为正定矩阵</li>
+<li>实二次型f(x1,x2…xn)=x^t*A*x是正定二次型的充要条件是:f的标准型中n个系数全为正数(即f的正惯性系数为n)</li>
+<li><strong>n阶实对称矩阵A正定的充要条件是A的n个特征值全为正数</strong></li>
+<li>n阶实对称矩阵A正定的充要条件是A的合同规范形为n阶单位矩阵</li>
+<li>n阶实对称矩阵A正定的充要条件是:A的n个顺序主子式都为正数(霍尔维兹定理)</li>
+</ul>
+</li>
+<li>其它有定二次型<ul>
+<li>半正定二次型:对于任意x≠0,都有f(x1,x2…xn)=x^t*A*x≥0.A为半正定矩阵</li>
+<li>负定二次型:对于任意x不等于0,都有f(x1,x2…xn)=x^t*A*x&lt;0.A为负定矩阵</li>
+<li>半负定二次型:对于任意x不等于0,都有f(x1,x2…xn)=x^t*A*x≤0.A为半负定矩阵</li>
+<li>不属于以上类型的为不定二次型,对应不定矩阵</li>
+<li>关于半正定:<ul>
+<li>实二次型f(x1,x2…xn)=x^t<em>A</em>x是半正定二次型的充要条件是:f的标准型中n个系数全为非负数</li>
+<li>实对称矩阵A半正定的充要条件是A的所有主子式非负</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/17/Unbiased-Estimation-%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -418,172 +698,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/Python2-7%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/02/11/Python2-7%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Python2.7编解码问题总结</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-02-11 23:45:18" itemprop="dateCreated datePublished" datetime="2018-02-11T23:45:18+08:00">2018-02-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近颇受编码问题困扰,所以稍作总结,附以代码说明  </p>
-<ol>
-<li>为什么需要编解码?  </li>
-</ol>
-<p><strong>字符串以unicode的形式存在于内存中 ,但是unicode只是规定如何编码，并没有规定如何保存、传输这个编码,也就是说unicode不能直接写入文件或者在网络上传输</strong>,所以得通过某种编码使unicode变成连续的字节(bytes),同样地,对读入的数据解码,以unicode形式存在于内存中.<br>举例来说,在写python时,python语言处理的字符串就是内存中的unicode,写入到文件时得把unicode用utf-8,GBK等方式编码成连续的字节;用python从文件读入数据时,得用utf-8,GBK等方式把连续的字节解码成unicode.使用的解码方式务必要和编码方式一致<br><img src="http://upload-images.jianshu.io/upload_images/9608551-9557b56458a5dfa2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w700" alt="">  </p>
-<ol start="2">
-<li><p>python默认的编解码方式<br>可以通过下面两行代码 <strong>(示例1)</strong> 获得,一般默认是ascii,本示例中就是对unicode用ascii编码为字符串,ascii不能表示汉字,所以输入汉字时就会报错 <strong>(示例2)</strong></p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例1</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">print</span> sys.getdefaultencoding()  </span><br><span class="line"><span class="comment">#ascii</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span></span><br><span class="line"><span class="comment">#SyntaxError: Non-ASCII character</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如何print汉字?<br> <strong>情况一:</strong> 在python中直接输入中文 <strong>(示例3)</strong><br> 得让python文件支持中文,将python文件的编码格式改为utf-8,就是我们通常看到的 # -*- coding:utf-8 -*-  </p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例3</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span></span><br></pre></td></tr></table></figure>
-
-<p> <strong>情况二:</strong>  print指定编码的中文 <strong>(示例4)</strong><br> 示例4报错,因为在对”搁浅”encode之前,先需要把”搁浅”解码成unicode,之后再用utf-8编码,那么问题来了,怎么解码”搁浅” ? 获取python的默认编解码方式 <strong>(示例5)</strong>,一般是ascii,所以会报错,将默认编解码方式设置成utf-8后就可以了 <strong>(示例6)</strong>  </p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例4</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">a = <span class="string">"搁浅"</span>.encode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#示例5</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">print</span> sys.getdefaultencoding()	</span><br><span class="line">	</span><br><span class="line"><span class="comment">#示例6</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">"utf-8"</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span>.encode(<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>python以十六进制显示非打印字符,”搁浅”这两个字的16进制编码分别是:<strong>69081,6B585</strong><br>在python内部为:\xe<strong>6</strong>\x<strong>90</strong>\x<strong>81</strong>\xe<strong>6</strong>\x<strong>b5</strong>\x<strong>85 (示例7)</strong>,其中,\x表示十六进制 ,e表示某个字符编码的开始  </p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例7</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment">#打印s在python内部的存在形式</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>]</span><br><span class="line"><span class="keyword">print</span> s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>乱码<br>print出乱码极可能是因为编码与解码方式不统一 <strong>(示例8)</strong>.utf-8编码,每个汉字用utf-8编码需要3个字节,用gbk编码需要2个字节. <strong>用utf-8编码后解码,再用gbk编码,造成这样的问题:本该用3个字节表示的字符,强行用2个字节表示(示例9)</strong>  </p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例8</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">"搁浅"</span>.decode(<span class="string">"utf-8"</span>).encode(<span class="string">"gbk"</span>)</span><br><span class="line"><span class="comment">#打印乱码:��ǳ</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#示例9</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>]</span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment">#输出:["\xe6\x90\x81\xe6\xb5\x85"]	每个汉字3个字节</span></span><br><span class="line">s = [<span class="string">"搁浅"</span>.decode(<span class="string">"utf-8"</span>).encode(<span class="string">"gbk"</span>)]</span><br><span class="line"><span class="keyword">print</span> s</span><br><span class="line"><span class="comment">#输出:["\xb8\xe9\xc7\xb3"]	每个汉字2个字节</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>有待确认<br>python默认解码方式是ascii;<br>python源代码加上# -*- coding:utf-8 -*-后,不仅仅是源代码支持中文,而且print的默认编码方式也变成utf-8  </p>
-</li>
-</ol>
-<p>推荐一个<a href="http://www.mytju.com/classcode/tools/encode_utf8.asp" target="_blank" rel="noopener">查看字符编码的网页</a>,很好用,可以查看编码10进制, <strong>编码16进制</strong>,Unicode编码10进制,Unicode编码16进制,python用的是 <strong>编码16进制</strong></p>
-<p>编码问题时不时出来阻挠一下,需要继续补充总结</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/OralEnglishPractice/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/02/11/OralEnglishPractice/" class="post-title-link" itemprop="url">OralEnglishPractice</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-02-11 11:38:11" itemprop="dateCreated datePublished" datetime="2018-02-11T11:38:11+08:00">2018-02-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>现跟随知乎”怎么练好英语口语？”的高票回答练习口语,定期更新进展<br>问题链接:<a href="https://www.zhihu.com/question/20097263" target="_blank" rel="noopener">https://www.zhihu.com/question/20097263</a><br><a href="https://github.com/smallhaes/OralEnglish" target="_blank" rel="noopener">笔记(随时更新)</a></p>
-<h3 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h3><h4 id="stage1"><a href="#stage1" class="headerlink" title="stage1"></a>stage1</h4><p>to 01/02/2018</p>
-<ol>
-<li>背诵完赵曙明，曹罗红两位老师编著的《新托福口语词汇》 的口语高频必背词汇：list1-list10</li>
-<li>按照艾宾浩斯遗忘曲线进行复习</li>
-<li>《新托福口语词汇》pdf链接：<a href="https://pan.baidu.com/s/1kWTuSbt" target="_blank" rel="noopener">https://pan.baidu.com/s/1kWTuSbt</a> 密码：difi<br> 口语词汇录音：链接：<a href="https://pan.baidu.com/s/1ggMH1dx" target="_blank" rel="noopener">https://pan.baidu.com/s/1ggMH1dx</a> 密码：wwow<br> 自动生成艾宾浩斯遗忘曲线计划：链接：<a href="https://pan.baidu.com/s/1kXcOtBx" target="_blank" rel="noopener">https://pan.baidu.com/s/1kXcOtBx</a> 密码：vjm6  </li>
-</ol>
-<h3 id="stage2"><a href="#stage2" class="headerlink" title="stage2"></a>stage2</h3><p>from 02/07/2018 to now</p>
-<ol>
-<li>对每个单词造句，使用的有道例句</li>
-<li>按照艾宾浩斯遗忘曲线进行复习</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -656,7 +770,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -177,6 +177,132 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/DynamicProgramming%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/21/DynamicProgramming%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">DynamicProgramming动态规划</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-21 21:49:55" itemprop="dateCreated datePublished" datetime="2018-04-21T21:49:55+08:00">2018-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/04/21/DynamicProgramming%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/21/DynamicProgramming动态规划/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>刚接触动态规划,突然发现这是个很大的领域,所以就先通过别人的分享以及做题逐步总结了.</p>
+<h2 id="DynamicProgramming"><a href="#DynamicProgramming" class="headerlink" title="DynamicProgramming"></a>DynamicProgramming</h2><p>dynamic programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions<br>维基百科说动态规划是解决复杂问题的方法,通过三点实现:</p>
+<ol>
+<li>将原问题分解为简单的子问题(subproblem)</li>
+<li>每个子问题只解决一次</li>
+<li>存储每个子问题的解<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2></li>
+<li>将原问题分解为子问题</li>
+<li>确定状态<br>状态就是每个子问题所能取到的值,所有状态构成了状态空间</li>
+<li>确定边界值(初始状态)</li>
+<li>确定递推方程(状态转移方程)<h2 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h2>解题过程中的体会 </li>
+<li><strong>对于当前下标对应的元素,选还是不选</strong></li>
+<li><strong>从后向前分析,从边界(从前)开始向后实现</strong><ul>
+<li>实现时,使用递归时先写边界条件;使用数组时先写边界条件(或者说从边界开始推)</li>
+<li>使用时,输入最后一个索引</li>
+</ul>
+</li>
+<li>递归版本:各种情况下要return;循环版本:更新某个值而不是return了!</li>
+</ol>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>给定一串数字1,2,4,1,7,8,3,现从中取出某几个数字,使这些数字的和最大(<strong>不能取相邻的数字</strong>)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7a3e34ac818f355c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png">  </p>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#递归版,包含大量重叠子问题,换成循环版</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rec_opt</span><span class="params">(arr,i)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>: <span class="keyword">return</span> arr[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">elif</span> i == <span class="number">1</span>:<span class="keyword">return</span> max(arr[<span class="number">0</span>],arr[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        A = rec_opt(arr,i<span class="number">-2</span>)+arr[i]</span><br><span class="line">        B = rec_opt(arr,i<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> max(A,B)</span><br><span class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">3</span>]</span><br><span class="line">print(rec_opt(arr,len(arr)<span class="number">-1</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#循环版</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">opt = np.zeros(len(arr))</span><br><span class="line">opt[<span class="number">0</span>] = arr[<span class="number">0</span>]</span><br><span class="line">opt[<span class="number">1</span>] = max(opt[<span class="number">0</span>],opt[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,len(arr)):</span><br><span class="line">    A = opt[i<span class="number">-2</span>] + arr[i]</span><br><span class="line">    B = opt[i<span class="number">-1</span>]</span><br><span class="line">    opt[i] = max(A,B)</span><br><span class="line">print(opt[len(arr)<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p>正好学习java中,附带java版本</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归版</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rec_opt</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">0</span>) <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(index==<span class="number">1</span>) <span class="keyword">return</span> Math.max(arr[<span class="number">0</span>],arr[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> A = rec_opt(arr,index-<span class="number">2</span>)+arr[index];</span><br><span class="line">            <span class="keyword">int</span> B = rec_opt(arr,index-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> Math.max(A,B);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">3</span>&#125;;</span><br><span class="line">   <span class="keyword">int</span> res = rec_opt(arr,arr.length-<span class="number">1</span>);</span><br><span class="line">   System.out.print(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环版</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span>[] opt  = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line">    <span class="comment">//从边界开始向后实现</span></span><br><span class="line">    opt[<span class="number">0</span>] = arr[<span class="number">0</span>];</span><br><span class="line">    opt[<span class="number">1</span>] = Math.max(arr[<span class="number">0</span>],arr[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> A = opt[i-<span class="number">2</span>] + arr[i];</span><br><span class="line">        <span class="keyword">int</span> B = opt[i-<span class="number">1</span>];</span><br><span class="line">        opt[i] = Math.max(A,B);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.print(opt[arr.length-<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>给定一串数字3,34,4,12,5,2,现从中取出某几个数字,使这些数字的和为S(S为某个整数,选出的数字不能是相邻的)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-873b41bb7a85d212.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<h4 id="python-1"><a href="#python-1" class="headerlink" title="python"></a>python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#递归版</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rec_okay</span><span class="params">(arr,i,S)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">0</span>:<span class="keyword">return</span> arr[<span class="number">0</span>]==S</span><br><span class="line">    <span class="keyword">elif</span> i==<span class="number">1</span>:</span><br><span class="line">        A = arr[<span class="number">1</span>] == S</span><br><span class="line">        B = arr[<span class="number">0</span>] == S</span><br><span class="line">        <span class="keyword">return</span> A <span class="keyword">or</span> B</span><br><span class="line">    <span class="keyword">elif</span> S==<span class="number">0</span>: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">elif</span> arr[i]&gt;S: <span class="keyword">return</span> rec_okay(arr,i<span class="number">-1</span>,S)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        A = rec_okay(arr,i<span class="number">-2</span>,S-arr[i])</span><br><span class="line">        B = rec_okay(arr,i<span class="number">-1</span>,S)</span><br><span class="line">        <span class="keyword">return</span> A <span class="keyword">or</span> B</span><br><span class="line">arr = [<span class="number">3</span>,<span class="number">34</span>,<span class="number">4</span>,<span class="number">12</span>,<span class="number">5</span>,<span class="number">2</span>]</span><br><span class="line">print(rec_okay(arr,len(arr)<span class="number">-1</span>,<span class="number">9</span>))</span><br><span class="line">print(rec_okay(arr,len(arr)<span class="number">-1</span>,<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#循环版</span></span><br><span class="line"><span class="comment">#i是索引,j是当前结果s</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">okay</span><span class="params">(arr,S)</span>:</span></span><br><span class="line">    okay = np.zeros((len(arr),S+<span class="number">1</span>),dtype=bool)</span><br><span class="line">    <span class="comment">#从边界向后推,所以先给出边界情况</span></span><br><span class="line">    okay[<span class="number">0</span>,:] = <span class="literal">False</span></span><br><span class="line">    okay[<span class="number">0</span>,arr[<span class="number">0</span>]] = <span class="literal">True</span></span><br><span class="line">    okay[:,<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,len(arr)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,S+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">                okay[<span class="number">1</span>,j] = (arr[<span class="number">1</span>] == j) <span class="keyword">or</span> (arr[<span class="number">0</span>] == j)</span><br><span class="line">            <span class="keyword">elif</span> arr[i]&gt;j:</span><br><span class="line">                okay[i,j] = okay[i<span class="number">-1</span>,j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                A = okay[i<span class="number">-2</span>,j-arr[i]]</span><br><span class="line">                B = okay[i<span class="number">-1</span>,j]</span><br><span class="line">                okay[i,j] = A <span class="keyword">or</span> B</span><br><span class="line">    <span class="comment">#从边界向后推,直至推导要求的位置    </span></span><br><span class="line">    <span class="keyword">return</span> okay[len(arr)<span class="number">-1</span>,S]</span><br><span class="line">arr = [<span class="number">3</span>,<span class="number">34</span>,<span class="number">4</span>,<span class="number">12</span>,<span class="number">5</span>,<span class="number">2</span>]</span><br><span class="line">print(okay(arr,<span class="number">9</span>))</span><br><span class="line">print(okay(arr,<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归版</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">rec_okay</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> index, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">0</span>) <span class="keyword">return</span> arr[<span class="number">0</span>] == sum;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (index == <span class="number">1</span>) <span class="keyword">return</span> (arr[<span class="number">1</span>] == sum) || (arr[<span class="number">0</span>] == sum);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (sum == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (arr[index] &gt; sum) <span class="keyword">return</span> rec_okay(arr, index - <span class="number">1</span>, sum);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">boolean</span> A = rec_okay(arr, index - <span class="number">2</span>, sum - arr[index]);</span><br><span class="line">            <span class="keyword">boolean</span> B = rec_okay(arr, index - <span class="number">1</span>, sum);</span><br><span class="line">            <span class="keyword">return</span> A || B;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">34</span>, <span class="number">4</span>, <span class="number">12</span>, <span class="number">5</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="keyword">boolean</span> res = rec_okay(arr, arr.length - <span class="number">1</span>, <span class="number">9</span>);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">        <span class="keyword">boolean</span> res2 = rec_okay(arr, arr.length - <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">        System.out.println(res2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环版</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">okay</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[][] okay = <span class="keyword">new</span> <span class="keyword">boolean</span>[arr.length][sum+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= sum;j++) okay[<span class="number">0</span>][j] = j == arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt;= sum;j++) okay[<span class="number">1</span>][j] = (arr[<span class="number">1</span>] == j)|| (arr[<span class="number">0</span>] == j);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) okay[i][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;arr.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j&lt;=sum; j++)&#123;</span><br><span class="line">                <span class="comment">//如果当前的数字大于当前的结果,则只有一个选项:不能选当前数字</span></span><br><span class="line">                <span class="keyword">if</span>(arr[i]&gt;j)  okay[i][j] = okay[i-<span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">else</span>  okay[i][j] = okay[i-<span class="number">2</span>][j-arr[i]] || okay[i-<span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> okay[arr.length-<span class="number">1</span>][sum];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">3</span>, <span class="number">34</span>, <span class="number">4</span>, <span class="number">12</span>, <span class="number">5</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="keyword">boolean</span> res = okay(arr,  <span class="number">9</span>);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">        <span class="keyword">boolean</span> res2 = okay(arr,<span class="number">10</span>);</span><br><span class="line">        System.out.println(res2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-d3e26002ee9c357c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="3.png"><br>在上面的数字三角形中寻找一条从顶部到底边的路径，使得路径上所经过的数字之和最大。路径上的每一步都只能往左下或 右下走。只需要求出这个最大和即可，不必给出具体路径。<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2f611cb5b3222756.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="4.png"></p>
+<h4 id="python-2"><a href="#python-2" class="headerlink" title="python"></a>python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#递归版</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rec_opt</span><span class="params">(arr,i,j)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">0</span>:<span class="keyword">return</span> arr[<span class="number">0</span>,j]</span><br><span class="line">    <span class="keyword">else</span>: <span class="keyword">return</span> max(rec_opt(arr,i<span class="number">-1</span>,j),rec_opt(arr,i<span class="number">-1</span>,j+<span class="number">1</span>))+arr[i,j]</span><br><span class="line">arr = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">0</span>],[<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">7</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]])</span><br><span class="line">print(rec_opt(arr,<span class="number">4</span>,<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#循环版</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">arr = np.array([[<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">0</span>],[<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">7</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment">#第0行的值不变,从第一行开始调整</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">5</span>-i):</span><br><span class="line">        arr[i,j] = max(arr[i<span class="number">-1</span>,j],arr[i<span class="number">-1</span>,j+<span class="number">1</span>]) + arr[i,j]</span><br><span class="line"><span class="keyword">print</span> (arr[<span class="number">4</span>,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归版</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rec_opt</span><span class="params">(<span class="keyword">int</span>[][] arr,<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>) <span class="keyword">return</span> arr[<span class="number">0</span>][j];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> Math.max(rec_opt(arr,i-<span class="number">1</span>,j),rec_opt(arr,i-<span class="number">1</span>,j+<span class="number">1</span>)) + arr[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>&#125;,&#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">0</span>&#125;,&#123;<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">3</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> res = rec_opt(arr,<span class="number">4</span>,<span class="number">0</span>);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//循环版</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>&#125;,&#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">0</span>&#125;,&#123;<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">3</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">7</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="comment">//第0行不变,从第1行开始调整</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span> - i; j++)&#123;</span><br><span class="line">                arr[i][j] = Math.max(arr[i-<span class="number">1</span>][j],arr[i-<span class="number">1</span>][j+<span class="number">1</span>]) + arr[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        System.out.println(arr[<span class="number">4</span>][<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>参考:<br><a href="https://www.bilibili.com/video/av18512769?t=32" target="_blank" rel="noopener">正月点灯笼</a><br><a href="https://blog.csdn.net/baidu_28312631/article/details/47418773" target="_blank" rel="noopener">教你彻底学会动态规划——入门篇</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E6%97%A0%E6%B3%95%E5%AD%A6%E4%B9%A0XOR-%E5%BC%82%E6%88%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -530,107 +656,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">Logistic Regression逻辑斯蒂回归</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-04-01 15:30:04" itemprop="dateCreated datePublished" datetime="2018-04-01T15:30:04+08:00">2018-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/01/Logistic-Regression逻辑斯蒂回归/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h1><p>logistic回归是统计学习中的经典分类方法,他属于对数线性模型,logistic回归来源于logistic分布,先从logistic分布说起</p>
-<h2 id="Logistic-distribution"><a href="#Logistic-distribution" class="headerlink" title="Logistic distribution"></a>Logistic distribution</h2><p>设X是连续随机变量,X服从logistic分布,其分布函数和概率密度函数如下:</p>
-<h3 id="分布函数"><a href="#分布函数" class="headerlink" title="分布函数"></a>分布函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-95edc9f8477dd868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a3ff0b4a2c46e68b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>分布函数即为通常所说的logistic函数,其图像关于(μ,0.5)对称,满足:<br>F(-x+μ)+F(x-μ)=1<br>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)<br>形状参数s的值越小,曲线在中心附近增长得越快  </p>
-<h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb5e4d5dc985ae80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a1f50bb8a1e33a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png">   </p>
-<h2 id="二项logistic回归"><a href="#二项logistic回归" class="headerlink" title="二项logistic回归"></a>二项logistic回归</h2><p>二项logistic回归(binomial logistic regression)是一种分类模型,<strong>由条件概率分布P(Y|X)表示</strong>,形式为参数化的logistic分布.这里,<strong>随机变量X取值为实数,随机变量Y取值为1或0.通过监督学习的方法来估计模型参数</strong></p>
-<h3 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h3><p>柯尔莫哥洛夫给出了概率的公理化定义:</p>
-<ul>
-<li>0≤P(A)≤1</li>
-<li>P(Ω)=1,P(∅)=0,必然事件概率为1,不可能事件概率为0</li>
-<li>加法定理:<strong>若干个互斥事件之和的概率等于各事件的概率之和</strong>,即P(A1+A2+…)=P(A)+P(B)+…事件的个数可以是有限的或无限的<h3 id="条件概率分布"><a href="#条件概率分布" class="headerlink" title="条件概率分布"></a>条件概率分布</h3>二项logistic回归模型是如下的条件概率分布(<strong>该条件概率分布满足上述公理化定义,所以可以作为概率,通过训练使得这个概率值更准确</strong>):  </li>
-</ul>
-<p><strong>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-29bc7f40bf18fb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>或表示成如下形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-32ca35e02ba1973d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>logistic回归采用的是logistic分布函数,对于任意x,F(x)最小值为0,最大值为1,相当于把实数域R映射到(0,1)上.<br>对于给定的输入实例x,按照上式求出P(Y=1|x)和P(Y=0|x),比较两个条件概率的大小,将实例x分到概率值较大的那一类.  </p>
-<h3 id="logistic回归模型的特点"><a href="#logistic回归模型的特点" class="headerlink" title="logistic回归模型的特点"></a>logistic回归模型的特点</h3><p>事件发生的概率与不发生的概率之比称作事件的几率(odds),考察logistic回归的对数几率(log odds)或logit函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8a0a95e665434b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>这就是说,在logistic回归模型中,输出Y=1的对数几率是输入x的线性函数.或者说,输出Y=1的对数几率是由输入x的线性函数表示的模型.(同样地,输出Y=0的对数几率是-wx,x越大则Y=0的对数几率越小,x越小则Y=0的对数几率越大.这样说不满足几率的定义,但是这样解释没有问题,嗯)<br><strong>换一个角度看,考虑对输入x进行分类的线性函数wx</strong>,其值域为实数域.注意这里x∈R_(n+1),w∈R_(n+1).通过logistic回归模型可以将wx转换为概率.这时,线性函数wx的值越接近正无穷,概率值越接近1;线性函数wx的值越接近负无穷,概率值越接近0<br>这样的模型就是logistic回归模型</p>
-<h3 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1aec11875f7ca8a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>关于极大似然法(Maximum Likelihood Estimation),可以参考之前的文章<a href="http://littlehaes.com/2018/03/30/Maximum-Likelihood-Estimation极大似然估计/" target="_blank" rel="noopener">极大似然估计</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-f1876db755479d31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br><strong>求得使L(w)取得最大值的w也就得到logistic回归模型了</strong><br>logistic回归学习中通常采用的方法是梯度下降法(Gradient descent)和拟牛顿法(Quasi Newton method),见之前的文章<a href="http://littlehaes.com/2018/03/25/Gradient-descent梯度下降-Steepest-descent/" target="_blank" rel="noopener">梯度下降</a>和<a href="http://littlehaes.com/2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" target="_blank" rel="noopener">拟牛顿法</a>  </p>
-<h3 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h3><p>之前介绍的是二项logistic回归,<strong>用于二分类</strong>.可以将其推广为multi-nomial logistic regression model.用于多类分类.<br>假设离散型随机变量Y的取值集合是{1,2,…,K},那么多项logistic回归模型是:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fa3fb6c60d131815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>二项logistic回归的参数估计方法也可以推广到多项logistic回归中  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)  </p>
-<ol>
-<li>形式为<strong>参数化</strong>的logistic分布,即μ和s变成了w和b  </li>
-<li>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</li>
-<li>logistic回归的对数几率是线性的:wx+b,所以logistic回归属于对数线性模型</li>
-<li>对数似然中对于<strong>单个样本</strong>的表达形式要有清晰的认识:P(yi|xi)=π(xi)^yi · [1-π(xi)]^(1-yi),决定这个式子形式的是yi</li>
-</ol>
-<p>参考:<br>李航,统计学习方法  </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -703,7 +728,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -177,6 +177,288 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/jieba%E5%88%86%E8%AF%8D%E8%AF%8D%E6%80%A7%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/26/jieba%E5%88%86%E8%AF%8D%E8%AF%8D%E6%80%A7%E8%A1%A8/" class="post-title-link" itemprop="url">jieba分词词性表</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-26 09:53:19" itemprop="dateCreated datePublished" datetime="2018-02-26T09:53:19+08:00">2018-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/02/26/jieba%E5%88%86%E8%AF%8D%E8%AF%8D%E6%80%A7%E8%A1%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/26/jieba分词词性表/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <table>
+<thead>
+<tr>
+<th align="center">sign</th>
+<th align="center">correspondence</th>
+<th align="center">explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Ag</td>
+<td align="center">形语素</td>
+<td align="center">形容词性语素。形容词代码为 a，语素代码ｇ前面置以A。</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">形容词</td>
+<td align="center">取英语形容词 adjective的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">ad</td>
+<td align="center">副形词</td>
+<td align="center">直接作状语的形容词。形容词代码 a和副词代码d并在一起。</td>
+</tr>
+<tr>
+<td align="center">an</td>
+<td align="center">名形词</td>
+<td align="center">具有名词功能的形容词。形容词代码 a和名词代码n并在一起。</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">区别词</td>
+<td align="center">取汉字“别”的声母。</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">连词</td>
+<td align="center">取英语连词 conjunction的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">dg</td>
+<td align="center">副语素</td>
+<td align="center">副词性语素。副词代码为 d，语素代码ｇ前面置以D。</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td align="center">副词</td>
+<td align="center">取 adverb的第2个字母，因其第1个字母已用于形容词。</td>
+</tr>
+<tr>
+<td align="center">e</td>
+<td align="center">叹词</td>
+<td align="center">取英语叹词 exclamation的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">f</td>
+<td align="center">方位词</td>
+<td align="center">取汉字“方”</td>
+</tr>
+<tr>
+<td align="center">g</td>
+<td align="center">语素</td>
+<td align="center">绝大多数语素都能作为合成词的“词根”，取汉字“根”的声母。</td>
+</tr>
+<tr>
+<td align="center">h</td>
+<td align="center">前接成分</td>
+<td align="center">取英语 head的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">i</td>
+<td align="center">成语</td>
+<td align="center">取英语成语 idiom的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">j</td>
+<td align="center">简称略语</td>
+<td align="center">取汉字“简”的声母。</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">后接成分</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">习用语</td>
+<td align="center">习用语尚未成为成语，有点“临时性”，取“临”的声母。</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">数词</td>
+<td align="center">取英语 numeral的第3个字母，n，u已有他用。</td>
+</tr>
+<tr>
+<td align="center">Ng</td>
+<td align="center">名语素</td>
+<td align="center">名词性语素。名词代码为 n，语素代码ｇ前面置以N。</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td align="center">名词</td>
+<td align="center">取英语名词 noun的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">nr</td>
+<td align="center">人名</td>
+<td align="center">名词代码 n和“人(ren)”的声母并在一起。</td>
+</tr>
+<tr>
+<td align="center">ns</td>
+<td align="center">地名</td>
+<td align="center">名词代码 n和处所词代码s并在一起。</td>
+</tr>
+<tr>
+<td align="center">nt</td>
+<td align="center">机构团体</td>
+<td align="center">“团”的声母为 t，名词代码n和t并在一起。</td>
+</tr>
+<tr>
+<td align="center">nz</td>
+<td align="center">其他专名</td>
+<td align="center">“专”的声母的第 1个字母为z，名词代码n和z并在一起。</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">拟声词</td>
+<td align="center">取英语拟声词 onomatopoeia的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">介词</td>
+<td align="center">取英语介词 prepositional的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">q</td>
+<td align="center">量词</td>
+<td align="center">取英语 quantity的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">代词</td>
+<td align="center">取英语代词 pronoun的第2个字母,因p已用于介词。</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">处所词</td>
+<td align="center">取英语 space的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">tg</td>
+<td align="center">时语素</td>
+<td align="center">时间词性语素。时间词代码为 t,在语素的代码g前面置以T。</td>
+</tr>
+<tr>
+<td align="center">t</td>
+<td align="center">时间词</td>
+<td align="center">取英语 time的第1个字母。</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">助词</td>
+<td align="center">取英语助词 auxiliary</td>
+</tr>
+<tr>
+<td align="center">vg</td>
+<td align="center">动语素</td>
+<td align="center">动词性语素。动词代码为 v。在语素的代码g前面置以V。</td>
+</tr>
+<tr>
+<td align="center">v</td>
+<td align="center">动词</td>
+<td align="center">取英语动词 verb的第一个字母。</td>
+</tr>
+<tr>
+<td align="center">vd</td>
+<td align="center">副动词</td>
+<td align="center">直接作状语的动词。动词和副词的代码并在一起。</td>
+</tr>
+<tr>
+<td align="center">vn</td>
+<td align="center">名动词</td>
+<td align="center">指具有名词功能的动词。动词和名词的代码并在一起。</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">标点符号</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">非语素字</td>
+<td align="center">非语素字只是一个符号，字母 x通常用于代表未知数、符号。</td>
+</tr>
+<tr>
+<td align="center">y</td>
+<td align="center">语气词</td>
+<td align="center">取汉字“语”的声母。 z  状态词  取汉字“状”的声母的前一个字母。</td>
+</tr>
+<tr>
+<td align="center">un</td>
+<td align="center">未知词</td>
+<td align="center">不可识别词及用户自定义词组。取英文Unkonwn首两个字母。(非北大标准，CSW分词中定义)</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/25/Deep-Learning-for-Event-Driven-Stock-Prediction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -530,105 +812,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/20/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/02/20/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">SVD奇异值分解数学原理</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-02-20 21:27:31" itemprop="dateCreated datePublished" datetime="2018-02-20T21:27:31+08:00">2018-02-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/02/20/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/20/SVD奇异值分解数学原理/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>推导完PCA再来看看SVD </p>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
-<li>奇异值分解(singular value decomposition)可以分解任意形状的矩阵, PCA是对方阵操作,所以SVD适用范围更广</li>
-<li><strong>A=UΣV^t</strong></li>
-</ul>
-<h3 id="具体推导"><a href="#具体推导" class="headerlink" title="具体推导"></a>具体推导</h3><h4 id="分解形式"><a href="#分解形式" class="headerlink" title="分解形式"></a>分解形式</h4><p>A是一个m*n的矩阵,那么A的SVD分解为Amn= Umm*Σmn*Vnn^t (Amn表示A是m*n的矩阵)<br>其中:</p>
-<ul>
-<li><p>Σ只在对角线(可能不同于方阵的对角线)上有非零值,称为A的奇异值(singular value),按降序排列,取值为 A*A^t 或者 A^t*A 的特征值的正平方根(取值不同可造成SVD分解形式的不唯一)</p>
-</li>
-<li><p>U和V都是正交矩阵,即满足U^t*U = E, V^t*V = E</p>
-</li>
-<li><p>A*A^t<br>= U*Σ*V^t*V*Σ^t*U^t<br>= U*Σ*Σ^t*U^t (Σ<em>Σ^t是对角矩阵)<br>所以,Σ\</em>Σ^t的对角元素是A*A^t的特征值,U是A*A^t的特征向量构成的正交矩阵</p>
-</li>
-<li><p>A^t*A<br>= V*Σ^t*U^t*U*Σ*V^t<br>= V*Σ^t*Σ*V^t<br>所以,Σ^t*Σ的对角元素是A^t*A的特征值,V是A^t*A的特征向量构成的正交矩阵</p>
-</li>
-</ul>
-<h4 id="SVD分解展开式"><a href="#SVD分解展开式" class="headerlink" title="SVD分解展开式:"></a>SVD分解展开式:</h4><p><strong>不妨设m≥n</strong>,则有:<br>Amn<br>= Umm*Σmn*Vnn^t<br>= (u1,u2…um)*diag_like(d1,d2…dn)*(v1^t,v2^t…vn^t)^t<br>= Σdi*ui*vi^t       (i from 1 to n)<br>= Σdi*Zi       (令Zi=ui*vi^t,Zi也是m*n型)<br><img src="http://upload-images.jianshu.io/upload_images/9608551-30a591c31e77302e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>所以,<strong>对A进行SVD分解,相当于把A分解为n个(m≥n时)Zi的加权和</strong>.<br><strong>di的大小评估了每个Zi对A的贡献,所以可以挑出大di,抛弃小di以实现降维的目的</strong></p>
-<h3 id="SVD的应用"><a href="#SVD的应用" class="headerlink" title="SVD的应用"></a>SVD的应用</h3><h4 id="信息压缩"><a href="#信息压缩" class="headerlink" title="信息压缩"></a>信息压缩</h4><ul>
-<li>取前r大的奇异值di,来近似A,也就是U取前r个列向量,V取前r个列向量,Σ取前r个对角元素,即 Amn ≈ Umr*Σrr*Vrn^t  (<strong>对应上图看更明确</strong>)<br>当r&lt;&lt;m或者n时,会极大地压缩A,但是r越小信息丢失得越多<h4 id="图像降噪"><a href="#图像降噪" class="headerlink" title="图像降噪"></a>图像降噪</h4></li>
-<li>通常,小的奇异值对应的是噪声,所以取前r个奇异值di可以降噪</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -701,7 +884,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

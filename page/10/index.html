@@ -177,6 +177,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">Logistic Regression逻辑斯蒂回归</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-01 15:30:04" itemprop="dateCreated datePublished" datetime="2018-04-01T15:30:04+08:00">2018-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/01/Logistic-Regression逻辑斯蒂回归/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h1><p>logistic回归是统计学习中的经典分类方法,他属于对数线性模型,logistic回归来源于logistic分布,先从logistic分布说起</p>
+<h2 id="Logistic-distribution"><a href="#Logistic-distribution" class="headerlink" title="Logistic distribution"></a>Logistic distribution</h2><p>设X是连续随机变量,X服从logistic分布,其分布函数和概率密度函数如下:</p>
+<h3 id="分布函数"><a href="#分布函数" class="headerlink" title="分布函数"></a>分布函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-95edc9f8477dd868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a3ff0b4a2c46e68b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>分布函数即为通常所说的logistic函数,其图像关于(μ,0.5)对称,满足:<br>F(-x+μ)+F(x-μ)=1<br>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)<br>形状参数s的值越小,曲线在中心附近增长得越快  </p>
+<h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><p>其中,μ为位置参数,s为形状参数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb5e4d5dc985ae80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-a1f50bb8a1e33a11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png">   </p>
+<h2 id="二项logistic回归"><a href="#二项logistic回归" class="headerlink" title="二项logistic回归"></a>二项logistic回归</h2><p>二项logistic回归(binomial logistic regression)是一种分类模型,<strong>由条件概率分布P(Y|X)表示</strong>,形式为参数化的logistic分布.这里,<strong>随机变量X取值为实数,随机变量Y取值为1或0.通过监督学习的方法来估计模型参数</strong></p>
+<h3 id="概率的公理化定义"><a href="#概率的公理化定义" class="headerlink" title="概率的公理化定义"></a>概率的公理化定义</h3><p>柯尔莫哥洛夫给出了概率的公理化定义:</p>
+<ul>
+<li>0≤P(A)≤1</li>
+<li>P(Ω)=1,P(∅)=0,必然事件概率为1,不可能事件概率为0</li>
+<li>加法定理:<strong>若干个互斥事件之和的概率等于各事件的概率之和</strong>,即P(A1+A2+…)=P(A)+P(B)+…事件的个数可以是有限的或无限的<h3 id="条件概率分布"><a href="#条件概率分布" class="headerlink" title="条件概率分布"></a>条件概率分布</h3>二项logistic回归模型是如下的条件概率分布(<strong>该条件概率分布满足上述公理化定义,所以可以作为概率,通过训练使得这个概率值更准确</strong>):  </li>
+</ul>
+<p><strong>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-29bc7f40bf18fb41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>或表示成如下形式<br><img src="https://upload-images.jianshu.io/upload_images/9608551-32ca35e02ba1973d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>logistic回归采用的是logistic分布函数,对于任意x,F(x)最小值为0,最大值为1,相当于把实数域R映射到(0,1)上.<br>对于给定的输入实例x,按照上式求出P(Y=1|x)和P(Y=0|x),比较两个条件概率的大小,将实例x分到概率值较大的那一类.  </p>
+<h3 id="logistic回归模型的特点"><a href="#logistic回归模型的特点" class="headerlink" title="logistic回归模型的特点"></a>logistic回归模型的特点</h3><p>事件发生的概率与不发生的概率之比称作事件的几率(odds),考察logistic回归的对数几率(log odds)或logit函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8a0a95e665434b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>这就是说,在logistic回归模型中,输出Y=1的对数几率是输入x的线性函数.或者说,输出Y=1的对数几率是由输入x的线性函数表示的模型.(同样地,输出Y=0的对数几率是-wx,x越大则Y=0的对数几率越小,x越小则Y=0的对数几率越大.这样说不满足几率的定义,但是这样解释没有问题,嗯)<br><strong>换一个角度看,考虑对输入x进行分类的线性函数wx</strong>,其值域为实数域.注意这里x∈R_(n+1),w∈R_(n+1).通过logistic回归模型可以将wx转换为概率.这时,线性函数wx的值越接近正无穷,概率值越接近1;线性函数wx的值越接近负无穷,概率值越接近0<br>这样的模型就是logistic回归模型</p>
+<h3 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1aec11875f7ca8a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>关于极大似然法(Maximum Likelihood Estimation),可以参考之前的文章<a href="http://littlehaes.com/2018/03/30/Maximum-Likelihood-Estimation极大似然估计/" target="_blank" rel="noopener">极大似然估计</a><br><img src="https://upload-images.jianshu.io/upload_images/9608551-f1876db755479d31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br><strong>求得使L(w)取得最大值的w也就得到logistic回归模型了</strong><br>logistic回归学习中通常采用的方法是梯度下降法(Gradient descent)和拟牛顿法(Quasi Newton method),见之前的文章<a href="http://littlehaes.com/2018/03/25/Gradient-descent梯度下降-Steepest-descent/" target="_blank" rel="noopener">梯度下降</a>和<a href="http://littlehaes.com/2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" target="_blank" rel="noopener">拟牛顿法</a>  </p>
+<h3 id="多项logistic回归"><a href="#多项logistic回归" class="headerlink" title="多项logistic回归"></a>多项logistic回归</h3><p>之前介绍的是二项logistic回归,<strong>用于二分类</strong>.可以将其推广为multi-nomial logistic regression model.用于多类分类.<br>假设离散型随机变量Y的取值集合是{1,2,…,K},那么多项logistic回归模型是:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fa3fb6c60d131815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>二项logistic回归的参数估计方法也可以推广到多项logistic回归中  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>曲线在中心附近增长速度较快,在两端增长速度较慢.(<strong>这个特性将使得使用梯度下降优化模型时,可以对误分样本快速调整</strong>)  </p>
+<ol>
+<li>形式为<strong>参数化</strong>的logistic分布,即μ和s变成了w和b  </li>
+<li>P(Y=1|x)=F(X≤x),P(Y=0|x)=1-F(X≤x)=F(X&gt;x)</li>
+<li>logistic回归的对数几率是线性的:wx+b,所以logistic回归属于对数线性模型</li>
+<li>对数似然中对于<strong>单个样本</strong>的表达形式要有清晰的认识:P(yi|xi)=π(xi)^yi · [1-π(xi)]^(1-yi),决定这个式子形式的是yi</li>
+</ol>
+<p>参考:<br>李航,统计学习方法  </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/31/Linear%20Regression%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -549,97 +650,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/" class="post-title-link" itemprop="url">Gradient descent梯度下降(Steepest descent)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-25 17:23:33" itemprop="dateCreated datePublished" datetime="2018-03-25T17:23:33+08:00">2018-03-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/25/Gradient-descent梯度下降-Steepest-descent/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>梯度下降(gradient descent)也叫最速下降(steepest descent),用来求解无约束最优化问题的一种常用方法,结果是局部最优解,对于目标函数为凸的情况,可以得到全局最优解.梯度下降是迭代算法,每一步需要求解目标函数的梯度向量.  </p>
-<h2 id="采用线搜索的框架"><a href="#采用线搜索的框架" class="headerlink" title="采用线搜索的框架"></a>采用线搜索的框架</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a781bb3cbc7338a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><strong>搜索方向取负梯度方向,步长可以通过精确线搜索或非精确线搜索获得</strong><br>关于步长,之前的文章有提过:<a href="http://littlehaes.com/2018/03/23/Line-search-and-Step-length线搜索与步长/" target="_blank" rel="noopener">Line search and Step length线搜索与步长</a>  </p>
-<h2 id="泰勒展开简化形式"><a href="#泰勒展开简化形式" class="headerlink" title="泰勒展开简化形式"></a>泰勒展开简化形式</h2><ol>
-<li>假设f(x)是R^n上具有一阶连续偏导数的函数.要求解的无约束最优化问题是min f(x),x*标识目标函数f(x)的极小点.  </li>
-<li>选取适当的初值x^(0),不断迭代,更新x的值,进行目标函数的极小化,直到收敛.由于负梯度方向是使函数值下降最快的方向,在迭代的每一步,以负梯度方向更新x的值,从而达到减小函数值的目的.  </li>
-<li>因为f(x)具有一阶连续偏导数, 若第k次迭代值为x^(k),则可将f(x)在x^(k)附近进行一阶泰勒展开(Taylor expansion):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6a8d6ce238132a35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></li>
-</ol>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-eae7b5e4cba6c71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>简化版:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-935bdaced03e4364.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><h3 id="收敛慢"><a href="#收敛慢" class="headerlink" title="收敛慢"></a>收敛慢</h3><h4 id="碗形函数-bowl-shape"><a href="#碗形函数-bowl-shape" class="headerlink" title="碗形函数(bowl shape)"></a>碗形函数(bowl shape)</h4><p>蓝色的线是函数的等高线(线上的函数值相等)<br>从x_0点开始,沿x_0的负梯度方向(与该点切线垂直)的前进适当的步长,函数值会减小<br>对于该图来说,一次一次迭代可以收敛全局最优点<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cce1a345241054d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png">  </p>
-<h4 id="之字形Zig-Zagging"><a href="#之字形Zig-Zagging" class="headerlink" title="之字形Zig-Zagging"></a>之字形Zig-Zagging</h4><p>实际中的等高线可能并没有这么好<br>下图这样的等高线会导致每次迭代走的是之字形(Zig-Zagging),这样会使得收敛速度很慢<br><img src="https://upload-images.jianshu.io/upload_images/9608551-670bc6a5de3e00a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png">  </p>
-<h4 id="Rosenbrock-函数"><a href="#Rosenbrock-函数" class="headerlink" title="Rosenbrock 函数"></a>Rosenbrock 函数</h4><p>对于像Rosenbrock这样的病态函数(pathological functions)来说,等高线如下图<br>不仅有走之字形(Zig-Zagging)的情况,而且函数图像的底部很平坦,这样每次前进的步长很小,导致收敛速度太慢<br>The bottom of the valley is very flat. Because of the curved flat valley the optimization is zig-zagging slowly with small stepsizes towards the minimum.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-49563f08eb67baee.gif?imageMogr2/auto-orient/strip" alt="7.gif"><br>梯度下降的收敛速度比起很多其他方法都慢,如果函数不凸,梯度下降过程中会走更多的之字形,因为总有当前点的梯度方向与当前点到最小点的方向是垂直的情况,也就是说要走很多冤枉路</p>
-<h3 id="不可微的函数"><a href="#不可微的函数" class="headerlink" title="不可微的函数"></a>不可微的函数</h3><p>对于不可微的函数,就不能直接用梯度下降了,需要进行额外的平滑处理  </p>
-<p>参考:<br>李航,统计学习方法</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -712,7 +722,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

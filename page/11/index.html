@@ -177,6 +177,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/" class="post-title-link" itemprop="url">Gradient descent梯度下降(Steepest descent)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-25 17:23:33" itemprop="dateCreated datePublished" datetime="2018-03-25T17:23:33+08:00">2018-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/25/Gradient-descent梯度下降-Steepest-descent/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>梯度下降(gradient descent)也叫最速下降(steepest descent),用来求解无约束最优化问题的一种常用方法,结果是局部最优解,对于目标函数为凸的情况,可以得到全局最优解.梯度下降是迭代算法,每一步需要求解目标函数的梯度向量.  </p>
+<h2 id="采用线搜索的框架"><a href="#采用线搜索的框架" class="headerlink" title="采用线搜索的框架"></a>采用线搜索的框架</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a781bb3cbc7338a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><strong>搜索方向取负梯度方向,步长可以通过精确线搜索或非精确线搜索获得</strong><br>关于步长,之前的文章有提过:<a href="http://littlehaes.com/2018/03/23/Line-search-and-Step-length线搜索与步长/" target="_blank" rel="noopener">Line search and Step length线搜索与步长</a>  </p>
+<h2 id="泰勒展开简化形式"><a href="#泰勒展开简化形式" class="headerlink" title="泰勒展开简化形式"></a>泰勒展开简化形式</h2><ol>
+<li>假设f(x)是R^n上具有一阶连续偏导数的函数.要求解的无约束最优化问题是min f(x),x*标识目标函数f(x)的极小点.  </li>
+<li>选取适当的初值x^(0),不断迭代,更新x的值,进行目标函数的极小化,直到收敛.由于负梯度方向是使函数值下降最快的方向,在迭代的每一步,以负梯度方向更新x的值,从而达到减小函数值的目的.  </li>
+<li>因为f(x)具有一阶连续偏导数, 若第k次迭代值为x^(k),则可将f(x)在x^(k)附近进行一阶泰勒展开(Taylor expansion):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-6a8d6ce238132a35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></li>
+</ol>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-eae7b5e4cba6c71f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>简化版:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-935bdaced03e4364.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><h3 id="收敛慢"><a href="#收敛慢" class="headerlink" title="收敛慢"></a>收敛慢</h3><h4 id="碗形函数-bowl-shape"><a href="#碗形函数-bowl-shape" class="headerlink" title="碗形函数(bowl shape)"></a>碗形函数(bowl shape)</h4><p>蓝色的线是函数的等高线(线上的函数值相等)<br>从x_0点开始,沿x_0的负梯度方向(与该点切线垂直)的前进适当的步长,函数值会减小<br>对于该图来说,一次一次迭代可以收敛全局最优点<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cce1a345241054d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png">  </p>
+<h4 id="之字形Zig-Zagging"><a href="#之字形Zig-Zagging" class="headerlink" title="之字形Zig-Zagging"></a>之字形Zig-Zagging</h4><p>实际中的等高线可能并没有这么好<br>下图这样的等高线会导致每次迭代走的是之字形(Zig-Zagging),这样会使得收敛速度很慢<br><img src="https://upload-images.jianshu.io/upload_images/9608551-670bc6a5de3e00a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png">  </p>
+<h4 id="Rosenbrock-函数"><a href="#Rosenbrock-函数" class="headerlink" title="Rosenbrock 函数"></a>Rosenbrock 函数</h4><p>对于像Rosenbrock这样的病态函数(pathological functions)来说,等高线如下图<br>不仅有走之字形(Zig-Zagging)的情况,而且函数图像的底部很平坦,这样每次前进的步长很小,导致收敛速度太慢<br>The bottom of the valley is very flat. Because of the curved flat valley the optimization is zig-zagging slowly with small stepsizes towards the minimum.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-49563f08eb67baee.gif?imageMogr2/auto-orient/strip" alt="7.gif"><br>梯度下降的收敛速度比起很多其他方法都慢,如果函数不凸,梯度下降过程中会走更多的之字形,因为总有当前点的梯度方向与当前点到最小点的方向是垂直的情况,也就是说要走很多冤枉路</p>
+<h3 id="不可微的函数"><a href="#不可微的函数" class="headerlink" title="不可微的函数"></a>不可微的函数</h3><p>对于不可微的函数,就不能直接用梯度下降了,需要进行额外的平滑处理  </p>
+<p>参考:<br>李航,统计学习方法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E6%98%AF%E5%87%BD%E6%95%B0%E5%80%BC%E5%A2%9E%E5%A4%A7%E6%9C%80%E5%BF%AB%E7%9A%84%E6%96%B9%E5%90%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -555,134 +646,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/SupportVectorMachine%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/19/SupportVectorMachine%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" class="post-title-link" itemprop="url">SupportVectorMachine支持向量机</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-19 21:52:02" itemprop="dateCreated datePublished" datetime="2018-03-19T21:52:02+08:00">2018-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/03/19/SupportVectorMachine%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/19/SupportVectorMachine支持向量机/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>支持向量机(support vector machine,SVM)是一种<strong>二分类</strong>模型,它的基本模型是定义在<strong>特征空间上的</strong>间隔最大的<strong>线性分类器</strong>,间隔最大使它有别于感知机.<br>有3类支持向量机模型:<br>    1. 线性可分支持向量机<br>    2. 线性支持向量机<br>    3. 非线性支持向量机<br>(这三种模型建立思路很像,求解过程不同)</p>
-<h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><h3 id="几何间隔与函数间隔的引出"><a href="#几何间隔与函数间隔的引出" class="headerlink" title="几何间隔与函数间隔的引出"></a>几何间隔与函数间隔的引出</h3><p>超平面wx+b=0外一点x0到超平面的距离公式(几何间隔):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb47940a8aefedf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w400" alt="1.png"><br>分母是w的二范式,不随x0的改变而改变,所以可以分子|wx0+b|能够相对地表示点x0距离超平面wx+b=0的远近.<br>一个点距离分离超平面的远近可以表示分类预测的确信程度.<br>wx0+b的符号与类标记y0的符号是否一致能够表示分类是否正确.<br>所以,<strong>可用y0(wx0+b)来表示分类的正确性及确信度,这就是函数间隔(functional margin)</strong>  </p>
-<h3 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h3><p>超平面(w,b)关于样本点xi的函数间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e8b5378ba5f3102a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>超平面(w,b)关于训练集T的函数间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a71ba18772effb31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"></p>
-<h3 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h3><p>超平面(w,b)关于样本点xi的几何间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-12f6cc40439d27cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>超平面(w,b)关于训练集T的几何间隔为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d7377c98b9552ecc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="5.png"></p>
-<h3 id="硬间隔最大化"><a href="#硬间隔最大化" class="headerlink" title="硬间隔最大化"></a>硬间隔最大化</h3><p>找到了超平面(w,b)关于训练集T的几何间隔后,自然地希望最大化这个几何间隔以保证之后分类预测的确信程度<br>目标函数和约束如下:<br>约束表示超平面(w,b)关于任意样本点的几何间隔大于等于超平面(w,b)关于训练集T的几何间隔<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ff6aaae6d39a51a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="6.png"><br>在约束中约去||w||并展开γ^<br><img src="https://upload-images.jianshu.io/upload_images/9608551-79a73fb2c8d759f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="6.1.png"><br>求出w,b的话问题就解决了,先别急,让我们化简一下上面的式子<br>注意到,如果对w,b同比例的放缩,即变成kw,kb,函数间隔yi(wxi+b)也会成比例k变化,而超平面(w,b)没有变化,<br>此时原问题和约束变为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a1067828cc35c333.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="7.png"><br>约掉k后,目标函数和约束没有改变,说明对w,b进行同比例放缩丝毫不影响目标函数和约束,<strong>那么可以选取合适的k让函数间隔γ^=1</strong>,也就是<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f03595219d20d995.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.1.png"><br>这样一来,目标函数和约束就变成了:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-fb455cb8c8f44856.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.png"><br>把||w||挪到分子上平方一下再乘个常数就有了:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0ba320ed7a3a25c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="9.png"><br>比最初的形式简化了不少,这是个带约束问题,通过Lagrange Multiplier拉格朗日乘子法化成无约束问题:<br>(原问题:极大极小)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9ad79d65f9fbcfa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="10.png"></p>
-<p>具体原理可参考之前的文章<a href="http://littlehaes.com/2018/03/15/Lagrange-duality拉格朗日对偶性/" target="_blank" rel="noopener">Lagrange duality拉格朗日对偶性</a><br>对偶形式:  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-37cbecb2b63b0e90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="11.png"><br>其中:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-36db3de657af14ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200" alt="12.png"><br>所以有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8bd130a5b32d40c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="13.png"><br>进而有(最终形式):<br><strong>下面的约束是求 min L(w,b,α)时得到的</strong><br><strong>这是个凸二次规划问题(目标函数是二次函数,不等式约束是仿射函数)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-ba6dc472a61377cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="14.png"><br>求解得到α<em>=(α1,α2,…,αN)^t,这是对偶问题的解,<br>可由α*得到w\</em>,b*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9f239a4deb2998e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="15.png"><br><strong>之所以能从对偶问题获得原问题的解,是因为原问题为凸二次规划问题,并且解α*,w*,b* 满足KKT条件</strong><br>有了w*,b*就能得到最大间隔分离超平面和分类决策函数:  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-a745a7f9db18b42b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="16.png"></p>
-<h3 id="支持向量"><a href="#支持向量" class="headerlink" title="支持向量"></a>支持向量</h3><p>通过由α*得到w*,b*的公式可以知道,对应α*=0的实例xi对超平面(w*,b*)的两个参数都没有贡献,只有对应α*＞0的实例xi对超平面(w*,b*)的两个参数有贡献,也就是说<strong>超平面完全由对应α*＞0的实例决定,这些实例称为支持向量,由KKT的互补条件知,若α*＞0,则有y(wx+b)-1=0,即wx+b=±1,说明支持向量都在间隔边界上</strong></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>对于线性可分SVM学习来说:</p>
-<ol>
-<li>模型为分离超平面和决策函数</li>
-<li>学习策略:硬间隔最大化(间隔的描述及约束)</li>
-<li>学习算法:凸二次规划</li>
-</ol>
-<h2 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h2><p>通常情况下,训练数据中有一些特异点(outlier),将这些特异点去掉后,剩下的大部分样本点组成的集合是线性可分的.<strong>线性不可分意味着不是所有点都满足函数间隔大于等于1的约束,为解决这个问题,引入一个松弛变量ζi≥0,使函数间隔加上松弛变量后大于等于1</strong>.即,y(wx+b)+ζ≥1  </p>
-<h3 id="软间隔最大化"><a href="#软间隔最大化" class="headerlink" title="软间隔最大化"></a>软间隔最大化</h3><p>对每个松弛变量ζi,支付一个代价ζi,目标函数变为<br><img src="https://upload-images.jianshu.io/upload_images/9608551-cb73960c94d02fd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="17.png"><br><strong>这里C&gt;0称为惩罚参数</strong>,C越大则对<strong>错误分类</strong>的惩罚越大<br><strong>最小化上述目标函数实现的是软间隔最大化,最小化上式包含两层含义:使1/2||w||^2尽量小,即间隔尽量大,同时使误分类点的个数尽量小</strong>.<br>硬间隔就是真正的间隔,软间隔是包含了代价项ζ的硬间隔<br>由上分析便得到了线性支持向量机的学习目标:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-da01a6d13df631f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="18.png"><br>化为拉格朗日形式(不带约束)的原问题:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5baedeed43709629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="19.png"><br>对偶问题:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2ffb45c01091ba8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20.png"><br>其中:  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-619deff39232027d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="21.png"><br>进而:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a9bcbe2fe16a3198.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="22.png"><br>所以对偶问题的最终形式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9ebde8500c681fd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="23.png"><br><strong>与线性可分SVM的对偶最终形式相比只是α的约束不同,约束增强了</strong><br>求解得到α<em>=(α1,α2,…,αN)^t,这是对偶问题的解,<br>可由α*得到w\</em>,b*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-75f93ccc1366c519.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="24.png"><br>有了w*,b*就能得到最大间隔分离超平面和分类决策函数:  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-a745a7f9db18b42b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="16.png"></p>
-<h3 id="支持向量-1"><a href="#支持向量-1" class="headerlink" title="支持向量"></a>支持向量</h3><p>和线性可分SVM类似,<strong>超平面完全由对应α*＞0的实例决定,这些实例称为支持向量,但是线性SVM的支持向量不一定都在间隔边界上</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-0d88d26ab51bd146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="25.png"><br><strong>KKT互补条件之一:α*(y(w*x+b)+ζ-1)=0</strong><br>当0&lt;αi&lt;C时,ζi=0,则y(w*x+b)-1=0,此时支持向量在间隔边界上<br>当αi=C时,ζi&gt;0,支持向量可能在:<br>间隔边界与超平面之间:0&lt;ζi&lt;1<br>超平面上:ζi=1<br>误分类一侧:ζi&gt;1</p>
-<h3 id="Hinge-Loss-Function合页损失函数"><a href="#Hinge-Loss-Function合页损失函数" class="headerlink" title="Hinge Loss Function合页损失函数"></a>Hinge Loss Function合页损失函数</h3><p>线性SVM的学习还有另一种等价模型,即最小化目标函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-dd7d0f6f1c592edb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="26.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-39a14e13eb96d885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="27.png"><br><img src="https://upload-images.jianshu.io/upload_images/9608551-6d4b1abf51657921.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="28.png"><br>证明新目标函数与原问题等价时,主要抓住三点:<br>    1. hinge loss≥0<br>    2. 令[1-y(wx+b)]_+=ζ<br>    3. 讨论1-y(wx+b)的取值范围<br>L(y(wx+b))说明了:<br>    1. 点到超平面的函数距离≥1时,损失为0<br>    2. 点到超平面的函数距离＜1时,损失为1-y(wx+b)<br>下图蓝线代表hinge loss的图像<br><img src="https://upload-images.jianshu.io/upload_images/9608551-00605cf8a8f496b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="29.png"></p>
-<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>对于线性SVM学习来说:</p>
-<ol>
-<li>模型为分离超平面和决策函数(线性SVM的对偶形式)</li>
-<li>学习策略:软间隔最大化(间隔的描述及约束)</li>
-<li>学习算法:凸二次规划</li>
-</ol>
-<h2 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h2><p>用线性分类方法求解非线性分类任务分为两步:<br>    1. 将训练数据从输入空间(欧式空间或离散集合)映射到新的特征空间(希尔伯特空间)使数据在新特征空间中线性可分<br>    2. 在新特征空间中用线性分类学习方法从训练数据中学习分类模型,<strong>使得输入空间中的超曲面模型对应特征空间中的超平面模型</strong><br>Kernel trick(核技巧)便属于这样的方法</p>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p> <img src="https://upload-images.jianshu.io/upload_images/9608551-9bb863f114d19818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="30.png"><br> K(x1,x2)=φ(x1)φ(x2)是个对称函数,叫作正定核(positive definite kernel)<br> 一般只定义K(x1,x2),而不显式地定义φ(x),那么如何保证K(x1,x2)是正定核呢?<br> 正定核的充要条件:<br> <img src="https://upload-images.jianshu.io/upload_images/9608551-e996f799fb0dba36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="33.png"><br>证明过程需要预备知识:构造希尔伯特空间  </p>
-<ul>
-<li>定义映射φ并构成向量空间S(对加法和数乘运算封闭的集合)</li>
-<li>在S上定义内积构成内积空间(用到了欧式空间Gram矩阵的半正定性)</li>
-<li>将内积空间S完备化为希尔伯特空间</li>
-</ul>
-<p>由α*得到b*<br><img src="https://upload-images.jianshu.io/upload_images/9608551-10a67cf49667196b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="31.png"><br>分类决策函数<br><img src="https://upload-images.jianshu.io/upload_images/9608551-5d6ac4ec7544f2b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="32.png"></p>
-<h3 id="常用的核函数"><a href="#常用的核函数" class="headerlink" title="常用的核函数"></a>常用的核函数</h3><p>正定核的充要条件在构造核函数时很有用.但对于一个具体函数K(x,z)来说,检验它是否为正定核并不容易,因为需要对任意有限输入集{x1,x2,…,xm}验证K对应的Gram矩阵(在希尔伯特空间)是否为半正定的.实际问题中往往应用已有的核函数</p>
-<ol>
-<li><p>多项式核函数(polynomial kernel function)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-19fdfd50cf1ea07e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="34.png"><br>对应的支持向量机是一个p次多项式分类器,分类决策函数为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-dea5107f0a5c63fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="35.png">  </p>
-</li>
-<li><p>高斯核函数(Gaussian kernel function)<br>通过泰勒展开可知高斯核是无穷维的<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9bf1ddec2773600f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="36.png"><br>对应的支持向量机是高斯径向基函数(radial basis function)分类器,分类决策函数为:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-408894baa045886f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="37.png">  </p>
-</li>
-<li><p>字符串核函数(string kernel function)<br>定义在字符串集合上的核函数,字符串核函数应用在文本分类,信息检索,生物信息学等方面.<br>k_n(s,t)给出了字符串s和t中长度等于n的所有子串组成的特征向量的余弦相似度(cosine similarity).直观上,两个字符串相同的子串越多,它们就越相似,字符串核函数的值就越大.字符串核函数可以由动态规划快速计算</p>
-<h3 id="SMO算法"><a href="#SMO算法" class="headerlink" title="SMO算法"></a>SMO算法</h3><p>SMO:sequential minimal optimization<br>利用SMO算法实现SVM的学习<br><img src="https://upload-images.jianshu.io/upload_images/9608551-9bb863f114d19818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/900" alt="30.png"><br>SMO算法包括两个部分:</p>
-<ol>
-<li>求解两个变量二次规划的解析方法(线性规划;把握好对g(x)和Ei的理解)</li>
-<li>选择变量的启发式方法(KKT;|E1-E2|最大)</li>
-</ol>
-<p>参考:李航,统计学习方法</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -755,7 +718,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

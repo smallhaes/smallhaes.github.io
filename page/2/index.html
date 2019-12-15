@@ -177,6 +177,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Xshell%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BALinux%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/08/Xshell%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BALinux%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Xshell连接虚拟机Linux踩坑记录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-11-08 09:43:39" itemprop="dateCreated datePublished" datetime="2018-11-08T09:43:39+08:00">2018-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/11/08/Xshell%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BALinux%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/08/Xshell连接虚拟机Linux踩坑记录/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-5b6323ed8d237d11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="xshell.png"><br>我使用的是桥接模式,没有做其他修改网卡配置的设置,在windows下可以ping通虚拟机上的Linux,但是Xshell依旧连不上Linux<br>在终端输入:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e | grep ssh</span><br></pre></td></tr></table></figure>
+<p>发现没有sshd,也就是说没有ssh 服务器</p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br><span class="line">此时再输入ps -e | grep ssh便发现sshd启动了</span><br><span class="line">7087 ?        00:00:00 sshd</span><br></pre></td></tr></table></figure>
+<p>现在可以用Xshell连接虚拟机上的linux了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/python%E8%A3%85%E9%A5%B0%E5%99%A8%E5%B0%8F%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -511,87 +594,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/3%E5%88%86%E9%92%9F%E7%90%86%E8%A7%A3ROI-Pooling%E5%B1%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/28/3%E5%88%86%E9%92%9F%E7%90%86%E8%A7%A3ROI-Pooling%E5%B1%82/" class="post-title-link" itemprop="url">3分钟理解ROI Pooling层</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-28 09:36:29" itemprop="dateCreated datePublished" datetime="2018-10-28T09:36:29+08:00">2018-10-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/10/28/3%E5%88%86%E9%92%9F%E7%90%86%E8%A7%A3ROI-Pooling%E5%B1%82/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/28/3分钟理解ROI-Pooling层/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://upload-images.jianshu.io/upload_images/9608551-2ae41fb173eb7e88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3分钟理解ROI"><br>直接使用SPPNet论文的原图,下面的变量均用上图中的表示,注意对应关系<br>不同size的图片(input image)经过’convolutional layers’后得到的feature map of conv5的size不同,ROI Pooling层的功能便是将不同size的feature map of conv5处理后得到相同长度的特征表示.(对应图中的大黑框部分)</p>
-<h1 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程:"></a>具体流程:</h1><p>假设输入ROI Pooling层的feature map of conv5的shape是(h,w,c)<br>一. 首先ROI Pooling层把feature map of conv5划分成4*4的小方块(对应图中蓝色矩形),每个小方块的宽高分别为w/4,h/4,通道数为c,不能整除时需要取整.针对feature map的每个通道,分别在这16个小方块进行最大池化(MaxPooling),也就是取出小方块里的最大值.每一个通道都能取出16个最大值,所以所有通道共有16c个值<br>二. 然后ROI Pooling层把feature map of conv5划分成2*2的小方块(对应图中绿色矩形),使用同样的方法得到4c个值<br>三. 接着ROI Pooling层把feature map of conv5划分成1*1的小方块(对应图中灰色矩形),得到c个值<br>四. 最后将上面三个值串联起来得到长度为16c+4c+c=21c的特征表示</p>
-<p>显而易见,通过ROI Pooling层得到的特征表示是固定长度(21c)的, 与输入的h,w无关!</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -664,7 +666,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

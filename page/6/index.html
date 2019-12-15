@@ -177,6 +177,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/02/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0-Learning-to-Generate-Time-Lapse-Videos-Using-Multi-StageDynamic-Generative-Adversarial-Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/02/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0-Learning-to-Generate-Time-Lapse-Videos-Using-Multi-StageDynamic-Generative-Adversarial-Networks/" class="post-title-link" itemprop="url">论文学习:Learning to Generate Time-Lapse Videos Using Multi-StageDynamic Generative Adversarial Networks</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-09-02 17:27:56" itemprop="dateCreated datePublished" datetime="2018-09-02T17:27:56+08:00">2018-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/09/02/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0-Learning-to-Generate-Time-Lapse-Videos-Using-Multi-StageDynamic-Generative-Adversarial-Networks/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/02/论文学习-Learning-to-Generate-Time-Lapse-Videos-Using-Multi-StageDynamic-Generative-Adversarial-Networks/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这篇论文收录于KDD2018,有关视频生成的,论文有个<a href="https://sites.google.com/site/whluoimperial/mdgan" target="_blank" rel="noopener">项目主页</a>,题目翻译过来大致是:使用多阶段动态生成对抗网络学习生成time-lapse(延时)视频.<br>多阶段具体来说是两阶段,</p>
+<ol>
+<li>第一阶段(Base-Net): 注重每一帧内容的真实性   </li>
+<li>第二阶段(Refine-Net): 注重帧与帧之间物体的运动</li>
+</ol>
+<p>下图是模型整体框架,叫做<strong>MD-GAN</strong><br>MD-GAN由base-net和refine-net构成<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8561a8290430e22a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<h2 id="Base-Net"><a href="#Base-Net" class="headerlink" title="Base-Net"></a>Base-Net</h2><h3 id="Generator-G1"><a href="#Generator-G1" class="headerlink" title="Generator,G1"></a>Generator,G1</h3><p>G1采用的是encoder-decoder这种结构,具体是采用了多个3D卷积层-反卷积层对;同时还采用了skip connection(构成了U型架构)的策略,3D卷积和skip connection 对视频内容进行了很好的建模.<br>skip connections用于连接与encoder对应的decoder的feature maps,从而使decoder再次利用encoder的信息,减少了信息损失.<br>skip connection是通过identity mapping(恒等映射)实现的</p>
+<h3 id="Discriminator-D1"><a href="#Discriminator-D1" class="headerlink" title="Discriminator,D1"></a>Discriminator,D1</h3><p>D1采用的是G1中encoder的网络,除了最后一层用的是sigmoid激活函数而不是ReLU了</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>Lcon是像素级别的L1距离,L1可以使画面更加sharpness<br><img src="https://upload-images.jianshu.io/upload_images/9608551-278cb667c136a574.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>base-net保证内容的sharpness</p>
+<h2 id="Refine-Net"><a href="#Refine-Net" class="headerlink" title="Refine-Net"></a>Refine-Net</h2><h3 id="Generator-G2"><a href="#Generator-G2" class="headerlink" title="Generator,G2"></a>Generator,G2</h3><p>G2的网络和G1很像,只不过G2中移除了部分skip connections,具体的是溢出了 “conv1” and “deconv6”, “conv2” and “deconv5”之间的skip connection<br>因为使用G1中那么多的skip connection对视频的动态性不能很好的建模</p>
+<h3 id="Discriminator-D2"><a href="#Discriminator-D2" class="headerlink" title="Discriminator,D2"></a>Discriminator,D2</h3><p>D2和D1的结构一样,只不过有3个D2,分别是Y1,Y2,Y对应的D2<br>D2的重点是Gram matrix和ranking loss</p>
+<h4 id="Gram-matrix-建模帧与帧之间物体运动的动态性"><a href="#Gram-matrix-建模帧与帧之间物体运动的动态性" class="headerlink" title="Gram matrix 建模帧与帧之间物体运动的动态性"></a>Gram matrix 建模帧与帧之间物体运动的动态性</h4><p>在refine-net中,作者引入Gram matrix作为运动特征的表示(motion feature representation),用来辅助G2学到帧与帧之间的动态特性<br>具体怎么用?</p>
+<ol>
+<li>首先从D2中提取特征,具体的就是以D2的某一层的输出作为特征,论文中说的是:features of the first and third convolutional layers (after the ReLU layer) of discriminator D2,也就是第一个和第三个卷积层+ReLU激活后的输出作为特征.</li>
+<li>接下来用这些特征去计算Gram矩阵,这样做的好处是加入了丰富的时间信息,而动作是随着时间进行的,所以也就是加入了训练集视频片段的动作信息.<br>Gram矩阵的计算如论文所示,这其实是求提取自D2中的特征之间的协方差矩阵,计算得到的Gram矩阵将会用于ranking loss.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-8ba0151b6b77597e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></li>
+</ol>
+<h4 id="ranking-loss"><a href="#ranking-loss" class="headerlink" title="ranking loss"></a>ranking loss</h4><p>ranking loss是论文的一大特点,计算得到的Gram矩阵将会用于ranking loss.<br>D2的结构和D1一样,针对D2中某一层的特征,ranking loss计算公式如下所示,这个公式引用自<strong>ContrastingLoss-Generative Semantic Manipulation with Contrasting</strong>这篇论文,原论文用的是l2范式,这里用的是l1范式,也许是因为l1范式对于视频生成任务更合适,确切地说是因为l1范式会提升生成视频的sharpness(清晰度).进一步观察公式,<strong>如果ranking loss小,说明:g(Y2;l)接近g(Y;l),同时g(Y2;l)远离g(Y1;l),换句话说就是生成的视频Y2更接近ground truth Y,同时比起base-net的输出Y1,refine-net的Y2有了进一步的提升(动作上的提升)</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-e8a5a271df83348e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+<h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>最终的ranking loss是把所有层的结果加起来(论文中是用了D2的第一层和第三层卷积层输出)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-50ad6a1dff60d8fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br>注意到三个D2(Y,Y1,Y2)组成的ranking loss充当Discriminator的一部分</p>
+<p>refine-net的损失函数,Lcon是像素级别的L1距离,L1可以是画面更加sharpness<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0d5cd184ce595628.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"></p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>最大化D,最小化G<br><img src="https://upload-images.jianshu.io/upload_images/9608551-26e5a27b4460995c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
+<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>在保证视频内容的清晰度(sharpness)的基础上,提升画面的动态性</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>论文提出了MD-GAN,MD-GAN有两个网络:base-net和refine-net</li>
+<li>使用base-net保证内容的sharpness</li>
+<li>使用refine-net提升画面的动态性</li>
+<li>Generator中的3D卷积与skip connection(通过恒等映射实现)算是亮点</li>
+<li>D2中的Gram matrix和ranking loss算是重点</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/02/tensorflow%E8%8E%B7%E5%8F%96%E5%8F%AF%E7%94%A8%E8%BF%90%E7%AE%97%E8%AE%BE%E5%A4%87-CPU-GPU/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -510,96 +617,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/06/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/06/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91/" class="post-title-link" itemprop="url">hexo博客迁移到另一台电脑</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-06 09:00:49" itemprop="dateCreated datePublished" datetime="2018-08-06T09:00:49+08:00">2018-08-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/08/06/hexo%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/06/hexo博客迁移到另一台电脑/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>之前的电脑不怎么用了,准备在新电脑上写博客,所以需要迁移一下,查询了各种资料,也算是重新了解了下hexo</p>
-<h2 id="搭建hexo博客环境"><a href="#搭建hexo博客环境" class="headerlink" title="搭建hexo博客环境"></a>搭建hexo博客环境</h2><p>按照<a href="https://www.cnblogs.com/visugar/p/6821777.html" target="_blank" rel="noopener">hexo博客搭建</a>操作即可,通过在gitbash中查看版本检查是否安装成功  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git version</span><br><span class="line">node -v</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<h2 id="复制原博客文件夹中的文件"><a href="#复制原博客文件夹中的文件" class="headerlink" title="复制原博客文件夹中的文件"></a>复制原博客文件夹中的文件</h2><p>我主要是按照<a href="https://blog.csdn.net/eternity1118_/article/details/71194395?ref=myread" target="_blank" rel="noopener">hexo迁移</a>这篇文章操作的,实践中有不同的地方  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">将下面的文件或文件夹复制到新的博客目录下进行替换</span><br><span class="line"> _config.yml</span><br><span class="line"> package.json (这个没有用到)</span><br><span class="line"> scaffolds&#x2F; (这个没有用到)</span><br><span class="line"> source&#x2F;</span><br><span class="line"> themes&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装所需模块"><a href="#安装所需模块" class="headerlink" title="安装所需模块"></a>安装所需模块</h2><p>避免下载缓慢可以先换源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org </span><br><span class="line">npm info underscore (输出正常反馈信息则说明换源成功)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">本地测试的时候需要用hexo server</span><br><span class="line">npm i hexo-server</span><br><span class="line">将文章部署到github上的模块</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">安装RSS插件</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">添加Sitemap,加速网页收录速度</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>推荐一篇非常详细的文章:<a href="https://www.jianshu.com/p/35e197cb1273" target="_blank" rel="noopener">Hexo搭建Github-Pages博客填坑教程</a><br>.deploy：执行hexo deploy命令部署到GitHub上的内容目录<br>public：执行hexo generate命令，输出的静态网页内容目录<br>scaffolds：layout模板文件目录，其中的md文件可以添加编辑<br>scripts：扩展脚本目录，这里可以自定义一些javascript脚本<br>source：文章源码目录，该目录下的markdown和html文件均会被hexo处理。该页面对应repo的根目录，404文件、favicon.ico文件，CNAME文件等都应该放这里，该目录下可新建页面目录。<br>_drafts：草稿文章<br>_posts：发布文章<br>themes：主题文件目录<br>_config.yml：全局配置文件，大多数的设置都在这里<br>package.json：应用程序数据，指明hexo的版本等信息，类似于一般软件中的关于按钮</p>
-<p>Hexo原理就是hexo在执行hexo generate时会在本地先把博客生成的一套静态站点放到public文件夹中，在执行hexo deploy时将其复制到.deploy文件夹中。Github的版本库通常建议同时附上README.md说明文件，但是hexo默认情况下会把所有md文件解析成html文件，所以即使在线生成了README .md，它也会在你下一次部署时被删去。怎么解决呢？<br>在执行hexo deploy前把在本地写好的README.md文件复制到.deploy文件夹中，再去执行hexo deploy。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -672,7 +689,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

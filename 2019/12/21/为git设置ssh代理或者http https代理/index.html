@@ -46,23 +46,24 @@
   };
 </script>
 
-  <meta name="description" content="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议">
+  <meta name="description" content="为git设置ssh代理问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git设置代理, github克隆速度大幅提升">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;21&#x2F;git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87&#x2F;index.html">
+<meta property="og:title" content="为git设置ssh代理或者http&#x2F;https代理">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;21&#x2F;%E4%B8%BAgit%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86%E6%88%96%E8%80%85http%20https%E4%BB%A3%E7%90%86&#x2F;index.html">
 <meta property="og:site_name" content="Haes&#39; Blog">
-<meta property="og:description" content="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议">
+<meta property="og:description" content="为git设置ssh代理问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019120817243765.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191208173637533.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191213223558270.png">
 <meta property="article:published_time" content="2019-12-21T00:32:40.000Z">
-<meta property="article:modified_time" content="2019-12-21T00:33:35.348Z">
+<meta property="article:modified_time" content="2019-12-21T00:38:08.779Z">
 <meta property="article:author" content="Little Haes">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019120817243765.png">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/">
+<link rel="canonical" href="http://yoursite.com/2019/12/21/%E4%B8%BAgit%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86%E6%88%96%E8%80%85http%20https%E4%BB%A3%E7%90%86/">
 
 
 <script id="page-configurations">
@@ -74,7 +75,7 @@
   };
 </script>
 
-  <title>git设置代理, github克隆速度大幅提升 | Haes' Blog</title>
+  <title>为git设置ssh代理或者http/https代理 | Haes' Blog</title>
   
 
 
@@ -185,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/21/%E4%B8%BAgit%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86%E6%88%96%E8%80%85http%20https%E4%BB%A3%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -198,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          git设置代理, github克隆速度大幅提升
+          为git设置ssh代理或者http/https代理
         </h1>
 
         <div class="post-meta">
@@ -209,7 +210,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-12-21 08:32:40 / Modified: 08:33:35" itemprop="dateCreated datePublished" datetime="2019-12-21T08:32:40+08:00">2019-12-21</time>
+              <time title="Created: 2019-12-21 08:32:40 / Modified: 08:38:08" itemprop="dateCreated datePublished" datetime="2019-12-21T08:32:40+08:00">2019-12-21</time>
             </span>
 
           
@@ -228,8 +229,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/21/git设置代理-github克隆速度大幅提升/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2019/12/21/%E4%B8%BAgit%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86%E6%88%96%E8%80%85http%20https%E4%BB%A3%E7%90%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/21/为git设置ssh代理或者http https代理/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -244,12 +245,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分"><a href="#问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分" class="headerlink" title="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分"></a>问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考<a href="http://www.returnbooleantrue.com/2009/06/using-github-through-draconian-proxies.html" target="_blank" rel="noopener">这篇文章的Unix代理部分</a></h4><h4 id="协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议"><a href="#协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议" class="headerlink" title="协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议"></a>协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议</h4><a id="more"></a>
+        <h1 id="为git设置ssh代理"><a href="#为git设置ssh代理" class="headerlink" title="为git设置ssh代理"></a>为git设置ssh代理</h1><h4 id="问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分"><a href="#问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分" class="headerlink" title="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分"></a>问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考<a href="http://www.returnbooleantrue.com/2009/06/using-github-through-draconian-proxies.html" target="_blank" rel="noopener">这篇文章的Unix代理部分</a></h4><h4 id="协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议"><a href="#协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议" class="headerlink" title="协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议"></a>协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议</h4><a id="more"></a>
 
 <p><img src="https://img-blog.csdnimg.cn/2019120817243765.png" alt="在这里插入图片描述"></p>
 <h4 id="在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名"><a href="#在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名" class="headerlink" title="在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如C:\Users\Hinata\.ssh,然后填写如下内容保存退出, 注意替换两处用户名"></a>在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如<code>C:\Users\Hinata\.ssh</code>,然后填写如下内容保存退出, 注意替换两处用户名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># -S表示通过sock5协议连接</span><br><span class="line">ProxyCommand connect.exe -S 127.0.0.1:1080 %h %p</span><br><span class="line"></span><br><span class="line">Host github.com</span><br><span class="line">  User git</span><br><span class="line">  Port 22</span><br><span class="line">  Hostname github.com</span><br><span class="line">  # 注意将用户名替换成自己的</span><br><span class="line">  IdentityFile &quot;C:\Users\Hinata\.ssh\id_rsa&quot;</span><br><span class="line">  TCPKeepAlive yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line"></span><br><span class="line">Host ssh.github.com</span><br><span class="line">  User git</span><br><span class="line">  Port 443</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  # 注意将用户名替换成自己的</span><br><span class="line">  IdentityFile &quot;C:\Users\Hinata\.ssh\id_rsa&quot;</span><br><span class="line">  TCPKeepAlive yes</span><br><span class="line">  IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
 <h4 id="现在的克隆速度快多了"><a href="#现在的克隆速度快多了" class="headerlink" title="现在的克隆速度快多了!"></a>现在的克隆速度快多了!</h4><p><img src="https://img-blog.csdnimg.cn/20191208173637533.png" alt="在这里插入图片描述"></p>
-<h4 id="犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"><a href="#犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了" class="headerlink" title="犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"></a>犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了</h4>
+<h4 id="犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"><a href="#犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了" class="headerlink" title="犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"></a>犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了</h4><h1 id="为git设置http-https代理"><a href="#为git设置http-https代理" class="headerlink" title="为git设置http/https代理"></a>为git设置http/https代理</h1><h4 id="问题-使用hexo搭建博客-执行hexo-init时包含git-clone的操作-但是使用的是https协议-不是ssh-所以为git设置https代理-但是只设置https代理并不能加速-与此同时-只设置http代理能稍微加点速度-只有同时设置http代理和https代理才能明显提速-说明hexo-init过程中既用到了http协议又用到了https协议"><a href="#问题-使用hexo搭建博客-执行hexo-init时包含git-clone的操作-但是使用的是https协议-不是ssh-所以为git设置https代理-但是只设置https代理并不能加速-与此同时-只设置http代理能稍微加点速度-只有同时设置http代理和https代理才能明显提速-说明hexo-init过程中既用到了http协议又用到了https协议" class="headerlink" title="问题: 使用hexo搭建博客, 执行hexo init时包含git clone的操作,但是使用的是https协议, 不是ssh, 所以为git设置https代理, 但是只设置https代理并不能加速, 与此同时, 只设置http代理能稍微加点速度, 只有同时设置http代理和https代理才能明显提速, 说明hexo init过程中既用到了http协议又用到了https协议"></a>问题: 使用hexo搭建博客, 执行<code>hexo init</code>时包含git clone的操作,但是使用的是https协议, 不是ssh, 所以为git设置https代理, 但是只设置https代理并不能加速, 与此同时, 只设置http代理能稍微加点速度, 只有同时设置http代理和https代理才能明显提速, 说明hexo init过程中既用到了http协议又用到了https协议</h4><h4 id="为git设置http代理-https代理"><a href="#为git设置http代理-https代理" class="headerlink" title="为git设置http代理, https代理"></a>为git设置http代理, https代理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#http代理</span><br><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br><span class="line">#https代理</span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行git-config-l查看代理"><a href="#执行git-config-l查看代理" class="headerlink" title="执行git config -l查看代理"></a>执行<code>git config -l</code>查看代理</h4><p><img src="https://img-blog.csdnimg.cn/20191213223558270.png" alt="在这里插入图片描述"></p>
+<h4 id="取消http代理-取消https代理"><a href="#取消http代理-取消https代理" class="headerlink" title="取消http代理, 取消https代理"></a>取消http代理, 取消https代理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#取消http代理</span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">#取消https代理</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -337,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分"><span class="nav-number">1.</span> <span class="nav-text">问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议"><span class="nav-number">2.</span> <span class="nav-text">协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名"><span class="nav-number">3.</span> <span class="nav-text">在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如C:\Users\Hinata\.ssh,然后填写如下内容保存退出, 注意替换两处用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现在的克隆速度快多了"><span class="nav-number">4.</span> <span class="nav-text">现在的克隆速度快多了!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"><span class="nav-number">5.</span> <span class="nav-text">犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为git设置ssh代理"><span class="nav-number">1.</span> <span class="nav-text">为git设置ssh代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如C:\Users\Hinata\.ssh,然后填写如下内容保存退出, 注意替换两处用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现在的克隆速度快多了"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">现在的克隆速度快多了!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为git设置http-https代理"><span class="nav-number">2.</span> <span class="nav-text">为git设置http&#x2F;https代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题-使用hexo搭建博客-执行hexo-init时包含git-clone的操作-但是使用的是https协议-不是ssh-所以为git设置https代理-但是只设置https代理并不能加速-与此同时-只设置http代理能稍微加点速度-只有同时设置http代理和https代理才能明显提速-说明hexo-init过程中既用到了http协议又用到了https协议"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">问题: 使用hexo搭建博客, 执行hexo init时包含git clone的操作,但是使用的是https协议, 不是ssh, 所以为git设置https代理, 但是只设置https代理并不能加速, 与此同时, 只设置http代理能稍微加点速度, 只有同时设置http代理和https代理才能明显提速, 说明hexo init过程中既用到了http协议又用到了https协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为git设置http代理-https代理"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">为git设置http代理, https代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行git-config-l查看代理"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">执行git config -l查看代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取消http代理-取消https代理"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">取消http代理, 取消https代理</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -498,9 +502,9 @@
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "http://yoursite.com/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/",
-            identifier: "2019/12/21/git设置代理-github克隆速度大幅提升/",
-            title: "git设置代理, github克隆速度大幅提升"
+            url: "http://yoursite.com/2019/12/21/%E4%B8%BAgit%E8%AE%BE%E7%BD%AEssh%E4%BB%A3%E7%90%86%E6%88%96%E8%80%85http%20https%E4%BB%A3%E7%90%86/",
+            identifier: "2019/12/21/为git设置ssh代理或者http https代理/",
+            title: "为git设置ssh代理或者http/https代理"
           }
         }
       });

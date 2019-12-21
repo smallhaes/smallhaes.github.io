@@ -177,6 +177,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/" class="post-title-link" itemprop="url">Newton's method and Quasi Newton method牛顿法与拟牛顿法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-26 18:47:52" itemprop="dateCreated datePublished" datetime="2018-03-26T18:47:52+08:00">2018-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>牛顿法和拟牛顿法是求解无约束最优化问题的常用方法,优点是收敛速度快.<br>牛顿法是迭代算法,每一步需要求解目标函数的Hessian矩阵的逆矩阵,矩阵的逆运算很耗时.<br>拟牛顿法通过正定矩阵近似Hessian矩阵的逆矩阵或Hessian矩阵,简化Hessian矩阵的求逆计算过程  </p>
+<h1 id="采用线搜索框架"><a href="#采用线搜索框架" class="headerlink" title="采用线搜索框架"></a>采用线搜索框架</h1><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a781bb3cbc7338a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><strong>搜索方向由牛顿法或拟牛顿法给出,步长可以通过精确线搜索或非精确线搜索获得</strong><br>关于步长,之前的文章有提过:<a href="http://littlehaes.com/2018/03/23/Line-search-and-Step-length线搜索与步长/" target="_blank" rel="noopener">Line search and Step length线搜索与步长</a>   </p>
+<h1 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h1><ol>
+<li>假设f(x)具有二阶连续偏导数.要求解的无约束最优化问题是min f(x),x*标识目标函数f(x)的极小点.  </li>
+<li>若第k次迭代值为x^(k),则可将f(x)在x^(k)附近进行二阶泰勒展开(Taylor expansion):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-432203ebaca87062.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png">  </li>
+<li><ul>
+<li>函数f(x)有极值的必要条件是在极值点处一阶导数为0,即梯度向量为0.特别地,当H(x^(k))是正定矩阵时,函数f(x)的极值为极小值.  </li>
+<li>牛顿法利用极小点的必要条件▽f(x)=0  </li>
+<li>每次迭代中从点x^(k)开始,求目标函数的极小点,作为第k+1次迭代值x^(k+1).具体地,假设x^(k+1)满足▽f(x^(k+1))=0  </li>
+<li>由二阶泰勒展开,对f(x)关于(x-x^(k))求梯度得:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-be3e5d36a25794e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></li>
+<li>将x^(k+1)带入上面的梯度公式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-07ab256d46998598.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png">  <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><img src="https://upload-images.jianshu.io/upload_images/9608551-9ba5dc26749ed66a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png">  </li>
+</ul>
+</li>
+</ol>
+<h1 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h1><p>牛顿法算法流程的步骤(4)涉及Hessian矩阵的求逆,计算复杂,所以有其它改进的方法,比如<br><img src="https://upload-images.jianshu.io/upload_images/9608551-1855c02c9d6eefe0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>先看牛顿法迭代中Hessian矩阵H_k满足的条件,进而引出<strong>拟牛顿条件</strong>.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b4350d3d190a73e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>下面说明如果H_k正定,则牛顿法的搜索方向是下降方向<br><img src="https://upload-images.jianshu.io/upload_images/9608551-097d808f13a94209.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br><strong>拟牛顿法是用一个n阶矩阵G_k去近似Hessian矩阵的逆,所以矩阵G_k需要满足Hessian矩阵满足的条件</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-b7ea73fd9be75883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br>每次迭代时需要更新G_k矩阵,更新方法有多种类选择,主要介绍下Broyden类拟牛顿法</p>
+<h2 id="DFP算法"><a href="#DFP算法" class="headerlink" title="DFP算法"></a>DFP算法</h2><p>DFP(Davidon-Flectcher-Powell)算法选择G_(k+1)的方法是:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-3029a331080edab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>进一步,关于P_k,Q_k<br><img src="https://upload-images.jianshu.io/upload_images/9608551-942e9c7ab3e32cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.png"><br><strong>P_k,Q_k如上取值的可行性证明:</strong><br> <img src="https://upload-images.jianshu.io/upload_images/9608551-326aa8e92b3868e4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.jpg">  </p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/9608551-a3b1fe8a41c08ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="14.png">  </p>
+<h3 id="DFP算法流程"><a href="#DFP算法流程" class="headerlink" title="DFP算法流程"></a>DFP算法流程</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-0ca486c999562c7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
+<h2 id="BFGS算法"><a href="#BFGS算法" class="headerlink" title="BFGS算法"></a>BFGS算法</h2><p>BFGS(Broyden-Flectcher-Goldfarb-Shanno)算法是最流行的拟牛顿算法.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f4421f870c12d0b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="15.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-a9304c77cea1e40d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="16.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-d5bf1ddead15c875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="17.png"></p>
+<h3 id="BFGS算法流程"><a href="#BFGS算法流程" class="headerlink" title="BFGS算法流程"></a>BFGS算法流程</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-2182ed3eb8720b52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18.png">   </p>
+<h2 id="DFP和BFGS的迭代公式很像"><a href="#DFP和BFGS的迭代公式很像" class="headerlink" title="DFP和BFGS的迭代公式很像"></a>DFP和BFGS的迭代公式很像</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-96f2fcb2790e1606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19.png">  </p>
+<h2 id="Broyden类算法"><a href="#Broyden类算法" class="headerlink" title="Broyden类算法"></a>Broyden类算法</h2><h3 id="Sherman-Morrison公式"><a href="#Sherman-Morrison公式" class="headerlink" title="Sherman-Morrison公式"></a>Sherman-Morrison公式</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-7d4dc4c7382fc640.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20.png">  </p>
+<h3 id="Broyden类"><a href="#Broyden类" class="headerlink" title="Broyden类"></a>Broyden类</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-ee1aabdbf727d0ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="21.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-4e770879233e8518.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="22.png">  </p>
+<p>参考:<br>李航,统计学习方法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/Gradient-descent%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Steepest-descent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -545,107 +650,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/" class="post-title-link" itemprop="url">Dirichlet Multinomial 共轭</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-20 18:23:34" itemprop="dateCreated datePublished" datetime="2018-03-20T18:23:34+08:00">2018-03-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/20/Dirichlet-Multinomial-共轭/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作为LDA的预备知识,Dirichlet Multinomial共轭结构很重要,在介绍这个共轭结构之前,先介绍一下将会用到的相关概念</p>
-<h2 id="Gamma-函数"><a href="#Gamma-函数" class="headerlink" title="Gamma 函数"></a>Gamma 函数</h2><p>Gamma函数定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-19dd3611014b4449.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>分部积分后可得:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-022c964076a451d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>不断展开等式右边,进而有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bfd9604547712884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"><br>Bohr-Mullerup定理:<br>如果f:(0,∞)→(0,∞),且满足:f(1)=1;f(x+1)=xf(x);log(f(x))是凸函数,那么唯一满足以上条件的就是Γ(x)<br>Gamma函数图像(from Wikipedia):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d671cdb6cc29bbf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>复平面上的Gamma函数(from Wikipedia):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a4a7785ecc0badbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="5.png"><br>如下函数被称为Digamma函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-714da680527edbb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="6.png"><br>这是个很重要的函数,在求Dirichlet分布相关的参数的极大似然估计时往往用到该函数<br>Digamma函数具有如下性质<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a69cc5479512a4dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="7.png"></p>
-<h2 id="Beta-Binomial-共轭"><a href="#Beta-Binomial-共轭" class="headerlink" title="Beta Binomial 共轭"></a>Beta Binomial 共轭</h2><p><strong>在贝叶斯统计中，如果后验分布与先验分布属于同分布，则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验.</strong><br>Beta分布是Binomial分布的共轭先验   </p>
-<h3 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-af749f174ca0a672.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="9.png"><br>可以通过推导n个独立产生于同一个均匀分布的数字中第k大数字的过程推导出Beta分布,具体可参考靳志辉老师的LDA数学八卦<br>Beta分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-18a8c2834cef9508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="13.png">  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-473bc02b0326d09f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="14.png"><br>Beta分布(from Wikipedia)<br>PDF:probability density function(概率密度函数)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-09494c29a5fc9eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.png"><br>因为Beta分布可以拟合多种曲线,所以被广泛使用   </p>
-<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>n是总的试验次数,p是实验成功的概率,k是实验成功的次数<br>Probability mass function:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-df0cfb91ca0a4775.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="12.png">  </p>
-<h3 id="Beta-Binomial-共轭-1"><a href="#Beta-Binomial-共轭-1" class="headerlink" title="Beta Binomial 共轭"></a>Beta Binomial 共轭</h3><p>按照贝叶斯推理的过程引出Beta-Binomial共轭:  </p>
-<ol>
-<li>p是要猜的参数,假设p的先验分布为Beta分布,即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e6386209e22f77b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="10.png"></li>
-<li>现有m个数字,知道这m个数字与p的大小关系,其中有m1个数字比p小,m2个数字比p大(m1+m2=m).可知这m个数字与p的大小关系是二项分布(Binomial Distribution)的一个观察值  </li>
-<li>那么根据m1和m2这个经验,我们便可以得到p的后验分布(证明过程可参考靳志辉老师的LDA数学八卦,并不复杂)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b364ad17cc4ac7e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="11.png"><br>后验分布和先验分布都是Beta分布,只不过是参数变了,所以Beta分布式二项分布的共轭先验.  </li>
-</ol>
-<p><strong>实际上,第一步也可以假设p服从其它分布,只不过因为观察值服从二项分布,所以假设p为Beta分布后,p的后验概率也服从Beta分布,方面计算</strong></p>
-<h2 id="Dirichlet-Multinomial-共轭"><a href="#Dirichlet-Multinomial-共轭" class="headerlink" title="Dirichlet Multinomial 共轭"></a>Dirichlet Multinomial 共轭</h2><h3 id="Dirichlet分布"><a href="#Dirichlet分布" class="headerlink" title="Dirichlet分布"></a>Dirichlet分布</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1888464f88355ee6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="15.png"><br><strong>Beta分布就是Dirichlet分布的参数n=2时的情况</strong><br>Dirichlet分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0f92d3be43897145.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png"><br>或者<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08d06e7d4e3aea6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="17.png"><br>Dirichlet分布(from Wikipedia)<br>dirichlet-distribution:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-44eac7aedc9e0d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dirichlet-distribution.png"></p>
-<p><strong>LogDirichletDensity-alpha_0.3_to_alpha_2.0</strong><br><strong>在LDA中用的主要是α＜1的对称Dirichlet分布</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-99f2acf0a081f039.gif?imageMogr2/auto-orient/strip" alt="LogDirichletDensity-alpha_0.3_to_alpha_2.0.gif">  </p>
-<h3 id="Multinomial-分布"><a href="#Multinomial-分布" class="headerlink" title="Multinomial 分布"></a>Multinomial 分布</h3><p>多项分布是二项分布的推广,举例来说,多项分布建模的是这一问题:有一个k个面的骰子,投掷一次结果是第i的面概率是pi,现独立地投掷n次,结果是第i个面的有xi次,多项分布就是给出了投掷n次后各种结果的概率公式<br>Probability mass function:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7d8501965f170945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18.png"><br><strong>Binomial分布就是Multinomial分布的n=2时的情况</strong></p>
-<h3 id="Dirichlet-Multinomial-共轭-1"><a href="#Dirichlet-Multinomial-共轭-1" class="headerlink" title="Dirichlet Multinomial 共轭"></a>Dirichlet Multinomial 共轭</h3><p>类似Beta Binomial共轭的贝叶斯推理:</p>
-<ol>
-<li>(p1,p2,…pn)是要猜的参数,假设(p1,p2,…pn)的先验分布为Dirichlet分布</li>
-<li>现有n个数字(x1,x2,…,xn),知道这n个数字与(p1,p2,…pn)的大小关系,其中有c1个数字比p1小,c2个数字比p1大同时比p2小,cn个数字比p_(n-1)大同时比pn小.这n个数字与(p1,p2,…pn)的大小关系是多项分布的一个观察值     </li>
-<li>根据(c1,c2,…,cn)这个经验,可以得到(p1,p2,…pn)的后验分布<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2448311b96de77d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19.png"></li>
-</ol>
-<p>参考:靳志辉,LDA数学八卦</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -718,14 +722,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

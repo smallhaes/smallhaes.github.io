@@ -177,6 +177,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/Matrix-Derivative%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/02/Matrix-Derivative%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/" class="post-title-link" itemprop="url">Matrix Derivative矩阵求导</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-04-02 10:30:18" itemprop="dateCreated datePublished" datetime="2018-04-02T10:30:18+08:00">2018-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/04/02/Matrix-Derivative%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/02/Matrix-Derivative矩阵求导/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>学习机器学习算法时总碰见矩阵求导,现学习一波,主要总结下<br>注意:这里只涉及实数的求导,研究通信的人可能接触的往往是负数求导<br>矩阵可以写成列向量(column vectors)或行向量(row vectors)的形式,这两种不同的形式把矩阵求导分成了两种不同的情况  </p>
+<h2 id="求导类型"><a href="#求导类型" class="headerlink" title="求导类型"></a>求导类型</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-5383ae601da3e1ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="1.jpg"><br>表格列举了六种不同的矩阵求导类型,粗体代表向量或者矩阵(其实标量和向量也可以看作矩阵).<br>表格中还有三个空格没写出,实际上也是存在,但暂时先不讨论,因为这三种情况的求导结果大部分都是高于二阶的张量(tensor)形式,与常见的二维矩阵形式不同.</p>
+<h2 id="布局约定Layout-conventions"><a href="#布局约定Layout-conventions" class="headerlink" title="布局约定Layout conventions"></a>布局约定Layout conventions</h2><p>机器学习中,以线性回归为例,每个输入都有多个属性,在表示属性时可以采用列向量或者行向量的形式,这两种形式会造成求导结果形式的不同.<br>注意是形式上的不同,因为本质上形式的不同不会影响求导结果,只不过将结果按照不同的方式组织起来,方便进一步运算<br>布局决定(Layout conventions)就是为了将不同形式的求导分类.分为两种布局:分子布局(numerator layout)和分母布局(denominator layout)<br>通俗解释,现规定<strong>向量或者矩阵</strong>分为原始形式和转置形式两种,比如在线性回归中我们把列向量作为属性值的原始形式,其转置形式就是行向量  </p>
+<ul>
+<li>对于分子布局(numerator layout),求导结果中分子保持原始形式,分母为转置形式</li>
+<li>对于分母布局(denominator layout),求导结果中分子为转置形式,分母保持原始形式<br>下图展示各种类型求导与两种布局之间的关系<br><img src="https://upload-images.jianshu.io/upload_images/9608551-ad2bcd0dd32a86b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png">  <h3 id="numerator-layout"><a href="#numerator-layout" class="headerlink" title="numerator layout"></a>numerator layout</h3>将上述表格中的分子布局单独拿出来,求导结果如下<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2d737adcce52523a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="3.png"><br>下面的两种定义只在分子布局中有意义<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a52c7ad2bd465123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="4.png"><h3 id="denominator-layout"><a href="#denominator-layout" class="headerlink" title="denominator layout"></a>denominator layout</h3>将上述表格中的分母布局单独拿出来,求导结果如下<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f7bde8dad0702aa0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="5.png"></li>
+</ul>
+<h2 id="常见求导结果"><a href="#常见求导结果" class="headerlink" title="常见求导结果"></a>常见求导结果</h2><p>现给出常见的求导结果,推导相关公式时可以查表<br>求导有链式法则(Chain Rule),但是矩阵乘积不满足交换律,所以链式法则对于matrix-by-scalar derivatives和scalar-by-matrix derivatives这两种情况不适用<br>下面贴出三种求导结果</p>
+<h3 id="Vector-by-vector"><a href="#Vector-by-vector" class="headerlink" title="Vector-by-vector"></a>Vector-by-vector</h3><p>之所以先展示vector-by-vector的表格,是因为所有适用于vector-by-vector求导的操作也直接适用于vector-by-scalar or scalar-by-vector这两种情况<br><img src="https://upload-images.jianshu.io/upload_images/9608551-adac6ef571a02d01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"></p>
+<h3 id="Scalar-by-vector"><a href="#Scalar-by-vector" class="headerlink" title="Scalar-by-vector"></a>Scalar-by-vector</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-6ecb61e770a06fa6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-aa592b312f54684c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"></p>
+<h3 id="Vector-by-scalar"><a href="#Vector-by-scalar" class="headerlink" title="Vector-by-scalar"></a>Vector-by-scalar</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-2042615480b176cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png">  </p>
+<p>参考:<br><a href="https://en.wikipedia.org/wiki/Matrix_calculus" target="_blank" rel="noopener">Matrix calculus</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/01/Logistic-Regression%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -545,111 +636,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/" class="post-title-link" itemprop="url">Newton's method and Quasi Newton method牛顿法与拟牛顿法</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-26 18:47:52" itemprop="dateCreated datePublished" datetime="2018-03-26T18:47:52+08:00">2018-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/03/26/Newton-method-and-quasi-Newton-method%E7%89%9B%E9%A1%BF%E6%B3%95%E4%B8%8E%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/26/Newton-method-and-quasi-Newton-method牛顿法与拟牛顿法/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>牛顿法和拟牛顿法是求解无约束最优化问题的常用方法,优点是收敛速度快.<br>牛顿法是迭代算法,每一步需要求解目标函数的Hessian矩阵的逆矩阵,矩阵的逆运算很耗时.<br>拟牛顿法通过正定矩阵近似Hessian矩阵的逆矩阵或Hessian矩阵,简化Hessian矩阵的求逆计算过程  </p>
-<h1 id="采用线搜索框架"><a href="#采用线搜索框架" class="headerlink" title="采用线搜索框架"></a>采用线搜索框架</h1><p><img src="https://upload-images.jianshu.io/upload_images/9608551-a781bb3cbc7338a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><strong>搜索方向由牛顿法或拟牛顿法给出,步长可以通过精确线搜索或非精确线搜索获得</strong><br>关于步长,之前的文章有提过:<a href="http://littlehaes.com/2018/03/23/Line-search-and-Step-length线搜索与步长/" target="_blank" rel="noopener">Line search and Step length线搜索与步长</a>   </p>
-<h1 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h1><ol>
-<li>假设f(x)具有二阶连续偏导数.要求解的无约束最优化问题是min f(x),x*标识目标函数f(x)的极小点.  </li>
-<li>若第k次迭代值为x^(k),则可将f(x)在x^(k)附近进行二阶泰勒展开(Taylor expansion):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-432203ebaca87062.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png">  </li>
-<li><ul>
-<li>函数f(x)有极值的必要条件是在极值点处一阶导数为0,即梯度向量为0.特别地,当H(x^(k))是正定矩阵时,函数f(x)的极值为极小值.  </li>
-<li>牛顿法利用极小点的必要条件▽f(x)=0  </li>
-<li>每次迭代中从点x^(k)开始,求目标函数的极小点,作为第k+1次迭代值x^(k+1).具体地,假设x^(k+1)满足▽f(x^(k+1))=0  </li>
-<li>由二阶泰勒展开,对f(x)关于(x-x^(k))求梯度得:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-be3e5d36a25794e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></li>
-<li>将x^(k+1)带入上面的梯度公式:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-07ab256d46998598.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png">  <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><img src="https://upload-images.jianshu.io/upload_images/9608551-9ba5dc26749ed66a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png">  </li>
-</ul>
-</li>
-</ol>
-<h1 id="拟牛顿法"><a href="#拟牛顿法" class="headerlink" title="拟牛顿法"></a>拟牛顿法</h1><p>牛顿法算法流程的步骤(4)涉及Hessian矩阵的求逆,计算复杂,所以有其它改进的方法,比如<br><img src="https://upload-images.jianshu.io/upload_images/9608551-1855c02c9d6eefe0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.png"><br>先看牛顿法迭代中Hessian矩阵H_k满足的条件,进而引出<strong>拟牛顿条件</strong>.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b4350d3d190a73e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>下面说明如果H_k正定,则牛顿法的搜索方向是下降方向<br><img src="https://upload-images.jianshu.io/upload_images/9608551-097d808f13a94209.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br><strong>拟牛顿法是用一个n阶矩阵G_k去近似Hessian矩阵的逆,所以矩阵G_k需要满足Hessian矩阵满足的条件</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-b7ea73fd9be75883.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"><br>每次迭代时需要更新G_k矩阵,更新方法有多种类选择,主要介绍下Broyden类拟牛顿法</p>
-<h2 id="DFP算法"><a href="#DFP算法" class="headerlink" title="DFP算法"></a>DFP算法</h2><p>DFP(Davidon-Flectcher-Powell)算法选择G_(k+1)的方法是:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-3029a331080edab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="10.png"><br>进一步,关于P_k,Q_k<br><img src="https://upload-images.jianshu.io/upload_images/9608551-942e9c7ab3e32cea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="11.png"><br><strong>P_k,Q_k如上取值的可行性证明:</strong><br> <img src="https://upload-images.jianshu.io/upload_images/9608551-326aa8e92b3868e4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.jpg">  </p>
-<p> <img src="https://upload-images.jianshu.io/upload_images/9608551-a3b1fe8a41c08ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="14.png">  </p>
-<h3 id="DFP算法流程"><a href="#DFP算法流程" class="headerlink" title="DFP算法流程"></a>DFP算法流程</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-0ca486c999562c7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
-<h2 id="BFGS算法"><a href="#BFGS算法" class="headerlink" title="BFGS算法"></a>BFGS算法</h2><p>BFGS(Broyden-Flectcher-Goldfarb-Shanno)算法是最流行的拟牛顿算法.<br><img src="https://upload-images.jianshu.io/upload_images/9608551-f4421f870c12d0b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="15.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-a9304c77cea1e40d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="16.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-d5bf1ddead15c875.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="17.png"></p>
-<h3 id="BFGS算法流程"><a href="#BFGS算法流程" class="headerlink" title="BFGS算法流程"></a>BFGS算法流程</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-2182ed3eb8720b52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18.png">   </p>
-<h2 id="DFP和BFGS的迭代公式很像"><a href="#DFP和BFGS的迭代公式很像" class="headerlink" title="DFP和BFGS的迭代公式很像"></a>DFP和BFGS的迭代公式很像</h2><p><img src="https://upload-images.jianshu.io/upload_images/9608551-96f2fcb2790e1606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19.png">  </p>
-<h2 id="Broyden类算法"><a href="#Broyden类算法" class="headerlink" title="Broyden类算法"></a>Broyden类算法</h2><h3 id="Sherman-Morrison公式"><a href="#Sherman-Morrison公式" class="headerlink" title="Sherman-Morrison公式"></a>Sherman-Morrison公式</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-7d4dc4c7382fc640.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20.png">  </p>
-<h3 id="Broyden类"><a href="#Broyden类" class="headerlink" title="Broyden类"></a>Broyden类</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-ee1aabdbf727d0ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="21.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9608551-4e770879233e8518.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="22.png">  </p>
-<p>参考:<br>李航,统计学习方法</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -722,14 +708,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

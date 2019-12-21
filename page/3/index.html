@@ -177,6 +177,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3NMS%E5%9C%A8%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/30/%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3NMS%E5%9C%A8%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">快速理解NMS在物体检测中的应用原理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-10-30 09:38:16" itemprop="dateCreated datePublished" datetime="2018-10-30T09:38:16+08:00">2018-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/10/30/%E5%BF%AB%E9%80%9F%E7%90%86%E8%A7%A3NMS%E5%9C%A8%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/30/快速理解NMS在物体检测中的应用原理/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在物体检测的过程中,模型会生成大量的候选框,通过NMS(Non-Maximum Suppression,非极大值抑制)可以筛选出最优的候选框,<strong>原理非常直观,简单来说就是选出所有的局部最大值.</strong><br>最大值容易找,主要就是<strong>如何定义局部,通过IoU就OK啦~</strong></p>
+<h4 id="NMS执行流程"><a href="#NMS执行流程" class="headerlink" title="NMS执行流程"></a>NMS执行流程</h4><p>假定最终选取的候选框集合为res,开始时res是空集; 假定模型输出的大量候选框集合为A,A中的各个候选框有对应的得分</p>
+<p>首先从A中选出分数最高的候选框a,将a放入集合res,同时从A中剔除a,接着计算a与A中剩下的各个候选框x的IoU,如果a和某个x的IoU&gt;0.7 (这里取0.7只是用来举例),<strong>说明a和x重叠的范围太多,所以框出的是同一个物体,不过x的分数不如a高,所以就要抑制x,也就是从A中剔除x</strong>.  <strong>这样筛选多次后,A中剩下的候选框与a的重叠范围很小,说明框出的是其他物体了</strong></p>
+<p>再从A中选出得分最高的候选框b,将b放入集合res,同时从A中剔除b,接着计算b与A中剩下的各个候选框的IoU……其实你已经发现这都是重复上面的操作了<br>经过多次循环后,就为图片中每个可能的物体选取了最合适的候选框,存储在res中</p>
+<h4 id="NMS前"><a href="#NMS前" class="headerlink" title="NMS前"></a>NMS前</h4><p><img src="https://upload-images.jianshu.io/upload_images/9608551-fb9c4d019def0f11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nms1.png"></p>
+<h4 id="NMS后"><a href="#NMS后" class="headerlink" title="NMS后"></a>NMS后</h4><p><img src="https://upload-images.jianshu.io/upload_images/9608551-248e5c16bda8d0ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nms2.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/3%E5%88%86%E9%92%9F%E7%90%86%E8%A7%A3ROI-Pooling%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -511,87 +595,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/softmax-cross-entropy-with-logits%E4%B8%8Esparse-softmax-cross-entropy-with-logits%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/26/softmax-cross-entropy-with-logits%E4%B8%8Esparse-softmax-cross-entropy-with-logits%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">softmax_cross_entropy_with_logits与sparse_softmax_cross_entropy_with_logits的区别</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-26 09:31:19" itemprop="dateCreated datePublished" datetime="2018-10-26T09:31:19+08:00">2018-10-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/10/26/softmax-cross-entropy-with-logits%E4%B8%8Esparse-softmax-cross-entropy-with-logits%E7%9A%84%E5%8C%BA%E5%88%AB/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/26/softmax-cross-entropy-with-logits与sparse-softmax-cross-entropy-with-logits的区别/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>读源码时发现softmax交叉熵损失函数的logits是(N,2),但是labels却是(N,1)的,仔细一看原来用的是sparse_softmax_cross_entropy_with_logits,看了一下文档,补充了基础知识</p>
-<p>举例来说:<br>某个关于图像的单类别分类任务中,类别共有5种,<br>构造标签时往往会用[0,1,0,0,0],[0,0,0,1,0]这种one hot的形式,这种情况下使用tf.softmax_cross_entropy_with_logits()<br>如果构造标签时使用索引来表示类别,如第2类用[1],第4类用[3],这时就得用tf.sparse_softmax_cross_entropy_with_logits()了. 五种类别,索引的取值范围是:{0,1,2,3,4}</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>二者的不同在于标签形式的不同,<br>tf.softmax_cross_entropy_with_logits()使用[0,1,0,0,0],[0,0,0,1,0]形式的标签；<br>同样的标签在tf.sparse_softmax_cross_entropy_with_logits()表示成[1],[3]</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -664,14 +667,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

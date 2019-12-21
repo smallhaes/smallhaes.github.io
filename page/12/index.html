@@ -177,6 +177,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Little Haes">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Haes' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/" class="post-title-link" itemprop="url">Dirichlet Multinomial 共轭</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-20 18:23:34" itemprop="dateCreated datePublished" datetime="2018-03-20T18:23:34+08:00">2018-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/03/20/Dirichlet-Multinomial-%E5%85%B1%E8%BD%AD/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/20/Dirichlet-Multinomial-共轭/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>作为LDA的预备知识,Dirichlet Multinomial共轭结构很重要,在介绍这个共轭结构之前,先介绍一下将会用到的相关概念</p>
+<h2 id="Gamma-函数"><a href="#Gamma-函数" class="headerlink" title="Gamma 函数"></a>Gamma 函数</h2><p>Gamma函数定义:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-19dd3611014b4449.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png"><br>分部积分后可得:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-022c964076a451d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png"><br>不断展开等式右边,进而有:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-bfd9604547712884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="3.png"><br>Bohr-Mullerup定理:<br>如果f:(0,∞)→(0,∞),且满足:f(1)=1;f(x+1)=xf(x);log(f(x))是凸函数,那么唯一满足以上条件的就是Γ(x)<br>Gamma函数图像(from Wikipedia):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-d671cdb6cc29bbf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="4.png"><br>复平面上的Gamma函数(from Wikipedia):<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a4a7785ecc0badbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="5.png"><br>如下函数被称为Digamma函数:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-714da680527edbb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="6.png"><br>这是个很重要的函数,在求Dirichlet分布相关的参数的极大似然估计时往往用到该函数<br>Digamma函数具有如下性质<br><img src="https://upload-images.jianshu.io/upload_images/9608551-a69cc5479512a4dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="7.png"></p>
+<h2 id="Beta-Binomial-共轭"><a href="#Beta-Binomial-共轭" class="headerlink" title="Beta Binomial 共轭"></a>Beta Binomial 共轭</h2><p><strong>在贝叶斯统计中，如果后验分布与先验分布属于同分布，则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验.</strong><br>Beta分布是Binomial分布的共轭先验   </p>
+<h3 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-af749f174ca0a672.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="9.png"><br>可以通过推导n个独立产生于同一个均匀分布的数字中第k大数字的过程推导出Beta分布,具体可参考靳志辉老师的LDA数学八卦<br>Beta分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-18a8c2834cef9508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="13.png">  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9608551-473bc02b0326d09f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="14.png"><br>Beta分布(from Wikipedia)<br>PDF:probability density function(概率密度函数)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-09494c29a5fc9eb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="8.png"><br>因为Beta分布可以拟合多种曲线,所以被广泛使用   </p>
+<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>n是总的试验次数,p是实验成功的概率,k是实验成功的次数<br>Probability mass function:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-df0cfb91ca0a4775.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="12.png">  </p>
+<h3 id="Beta-Binomial-共轭-1"><a href="#Beta-Binomial-共轭-1" class="headerlink" title="Beta Binomial 共轭"></a>Beta Binomial 共轭</h3><p>按照贝叶斯推理的过程引出Beta-Binomial共轭:  </p>
+<ol>
+<li>p是要猜的参数,假设p的先验分布为Beta分布,即<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e6386209e22f77b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="10.png"></li>
+<li>现有m个数字,知道这m个数字与p的大小关系,其中有m1个数字比p小,m2个数字比p大(m1+m2=m).可知这m个数字与p的大小关系是二项分布(Binomial Distribution)的一个观察值  </li>
+<li>那么根据m1和m2这个经验,我们便可以得到p的后验分布(证明过程可参考靳志辉老师的LDA数学八卦,并不复杂)<br><img src="https://upload-images.jianshu.io/upload_images/9608551-b364ad17cc4ac7e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="11.png"><br>后验分布和先验分布都是Beta分布,只不过是参数变了,所以Beta分布式二项分布的共轭先验.  </li>
+</ol>
+<p><strong>实际上,第一步也可以假设p服从其它分布,只不过因为观察值服从二项分布,所以假设p为Beta分布后,p的后验概率也服从Beta分布,方面计算</strong></p>
+<h2 id="Dirichlet-Multinomial-共轭"><a href="#Dirichlet-Multinomial-共轭" class="headerlink" title="Dirichlet Multinomial 共轭"></a>Dirichlet Multinomial 共轭</h2><h3 id="Dirichlet分布"><a href="#Dirichlet分布" class="headerlink" title="Dirichlet分布"></a>Dirichlet分布</h3><p><img src="https://upload-images.jianshu.io/upload_images/9608551-1888464f88355ee6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="15.png"><br><strong>Beta分布就是Dirichlet分布的参数n=2时的情况</strong><br>Dirichlet分布的期望:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-0f92d3be43897145.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="16.png"><br>或者<br><img src="https://upload-images.jianshu.io/upload_images/9608551-08d06e7d4e3aea6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="17.png"><br>Dirichlet分布(from Wikipedia)<br>dirichlet-distribution:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-44eac7aedc9e0d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dirichlet-distribution.png"></p>
+<p><strong>LogDirichletDensity-alpha_0.3_to_alpha_2.0</strong><br><strong>在LDA中用的主要是α＜1的对称Dirichlet分布</strong><br><img src="https://upload-images.jianshu.io/upload_images/9608551-99f2acf0a081f039.gif?imageMogr2/auto-orient/strip" alt="LogDirichletDensity-alpha_0.3_to_alpha_2.0.gif">  </p>
+<h3 id="Multinomial-分布"><a href="#Multinomial-分布" class="headerlink" title="Multinomial 分布"></a>Multinomial 分布</h3><p>多项分布是二项分布的推广,举例来说,多项分布建模的是这一问题:有一个k个面的骰子,投掷一次结果是第i的面概率是pi,现独立地投掷n次,结果是第i个面的有xi次,多项分布就是给出了投掷n次后各种结果的概率公式<br>Probability mass function:<br><img src="https://upload-images.jianshu.io/upload_images/9608551-7d8501965f170945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="18.png"><br><strong>Binomial分布就是Multinomial分布的n=2时的情况</strong></p>
+<h3 id="Dirichlet-Multinomial-共轭-1"><a href="#Dirichlet-Multinomial-共轭-1" class="headerlink" title="Dirichlet Multinomial 共轭"></a>Dirichlet Multinomial 共轭</h3><p>类似Beta Binomial共轭的贝叶斯推理:</p>
+<ol>
+<li>(p1,p2,…pn)是要猜的参数,假设(p1,p2,…pn)的先验分布为Dirichlet分布</li>
+<li>现有n个数字(x1,x2,…,xn),知道这n个数字与(p1,p2,…pn)的大小关系,其中有c1个数字比p1小,c2个数字比p1大同时比p2小,cn个数字比p_(n-1)大同时比pn小.这n个数字与(p1,p2,…pn)的大小关系是多项分布的一个观察值     </li>
+<li>根据(c1,c2,…,cn)这个经验,可以得到(p1,p2,…pn)的后验分布<br><img src="https://upload-images.jianshu.io/upload_images/9608551-2448311b96de77d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="19.png"></li>
+</ol>
+<p>参考:靳志辉,LDA数学八卦</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/SupportVectorMachine%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -620,126 +721,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/27/Python%E6%8A%80%E5%B7%A7-List-Tuple-Dict-Set/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Little Haes">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Haes' Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/02/27/Python%E6%8A%80%E5%B7%A7-List-Tuple-Dict-Set/" class="post-title-link" itemprop="url">Python技巧:List,Tuple,Dict,Set</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-02-27 16:16:42" itemprop="dateCreated datePublished" datetime="2018-02-27T16:16:42+08:00">2018-02-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/02/27/Python%E6%8A%80%E5%B7%A7-List-Tuple-Dict-Set/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/27/Python技巧-List-Tuple-Dict-Set/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>自己最近主要是用Python,还不是很扎实,学习了程序员硕的Python高效编程技巧实战,讲得很好,感觉受益匪浅,故分享一下心得</p>
-<h3 id="在列表List-字典Dict-集合Set中根据条件筛选数据"><a href="#在列表List-字典Dict-集合Set中根据条件筛选数据" class="headerlink" title="在列表List,字典Dict,集合Set中根据条件筛选数据"></a>在列表List,字典Dict,集合Set中根据条件筛选数据</h3><p>使用各自的生成式即可<br><strong>产生相同的列表,列表表达式速度比过滤函数快!!将近一倍. 这两种方法都远远快于for循环</strong><br>过滤函数定义: filter(function or None, sequence) -&gt; list, tuple, or string<br><img src="https://upload-images.jianshu.io/upload_images/9608551-e7e865d0c54c2e0c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="21.jpg"></p>
-<h3 id="为每个元组Tuple中的元素命名-提高程序可读性"><a href="#为每个元组Tuple中的元素命名-提高程序可读性" class="headerlink" title="为每个元组Tuple中的元素命名,提高程序可读性"></a>为每个元组Tuple中的元素命名,提高程序可读性</h3><ol>
-<li><p><strong>定义类似于其它语言的枚举类型,也就是定义一系列数值常量</strong> </p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NAME = <span class="number">0</span>  </span><br><span class="line">AGE = <span class="number">1</span>  </span><br><span class="line">EMAL = <span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p> 或者 </p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NAME,AGE,EMAIL = range(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p> 具体使用</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s1 = (<span class="string">'haes'</span>,<span class="number">16</span>,<span class="string">'5065@qq.com'</span>)</span><br><span class="line"><span class="keyword">print</span> s1[AGE]</span><br></pre></td></tr></table></figure>
-<p> 这么使用得提前设计好数据结构  </p>
-</li>
-<li><p><strong>使用collections.namedtuple替代内置tuple</strong><br> 先实例化一个namedtuple对象,这个对象和tuple的地位一样,只不过带名字(名字就是这个对象的各个属性)</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple  </span><br><span class="line">student = namedtuple(<span class="string">'s1'</span>,[<span class="string">'NAME'</span>,<span class="string">'AGE'</span>,<span class="string">'EMAIL'</span>])  </span><br><span class="line">s = student(<span class="string">'haes'</span>,<span class="number">16</span>,<span class="string">'5065@qq.com'</span>)  </span><br><span class="line"><span class="keyword">print</span> s.NAME  </span><br><span class="line"><span class="keyword">print</span> isinstance(s,tuple) <span class="comment">#Ture</span></span><br></pre></td></tr></table></figure>
-<h3 id="统计序列sequence中元素的出现次数"><a href="#统计序列sequence中元素的出现次数" class="headerlink" title="统计序列sequence中元素的出现次数"></a>统计序列sequence中元素的出现次数</h3></li>
-<li><p>使用sorted函数  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#比如:按字典的值排序</span></span><br><span class="line">new_c = sorted(c.items(),key=<span class="keyword">lambda</span> x :x[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用collections.Counter对象<br> 将序列sequence传入Counter的构造函数,得到Counter对象是元素出现次数的字典<br> Counter.most_common(n)方法得到出现次数最多的前n个元素的列表</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">new_c = Counter(data)</span><br><span class="line"><span class="keyword">print</span> new_c[<span class="number">3</span>] <span class="comment">#data中索引为3的元素出现的次数</span></span><br><span class="line"><span class="keyword">print</span> new_c.most_common(<span class="number">4</span>) <span class="comment">#[(10, 4)说明10出现了4次</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="根据字典值的大小-对字典的项排序"><a href="#根据字典值的大小-对字典的项排序" class="headerlink" title="根据字典值的大小,对字典的项排序"></a>根据字典值的大小,对字典的项排序</h3><ol>
-<li><p>使用sorted函数</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line">d = &#123;x:randint(<span class="number">60</span>,<span class="number">100</span>) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'xyzabc'</span> &#125;</span><br><span class="line"><span class="comment">#直接排序是对字典的键排序,因为默认是对各项的第一个元素排序,元组也是</span></span><br><span class="line"><span class="keyword">print</span> sorted(d )</span><br><span class="line"><span class="comment">#&lt;dictionary-keyiterator object at 0x00000000066742C8&gt;</span></span><br><span class="line"><span class="keyword">print</span> iter(d)</span><br><span class="line"><span class="comment">#可以通过list看看具体的迭代对象是什么</span></span><br><span class="line"><span class="keyword">print</span> list(iter(d))</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用sorted函数的key参数</span></span><br><span class="line">b = &#123;x:randint(<span class="number">60</span>,<span class="number">100</span>) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)&#125;</span><br><span class="line"><span class="comment">#根据value排序和对value排序是两个不同的概念!!!!</span></span><br><span class="line">new_b1 = sorted(b.items(),key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])</span><br><span class="line">new_b2 = sorted(b.values())</span><br><span class="line">new_b3 = sorted(b)</span><br><span class="line"><span class="keyword">print</span> new_b1</span><br><span class="line"><span class="keyword">print</span> new_b2</span><br><span class="line"><span class="keyword">print</span> new_b3</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用zip函数将字典数据转化元组  </p>
-</li>
-</ol>
-<p><strong>根据value排序和对value排序是两个不同的概念</strong><br>zip(seq1, seq2, *more_seqs) 返回的是元组  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#zip的使用</span></span><br><span class="line">new_d = zip(d.values(),d.keys())</span><br><span class="line"><span class="comment">#使用迭代版本的key和value节约空间!!!!</span></span><br><span class="line">new_D = zip(d.itervalues(),d.iterkeys())</span><br><span class="line"><span class="keyword">print</span> new_D</span><br><span class="line"><span class="comment">#将value放在第一个位置,这样就可以按照value排序了</span></span><br><span class="line"><span class="keyword">print</span> sorted(new_D)</span><br></pre></td></tr></table></figure>
-<h3 id="查找多个字典的公共键"><a href="#查找多个字典的公共键" class="headerlink" title="查找多个字典的公共键"></a>查找多个字典的公共键</h3><p>step1. 使用字典的viewkeys()方法,得到一个字典keys的集合set<br>step2. 使用map函数,得到所有字典的keys的集合<br>step3. 使用reduce函数,得到所有字典的集合的交集set  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint,sample</span><br><span class="line"><span class="comment">#先随机生成4个字典</span></span><br><span class="line"><span class="comment">#def sample(self, population, k):</span></span><br><span class="line"><span class="comment">#Chooses k unique random elements from a population sequence.</span></span><br><span class="line"><span class="comment">#sample:从population序列里面随机选取k个</span></span><br><span class="line"><span class="keyword">print</span> sample(<span class="string">'abcdefg'</span>,randint(<span class="number">3</span>,<span class="number">6</span>))</span><br><span class="line">s1 = &#123;k:randint(<span class="number">0</span>,<span class="number">5</span>) <span class="keyword">for</span> k <span class="keyword">in</span> sample(<span class="string">'abcdefg'</span>,randint(<span class="number">3</span>,<span class="number">6</span>)) &#125;</span><br><span class="line">s2 = &#123;k:randint(<span class="number">0</span>,<span class="number">5</span>) <span class="keyword">for</span> k <span class="keyword">in</span> sample(<span class="string">'abcdefg'</span>,randint(<span class="number">3</span>,<span class="number">6</span>)) &#125;</span><br><span class="line">s3 = &#123;k:randint(<span class="number">0</span>,<span class="number">5</span>) <span class="keyword">for</span> k <span class="keyword">in</span> sample(<span class="string">'abcdefg'</span>,randint(<span class="number">3</span>,<span class="number">6</span>)) &#125;</span><br><span class="line">s4 = &#123;k:randint(<span class="number">0</span>,<span class="number">5</span>) <span class="keyword">for</span> k <span class="keyword">in</span> sample(<span class="string">'abcdef'</span>,randint(<span class="number">3</span>,<span class="number">6</span>))&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># print s1.viewkeys() &amp; s2.viewkeys() &amp; s3.viewkeys()</span></span><br><span class="line"><span class="comment">#map对每个元素执行相同的操作</span></span><br><span class="line">s = map(dict.viewkeys,[s1,s2,s3])</span><br><span class="line"><span class="comment">#def reduce(function, sequence, initial=None)</span></span><br><span class="line"><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> a,b:a &amp; b,s)</span><br><span class="line"></span><br><span class="line"><span class="comment">#用lambda也行</span></span><br><span class="line"><span class="comment"># s = map(lambda x : x.viewkeys(),[s1,s2,s3])</span></span><br><span class="line"><span class="comment"># print reduce(lambda a,b:a &amp; b,s)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="让字典保持有序"><a href="#让字典保持有序" class="headerlink" title="让字典保持有序"></a>让字典保持有序</h3><p>使用collections中的有序字典OrderedDict</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#实例化一个OrderedDict对象,然后赋值即可</span></span><br><span class="line"><span class="comment">#先插入的值排在前面</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line">d = OrderedDict()</span><br><span class="line">d[<span class="string">'Bob'</span>] = <span class="number">1</span></span><br><span class="line">d[<span class="string">'Jim'</span>] = <span class="number">21</span></span><br><span class="line">d[<span class="string">'Leo'</span>] = <span class="number">-100</span></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d: </span><br><span class="line">    <span class="keyword">print</span> k</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模拟跑步排名,先记录的说明成绩靠前</span></span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line">players = list(<span class="string">'ABCDEFGH'</span>)</span><br><span class="line">start = time()</span><br><span class="line">d = OrderedDict()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">    raw_input()</span><br><span class="line">    <span class="comment">#pop还能这么用</span></span><br><span class="line">    p = players.pop(randint(<span class="number">0</span>,<span class="number">7</span>-i))</span><br><span class="line">    end = time()</span><br><span class="line">    <span class="keyword">print</span> i+<span class="number">1</span>,p,end-start</span><br><span class="line">    d[p] = (i+<span class="number">1</span>,end-start)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"------------------------------------------"</span></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> d: <span class="keyword">print</span> k,d[k]</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现用户的历史记录功能"><a href="#实现用户的历史记录功能" class="headerlink" title="实现用户的历史记录功能"></a>实现用户的历史记录功能</h3><p>使用collections中的deque,它是一个双端循环队列<br>程序退出前可以使用pickle将队列对象存入文件,再次运行程序时将其导入  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="comment"># deque 双端队列</span></span><br><span class="line"><span class="comment">#def __init__(self, iterable=(), maxlen=None)</span></span><br><span class="line"><span class="comment">#最多存5条,超过5条会把最开始的删掉,从而保持deque的容量为5</span></span><br><span class="line">q = deque([],<span class="number">5</span>)</span><br><span class="line">q.append(<span class="number">1</span>)</span><br><span class="line">q.append(<span class="number">2</span>)</span><br><span class="line">q.append(<span class="number">3</span>)</span><br><span class="line">q.append(<span class="number">4</span>)</span><br><span class="line">q.append(<span class="number">5</span>)</span><br><span class="line">q.append(<span class="number">6</span>)</span><br><span class="line"><span class="keyword">print</span> q</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模拟猜数</span></span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">N = randint(<span class="number">0</span>,<span class="number">100</span>)</span><br><span class="line">history = deque([],<span class="number">5</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">guess</span><span class="params">(k)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> k==N:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'right'</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> k&lt;N:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'%s is less than N'</span>%k</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'%s is greater than N'</span>%k</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    line = raw_input(<span class="string">'plz input a number: '</span>)</span><br><span class="line">    <span class="keyword">if</span> line.isdigit():</span><br><span class="line">        k = int(line)</span><br><span class="line">        history.append(k)</span><br><span class="line">        <span class="keyword">if</span> guess(k):</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">elif</span> line == <span class="string">'check'</span>:</span><br><span class="line">        <span class="keyword">print</span> list(history)</span><br><span class="line"></span><br><span class="line">pickle.dump(history,open(<span class="string">'test.txt'</span>,<span class="string">'wb'</span>))</span><br><span class="line">p = pickle.load(open(<span class="string">'test.txt'</span>,<span class="string">'rb'</span>))</span><br><span class="line"><span class="keyword">print</span> p</span><br><span class="line"><span class="keyword">print</span> list(p)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -812,14 +793,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -46,26 +46,23 @@
   };
 </script>
 
-  <meta name="description" content="Rockafeller说:”优化问题的分水岭不是线性和非线性,而是凸性和非凸性” 两点连线上的点在介绍凸集和凸函数之前,先来看一个与之有关的基本问题:如下图,已知空间中有B,C两点,在给定两点坐标的情况下如何量化B,C连线上的任意一点D?      很简单,看下图,设已知A,B,C,D的坐标,AD  &#x3D; AB + BD&#x3D; AB + kBC  (D在BC上,所以k∈[0,1])&#x3D; AB + k(AC">
+  <meta name="description" content="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Convex Set and Convex Function凸集与凸函数">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;02&#x2F;22&#x2F;Convex-Set-and-Convex-Function%E5%87%B8%E9%9B%86%E4%B8%8E%E5%87%B8%E5%87%BD%E6%95%B0&#x2F;index.html">
+<meta property="og:title" content="git设置代理, github克隆速度大幅提升">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;21&#x2F;git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87&#x2F;index.html">
 <meta property="og:site_name" content="Haes&#39; Blog">
-<meta property="og:description" content="Rockafeller说:”优化问题的分水岭不是线性和非线性,而是凸性和非凸性” 两点连线上的点在介绍凸集和凸函数之前,先来看一个与之有关的基本问题:如下图,已知空间中有B,C两点,在给定两点坐标的情况下如何量化B,C连线上的任意一点D?      很简单,看下图,设已知A,B,C,D的坐标,AD  &#x3D; AB + BD&#x3D; AB + kBC  (D在BC上,所以k∈[0,1])&#x3D; AB + k(AC">
+<meta property="og:description" content="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-588318532c20bd8d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
-<meta property="og:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-98e8972c736cce83.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
-<meta property="og:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-14dde96cdb2fd9cd.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
-<meta property="og:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-51c8c600edc90fcc.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;600">
-<meta property="article:published_time" content="2018-02-22T13:28:41.000Z">
-<meta property="article:modified_time" content="2019-12-13T15:16:44.471Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019120817243765.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191208173637533.png">
+<meta property="article:published_time" content="2019-12-21T00:32:40.000Z">
+<meta property="article:modified_time" content="2019-12-21T00:33:35.348Z">
 <meta property="article:author" content="Little Haes">
-<meta property="article:tag" content="数学">
-<meta property="article:tag" content="MachineLearning">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;9608551-588318532c20bd8d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019120817243765.png">
 
-<link rel="canonical" href="http://yoursite.com/2018/02/22/Convex-Set-and-Convex-Function%E5%87%B8%E9%9B%86%E4%B8%8E%E5%87%B8%E5%87%BD%E6%95%B0/">
+<link rel="canonical" href="http://yoursite.com/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/">
 
 
 <script id="page-configurations">
@@ -77,7 +74,7 @@
   };
 </script>
 
-  <title>Convex Set and Convex Function凸集与凸函数 | Haes' Blog</title>
+  <title>git设置代理, github克隆速度大幅提升 | Haes' Blog</title>
   
 
 
@@ -188,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/22/Convex-Set-and-Convex-Function%E5%87%B8%E9%9B%86%E4%B8%8E%E5%87%B8%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -201,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Convex Set and Convex Function凸集与凸函数
+          git设置代理, github克隆速度大幅提升
         </h1>
 
         <div class="post-meta">
@@ -210,16 +207,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2018-02-22 21:28:41" itemprop="dateCreated datePublished" datetime="2018-02-22T21:28:41+08:00">2018-02-22</time>
+              <time title="Created: 2019-12-21 08:32:40 / Modified: 08:33:35" itemprop="dateCreated datePublished" datetime="2019-12-21T08:32:40+08:00">2019-12-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-13 23:16:44" itemprop="dateModified" datetime="2019-12-13T23:16:44+08:00">2019-12-13</time>
-              </span>
 
           
             <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
@@ -237,8 +228,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2018/02/22/Convex-Set-and-Convex-Function%E5%87%B8%E9%9B%86%E4%B8%8E%E5%87%B8%E5%87%BD%E6%95%B0/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/22/Convex-Set-and-Convex-Function凸集与凸函数/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/21/git设置代理-github克隆速度大幅提升/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -253,23 +244,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Rockafeller说:”优化问题的分水岭不是线性和非线性,而是凸性和非凸性”</p>
-<h2 id="两点连线上的点"><a href="#两点连线上的点" class="headerlink" title="两点连线上的点"></a>两点连线上的点</h2><p>在介绍凸集和凸函数之前,先来看一个与之有关的基本问题:<br>如下图,已知空间中有B,C两点,在给定两点坐标的情况下如何量化B,C连线上的任意一点D?  </p>
-<p><img src="http://upload-images.jianshu.io/upload_images/9608551-588318532c20bd8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="0.png">  </p>
-<p>很简单,看下图,设已知A,B,C,D的坐标,<br>AD  = AB + BD<br>= AB + kBC  (D在BC上,所以k∈[0,1])<br>= AB + k(AC - AB)<br>= kAC + (1-k)AB<br>(以上均为向量运算)  </p>
-<p><img src="http://upload-images.jianshu.io/upload_images/9608551-98e8972c736cce83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="1.png">  </p>
-<p>所以,已知空间中有两点X,Y,那么线段XY上的任意一点可以表示为kX + (1-k)Y,其中k∈[0,1]</p>
-<h2 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>若集合S⊆Rⁿ满足<br>αx + (1 - α)y ∈ S,  ∀x,y ∈ S,  ∀α ∈ [0,1]<br>则称S是Rⁿ中的凸集.<br>(当α没有限制时,α为直线xy上的任意点,此时S是仿射集)</p>
-<h3 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h3><p>从几何的角度可以这么理解,如果凸集S包含x,y两点,那么线段xy都在S中,如下图<br>左边的椭圆是凸集,右边的四角星不是凸集<br><img src="http://upload-images.jianshu.io/upload_images/9608551-14dde96cdb2fd9cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="2.png">  </p>
-<h2 id="凸函数"><a href="#凸函数" class="headerlink" title="凸函数"></a>凸函数</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><h4 id="凸函数-1"><a href="#凸函数-1" class="headerlink" title="凸函数"></a>凸函数</h4><p>设S⊆Rⁿ是凸集. 若函数f : Rⁿ → Rⁿ满足<br>f[αx + (1-α)y] ≤ αf(x) + (1-α)f(y), ∀x,y ∈ S, ∀α ∈[0,1]<br>则称f是S上的凸函数</p>
-<h4 id="严格凸函数"><a href="#严格凸函数" class="headerlink" title="严格凸函数"></a>严格凸函数</h4><p>接凸函数,若不等式<br>f[αx + (1-α)y] ≤ αf(x) + (1-α)f(y), ∀x,y ∈ S, ∀α ∈[0,1]<br>对所有 x≠ y和 α∈(0,1)成立,则称f是S上的严格凸函数</p>
-<h4 id="一致凸函数-强凸函数"><a href="#一致凸函数-强凸函数" class="headerlink" title="一致凸函数(强凸函数)"></a>一致凸函数(强凸函数)</h4><p>接凸函数,若存在常熟 m&gt;0, 使不等式<br>f[αx + (1-α)y] ≤ αf(x) + (1-α)f(y) - mα(1-α)||x-y||² 对所有x,y∈S以及所有α∈[0,1]成立,则称f是S上的一致凸函数(强凸函数)</p>
-<h3 id="几何解释-1"><a href="#几何解释-1" class="headerlink" title="几何解释"></a>几何解释</h3><ol>
-<li>任意一点的切线都在图像下方(图像像个碗)  </li>
-<li>任意两点确定的弦在其图像上方  </li>
-</ol>
-<p>其实,横坐标为αx + (1-α)y时,对应弦AB上点的纵坐标就是αf(x) + (1-α)f(y)<br><img src="http://upload-images.jianshu.io/upload_images/9608551-51c8c600edc90fcc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="3.jpg"></p>
+        <h4 id="问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分"><a href="#问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分" class="headerlink" title="问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分"></a>问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考<a href="http://www.returnbooleantrue.com/2009/06/using-github-through-draconian-proxies.html" target="_blank" rel="noopener">这篇文章的Unix代理部分</a></h4><h4 id="协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议"><a href="#协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议" class="headerlink" title="协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议"></a>协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议</h4><a id="more"></a>
 
+<p><img src="https://img-blog.csdnimg.cn/2019120817243765.png" alt="在这里插入图片描述"></p>
+<h4 id="在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名"><a href="#在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名" class="headerlink" title="在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如C:\Users\Hinata\.ssh,然后填写如下内容保存退出, 注意替换两处用户名"></a>在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如<code>C:\Users\Hinata\.ssh</code>,然后填写如下内容保存退出, 注意替换两处用户名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># -S表示通过sock5协议连接</span><br><span class="line">ProxyCommand connect.exe -S 127.0.0.1:1080 %h %p</span><br><span class="line"></span><br><span class="line">Host github.com</span><br><span class="line">  User git</span><br><span class="line">  Port 22</span><br><span class="line">  Hostname github.com</span><br><span class="line">  # 注意将用户名替换成自己的</span><br><span class="line">  IdentityFile &quot;C:\Users\Hinata\.ssh\id_rsa&quot;</span><br><span class="line">  TCPKeepAlive yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line"></span><br><span class="line">Host ssh.github.com</span><br><span class="line">  User git</span><br><span class="line">  Port 443</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  # 注意将用户名替换成自己的</span><br><span class="line">  IdentityFile &quot;C:\Users\Hinata\.ssh\id_rsa&quot;</span><br><span class="line">  TCPKeepAlive yes</span><br><span class="line">  IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
+<h4 id="现在的克隆速度快多了"><a href="#现在的克隆速度快多了" class="headerlink" title="现在的克隆速度快多了!"></a>现在的克隆速度快多了!</h4><p><img src="https://img-blog.csdnimg.cn/20191208173637533.png" alt="在这里插入图片描述"></p>
+<h4 id="犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"><a href="#犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了" class="headerlink" title="犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"></a>犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了</h4>
     </div>
 
     
@@ -278,8 +258,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
-              <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
+              <a href="/tags/git/" rel="tag"># git</a>
           </div>
 
         
@@ -288,13 +267,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/02/21/SVD%E4%B8%8EPCA%E7%9A%84%E8%81%94%E7%B3%BB/" rel="prev" title="SVD与PCA的联系">
-      <i class="fa fa-chevron-left"></i> SVD与PCA的联系
+    <a href="/2019/12/15/%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3-ProxyError-Conda-cannot-proceed-due-to-an-error-in-your-proxy-configuration/" rel="prev" title="成功解决 ProxyError: Conda cannot proceed due to an error in your proxy configuration">
+      <i class="fa fa-chevron-left"></i> 成功解决 ProxyError: Conda cannot proceed due to an error in your proxy configuration
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2018/02/23/Win10%E5%90%AF%E7%94%A8SSH%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="Win10启用SSH连接服务器">
-      Win10启用SSH连接服务器 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -361,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两点连线上的点"><span class="nav-number">1.</span> <span class="nav-text">两点连线上的点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凸集"><span class="nav-number">2.</span> <span class="nav-text">凸集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何解释"><span class="nav-number">2.2.</span> <span class="nav-text">几何解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凸函数"><span class="nav-number">3.</span> <span class="nav-text">凸函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#凸函数-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">凸函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#严格凸函数"><span class="nav-number">3.1.2.</span> <span class="nav-text">严格凸函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一致凸函数-强凸函数"><span class="nav-number">3.1.3.</span> <span class="nav-text">一致凸函数(强凸函数)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何解释-1"><span class="nav-number">3.2.</span> <span class="nav-text">几何解释</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题-在windows10下使用git-clone速度太慢了-需要使用代理提速-Linux下使用代理有类似的步骤-但是细节不同-具体可以参考这篇文章的Unix代理部分"><span class="nav-number">1.</span> <span class="nav-text">问题:在windows10下使用git clone速度太慢了, 需要使用代理提速; Linux下使用代理有类似的步骤, 但是细节不同, 具体可以参考这篇文章的Unix代理部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议选择-克隆时可以选择https协议-也可以选择ssh协议-我使用ssh协议"><span class="nav-number">2.</span> <span class="nav-text">协议选择: 克隆时可以选择https协议, 也可以选择ssh协议, 我使用ssh协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-ssh目录下创建config文件-ssh目录在windows的用户目录下如C-Users-Hinata-ssh-然后填写如下内容保存退出-注意替换两处用户名"><span class="nav-number">3.</span> <span class="nav-text">在.ssh目录下创建config文件, .ssh目录在windows的用户目录下如C:\Users\Hinata\.ssh,然后填写如下内容保存退出, 注意替换两处用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现在的克隆速度快多了"><span class="nav-number">4.</span> <span class="nav-text">现在的克隆速度快多了!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#犯了个愚蠢的错误，-克隆一个仓库时，没看到用的是https协议，-我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了"><span class="nav-number">5.</span> <span class="nav-text">犯了个愚蠢的错误， 克隆一个仓库时，没看到用的是https协议， 我还奇怪为什么就不能加速了。。。再此让我认识到，这个代理仅对ssh协议有效，蠢哭了</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -522,9 +498,9 @@
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "http://yoursite.com/2018/02/22/Convex-Set-and-Convex-Function%E5%87%B8%E9%9B%86%E4%B8%8E%E5%87%B8%E5%87%BD%E6%95%B0/",
-            identifier: "2018/02/22/Convex-Set-and-Convex-Function凸集与凸函数/",
-            title: "Convex Set and Convex Function凸集与凸函数"
+            url: "http://yoursite.com/2019/12/21/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86-github%E5%85%8B%E9%9A%86%E9%80%9F%E5%BA%A6%E5%A4%A7%E5%B9%85%E6%8F%90%E5%8D%87/",
+            identifier: "2019/12/21/git设置代理-github克隆速度大幅提升/",
+            title: "git设置代理, github克隆速度大幅提升"
           }
         }
       });
